@@ -204,11 +204,6 @@ double Agent::getPower() const{
     return power;
 }
 
-/*
-int Agent::getAge() const{
-    return age;
-}
-*/
 bool Agent::getDesiredLightState(const Zone &zone) const{
     return zoneToInteraction.at(zone.getName()).lightState;
 }
@@ -279,6 +274,5 @@ std::string Agent::updateLocation(const State& s) const{
 }
 
 void Agent::postprocess(){
-
 }
 
