@@ -1,0 +1,50 @@
+from FMUObject import IDFFileParser
+
+# location of the idf file you want to parse
+fname1 = "\\AIEDISK\AI Environnement\AI Environnement\Pôle R&D\Thèse_Cifre\Admin_Quentin\MASS\EnergyPlusV8-2-4/in.idf"
+fname1 = "C:\Users\AIE\Desktop\Sauvegarde Quentin\No-MASS\ConfigFiles\ParisHouseAll/in.idf"
+
+# name of the fmu
+fmuName = 'agentFMU.fmu'
+fmuInstance =  'FMI'
+
+
+# List the zones you want agents to populate
+zones = ["142", "149", "156", "163"]
+
+
+
+parser = IDFFileParser(fname1)
+parser.setZones(zones)
+parser.setName(fmuName)
+parser.setInstance(fmuInstance)
+
+
+# add the global variables
+parser.addVariableFrom('Environment','Site Exterior Horizontal Sky Illuminance')
+parser.addVariableFrom('Environment','Site Rain Status')
+parser.addVariableFrom('Environment','Site Outdoor Air Drybulb Temperature')
+parser.addVariableFrom('EMS','warmUpComplete')
+parser.addVariableFrom('EMS','epTimeStep')
+
+# Add the zone variables
+parser.addVariableFromZones('Zone Mean Air Temperature')
+parser.addVariableFromZones('Zone Air Relative Humidity')
+parser.addVariableFromZones('Zone Mean Radiant Temperature')
+parser.addVariableFromZones('Daylighting Reference Point 1 Illuminance')
+
+
+# Add the values sent to EnergyPlus
+parser.addScheduleToZones('NumberOfOccupants')
+parser.addScheduleToZones('WindowState')
+parser.addScheduleToZones('BlindState')
+parser.addScheduleToZones('LightState')
+parser.addScheduleToZones('AverageGains')
+parser.addScheduleToZones('HeatingSetpointState')
+
+
+# Write the new IDF code
+parser.printIDFCode('idf.out')
+
+#Write the modelDescription
+parser.printModelDescriptionCode('modelDescription.xml')
