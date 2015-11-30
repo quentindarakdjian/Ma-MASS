@@ -1,0 +1,350 @@
+
+import xml.etree.ElementTree as ET
+
+
+class IDFFileParser(object):
+    location = ''
+    objects = [""]
+    zones = []
+    fmuInstance = ''
+    fmuName = ''
+    fiv = []
+
+    def __init__(self,fileLocation):
+        self.location = fileLocation
+        self.parse()
+
+    def parse(self):
+        f = open(self.location, 'r')
+        i = 0;
+        for line in f:
+            noncomment = line.split('!')
+            end = noncomment[0].split(';')
+            if len(end) > 1:
+                self.objects[i] = self.objects[i] + end[0].strip()
+                i = i +1
+                self.objects.append("")
+            else:
+                self.objects[i] = self.objects[i] + noncomment[0].strip()
+
+    def setInstance(self, instance):
+        self.fmuInstance = instance
+
+    def setName(self, name):
+        self.fmuName = name
+
+    def setZones(self, zones):
+        self.zones = zones
+        for obj in self.objects:
+            o = obj.split(',')
+            if o[0] == ('Zone'):
+                print o[1]
+
+    def addVariableFrom(self, fromEP, variable):
+        self.fiv.append(fmuVariableFrom(len(self.fiv)+1,fromEP,variable,self.fmuName,self.fmuInstance))
+
+    def addVariableFromZones(self, variable):
+        for obj in self.objects:
+            o = obj.split(',')
+            if o[0] == ('Zone') and o[1].strip() in self.zones:
+                self.fiv.append(fmuVariableFrom(len(self.fiv)+1,o[1].strip(),variable,self.fmuName,self.fmuInstance))
+
+    def addScheduleToZones(self, variable):
+        len(self.objects)
+        for obj in self.objects:
+            o = obj.split(',')
+            if o[0] == ('Zone') and o[1].strip() in self.zones:
+                self.fiv.append(fmuToSchedule(len(self.fiv)+1,o[1].strip(),variable,self.fmuName,self.fmuInstance))
+
+    def addActuatorToZones(self, variable, unique, comType, contype):
+        print len(self.objects)
+        for obj in self.objects:
+            o = obj.split(',')
+            if o[0] == ('Zone') and o[1].strip() in self.zones:
+                self.fiv.append(fmuToActutator(len(self.fiv)+1,o[1].strip(), variable, unique, comType, contype,self.fmuName,self.fmuInstance))
+    
+    def indent(self,elem, level=0):
+        i = "\n" + level*"  "
+        if len(elem):
+            if not elem.text or not elem.text.strip():
+                elem.text = i + "  "
+            if not elem.tail or not elem.tail.strip():
+                elem.tail = i
+            for elem in elem:
+                self.indent(elem, level+1)
+            if not elem.tail or not elem.tail.strip():
+                elem.tail = i
+        else:
+            if level and (not elem.tail or not elem.tail.strip()):
+                elem.tail = i
+        
+
+
+    def printModelDescriptionCode(self, fileName):
+        a = ET.Element('fmiModelDescription')
+        a.set('fmiVersion','1.0')
+        a.set('modelName','FMI')
+        a.set('modelIdentifier','FMI')
+        a.set('guid','{fd719ef5-c46e-48c7-ae95-96089a69ee64}')
+        a.set('description','Model with interfaces for media with moist air that will be linked to the BCVTB which models the response of the room')
+        a.set('version','1.2')
+        a.set('generationTool','Dymola Version 2012 FD01 (32-bit), 2011-11-22')
+        a.set('generationDateAndTime','2012-04-17T19:12:58Z')
+        a.set('variableNamingConvention','structured')
+        a.set('numberOfContinuousStates','0')
+        a.set('numberOfEventIndicators','0')
+        b = ET.SubElement(a, 'TypeDefinitions')
+        d = ET.SubElement(b, 'Type')
+        d.set('name','Modelica.Blocks.Interfaces.RealInput')
+        ET.SubElement(d, 'RealType')
+        e = ET.SubElement(b, 'Type')
+        e.set('name','Modelica.Blocks.Interfaces.RealOutput')
+        ET.SubElement(e, 'RealType')
+        c = ET.SubElement(a, 'DefaultExperiment')
+        c.set('startTime',"0.0")
+        c.set('stopTime',"1.0")
+        c.set('tolerance',"1E-005")
+
+
+        mv = ET.SubElement(a, 'ModelVariables')
+
+        for fivi in self.fiv:
+            fivi.printXML(mv)
+
+        self.indent(a)
+        tree = ET.ElementTree(a)
+        tree.write('modelDescription.xml')
+
+    def printIDFCode(self, fileName):
+        emscode = """
+Output:Variable,*,Schedule Value,Timestep;
+Output:Variable,*,AFN Surface Venting Window or Door Opening Factor,timestep;
+Output:Variable,*,Zone Exterior Windows Total Transmitted Beam Solar Radiation Rate,timestep;
+Output:Variable,*,Window Shading Fraction,timestep;
+Output:Variable,*,Zone People Radiant Heating Rate,timestep;
+Output:Variable,*,Zone Air Relative Humidity,timestep;
+Output:Variable,*,Zone Mean Radiant Temperature,timestep;
+Output:Variable,*,Zone People Occupant Count,timestep;
+Output:Variable,*,Daylighting Reference Point 1 Illuminance,timestep;
+Output:Variable,*,Zone Mean Radiant Temperature,timestep;
+Output:Variable,*,Site Exterior Horizontal Sky Illuminance,timestep;
+Output:Variable,*,Site Rain Status,timestep;
+Output:Variable,*,Site Outdoor Air Drybulb Temperature,timestep;
+Output:Variable,*,Zone Lights Electric Power,Timestep;
+Output:Variable,*,Zone Lights Electric Energy,Timestep;
+Output:Variable,*,Zone Air System Sensible Heating Energy,Timestep;
+Output:Variable,*,Zone Air System Sensible Heating Rate,Timestep;
+Output:Variable,*,Zone Air System Sensible Cooling Energy,Timestep;
+Output:Variable,*,Zone Air System Sensible Cooling Rate,Timestep;
+Output:Variable,*,Zone Mean Air Temperature,Timestep;
+
+Output:Variable,*,Zone People Radiant Heating Rate,monthly;
+Output:Variable,*,Zone Air Relative Humidity,monthly;
+Output:Variable,*,Zone Mean Radiant Temperature,monthly;
+Output:Variable,*,Zone People Occupant Count,monthly;
+Output:Variable,*,Daylighting Reference Point 1 Illuminance,monthly;
+Output:Variable,*,Zone Mean Radiant Temperature,monthly;
+Output:Variable,*,Site Exterior Horizontal Sky Illuminance,monthly;
+Output:Variable,*,Site Rain Status,monthly;
+Output:Variable,*,Site Outdoor Air Drybulb Temperature,monthly;
+Output:Variable,*,Zone Lights Electric Power,monthly;
+Output:Variable,*,Zone Lights Electric Energy,monthly;
+Output:Variable,*,Zone Air System Sensible Heating Energy,monthly;
+Output:Variable,*,Zone Air System Sensible Heating Rate,monthly;
+Output:Variable,*,Zone Air System Sensible Cooling Energy,monthly;
+Output:Variable,*,Zone Air System Sensible Cooling Rate,monthly;
+Output:Variable,*,Zone Mean Air Temperature,monthly;
+
+Output:Variable,*,Zone People Radiant Heating Rate,runperiod;
+Output:Variable,*,Zone Air Relative Humidity,runperiod;
+Output:Variable,*,Zone Mean Radiant Temperature,runperiod;
+Output:Variable,*,Zone People Occupant Count,runperiod;
+Output:Variable,*,Daylighting Reference Point 1 Illuminance,runperiod;
+Output:Variable,*,Zone Mean Radiant Temperature,runperiod;
+Output:Variable,*,Site Exterior Horizontal Sky Illuminance,runperiod;
+Output:Variable,*,Site Rain Status,runperiod;
+Output:Variable,*,Site Outdoor Air Drybulb Temperature,runperiod;
+Output:Variable,*,Zone Lights Electric Power,runperiod;
+Output:Variable,*,Zone Lights Electric Energy,runperiod;
+Output:Variable,*,Zone Air System Sensible Heating Energy,runperiod;
+Output:Variable,*,Zone Air System Sensible Heating Rate,runperiod;
+Output:Variable,*,Zone Air System Sensible Cooling Energy,runperiod;
+Output:Variable,*,Zone Air System Sensible Cooling Rate,runperiod;
+Output:Variable,*,Zone Mean Air Temperature,runperiod;
+
+EnergyManagementSystem:ProgramCallingManager,
+    Warm Up Completed,                          !- Name
+    AfterNewEnvironmentWarmUpIsComplete,        !- EnergyPlus Model Calling Point
+    outputTime;                                 !- Program Name 1
+
+EnergyManagementSystem:ProgramCallingManager,
+    get time,                                   !- Name
+    BeginTimestepBeforePredictor,               !- EnergyPlus Model Calling Point
+    oTime;                                      !- Program Name 1
+
+EnergyManagementSystem:GlobalVariable,
+    exTime;                                     !- Erl Variable 1 Name
+
+EnergyManagementSystem:GlobalVariable,
+    epTime;                                     !- Erl Variable 1 Name
+
+EnergyManagementSystem:OutputVariable,
+    warmUpComplete,                             !- Name
+    exTime,                                     !- EMS Variable Name
+    Averaged,                                   !- Type of Data in Variable
+    ZoneTimeStep,                               !- Update Frequency
+    ,                                           !- EMS Program or Subroutine Name
+    ;                                           !- Units
+
+EnergyManagementSystem:OutputVariable,
+    epTimeStep,                                 !- Name
+    epTime,                                     !- EMS Variable Name
+    Averaged,                                   !- Type of Data in Variable
+    ZoneTimeStep,                               !- Update Frequency
+    ,                                           !- EMS Program or Subroutine Name
+    ;                                           !- Units
+
+
+EnergyManagementSystem:Program,
+    outputTime,                                 !- Name
+    SET exTime = CurrentEnvironment;            !- Program Line 1
+
+
+EnergyManagementSystem:Program,
+    oTime,                                      !- Name
+    SET epTime = CurrentTime;
+
+Output:EnergyManagementSystem,
+    Verbose,                                    !- Actuator Availability Dictionary Reporting
+    Verbose,                                    !- Internal Variable Availability Dictionary Reporting
+    None;                                       !- EMS Runtime Language Debug Output Level
+
+ExternalInterface,
+  FunctionalMockupUnitImport;                   !- Name of External Interface
+
+
+ExternalInterface:FunctionalMockupUnitImport,
+  agentFMU.fmu,                                 !- FMU Filename
+   15,                                          !- FMU Timeout in milli-seconds
+   0;                                           !- FMU LoggingOn Value
+        """
+
+        text = ''
+
+        for fivi in self.fiv:
+            text = text + fivi.printIDF()
+
+
+        f = open(fileName, 'w')
+
+        f.write(emscode)
+
+        f.write(text)
+
+        f.close()
+
+
+class fmuVariable(object):
+    header = ''
+    key = ''
+    id = ''
+    var = ''
+    fmu = ''
+    instance = ''
+    name = ''
+    causality = ''
+    varType = ''
+    def __init__(self,id, key, var, fmu, instance):
+        self.id = str(id)
+        self.key = key
+        self.var = var
+        self.fmu = fmu
+        self.instance = instance
+        self.name = key + var.replace(" ", "")
+
+    def printLine(self, text, comment, last = False):
+        t = ',\n\t'
+        t  = t + text
+        if(last):
+            t = t + ';'
+        else:
+            t = t + ','
+        for i in range(0,40-len(text)):
+            t = t + ' '
+
+        t  = t + comment
+
+        return t
+
+    def printIDF(self):
+        return fumText
+
+    def printXML(self, mv):
+        b = ET.SubElement(mv, 'ScalarVariable')
+        b.set('name',self.name)
+        b.set('valueReference',self.id)
+        b.set('causality',self.causality)
+        c = ET.SubElement(b, 'Real')
+        c.set('declaredType',self.varType)
+        c.set('start','0.0')
+
+
+class fmuToSchedule(fmuVariable):
+    """A simple example class"""
+    
+    def __init__(self,id, key, var, fmu, instance):
+        super(fmuToSchedule, self).__init__(id, key, var, fmu, instance)
+        self.header = 'ExternalInterface:FunctionalMockupUnitImport:To:Schedule'
+        self.causality = 'output'
+        self.varType = 'Modelica.Blocks.Interfaces.RealOutput'
+        self.var = self.name 
+
+    def printIDF(self):
+        fumText = '\n\n' + self.header
+        fumText = fumText + self.printLine(self.name, '!- EnergyPlus Key Value')
+        fumText = fumText + self.printLine('Any Number', '!- Schedule Type Limits Names')
+        fumText = fumText + self.printLine(self.fmu, '!- FMU Filename')
+        fumText = fumText + self.printLine(self.instance, '!- FMU Model Name')
+        fumText = fumText + self.printLine(self.name, '!- FMU Model Variable Name')
+        fumText = fumText + self.printLine('0.0', '!- Initial Value', last = True)
+        return fumText
+
+class fmuVariableFrom(fmuVariable):
+    """A simple example class"""
+
+    def __init__(self,id, key, var, fmu, instance):
+        super(fmuVariableFrom, self).__init__(id, key, var, fmu, instance)
+        self.header = 'ExternalInterface:FunctionalMockupUnitImport:From:Variable'
+        self.causality = 'input'
+        self.varType = 'Modelica.Blocks.Interfaces.RealInput'
+
+    def printIDF(self):
+        fumText = '\n\n' + self.header
+        fumText = fumText + self.printLine(self.key, '!- EnergyPlus Key Value')
+        fumText = fumText + self.printLine(self.var, '!- EnergyPlus Variable Name')
+        fumText = fumText + self.printLine(self.fmu, '!- FMU Filename')
+        fumText = fumText + self.printLine(self.instance, '!- FMU Instance Name')
+        fumText = fumText + self.printLine(self.name, '!- FMU Variable Name', last = True)
+        return fumText
+
+
+
+'''
+
+
+fb = open('zone.xml', 'w')
+newtxt = ""
+
+for obj in objects:
+    o = obj.split(',')
+    if o[0] == ('Zone') and o[1].strip() in zones:
+        newtxt = newtxt + """
+<zone>
+    <name>"""+o[1].strip()+"""</name>
+    <activities></activities>
+    <groundFloor>0</groundFloor>
+</zone>"""
+
+fb.write(newtxt)
+fb.close()
+'''
