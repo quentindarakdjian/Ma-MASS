@@ -3340,7 +3340,7 @@ Until: 24:00, 1,
 For: AllOtherDays,
 Until: 24:00, 0;
 
-
+!-No need of 163 Heating SP Sch
 
 Schedule:Compact,
 163 Cooling SP Sch,
