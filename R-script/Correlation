@@ -1,0 +1,42 @@
+# Matrice de corrélation
+
+Alltimestep0 <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/Alltimestep0.csv")
+
+names(Alltimestep0)[names(Alltimestep0)=="X156.Zone.Mean.Air.Temperature..C..TimeStep."] <- "InternalTemp"
+names(Alltimestep0)[names(Alltimestep0)=="X156WINDOWSTATE.Schedule.Value....TimeStep."] <- "WindowState"
+names(Alltimestep0)[names(Alltimestep0)=="Environment.Site.Outdoor.Air.Drybulb.Temperature..C..TimeStep."] <- "OutdoorTemp"
+names(Alltimestep0)[names(Alltimestep0)=="X156NUMBEROFOCCUPANTS.Schedule.Value....TimeStep."] <- "NumberOfOcc"
+names(Alltimestep0)[names(Alltimestep0)=="X156.Daylighting.Reference.Point.1.Illuminance..lux..TimeStep."] <- "Daylighting"
+names(Alltimestep0)[names(Alltimestep0)=="X156AVERAGEGAINS.Schedule.Value....TimeStep."] <- "AverageGains"
+names(Alltimestep0)[names(Alltimestep0)=="X156HEATINGSETPOINTSTATE.Schedule.Value....TimeStep."] <- "HeatingSetpoint"
+names(Alltimestep0)[names(Alltimestep0)=="X156LIGHTSTATE.Schedule.Value....TimeStep."] <- "LightState"
+names(Alltimestep0)[names(Alltimestep0)=="X156.Zone.Air.Relative.Humidity.....TimeStep."] <- "RelativeHumidity"
+names(Alltimestep0)[names(Alltimestep0)=="X156.Zone.Air.System.Sensible.Heating.Energy..J..TimeStep."] <- "SensibleHeating"
+names(Alltimestep0)[names(Alltimestep0)=="X156BLINDSTATE.Schedule.Value....TimeStep."] <- "BlindState"
+
+
+var <- c("WindowState",
+         "LightState",
+         #"BlindState",
+         "HeatingSetpoint",
+         "AverageGains",
+         "NumberOfOcc", 
+         "SensibleHeating",
+         "InternalTemp", 
+         "RelativeHumidity",
+         "OutdoorTemp", 
+         "Daylighting"         
+          )
+
+
+round(cor(Alltimestep0[,var],use="complete.obs"), digits=3)
+library(corrplot)
+corrplot(cor(Alltimestep0[,var], 
+             use="complete.obs"), 
+            methods=c("circle"),
+            type = c("full"),
+            title="Correlation Matrix Zone 156", 
+            mar = c(0,0,2,0), 
+            tl.col="black", 
+            tl.srt=45)
+ 
