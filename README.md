@@ -1,6 +1,6 @@
 # Ma-MASS
 
-This repository is developed by AI Environnement and the Université de La Rochelle based on the Multi-Agents Stochastic Simulations platform of the University of Nottingham. The code permits to make co-simulation via FMU with EnergyPlus. The platform is made of occupants behavior models.
+This repository is developed by AI Environnement and the University of La Rochelle based on the Multi-Agents Stochastic Simulations platform of the University of Nottingham [Jacob Chapman, Darren Robinson]. The code permits to make co-simulation via FMU with EnergyPlus. The platform is made of occupants behavior models.
 
 ## Guide
 
