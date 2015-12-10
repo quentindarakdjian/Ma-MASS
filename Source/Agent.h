@@ -57,10 +57,9 @@ public:
     int presentForFutureSteps() const;
     double getCurrentRadientGains(const Zone &zone) const;
     double getPower() const;
-    /*
     int getAge() const;
-    int getIncome() const;
-    */
+    //int getIncome() const;
+
 
     void interactWithZone(const Zone &zone);
     bool getDesiredLightState(const Zone &zone) const;
@@ -77,6 +76,7 @@ private:
     int action;
 
     double power;
+    int age;
 
     double currentRadientGains;
     std::vector<double> activities;
@@ -100,10 +100,6 @@ private:
     Agent_Action_Heat_Gains aahg;
 
     std::vector<int> availableActions;
-
-
-
-    //bool learn = false;
 
     std::unordered_map<std::string, ActionValues> zoneToInteraction;
     void model_pastAndFutureDurations();
