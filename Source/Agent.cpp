@@ -37,6 +37,7 @@ Agent::Agent(int newId) : id(newId){
     bedroom = agent.bedroom;
     office = agent.office;
     power = agent.power;
+    age = agent.age;
     aahg.setup(id);
     availableActions.push_back(0);
 
@@ -52,7 +53,7 @@ Agent::Agent(int newId) : id(newId){
         availableActions.push_back(3);
     }
     if (SimulationConfig::info.heatingSetpoint){
-        aahs.setup();
+        aahs.setup(age);
         availableActions.push_back(4);
     }
     if (SimulationConfig::info.presencePage){
@@ -139,14 +140,11 @@ void Agent::model_presenceFromActivities(){
 
 void Agent::model_presenceFromPage(){
     presence = Model_Presence::calculatePresenceFromPage(id);
-    for (unsigned int i = 0; i < presence.size(); ++i)
-    {
-        if (presence.at(i))
-        {
+    for (unsigned int i = 0; i < presence.size(); ++i){
+        if (presence.at(i)){
             activities.push_back(3);
         }
-        else
-        {
+        else{
             activities.push_back(9);
         }
     }
@@ -157,33 +155,26 @@ void Agent::model_pastAndFutureDurations(){
     int lengthOfTimeStepSeconds = (60 * (60 / SimulationConfig::info.timeStepsPerHour));
     currentDurationOfPresenceState.push_back(0);
 
-    for (unsigned int i = 1; i < presence.size(); ++i)
-    {
+    for (unsigned int i = 1; i < presence.size(); ++i){
         // std::cout << occupantFractions.at(i) << std::endl;
         bool currentPresence = presence.at(i) > 0;
         bool previousPresence = presence.at(i - 1) > 0;
-        if (currentPresence == previousPresence)
-        {
+        if (currentPresence == previousPresence){
             currentDurationOfPresenceState.push_back(currentDurationOfPresenceState[i - 1] + lengthOfTimeStepSeconds);
         }
-        else
-        {
+        else{
             currentDurationOfPresenceState.push_back(0);
         }
     }
     presenceForFutureSteps.assign(presence.size(), std::numeric_limits<int>::quiet_NaN());
-    for (unsigned int i = 1; i+1 < presence.size(); ++i)
-    {
+    for (unsigned int i = 1; i+1 < presence.size(); ++i){
         bool currentPresence = presence.at(i-1) > 0;
         bool futurePresence = presence.at(i) > 0;
-        if (currentPresence && !futurePresence)
-        {
+        if (currentPresence && !futurePresence){
             unsigned int j = i + 1;
-            while (presence.at(j) == 0 && j < presence.size())
-            {
+            while (presence.at(j) == 0 && j < presence.size()){
                 j++;
-                if (j >= presence.size())
-                {
+                if (j >= presence.size()){
                     break;
                 }
             }
@@ -202,6 +193,10 @@ double Agent::getCurrentRadientGains(const Zone &zone) const{
 
 double Agent::getPower() const{
     return power;
+}
+
+int Agent::getAge() const{
+    return age;
 }
 
 bool Agent::getDesiredLightState(const Zone &zone) const{
@@ -259,14 +254,11 @@ std::string Agent::getLocationName(int step, StateMachine *sm){
 
 std::string Agent::updateLocation(const State& s) const{
     std::string tempLocation = s.getLocation();
-    if (s.getActivity() == "Sleeping")
-    {
+    if (s.getActivity() == "Sleeping"){
         tempLocation = bedroom;
     }
-    else if(s.getActivity() == "IT" && SimulationConfig::info.presencePage)
-    {
-        if(office != "")
-        {
+    else if(s.getActivity() == "IT" && SimulationConfig::info.presencePage){
+        if(office != ""){
             tempLocation = office;
         }
     }
