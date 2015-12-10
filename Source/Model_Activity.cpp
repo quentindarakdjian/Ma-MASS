@@ -64,8 +64,7 @@ std::vector<double> Model_Activity::getAgentActivities(int agentID) {
         double totalProb = 0;
         for(int j = 0; j < 10; j++){
             totalProb += probabilities[hourCount][j];
-            if(totalProb >= drand)
-            {
+            if(totalProb >= drand){
                 activities.push_back(j);
                 break;
             }
