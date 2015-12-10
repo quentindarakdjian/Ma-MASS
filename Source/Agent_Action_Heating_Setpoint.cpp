@@ -69,7 +69,7 @@ void Agent_Action_Heating_Setpoint::step(const Zone& zone, bool inZone, bool pre
         heatingSetpointState = 24.5;
     }
     */
-    result = 20;
+    result = heatingSetpointState;
 
 }
 
