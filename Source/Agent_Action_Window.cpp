@@ -16,40 +16,36 @@ void Agent_Action_Window::setup(int windowID){
 }
 
 void Agent_Action_Window::step(const Zone& zone, bool inZone, bool previouslyInZone, const std::vector<double> &activities){
-
         double outdoorTemperature = DataStore::getValue("EnvironmentSiteOutdoorAirDrybulbTemperature");
-
         outDoorTemperatures.push_back(outdoorTemperature);
         if (outDoorTemperatures.size() > (SimulationConfig::info.timeStepsPerHour * 24)) {
-                outDoorTemperatures.pop_front();
+            outDoorTemperatures.pop_front();
         }
-
         double rain = DataStore::getValue("EnvironmentSiteRainStatus");
         double indoorTemperature = zone.getMeanAirTemperature();
         double timeStepLengthInMinutes = SimulationConfig::lengthOfTimestep();
 
         m_window.setWindowState(zone.getWindowState());
-        if (inZone && !previouslyInZone) {
-                double previousDuration = getPreviousDurationOfAbsenceState(activities);
-                m_window.arrival(indoorTemperature, outdoorTemperature, previousDuration, rain, timeStepLengthInMinutes);
-        } else if ((inZone && previouslyInZone )) {
-                double currentDuration = getCurrentDurationOfPresenceState(activities);
-                m_window.intermediate(indoorTemperature, outdoorTemperature, currentDuration, rain, timeStepLengthInMinutes);
-        } else if ((!inZone && previouslyInZone )) {
-                double dailyMeanTemperature = 0;
-                for (double temp : outDoorTemperatures) {
-                        dailyMeanTemperature += temp;
-                }
-                dailyMeanTemperature = dailyMeanTemperature / (double)outDoorTemperatures.size();
-
-                double groundFloor = zone.getGroundFloor();
-                double futureDuration = getFutureDurationOfPresenceState(activities);
-                m_window.departure(indoorTemperature, dailyMeanTemperature, futureDuration, groundFloor);
+        if (inZone && !previouslyInZone){
+            double previousDuration = getPreviousDurationOfAbsenceState(activities);
+            m_window.arrival(indoorTemperature, outdoorTemperature, previousDuration, rain, timeStepLengthInMinutes);
         }
+        else if ((inZone && previouslyInZone )){
+            double currentDuration = getCurrentDurationOfPresenceState(activities);
+            m_window.intermediate(indoorTemperature, outdoorTemperature, currentDuration, rain, timeStepLengthInMinutes);
+        }
+        else if ((!inZone && previouslyInZone )){
+            double dailyMeanTemperature = 0;
+            for (double temp : outDoorTemperatures){
+                    dailyMeanTemperature += temp;
+            }
+            dailyMeanTemperature = dailyMeanTemperature / (double)outDoorTemperatures.size();
 
+            double groundFloor = zone.getGroundFloor();
+            double futureDuration = getFutureDurationOfPresenceState(activities);
+            m_window.departure(indoorTemperature, dailyMeanTemperature, futureDuration, groundFloor);
+        }
         result = m_window.getWindowState();
-
-
 }
 
 double Agent_Action_Window::getPreviousDurationOfAbsenceState(const std::vector<double> &activities) const {
@@ -58,11 +54,11 @@ double Agent_Action_Window::getPreviousDurationOfAbsenceState(const std::vector<
         int stepCounter = stepCount;
         int lengthOfTimeStepSeconds = (60 * (60 / SimulationConfig::info.timeStepsPerHour));
         while (stepCounter > 0 && activities.at(stepCount) != activities.at(stepCounter-1)) {
-                cdp = cdp + lengthOfTimeStepSeconds;
-                stepCounter--;
-                if(stepCounter < 1){
-                    break;
-                }
+            cdp = cdp + lengthOfTimeStepSeconds;
+            stepCounter--;
+            if(stepCounter < 1){
+                break;
+            }
         }
         return cdp;
 }
