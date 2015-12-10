@@ -120,17 +120,22 @@ double Model_ExternalShading::arrival(double state, double Lumint, double Evg) {
     if (problower >= probraise) {
         if (randomDouble() < problower) {
             currentShadingState = arrivalLowering(state, Lumint, Evg);
-        } else if (randomDouble() < probraise) {
+        }
+        else if (randomDouble() < probraise) {
             currentShadingState = arrivalRaising(state, Lumint, Evg);
-        } else {
+        }
+        else {
             currentShadingState = state;
         }
-    } else {
+    }
+    else {
         if (randomDouble() < probraise) {
             currentShadingState = arrivalRaising(state, Lumint, Evg);
-        } else if (randomDouble() < problower) {
+        }
+        else if (randomDouble() < problower) {
             currentShadingState = arrivalLowering(state, Lumint, Evg);
-        } else {
+        }
+        else {
             currentShadingState = state;
         }
     }
@@ -139,7 +144,6 @@ double Model_ExternalShading::arrival(double state, double Lumint, double Evg) {
 
 
 double Model_ExternalShading::intermediate(bool state, double Lumint, double Evg){
-
     return departure(state, Lumint, Evg);
 }
 
@@ -160,17 +164,22 @@ double Model_ExternalShading::departure(double state, double Lumint, double Evg)
     if (problower >= probraise) {
         if (randomDouble() < problower) {
             currentShadingState = departureLowering(state, Lumint, Evg);
-        } else if (randomDouble() < probraise) {
+        }
+        else if (randomDouble() < probraise) {
             currentShadingState = departureRaising(state, Lumint, Evg);
-        } else {
+        }
+        else {
             currentShadingState = state;
         }
-    } else {
+    }
+    else {
         if (randomDouble() < probraise) {
             currentShadingState = departureRaising(state, Lumint, Evg);
-        } else if (randomDouble() < problower) {
+        }
+        else if (randomDouble() < problower) {
             currentShadingState = departureLowering(state, Lumint, Evg);
-        } else {
+        }
+        else {
             currentShadingState = state;
         }
     }
@@ -184,7 +193,8 @@ double Model_ExternalShading::arrivalRaising(double state, double Lumint, double
     double r = randomDouble();
     if (r < ptotraise) {
         currentShadingState = 1.f;
-    } else {
+    }
+    else {
         currentShadingState = 0.01f * round(100.f * randomDouble((state), 1.f));
     }
     return currentShadingState;
@@ -196,8 +206,8 @@ double Model_ExternalShading::arrivalLowering(double state, double Lumint, doubl
     float ptotlow = probability(m_totlow);
     if (randomDouble() < ptotlow) {
         currentShadingState = 0.f;
-    } else {
-
+    }
+    else {
         float Reduction = randomWeibull(exp(aSFlower + bSFlower * (state)), shapelower);
         currentShadingState = (0.01f * round(100.f * std::max((state) - Reduction, 0.01)));
     }
@@ -210,7 +220,8 @@ double Model_ExternalShading::departureLowering(double state, double Lumint, dou
     float ptotlow = probability(m_ptotlow);
     if (randomDouble() < ptotlow) {
         currentShadingState = (0.f);
-    } else {
+    }
+    else {
         float Reduction = randomWeibull(exp(aSFlower + bSFlower * (state)), shapelower);
         currentShadingState = (0.01f * round(100.f * std::max((state) - Reduction, 0.01)));
     }
@@ -224,7 +235,8 @@ double Model_ExternalShading::departureRaising(double state, double Lumint, doub
 
     if (randomDouble(0.f, 1.f) < ptotraise) {
         currentShadingState = (1.f);
-    } else {
+    }
+    else {
         currentShadingState = (0.01f * round(100.f * randomDouble((state), 1.f)));
     }
     return currentShadingState;
