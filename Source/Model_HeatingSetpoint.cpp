@@ -1,24 +1,29 @@
 #include <algorithm>
+#include "DataStore.h"
 #include "Utility.h"
 #include "Model_HeatingSetpoint.h"
 
 Model_HeatingSetpoint::Model_HeatingSetpoint() {
 }
-/*
-void Model_HeatingSetpoint::buildingTemperatureBase (double alpha, std::string localisation, bool T_stat, double thermostatSetting){
-    double temperatureBase = alpha + coeffLocalisation(localisation) + coeffT_stat(T_stat) + coeffThermostatSetting(thermostatSetting);
-    std::cout<<"temperatureBase in Building.cpp is: "<<temperatureBase<<std::endl;
-    return temperatureBase;
-}
-*/
+
+//-------Static-------//
 
 double Model_HeatingSetpoint::coeffLocalisation(std::string localisation){
     double coeffLocalisation = 0;
+    double prob = Utility::randomDouble(0,1);
+    if (localisation == "Unknown"){
+        if (prob < 0.775){ // http://www.insee.fr/fr/ffc/ipweb/ip1364/ip1364.pdf
+            localisation = "Urban";
+        }
+        else{
+            localisation = "Rural";
+        }
+    }
     if (localisation == "Urban"){
         coeffLocalisation = 0;
     }
-    else {
-        coeffLocalisation = Utility::randomDouble(0, -1);
+    else if (localisation == "Rural"){
+        coeffLocalisation = Utility::randomDouble(-1.464, -0.458);
     }
     return coeffLocalisation;
 }
@@ -77,20 +82,21 @@ double Model_HeatingSetpoint::coeffAutomaticTimer(bool automaticTimer){
     return coeffAutomaticTimer;
 }
 
-/*-------------------------------
-double Model_HeatingSetpoint::coeffHouseHoldSize = Model_HeatingSetpoint::coeffHouseHoldSize(int populationSize){
+double Model_HeatingSetpoint::coeffHouseHoldSize(int populationSize){
     double random = Utility::randomDouble(0.196, 0.304);
-    double coeffHouseHoldSize = SimulationConfig::numberOfAgents()*random;
+    double coeffHouseHoldSize = populationSize*random;
     return coeffHouseHoldSize;
 }
--------------------------------------------*/
 
 double Model_HeatingSetpoint::coeffHouseHoldIncome(double houseHoldIncome){
     // The initial model was calibrated on £.
     // The conversion to € is approximative and based on the change rate of November 2015
     // £1 = 1.4€
     int cat = 0;
-    if (houseHoldIncome > 7 && houseHoldIncome <= 15){
+    if (houseHoldIncome <= 7){
+        cat = 0;
+    }
+    else if (houseHoldIncome > 7 && houseHoldIncome <= 15){
         cat = 1;
     }
     else if (houseHoldIncome > 15 && houseHoldIncome <= 30){
@@ -105,19 +111,62 @@ double Model_HeatingSetpoint::coeffHouseHoldIncome(double houseHoldIncome){
     else if (houseHoldIncome > 73 && houseHoldIncome <= 133){
         cat = 5;
     }
-    else {
+    else if (houseHoldIncome > 133 && houseHoldIncome <= 1000){
         cat = 6;
+    }
+    else {
+        cat = Utility::randomInt(0,6);
     }
     double random = Utility::randomDouble(0.043, 0.124);
     double coeffHouseHoldIncome = cat*random;
     return coeffHouseHoldIncome;
 }
 
+double Model_HeatingSetpoint::coeffAge(int age){
+    double coeffAge = 0;
+    if (age <= 5){
+        coeffAge = Utility::randomDouble(0.401, 0.590);
+    }
+    else if (age > 5 && age <= 18){
+        coeffAge = Utility::randomDouble(0.171, 0.266);
+    }
+    else if (age > 60 && age <= 64){
+        coeffAge = Utility::randomDouble(-0.046, 0.148);
+    }
+    else if (age > 64 && age <= 74){
+        coeffAge = Utility::randomDouble(0.272, 0.468);
+    }
+    else if (age > 74){
+        coeffAge = Utility::randomDouble(0.481, 0.688);
+    }
+    else{}
+    return coeffAge;
+}
+
 double Model_HeatingSetpoint::coeffTenureType(std::string tenureType){
     double coeffTenureType = 0;
-    // OwnerOccupier, PrivatelyRented, CouncilTenant, HousingAssociation
-    if (tenureType == "PrivatelyRented"){
-        coeffTenureType = Utility::randomDouble(0.814, 1.066);;
+    // OwnerOccupier, PrivatelyRented, CouncilTenant, HousingAssociation, Unknown
+    double prob = Utility::randomDouble(0,1);
+    if (tenureType == "Unknown"){ //http://www.insee.fr/fr/ffc/tef/tef2010/T10F072/T10F072.pdf
+        if (prob < 57.8){
+            tenureType = "OwnerOccupied";
+        }
+        else if (prob >= 57.8 && prob < 97){
+            tenureType = "PrivatelyRented";
+        }
+        else{
+            if (Utility::tossACoin()){
+                tenureType = "CouncilTenant";
+            }
+            else {
+                tenureType == "HousingAssociation";
+            }
+        }
+    }
+    if (tenureType == "OwnerOccupied"){
+    }
+    else if (tenureType == "PrivatelyRented"){
+        coeffTenureType = Utility::randomDouble(0.814, 1.066);
     }
     else if (tenureType == "CouncilTenant"){
         coeffTenureType = Utility::randomDouble(1.222, 1.525);
@@ -130,9 +179,19 @@ double Model_HeatingSetpoint::coeffTenureType(std::string tenureType){
 
 double Model_HeatingSetpoint::coeffTypology(std::string typology){
     double coeffTypology = 0;
-    // DetachedHouse, Semi-Detached , TerracedHouse, NotAHouse
-    if (typology == "Semi-Detached"){
-        coeffTypology = Utility::randomDouble(0.591, 0.796);;
+    // Unknown, DetachedHouse, Semi-Detached , TerracedHouse, NotAHouse
+    if (typology == "Unknown"){
+        if (Utility::tossACoin()){
+            typology = "DetachedHouse";
+        }
+        else {
+            typology == "Semi-Detached";
+        }
+    }
+    else if (typology == "DetachedHouse"){
+    }
+    else if (typology == "Semi-Detached"){
+        coeffTypology = Utility::randomDouble(0.591, 0.796);
     }
     else if (typology == "TerracedHouse"){
         coeffTypology = Utility::randomDouble(0.538, 0.676);
@@ -190,7 +249,6 @@ double Model_HeatingSetpoint::coeffAdditionalOtherHeatingInLivingRoom(bool addit
     }
     return coeffAdditionalOtherHeatingInLivingRoom;
 }
-
 
 double Model_HeatingSetpoint::coeffYearOfConstruction(double yearOfConstruction){
     int cat = 0;
@@ -287,7 +345,7 @@ double Model_HeatingSetpoint::coeffWallUValue(double wallUValue){
     if (wallUValue <= 0.4 ){
         cat = 0;
     }
-    if (wallUValue > 0.4 && wallUValue <= 0.6){
+    else if (wallUValue > 0.4 && wallUValue <= 0.6){
         cat = 1;
     }
     else if (wallUValue > 0.6 && wallUValue <= 1.6){
@@ -301,7 +359,31 @@ double Model_HeatingSetpoint::coeffWallUValue(double wallUValue){
     return coeffWallUValue;
 }
 
+//-------Dynamic-------//
 
+double Model_HeatingSetpoint::inZone(double temperatureSetpointBase, double coeffOutdoorTemperature, double coeffOutdoorTemperature2){
+    double heatingSetpointState = temperatureSetpointBase;
+    double outdoorTemperature = DataStore::getValue("EnvironmentSiteOutdoorAirDrybulbTemperature");
+    heatingSetpointState = temperatureSetpointBase + coeffOutdoorTemperature*outdoorTemperature + coeffOutdoorTemperature2*pow(outdoorTemperature,2);
+    return heatingSetpointState;
+}
+
+double Model_HeatingSetpoint::absent(double temperatureSetpointBase, double coeffOutdoorTemperature, double coeffOutdoorTemperature2, double futureDuration){
+    double heatingSetpointState = temperatureSetpointBase;
+    double outdoorTemperature = DataStore::getValue("EnvironmentSiteOutdoorAirDrybulbTemperature");
+    float probDecreaseSetpoint;
+    if (futureDuration < 24 * 60 * 60){
+        probDecreaseSetpoint = 0.5;
+    }
+
+    if (Utility::randomDouble(0,1) < probDecreaseSetpoint){
+        heatingSetpointState = temperatureSetpointBase + coeffOutdoorTemperature*outdoorTemperature + coeffOutdoorTemperature2*pow(outdoorTemperature,2)-1;
+    }
+    else{
+        heatingSetpointState = temperatureSetpointBase + coeffOutdoorTemperature*outdoorTemperature + coeffOutdoorTemperature2*pow(outdoorTemperature,2);
+    }
+    return heatingSetpointState;
+}
 
 /*
 double Model_HeatingSetpoint::arrival(double state, double Tempint, bool gender){
