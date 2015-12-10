@@ -93,7 +93,6 @@ void EP_ReadIDF::loadIDF() {
         if (file.is_open()) {
                 boost::iostreams::filtering_istream in;
                 in.push(file);
-
                 std::stringstream ss;
                 std::string line;
                 while (getline(in, line)) {
@@ -103,7 +102,6 @@ void EP_ReadIDF::loadIDF() {
                         }
                 }
         }
-
         for(EP_IDFObject o : idfObjs) {
                 if (o.is("Zone") || o.is("ZONE") ) {
                         std::string name = o.at(1);
