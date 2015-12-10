@@ -12,8 +12,9 @@ public:
     static double coeffCentralHeatingHoursReported(double centralHeatingHoursReported);
     static double coeffRegularHeatingPattern(bool regularHeatingPattern);
     static double coeffAutomaticTimer(bool automaticTimer);
-    //static double coeffHouseHoldSize(int numberOfAgents());
+static double coeffHouseHoldSize(int populationSize);
     static double coeffHouseHoldIncome(double houseHoldIncome);
+static double coeffAge(int age);
     static double coeffTenureType(std::string tenureType);
     static double coeffTypology(std::string typology);
     static double coeffGasCentralHeating(bool gasCentralHeating);
@@ -27,12 +28,9 @@ public:
     static double coeffExtendOfDoubleGlazing(std::string extendOfDoubleGlazing);
     static double coeffWallUValue(double wallUValue);
 
+    double inZone(double temperatureSetpointBase, double coeffOutdoorTemperature, double coeffOutdoorTemperature2);
+    double absent(double temperatureSetpointBase, double coeffOutdoorTemperature, double coeffOutdoorTemperature2, double futureDuration);
 
-    /*
-    double arrival(double state, double Tempint, bool gender);
-    double intermediate(double state, double Tempint, bool gender);
-    double departure(double state, double Tempint);
-    */
 private:
 };
 
