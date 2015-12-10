@@ -26,6 +26,7 @@ struct agentStruct {
     std::string bedroom;
     std::string office;
     double power;
+    int age;
     int windowId;
     int shadeId;
     std::map<int, std::string> profile;
