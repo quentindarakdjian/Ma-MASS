@@ -8,13 +8,14 @@ class Agent_Action_Heating_Setpoint : public Agent_Action
     public:
         Agent_Action_Heating_Setpoint();
 
-        void setup();
+        void setup(int age);
         void step(const Zone& zone, bool inZone, bool previouslyInZone, const std::vector<double> &activities);
 
     protected:
 
     private:
         double temperatureSetpointBase;
+        int age;
 
 
 };
