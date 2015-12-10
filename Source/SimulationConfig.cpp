@@ -169,6 +169,9 @@ void SimulationConfig::parseAgents(boost::property_tree::ptree::value_type & v){
                 else if(childschild.first == "power"){
                     agent.power = childschild.second.get_value<double>();
                 }
+                else if(childschild.first == "age"){
+                    agent.age = childschild.second.get_value<int>();
+                }
                 else if(childschild.first == "window"){
                     agent.windowId = childschild.second.get_value<int>();
                 }
