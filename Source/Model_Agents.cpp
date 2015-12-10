@@ -291,107 +291,31 @@ void Model_Agents::setAgentLightDecisionForZone(Zone *zone){
 }
 
 void Model_Agents::setAgentHeatingSetpointDecisionForZone(Zone *zone){
-    /*double currentState = zone->getHeatingSetpointState();
-    double totalIncrease = 0;
-    double totalDecrease = 0;
-    double increase = 0;
-    double decrease = 0;
-    double same = 0;
-    double increasePower = 0;
-    double decreasePower = 0;
-    double samePower = 0;
-
-    for(Agent &agent: population){
-        if (agent.InteractionOnZone(*zone)){
-            double d = agent.getDesiredHeatingSetpointState(*zone);
-            double power = agent.getPower();
-
-            if(d < currentState){
-                decrease++;
-                totalDecrease = totalDecrease + d;
-                decreasePower = decreasePower + power;
-            }
-            else if(d > currentState){
-                increase++;
-                totalIncrease = totalIncrease + d;
-                increasePower = increasePower + power;
-            }
-            else{
-                same++;
-                samePower = samePower + power;
-            }
-        }
-    }
-    if(decrease != 0) {
-        totalDecrease = totalDecrease / decrease;
-    }
-
-    if(increase != 0) {
-        totalIncrease = totalIncrease / increase;
-    }
-    double state = currentState;
-    if(samePower > increasePower && samePower > decreasePower){
-        state = currentState;
-    }
-    else if (samePower < increasePower && increasePower > decreasePower){
-        state = totalIncrease;
-    }
-    else if (samePower < decreasePower && increasePower < decreasePower){
-        state = totalDecrease;
-    }
-    else if (samePower == increasePower && samePower > decreasePower){
-        if (Utility::tossACoin()){
-            state = totalIncrease;
-        }
-    }
-    else if (samePower > increasePower && samePower == decreasePower){
-        if (Utility::tossACoin()){
-            state = totalDecrease;
-        }
-    }
-    else if (samePower < increasePower && samePower < decreasePower && increasePower == decreasePower){
-        if (Utility::tossACoin()){
-            state = totalIncrease;
-        }
-        else{
-            state = totalDecrease;
-        }
-    }
-    else if ((samePower == increasePower) == decreasePower){
-        double i = Utility::randomDouble(0,1);
-        double d = Utility::randomDouble(0,1);
-        double s = Utility::randomDouble(0,1);
-        if(i > d && i > s){
-            state = totalIncrease;
-        }
-        else if (d > s && d > i){
-            state = totalDecrease;
-        }
-        else if (s > i && s > d){
-            state = currentState;
-        }
-    }
-    zone->setHeatingSetpointState(state);
-    */
-    double d=zone->getHeatingSetpointState();
+    double d = zone->getHeatingSetpointState();
+    double TempPower = 0, totPower = 0;
     for(Agent &agent: population){
         if (agent.InteractionOnZone(*zone)){
             d = agent.getDesiredHeatingSetpointState(*zone);
+            double power = agent.getPower();
+            TempPower += d*power;
+            totPower += power;
         }
+    }
+    if (totPower != 0){
+        d = TempPower/totPower;
     }
     zone->setHeatingSetpointState(d);
 }
 
 void Model_Agents::setAgentCountForZone(Zone *zone){
-
     double numberOfAgents = 0;
     for(Agent &agent: population){
         if (agent.isInZone(zone->getName())){
             numberOfAgents++;
         }
     }
-    double fractionsOfOccuapants = numberOfAgents / (double)population.size();
-    zone->setOccupantFraction(fractionsOfOccuapants);
+    double fractionsOfOccupants = numberOfAgents / (double)population.size();
+    zone->setOccupantFraction(fractionsOfOccupants);
 }
 
 void Model_Agents::postprocess(){
