@@ -21,7 +21,7 @@ Zone::Zone(std::string zoneName) : name(zoneName) {
     currentAgentGains = 0;
     blindState = 1;
     lightState = 0;
-    heatingSetpointState = 0;
+    heatingSetpointState = 20;
     windowState = 0;
     setActive(SimulationConfig::activeZone(&name));
     if(active){
