@@ -25,9 +25,10 @@ void Agent_Action_Shades::step(const Zone& zone, bool inZone, bool previouslyInZ
         // Lumint: Indoor illuminance next to window (lux)
         float Lumint = zone.getDaylightingReferencePoint1Illuminance();
 
-        if(inZone && !previouslyInZone ) {
+        if(inZone && !previouslyInZone ){
                 shadingFraction = m_blindUsage.arrival(shadingFraction,Lumint,Evg);
-        } else {
+        }
+        else{
                 shadingFraction = m_blindUsage.departure(shadingFraction,Lumint,Evg);
         }
         result = shadingFraction;
