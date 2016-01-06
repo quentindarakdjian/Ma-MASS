@@ -4170,7 +4170,7 @@ ExternalInterface:FunctionalMockupUnitImport:To:Schedule,
 	agentFMU.fmu,                            !- FMU Filename,
 	FMI,                                     !- FMU Model Name,
 	142HeatingSetpointState,                     !- FMU Model Variable Name,
-	0.0;                                     !- Initial Value
+	24;                                     !- Initial Value
 
 ExternalInterface:FunctionalMockupUnitImport:To:Schedule,
 	149HeatingSetpointState,                     !- EnergyPlus Key Value,
@@ -4178,7 +4178,7 @@ ExternalInterface:FunctionalMockupUnitImport:To:Schedule,
 	agentFMU.fmu,                            !- FMU Filename,
 	FMI,                                     !- FMU Model Name,
 	149HeatingSetpointState,                     !- FMU Model Variable Name,
-	0.0;                                     !- Initial Value
+	24;                                     !- Initial Value
 
 ExternalInterface:FunctionalMockupUnitImport:To:Schedule,
 	156HeatingSetpointState,                     !- EnergyPlus Key Value,
@@ -4186,7 +4186,7 @@ ExternalInterface:FunctionalMockupUnitImport:To:Schedule,
 	agentFMU.fmu,                            !- FMU Filename,
 	FMI,                                     !- FMU Model Name,
 	156HeatingSetpointState,                     !- FMU Model Variable Name,
-	0.0;                                     !- Initial Value
+	24;                                     !- Initial Value
 
 ExternalInterface:FunctionalMockupUnitImport:To:Schedule,
 	163HeatingSetpointState,                     !- EnergyPlus Key Value,
@@ -4194,4 +4194,4 @@ ExternalInterface:FunctionalMockupUnitImport:To:Schedule,
 	agentFMU.fmu,                            !- FMU Filename,
 	FMI,                                     !- FMU Model Name,
 	163HeatingSetpointState,                     !- FMU Model Variable Name,
-	0.0;                                     !- Initial Value
+	24;                                     !- Initial Value
