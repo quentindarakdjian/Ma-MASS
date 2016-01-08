@@ -16,7 +16,7 @@ class Agent_Action_Heating_Setpoint : public Agent_Action
     private:
         double temperatureSetpointBase;
         int age;
-
+        std::deque<double> outDoorTemperatures;
 
 };
 
