@@ -28,10 +28,11 @@ static double coeffAge(int age);
     static double coeffExtendOfDoubleGlazing(std::string extendOfDoubleGlazing);
     static double coeffWallUValue(double wallUValue);
 
-    double inZone(double temperatureSetpointBase, double coeffOutdoorTemperature, double coeffOutdoorTemperature2);
+    double inZone(double temperatureSetpointBase, double dailyTemperature, double coeffOutdoorTemperature, double coeffOutdoorTemperature2);
     double absent(double temperatureSetpointBase, double coeffOutdoorTemperature, double coeffOutdoorTemperature2, double futureDuration);
 
 private:
+
 };
 
 #endif // MODEL_HEATINGSETPOINT_H_INCLUDED
