@@ -47,8 +47,7 @@ double Model_HeatingSetpoint::coeffThermostatSetting(double thermostatSetting){
     else {
         cat = 3;
     }
-    double random = Utility::randomDouble(0.001, 0.069);
-    double coeffThermostatSetting = cat*random;
+    double coeffThermostatSetting = cat*Utility::randomDouble(0.001, 0.069);
     return coeffThermostatSetting;
 }
 
@@ -61,8 +60,7 @@ double Model_HeatingSetpoint::coeffThermostaticRadiatorValve(bool thermostaticRa
 }
 
 double Model_HeatingSetpoint::coeffCentralHeatingHoursReported(double centralHeatingHoursReported){
-    double random = Utility::randomDouble(0.058, 0.081);
-    double coeffCentralHeatingHoursReported = centralHeatingHoursReported*random;
+    double coeffCentralHeatingHoursReported = centralHeatingHoursReported*Utility::randomDouble(0.058, 0.081);
     return coeffCentralHeatingHoursReported;
 }
 
@@ -83,8 +81,7 @@ double Model_HeatingSetpoint::coeffAutomaticTimer(bool automaticTimer){
 }
 
 double Model_HeatingSetpoint::coeffHouseHoldSize(int populationSize){
-    double random = Utility::randomDouble(0.196, 0.304);
-    double coeffHouseHoldSize = populationSize*random;
+    double coeffHouseHoldSize = populationSize*Utility::randomDouble(0.196, 0.304);
     return coeffHouseHoldSize;
 }
 
@@ -117,8 +114,7 @@ double Model_HeatingSetpoint::coeffHouseHoldIncome(double houseHoldIncome){
     else {
         cat = Utility::randomInt(0,6);
     }
-    double random = Utility::randomDouble(0.043, 0.124);
-    double coeffHouseHoldIncome = cat*random;
+    double coeffHouseHoldIncome = cat*Utility::randomDouble(0.043, 0.124);
     return coeffHouseHoldIncome;
 }
 
@@ -282,8 +278,7 @@ double Model_HeatingSetpoint::coeffYearOfConstruction(double yearOfConstruction)
     else if (yearOfConstruction > 2001){
         cat = 9;
     }
-    double random = Utility::randomDouble(0.022, 0.062);
-    double coeffYearOfConstruction = cat*random;
+    double coeffYearOfConstruction = cat*Utility::randomDouble(0.022, 0.062);
     return coeffYearOfConstruction;
 }
 
@@ -313,8 +308,7 @@ double Model_HeatingSetpoint::coeffRoofInsulationThickness(double roofInsulation
     else if (roofInsulationThickness > 200){
         cat = 7;
     }
-    double random = Utility::randomDouble(0.109, 0.142);
-    double coeffRoofInsulationThickness = cat*random;
+    double coeffRoofInsulationThickness = cat*Utility::randomDouble(0.109, 0.142);
     return coeffRoofInsulationThickness;
 }
 
@@ -335,8 +329,7 @@ double Model_HeatingSetpoint::coeffExtendOfDoubleGlazing(std::string extendOfDou
     else if (extendOfDoubleGlazing == "AllWindows"){
         cat = 4;
     }
-    double random = Utility::randomDouble(0.158, 0.217);
-    double coeffExtendOfDoubleGlazing = cat*random;
+    double coeffExtendOfDoubleGlazing = cat*Utility::randomDouble(0.158, 0.217);
     return coeffExtendOfDoubleGlazing;
 }
 
@@ -354,17 +347,15 @@ double Model_HeatingSetpoint::coeffWallUValue(double wallUValue){
     else if (wallUValue > 1.6){
         cat = 3;
     }
-    double random = Utility::randomDouble(0.043, 0.108);
-    double coeffWallUValue = cat*random;
+    double coeffWallUValue = cat*Utility::randomDouble(0.043, 0.108);
     return coeffWallUValue;
 }
 
 //-------Dynamic-------//
 
-double Model_HeatingSetpoint::inZone(double temperatureSetpointBase, double coeffOutdoorTemperature, double coeffOutdoorTemperature2){
-    double heatingSetpointState = temperatureSetpointBase;
-    double outdoorTemperature = DataStore::getValue("EnvironmentSiteOutdoorAirDrybulbTemperature");
-    heatingSetpointState = temperatureSetpointBase + coeffOutdoorTemperature*outdoorTemperature + coeffOutdoorTemperature2*pow(outdoorTemperature,2);
+double Model_HeatingSetpoint::inZone(double temperatureSetpointBase, double dailyTemperature, double coeffOutdoorTemperature, double coeffOutdoorTemperature2){
+
+    double heatingSetpointState = temperatureSetpointBase + coeffOutdoorTemperature*dailyTemperature + coeffOutdoorTemperature2*pow(dailyTemperature,2);
     return heatingSetpointState;
 }
 
