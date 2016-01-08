@@ -3,6 +3,7 @@
 #include "Agent_Action_Heating_Setpoint.h"
 #include "SimulationConfig.h"
 #include "Utility.h"
+#include "DataStore.h"
 
 Agent_Action_Heating_Setpoint::Agent_Action_Heating_Setpoint(){
     name = "Heating_Setpoint";
@@ -49,11 +50,22 @@ void Agent_Action_Heating_Setpoint::setup(int age){
 void Agent_Action_Heating_Setpoint::step(const Zone& zone, bool inZone, bool previouslyInZone, const std::vector<double> &activities){
     result = 0;
     //double heatingSetpointState = zone.getHeatingSetpointState();
+
+    double outdoorTemperature = DataStore::getValue("EnvironmentSiteOutdoorAirDrybulbTemperature");
+    outDoorTemperatures.push_back(outdoorTemperature);
+    if (outDoorTemperatures.size() > SimulationConfig::info.timeStepsPerHour*24){
+        outDoorTemperatures.pop_front();
+    }
+    double dailyTemperature = 0;
+    for (double temp : outDoorTemperatures){
+        dailyTemperature += temp;
+    }
+    dailyTemperature = dailyTemperature / outDoorTemperatures.size();
+
     double coeffOutdoorTemperature = Utility::randomDouble(0.006, 0.098);
     double coeffOutdoorTemperature2 = Utility::randomDouble(0.009, 0.016);
     Model_HeatingSetpoint m_heatingSetpointUsage;
-
-    double heatingSetpointState = m_heatingSetpointUsage.inZone(temperatureSetpointBase, coeffOutdoorTemperature, coeffOutdoorTemperature2);
+    double heatingSetpointState = m_heatingSetpointUsage.inZone(temperatureSetpointBase, dailyTemperature, coeffOutdoorTemperature, coeffOutdoorTemperature2);
     int stepCount = SimulationConfig::getStepCount();
     if (activities.at(stepCount) == 0 || activities.at(stepCount == 9)){ // If agent sleep or is out then temperature of the zone is decreased
           heatingSetpointState = heatingSetpointState - Utility::randomDouble(-0.5, 0);;
