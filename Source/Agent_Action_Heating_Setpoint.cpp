@@ -43,61 +43,20 @@ void Agent_Action_Heating_Setpoint::setup(int age){
                                 coeffAdditionalElectricityHeatingInLivingRoom + coeffAdditionalOtherHeatingInLivingRoom +
                                 coeffYearOfConstruction + coeffRoofInsulationThickness + coeffExtendOfDoubleGlazing +
                                 coeffWallUValue;
-    std::cout<<"The base temperature is "<<temperatureSetpointBase<<" *C."<<std::endl;
+    std::cout<<"The base temperature of Agent is: "<<temperatureSetpointBase<<" *C."<<std::endl;
 }
 
 void Agent_Action_Heating_Setpoint::step(const Zone& zone, bool inZone, bool previouslyInZone, const std::vector<double> &activities){
     result = 0;
-    double heatingSetpointState = zone.getHeatingSetpointState();
+    //double heatingSetpointState = zone.getHeatingSetpointState();
     double coeffOutdoorTemperature = Utility::randomDouble(0.006, 0.098);
     double coeffOutdoorTemperature2 = Utility::randomDouble(0.009, 0.016);
     Model_HeatingSetpoint m_heatingSetpointUsage;
 
-    /*if (inZone){
-        heatingSetpointState = m_heatingSetpointUsage.inZone(temperatureSetpointBase, coeffOutdoorTemperature, coeffOutdoorTemperature2);
-    }
-    else if (!inZone){
-        int futureDuration = getFutureDurationOfPresenceState(activities);
-        heatingSetpointState = m_heatingSetpointUsage.absent(temperatureSetpointBase, coeffOutdoorTemperature, coeffOutdoorTemperature2, futureDuration);
-    }
-    */
-
-    heatingSetpointState = m_heatingSetpointUsage.inZone(temperatureSetpointBase, coeffOutdoorTemperature, coeffOutdoorTemperature2);
-
-    /*
-    if (heatingSetpointState > 24.5){
-        heatingSetpointState = 24.5;
-    }
-    */
-    result = heatingSetpointState;
-
-}
-
-
-/*
-void Agent_Action_Heating_Setpoint::step(const Zone& zone, bool inZone, bool previouslyInZone, const std::vector<double> &activities){
-    double Tempint = zone.getMeanAirTemperature();
-    double heatingSetpointState = zone.getHeatingSetpointState();
-    Model_HeatingSetpoint m_heatingSetpointUsage; //At each time step the object m_heatingSetpointUsage is created??
-    //Setpoint reset twice a day
-    int intLenghtOfTimestep = SimulationConfig::lengthOfTimestep(); // lenghtOfTimestep is a double
-    if(SimulationConfig::getStepCount() % (1440 / 2 / intLenghtOfTimestep) == 0){
-        if (inZone && !previouslyInZone) {
-            heatingSetpointState = m_heatingSetpointUsage.arrival(heatingSetpointState, Tempint, gender);
-        }
-        else if (inZone && previouslyInZone ) {
-            heatingSetpointState = m_heatingSetpointUsage.intermediate(heatingSetpointState, Tempint, gender);
-        }
-        else if (!inZone && previouslyInZone ) {
-            heatingSetpointState = m_heatingSetpointUsage.departure(heatingSetpointState, Tempint);
-        }
-    }
-    if (heatingSetpointState < 15){
-        heatingSetpointState = 15;
-    }
-    if (heatingSetpointState > 25){
-        heatingSetpointState = 25;
+    double heatingSetpointState = m_heatingSetpointUsage.inZone(temperatureSetpointBase, coeffOutdoorTemperature, coeffOutdoorTemperature2);
+    int stepCount = SimulationConfig::getStepCount();
+    if (activities.at(stepCount) == 0 || activities.at(stepCount == 9)){ // If agent sleep or is out then temperature of the zone is decreased
+          heatingSetpointState = heatingSetpointState - Utility::randomDouble(-0.5, 0);;
     }
     result = heatingSetpointState;
 }
-*/
