@@ -7,6 +7,7 @@ Agent_Action_Window::Agent_Action_Window(){
     name = "Windows";
 }
 
+
 void Agent_Action_Window::setup(int windowID){
         windowStruct ws = SimulationConfig::windows.at(windowID);
         m_window.setDurationVars(ws.aop, ws.bopout, ws.shapeop);
