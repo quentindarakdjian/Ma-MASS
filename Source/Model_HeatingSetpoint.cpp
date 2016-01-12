@@ -86,9 +86,9 @@ double Model_HeatingSetpoint::coeffHouseHoldSize(int populationSize){
 }
 
 double Model_HeatingSetpoint::coeffHouseHoldIncome(double houseHoldIncome){
-    // The initial model was calibrated on Â£.
-    // The conversion to â‚¬ is approximative and based on the change rate of November 2015
-    // Â£1 = 1.4â‚¬
+    // The initial model was calibrated on £.
+    // The conversion to € is approximative and based on the change rate of November 2015
+    // £1 = 1.4€
     int cat = 0;
     if (houseHoldIncome <= 7){
         cat = 0;

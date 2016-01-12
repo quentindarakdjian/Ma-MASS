@@ -34,7 +34,7 @@ double DataStore::getValue(std::string name) {
         std::cout << std::flush;
         exit(-1);
     }
-    return variableMap[name].back(); // Returns the last value of the vector
+    return variableMap[name].back(); // Returns the last value of the vector (unordered_map
 }
 
 void DataStore::print(){

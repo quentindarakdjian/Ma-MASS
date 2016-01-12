@@ -75,6 +75,7 @@ void Simulation::preTimeStep() {
                 }
                 month = month + 1;
         }
+        //void DataStore::addValue(std::string name, double value) {variableMap[name].push_back(value);}
         DataStore::addValue("TimeStep", time);
         DataStore::addValue("day", day);
         DataStore::addValue("hour", hour);

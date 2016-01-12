@@ -20,7 +20,6 @@
 #include "StateMachine.h"
 #include "Utility.h"
 
-
 #include "Agent.h"
 
 Agent::Agent(){

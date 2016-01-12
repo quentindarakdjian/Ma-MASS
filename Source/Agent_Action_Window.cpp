@@ -7,6 +7,7 @@ Agent_Action_Window::Agent_Action_Window(){
     name = "Windows";
 }
 
+
 void Agent_Action_Window::setup(int windowID){
         windowStruct ws = SimulationConfig::windows.at(windowID);
         m_window.setDurationVars(ws.aop, ws.bopout, ws.shapeop);
@@ -17,9 +18,9 @@ void Agent_Action_Window::setup(int windowID){
 
 void Agent_Action_Window::step(const Zone& zone, bool inZone, bool previouslyInZone, const std::vector<double> &activities){
         double outdoorTemperature = DataStore::getValue("EnvironmentSiteOutdoorAirDrybulbTemperature");
-        outDoorTemperatures.push_back(outdoorTemperature);
+        outDoorTemperatures.push_back(outdoorTemperature); // add elements at the end
         if (outDoorTemperatures.size() > (SimulationConfig::info.timeStepsPerHour * 24)) {
-            outDoorTemperatures.pop_front();
+            outDoorTemperatures.pop_front(); // delete the first element
         }
         double rain = DataStore::getValue("EnvironmentSiteRainStatus");
         double indoorTemperature = zone.getMeanAirTemperature();
@@ -39,8 +40,7 @@ void Agent_Action_Window::step(const Zone& zone, bool inZone, bool previouslyInZ
             for (double temp : outDoorTemperatures){
                     dailyMeanTemperature += temp;
             }
-            dailyMeanTemperature = dailyMeanTemperature / (double)outDoorTemperatures.size();
-
+            dailyMeanTemperature = dailyMeanTemperature / (double) outDoorTemperatures.size();
             double groundFloor = zone.getGroundFloor();
             double futureDuration = getFutureDurationOfPresenceState(activities);
             m_window.departure(indoorTemperature, dailyMeanTemperature, futureDuration, groundFloor);
@@ -53,7 +53,7 @@ double Agent_Action_Window::getPreviousDurationOfAbsenceState(const std::vector<
         int stepCount = SimulationConfig::getStepCount();
         int stepCounter = stepCount;
         int lengthOfTimeStepSeconds = (60 * (60 / SimulationConfig::info.timeStepsPerHour));
-        while (stepCounter > 0 && activities.at(stepCount) != activities.at(stepCounter-1)) {
+        while (stepCounter > 0 && activities.at(stepCount) != activities.at(stepCounter-1)) { //stepCounter > 0 seems to be useless
             cdp = cdp + lengthOfTimeStepSeconds;
             stepCounter--;
             if(stepCounter < 1){

@@ -42,7 +42,6 @@ int Model_Presence::calculateNumberOfDays(const int startDay, const int startMon
 }
 
 std::vector<int> Model_Presence::calculatePresenceFromPage(const int agentID) {
-
     float pMon[24];
     float pTue[24];
     float pWed[24];
@@ -57,8 +56,7 @@ std::vector<int> Model_Presence::calculatePresenceFromPage(const int agentID) {
         boost::split(tokProbs, probMap.at(day), boost::is_any_of(","));
         int hour = 0;
         for(std::string strProb: tokProbs) {
-            switch (day)
-            {
+            switch (day){
               case 0:
                 pMon[hour] = boost::lexical_cast<double>(strProb);
                 break;
@@ -168,7 +166,6 @@ std::vector<int> Model_Presence::calculatePresenceFromPage(const int agentID) {
 
     return occ;
 }
-
 
 double Model_Presence::getT01(const double pcurr, const double pnext, const double shuff) {
     // This function returns the transition probabilities T01

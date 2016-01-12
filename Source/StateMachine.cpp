@@ -32,7 +32,6 @@ bool StateMachine::hasState(const int stateID){
             break;
         }
     }
-
     return b;
 }
 

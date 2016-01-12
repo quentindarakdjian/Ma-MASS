@@ -60,7 +60,7 @@ void Agent_Action_Heating_Setpoint::step(const Zone& zone, bool inZone, bool pre
     for (double temp : outDoorTemperatures){
         dailyTemperature += temp;
     }
-    dailyTemperature = dailyTemperature / outDoorTemperatures.size();
+    dailyTemperature = dailyTemperature / (double) outDoorTemperatures.size();
 
     double coeffOutdoorTemperature = Utility::randomDouble(0.006, 0.098);
     double coeffOutdoorTemperature2 = Utility::randomDouble(0.009, 0.016);
@@ -72,3 +72,4 @@ void Agent_Action_Heating_Setpoint::step(const Zone& zone, bool inZone, bool pre
     }
     result = heatingSetpointState;
 }
+
