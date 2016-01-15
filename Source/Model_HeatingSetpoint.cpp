@@ -23,7 +23,7 @@ double Model_HeatingSetpoint::coeffLocalisation(std::string localisation){
         coeffLocalisation = 0;
     }
     else if (localisation == "Rural"){
-        coeffLocalisation = Utility::randomDouble(-1.620, -0.309);
+        coeffLocalisation = Utility::randomDoubleNormal(-1.620, -0.309);
     }
     return coeffLocalisation;
 }
