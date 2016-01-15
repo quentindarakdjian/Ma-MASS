@@ -4,7 +4,6 @@
 
 
 StateMachine::StateMachine(){
-    //ctor
 }
 
 void StateMachine::addState(State s){

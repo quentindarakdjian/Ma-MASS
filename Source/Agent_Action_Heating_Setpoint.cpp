@@ -12,7 +12,7 @@ Agent_Action_Heating_Setpoint::Agent_Action_Heating_Setpoint(){
 void Agent_Action_Heating_Setpoint::setup(int age){
     //----------------------------int populationSize = SimulationConfig::numberOfAgents();
     this->age = age;
-    double alpha = Utility::randomDouble(13.618, 14.830);
+    double alpha = Utility::randomDoubleNormal(14.224, 0.303);
     double coeffLocalisation = Model_HeatingSetpoint::coeffLocalisation(SimulationConfig::building.localisation);
     double coeffRoomThermostat = Model_HeatingSetpoint::coeffRoomThermostat(SimulationConfig::building.roomThermostat);
     double coeffThermostatSetting = Model_HeatingSetpoint::coeffThermostatSetting(SimulationConfig::building.thermostatSetting);

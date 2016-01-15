@@ -31,7 +31,6 @@ public:
 
 private:
     void matchStateToZone(State &s);
-    std::vector<float> presenceProfile;
     std::vector<Agent> population;
     int stepCount;
     StateMachine stateMachine; //StateMachine is included in Model_Agent

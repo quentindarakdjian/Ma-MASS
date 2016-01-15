@@ -12,6 +12,7 @@
 #include <boost/random/uniform_real_distribution.hpp>
 #include <boost/random/variate_generator.hpp>
 #include <boost/generator_iterator.hpp>
+#include <boost/random/normal_distribution.hpp>
 
 #include "Utility.h"
 
@@ -56,3 +57,10 @@ std::list<int> Utility::randomIntList(int number, int min, int max){
     return randNumbers;
 
 }
+
+
+double Utility::randomDoubleNormal(double mean, double sd){
+    boost::normal_distribution<> dist(mean, sd);
+    return dist(Utility::generator);
+}
+

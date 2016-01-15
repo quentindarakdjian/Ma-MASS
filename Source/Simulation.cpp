@@ -88,7 +88,7 @@ void Simulation::preTimeStep() {
  * Also we send any effects the agent have to the zones they are located in.
  */
 void Simulation::timeStep() {
-        SimulationConfig::step();
+        SimulationConfig::step(); //stepCount+1
         time = time + (3600 / SimulationConfig::info.timeStepsPerHour);
         agentModel.step();
 }

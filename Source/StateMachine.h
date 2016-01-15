@@ -17,7 +17,7 @@ class StateMachine
     protected:
     private:
 
-      int initialStateLocation;
+      //int initialStateLocation;
       State pendingState;
       std::vector<State> states;
 };

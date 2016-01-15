@@ -54,8 +54,7 @@ void Model_Agents::initialiseStates(){
         it.getZonePtr()->getName();
         present.addState(it);
     }
-    else
-    {
+    else{
         State_Sleep sleep;
         matchStateToZone(sleep);
         State_Passive passive;
@@ -74,7 +73,7 @@ void Model_Agents::initialiseStates(){
         matchStateToZone(metabolic);
         State_IT it;
         matchStateToZone(it);
-        present.addState(sleep);
+        present.addState(sleep);  //present.addState(sleep) <=> present.stateMachine.addState(sleep);
         present.addState(passive);
         present.addState(washingAppliance);
         present.addState(washing);
@@ -97,11 +96,12 @@ void Model_Agents::matchStateToZone(State &s){
     }
 }
 
+
 void Model_Agents::step(){
     std::list<int> pop = Utility::randomIntList(population.size(), 0, population.size());
     // step each agent randomly
     for(int a: pop){
-        population[a].step(&stateMachine);
+        population[a].step(&stateMachine); // Every agents of the zone calculate their decisions
     }
     stepCount++;
     for(Zone &zone: zones){
@@ -317,6 +317,7 @@ void Model_Agents::setAgentCountForZone(Zone *zone){
     double fractionsOfOccupants = numberOfAgents / (double)population.size();
     zone->setOccupantFraction(fractionsOfOccupants);
 }
+
 
 void Model_Agents::postprocess(){
     for(Agent &agent: population){
