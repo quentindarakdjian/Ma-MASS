@@ -38,6 +38,7 @@ void Simulation::preprocess() {
         DataStore::addVariable("day");
         DataStore::addVariable("month");
         DataStore::addVariable("hour");
+        DataStore::addVariable("hourOfDay");
         DataStore::addVariable("TimeStep");
 
         std::string preferredSlash = "/";
@@ -75,10 +76,17 @@ void Simulation::preTimeStep() {
                 }
                 month = month + 1;
         }
-        //void DataStore::addValue(std::string name, double value) {variableMap[name].push_back(value);}
+        int hourOfDay = 0;
+        for (int i = 0; i <= hour; i++){
+            hourOfDay += 1;
+            if (hourOfDay > 23){
+                hourOfDay = 0;
+            }
+        }
         DataStore::addValue("TimeStep", time);
         DataStore::addValue("day", day);
         DataStore::addValue("hour", hour);
+        DataStore::addValue("hourOfDay", hourOfDay);
         DataStore::addValue("month", month);
 }
 

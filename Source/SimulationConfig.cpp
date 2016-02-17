@@ -37,20 +37,8 @@ void SimulationConfig::parseBuilding(boost::property_tree::ptree::value_type & v
                 else if (childschild.first == "roomThermostat"){
                     SimulationConfig::building.roomThermostat = childschild.second.get_value<bool>();
                 }
-                else if (childschild.first == "thermostatSetting"){
-                    SimulationConfig::building.thermostatSetting = childschild.second.get_value<double>();
-                }
                 else if (childschild.first == "thermostaticRadiatorValve"){
                     SimulationConfig::building.thermostaticRadiatorValve = childschild.second.get_value<bool>();
-                }
-                else if (childschild.first == "centralHeatingHoursReported"){
-                    SimulationConfig::building.centralHeatingHoursReported = childschild.second.get_value<double>();
-                }
-                else if (childschild.first == "regularHeatingPattern"){
-                    SimulationConfig::building.regularHeatingPattern = childschild.second.get_value<bool>();
-                }
-                else if (childschild.first == "automaticTimer"){
-                    SimulationConfig::building.automaticTimer = childschild.second.get_value<bool>();
                 }
                 else if (childschild.first == "houseHoldIncome"){
                     SimulationConfig::building.houseHoldIncome = childschild.second.get_value<double>();
@@ -61,23 +49,11 @@ void SimulationConfig::parseBuilding(boost::property_tree::ptree::value_type & v
                 else if (childschild.first == "typology"){
                     SimulationConfig::building.typology = childschild.second.data();
                 }
-                else if (childschild.first == "gasCentralHeating"){
-                    SimulationConfig::building.gasCentralHeating = childschild.second.get_value<bool>();
+                else if (childschild.first == "mainFuel"){
+                    SimulationConfig::building.mainFuel = childschild.second.data();
                 }
-                else if (childschild.first == "nonCentralHeating"){
-                    SimulationConfig::building.nonCentralHeating = childschild.second.get_value<bool>();
-                }
-                else if (childschild.first == "electricityIsMainFuel"){
-                    SimulationConfig::building.electricityIsMainFuel = childschild.second.get_value<bool>();
-                }
-                else if (childschild.first == "additionalGasHeatingInLivingRoom"){
-                    SimulationConfig::building.additionalGasHeatingInLivingRoom = childschild.second.get_value<bool>();
-                }
-                else if (childschild.first == "additionalElectricityHeatingInLivingRoom"){
-                    SimulationConfig::building.additionalElectricityHeatingInLivingRoom = childschild.second.get_value<bool>();
-                }
-                else if (childschild.first == "additionalOtherHeatingInLivingRoom"){
-                    SimulationConfig::building.additionalOtherHeatingInLivingRoom = childschild.second.get_value<bool>();
+                else if (childschild.first == "additionalFuel"){
+                    SimulationConfig::building.additionalFuel = childschild.second.data();
                 }
                 else if (childschild.first == "yearOfConstruction"){
                     SimulationConfig::building.yearOfConstruction = childschild.second.get_value<int>();
@@ -429,6 +405,9 @@ void SimulationConfig::parseConfiguration(std::string filename){
         }
         else if (v.first == "presencePage"){
             SimulationConfig::info.presencePage = v.second.get_value<bool>();
+        }
+        else if (v.first == "social"){
+            SimulationConfig::info.social = v.second.get_value<bool>();
         }
         else if (v.first == "building"){
             parseBuilding(v);

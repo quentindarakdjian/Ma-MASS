@@ -36,21 +36,6 @@ double Model_HeatingSetpoint::coeffRoomThermostat(bool roomThermostat){
     return coeffRoomThermostat;
 }
 
-double Model_HeatingSetpoint::coeffThermostatSetting(double thermostatSetting){
-    int cat = 0;
-    if (thermostatSetting > 18 && thermostatSetting <= 20){
-        cat = 1;
-    }
-    else if (thermostatSetting > 20 && thermostatSetting <= 22){
-        cat = 2;
-    }
-    else {
-        cat = 3;
-    }
-    double coeffThermostatSetting = cat*Utility::randomDoubleNormal(0.035, 0.018);
-    return coeffThermostatSetting;
-}
-
 double Model_HeatingSetpoint::coeffThermostaticRadiatorValve(bool thermostaticRadiatorValve){
     double coeffThermostaticRadiatorValve = 0;
     if (thermostaticRadiatorValve){
@@ -70,14 +55,6 @@ double Model_HeatingSetpoint::coeffRegularHeatingPattern(bool regularHeatingPatt
         coeffRegularHeatingPattern = Utility::randomDoubleNormal(1.189, 0.105);
     }
     return coeffRegularHeatingPattern;
-}
-
-double Model_HeatingSetpoint::coeffAutomaticTimer(bool automaticTimer){
-    double coeffAutomaticTimer = 0;
-    if (automaticTimer){
-        coeffAutomaticTimer = Utility::randomDoubleNormal(-0.031, 0.025);
-    }
-    return coeffAutomaticTimer;
 }
 
 double Model_HeatingSetpoint::coeffHouseHoldSize(int populationSize){
@@ -126,9 +103,6 @@ double Model_HeatingSetpoint::coeffAge(int age){
     else if (age > 5 && age <= 18){
         coeffAge = Utility::randomDoubleNormal(0.219, 0.024);
     }
-    else if (age > 60 && age <= 64){
-        coeffAge = Utility::randomDoubleNormal(0.051, 0.049);
-    }
     else if (age > 64 && age <= 74){
         coeffAge = Utility::randomDoubleNormal(0.370, 0.049);
     }
@@ -155,7 +129,7 @@ double Model_HeatingSetpoint::coeffTenureType(std::string tenureType){
                 tenureType = "CouncilTenant";
             }
             else {
-                tenureType == "HousingAssociation";
+                tenureType = "HousingAssociation";
             }
         }
     }
@@ -181,13 +155,13 @@ double Model_HeatingSetpoint::coeffTypology(std::string typology){
             typology = "DetachedHouse";
         }
         else {
-            typology == "Semi-Detached";
+            typology = "Semi-Detached";
         }
     }
     else if (typology == "DetachedHouse"){
     }
     else if (typology == "Semi-Detached"){
-        coeffTypology = Utility::randomDoubleNormal(0.694, 0.026);
+        coeffTypology = Utility::randomDoubleNormal(0.694, 0.051);
     }
     else if (typology == "TerracedHouse"){
         coeffTypology = Utility::randomDoubleNormal(0.607, 0.035);
@@ -198,52 +172,56 @@ double Model_HeatingSetpoint::coeffTypology(std::string typology){
     return coeffTypology;
 }
 
-double Model_HeatingSetpoint::coeffGasCentralHeating(bool gasCentralHeating){
-    double coeffGasCentralHeating = 0;
-    if (gasCentralHeating){
-        coeffGasCentralHeating = Utility::randomDoubleNormal(-0.564, 0.047);
+double Model_HeatingSetpoint::coeffMainFuel(std::string mainFuel){
+    double coeffMainFuel = 0;
+    // Unknown, Electricity, Gas, Other
+    double prob = Utility::randomDouble(0.0,1.0);
+    // France, 2013, ADEME, Modes de chauffage dans l'habitat
+    if (mainFuel == "Unknown"){
+        if (prob <= 0.44){
+            mainFuel = "Gas";
+        }
+        if (prob > 0.44 && prob <= 0.78){
+            mainFuel = "Electricity";
+        }
+        else {
+            mainFuel = "Other";
+        }
     }
-    return coeffGasCentralHeating;
+    else if (mainFuel == "Gas"){
+        coeffMainFuel = Utility::randomDoubleNormal(-0.564, 0.47);
+    }
+    else if (mainFuel == "Electricity"){
+        coeffMainFuel = Utility::randomDoubleNormal(1.008, 0.154);
+    }
+    else {}
+    return coeffMainFuel;
 }
 
-double Model_HeatingSetpoint::coeffNonCentralHeating(bool nonCentralHeating){
-    double coeffNonCentralHeating = 0;
-    if (nonCentralHeating){
-        coeffNonCentralHeating = Utility::randomDoubleNormal(0.058, 0.025);
+double Model_HeatingSetpoint::coeffAdditionalFuel(std::string additionalFuel){
+    double coeffAdditionalFuel = 0;
+    // Unknown, None, Electricity, Other
+    double prob = Utility::randomDouble(0.0,1.0);
+    // France, 2013, ADEME, Modes de chauffage dans l'habitat
+    if (additionalFuel == "Unknown"){
+        if (prob <= 0.8){
+            additionalFuel = "None";
+        }
+        if (prob > 0.8 && prob <= 0.9){
+            additionalFuel = "Electricity";
+        }
+        else {
+            additionalFuel = "Other";
+        }
     }
-    return coeffNonCentralHeating;
-}
-
-double Model_HeatingSetpoint::coeffElectricityIsMainFuel(bool electricityIsMainFuel){
-    double coeffElectricityIsMainFuel = 0;
-    if (electricityIsMainFuel){
-        coeffElectricityIsMainFuel = Utility::randomDoubleNormal(1.008, 0.154);
+    else if (additionalFuel == "Electricity"){
+        coeffAdditionalFuel = Utility::randomDoubleNormal(-0.195, 0.044);
     }
-    return coeffElectricityIsMainFuel;
-}
-
-double Model_HeatingSetpoint::coeffAdditionalGasHeatingInLivingRoom(bool additionalGasHeatingInLivingRoom){
-    double coeffAdditionalGasHeatingInLivingRoom = 0;
-    if (additionalGasHeatingInLivingRoom){
-        coeffAdditionalGasHeatingInLivingRoom = Utility::randomDoubleNormal(-0.071, 0.032);
+    else if (additionalFuel == "Other"){
+        coeffAdditionalFuel = Utility::randomDoubleNormal(-1.016, 0.227);
     }
-    return coeffAdditionalGasHeatingInLivingRoom;
-}
-
-double Model_HeatingSetpoint::coeffAdditionalElectricityHeatingInLivingRoom(bool additionalElectricityHeatingInLivingRoom){
-    double coeffAdditionalElectricityHeatingInLivingRoom = 0;
-    if (additionalElectricityHeatingInLivingRoom){
-        coeffAdditionalElectricityHeatingInLivingRoom = Utility::randomDoubleNormal(-0.195, -0.106);
-    }
-    return coeffAdditionalElectricityHeatingInLivingRoom;
-}
-
-double Model_HeatingSetpoint::coeffAdditionalOtherHeatingInLivingRoom(bool additionalOtherHeatingInLivingRoom){
-    double coeffAdditionalOtherHeatingInLivingRoom = 0;
-    if (additionalOtherHeatingInLivingRoom){
-        coeffAdditionalOtherHeatingInLivingRoom = Utility::randomDoubleNormal(-1.016, 0.057);
-    }
-    return coeffAdditionalOtherHeatingInLivingRoom;
+    else {}
+    return coeffAdditionalFuel;
 }
 
 double Model_HeatingSetpoint::coeffYearOfConstruction(double yearOfConstruction){
@@ -354,25 +332,7 @@ double Model_HeatingSetpoint::coeffWallUValue(double wallUValue){
 //-------Dynamic-------//
 
 double Model_HeatingSetpoint::inZone(double temperatureSetpointBase, double dailyTemperature, double coeffOutdoorTemperature, double coeffOutdoorTemperature2){
-
     double heatingSetpointState = temperatureSetpointBase + coeffOutdoorTemperature*dailyTemperature + coeffOutdoorTemperature2*pow(dailyTemperature,2);
-    return heatingSetpointState;
-}
-
-double Model_HeatingSetpoint::absent(double temperatureSetpointBase, double coeffOutdoorTemperature, double coeffOutdoorTemperature2, double futureDuration){
-    double heatingSetpointState = temperatureSetpointBase;
-    double outdoorTemperature = DataStore::getValue("EnvironmentSiteOutdoorAirDrybulbTemperature");
-    float probDecreaseSetpoint;
-    if (futureDuration < 24 * 60 * 60){
-        probDecreaseSetpoint = 0.5;
-    }
-
-    if (Utility::randomDouble(0,1) < probDecreaseSetpoint){
-        heatingSetpointState = temperatureSetpointBase + coeffOutdoorTemperature*outdoorTemperature + coeffOutdoorTemperature2*pow(outdoorTemperature,2)-1;
-    }
-    else{
-        heatingSetpointState = temperatureSetpointBase + coeffOutdoorTemperature*outdoorTemperature + coeffOutdoorTemperature2*pow(outdoorTemperature,2);
-    }
     return heatingSetpointState;
 }
 

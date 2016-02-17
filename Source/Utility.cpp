@@ -38,6 +38,10 @@ bool Utility::tossACoin(){
     return randomDouble(0.0,1.0) < 0.5;
 }
 
+bool Utility::randomBool(double chance){
+    return randomDouble(0.0,1.0) < chance;
+}
+
 int Utility::randomInt(int min, int max){
     boost::random::uniform_int_distribution<> dist(min, max);
     return dist(Utility::generator);
@@ -55,9 +59,7 @@ std::list<int> Utility::randomIntList(int number, int min, int max){
         numbers.erase(numbers.begin() +i);
     }
     return randNumbers;
-
 }
-
 
 double Utility::randomDoubleNormal(double mean, double sd){
     boost::normal_distribution<> dist(mean, sd);

@@ -30,6 +30,7 @@ public:
     static double randomDouble(double min, double max);
     static int randomInt(int min, int max);
     static bool tossACoin();
+    static bool randomBool(double chance);
     static void setSeed(int seed);
     static std::list<int> randomIntList(int number, int min, int max);
     static double randomDoubleNormal(double mean, double sd);

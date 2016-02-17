@@ -84,7 +84,7 @@ std::vector<int> Model_Presence::calculatePresenceFromPage(const int agentID) {
     }
 
     unsigned int timeStepsPerHour = SimulationConfig::info.timeStepsPerHour;
-    unsigned int days = calculateNumberOfDays( SimulationConfig::info.startDay, SimulationConfig::info.startMonth, SimulationConfig::info.endDay, SimulationConfig::info.endMonth);
+    unsigned int days = calculateNumberOfDays(SimulationConfig::info.startDay, SimulationConfig::info.startMonth, SimulationConfig::info.endDay, SimulationConfig::info.endMonth);
     // Model for the prediction of presence derived by J. Page
     // Reference: J. Page, D. Robinson, N. Morel, J.-L. Scartezzini, A generalised stochastic
     // model for the simulation of occupant presence, Energy and Buildings 40(2), 83-98 (2008).

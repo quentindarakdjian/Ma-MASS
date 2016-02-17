@@ -15,36 +15,27 @@ void Agent_Action_Heating_Setpoint::setup(int age){
     double alpha = Utility::randomDoubleNormal(14.224, 0.303);
     double coeffLocalisation = Model_HeatingSetpoint::coeffLocalisation(SimulationConfig::building.localisation);
     double coeffRoomThermostat = Model_HeatingSetpoint::coeffRoomThermostat(SimulationConfig::building.roomThermostat);
-    double coeffThermostatSetting = Model_HeatingSetpoint::coeffThermostatSetting(SimulationConfig::building.thermostatSetting);
     double coeffThermostaticRadiatorValve = Model_HeatingSetpoint::coeffThermostaticRadiatorValve(SimulationConfig::building.thermostaticRadiatorValve);
-    double coeffCentralHeatingHoursReported = Model_HeatingSetpoint::coeffCentralHeatingHoursReported(SimulationConfig::building.centralHeatingHoursReported);
-    double coeffRegularHeatingPattern = Model_HeatingSetpoint::coeffRegularHeatingPattern(SimulationConfig::building.regularHeatingPattern);
-    double coeffAutomaticTimer = Model_HeatingSetpoint::coeffAutomaticTimer(SimulationConfig::building.automaticTimer);
-   double coeffHouseHoldSize = Model_HeatingSetpoint::coeffHouseHoldSize(SimulationConfig::numberOfAgents());
+    double coeffCentralHeatingHoursReported = Model_HeatingSetpoint::coeffCentralHeatingHoursReported(Utility::randomDoubleNormal(9.84, 5.3)); // Determined randomly
+    double coeffRegularHeatingPattern = Model_HeatingSetpoint::coeffRegularHeatingPattern(Utility::randomBool(0.88)); // Determined randomly
+    double coeffHouseHoldSize = Model_HeatingSetpoint::coeffHouseHoldSize(SimulationConfig::numberOfAgents());
     double coeffHouseHoldIncome = Model_HeatingSetpoint::coeffHouseHoldIncome(SimulationConfig::building.houseHoldIncome);
-   double coeffAge = Model_HeatingSetpoint::coeffAge(age);
+    double coeffAge = Model_HeatingSetpoint::coeffAge(age);
     double coeffTenureType = Model_HeatingSetpoint::coeffTenureType(SimulationConfig::building.tenureType);
     double coeffTypology = Model_HeatingSetpoint::coeffTypology(SimulationConfig::building.typology);
-    double coeffGasCentralHeating = Model_HeatingSetpoint::coeffGasCentralHeating(SimulationConfig::building.gasCentralHeating);
-    double coeffNonCentralHeating = Model_HeatingSetpoint::coeffNonCentralHeating(SimulationConfig::building.nonCentralHeating);
-    double coeffElectricityIsMainFuel = Model_HeatingSetpoint::coeffElectricityIsMainFuel(SimulationConfig::building.electricityIsMainFuel);
-    double coeffAdditionalGasHeatingInLivingRoom = Model_HeatingSetpoint::coeffAdditionalGasHeatingInLivingRoom(SimulationConfig::building.additionalGasHeatingInLivingRoom);
-    double coeffAdditionalElectricityHeatingInLivingRoom = Model_HeatingSetpoint::coeffAdditionalElectricityHeatingInLivingRoom(SimulationConfig::building.additionalElectricityHeatingInLivingRoom);
-    double coeffAdditionalOtherHeatingInLivingRoom = Model_HeatingSetpoint::coeffAdditionalOtherHeatingInLivingRoom(SimulationConfig::building.additionalOtherHeatingInLivingRoom);
+    double coeffMainFuel = Model_HeatingSetpoint::coeffMainFuel(SimulationConfig::building.mainFuel);
+    double coeffAdditionalFuel = Model_HeatingSetpoint::coeffAdditionalFuel(SimulationConfig::building.additionalFuel);
     double coeffYearOfConstruction = Model_HeatingSetpoint::coeffYearOfConstruction(SimulationConfig::building.yearOfConstruction);
     double coeffRoofInsulationThickness = Model_HeatingSetpoint::coeffRoofInsulationThickness(SimulationConfig::building.roofInsulationThickness);
     double coeffExtendOfDoubleGlazing = Model_HeatingSetpoint::coeffExtendOfDoubleGlazing(SimulationConfig::building.extendOfDoubleGlazing);
     double coeffWallUValue = Model_HeatingSetpoint::coeffWallUValue(SimulationConfig::building.wallUValue);
 
-    temperatureSetpointBase = alpha + coeffLocalisation + coeffRoomThermostat + coeffLocalisation +
-                                coeffCentralHeatingHoursReported + coeffCentralHeatingHoursReported +
-                                coeffRegularHeatingPattern + coeffAutomaticTimer + coeffHouseHoldSize + coeffHouseHoldIncome +
-                                coeffAge + coeffTenureType + coeffTypology + coeffGasCentralHeating +
-                                coeffNonCentralHeating + coeffElectricityIsMainFuel + coeffAdditionalGasHeatingInLivingRoom +
-                                coeffAdditionalElectricityHeatingInLivingRoom + coeffAdditionalOtherHeatingInLivingRoom +
-                                coeffYearOfConstruction + coeffRoofInsulationThickness + coeffExtendOfDoubleGlazing +
-                                coeffWallUValue;
-    std::cout<<"The base temperature of Agent is: "<<temperatureSetpointBase<<" *C."<<std::endl;
+    temperatureSetpointBase = alpha + coeffLocalisation + coeffRoomThermostat + coeffThermostaticRadiatorValve +
+                                coeffCentralHeatingHoursReported + coeffRegularHeatingPattern + coeffHouseHoldSize +
+                                coeffHouseHoldIncome + coeffAge + coeffTenureType + coeffTypology + coeffMainFuel +
+                                coeffAdditionalFuel + coeffYearOfConstruction + coeffRoofInsulationThickness +
+                                coeffExtendOfDoubleGlazing + coeffWallUValue;
+    std::cout<<"The base temperature of the agent is: "<<temperatureSetpointBase<<" *C."<<std::endl;
 }
 
 void Agent_Action_Heating_Setpoint::step(const Zone& zone, bool inZone, bool previouslyInZone, const std::vector<double> &activities){
@@ -62,14 +53,20 @@ void Agent_Action_Heating_Setpoint::step(const Zone& zone, bool inZone, bool pre
     }
     dailyTemperature = dailyTemperature / (double) outDoorTemperatures.size();
 
-    double coeffOutdoorTemperature = Utility::randomDouble(0.006, 0.098);
-    double coeffOutdoorTemperature2 = Utility::randomDouble(0.009, 0.016);
+    double coeffOutdoorTemperature = Utility::randomDoubleNormal(0.052, 0.023);
+    double coeffOutdoorTemperature2 = Utility::randomDoubleNormal(0.012, 0.002);
     Model_HeatingSetpoint m_heatingSetpointUsage;
     double heatingSetpointState = m_heatingSetpointUsage.inZone(temperatureSetpointBase, dailyTemperature, coeffOutdoorTemperature, coeffOutdoorTemperature2);
-    int stepCount = SimulationConfig::getStepCount();
-    if (activities.at(stepCount) == 0 || activities.at(stepCount == 9)){ // If agent sleep or is out then temperature of the zone is decreased
-          heatingSetpointState = heatingSetpointState - Utility::randomDouble(-0.5, 0);;
+
+// Social info //
+    if (SimulationConfig::info.social){
+        int stepCount = SimulationConfig::getStepCount();
+        if (activities.at(stepCount) == 0 || activities.at(stepCount == 9)){ // If agent sleep or is out then temperature of the zone is decreased
+            heatingSetpointState = heatingSetpointState - Utility::randomDouble(-0.5, 0);
+        }
+        if
     }
+// Social info //
     result = heatingSetpointState;
 }
 

@@ -101,20 +101,12 @@ struct stateStruct {
 struct buildingStruct {
     std::string localisation;
     bool roomThermostat;
-    int thermostatSetting;
     bool thermostaticRadiatorValve;
-    double centralHeatingHoursReported;
-    bool regularHeatingPattern;
-    bool automaticTimer;
     double houseHoldIncome;
     std::string tenureType;
     std::string typology;
-    bool gasCentralHeating;
-    bool nonCentralHeating;
-    bool electricityIsMainFuel;
-    bool additionalGasHeatingInLivingRoom;
-    bool additionalElectricityHeatingInLivingRoom;
-    bool additionalOtherHeatingInLivingRoom;
+    std::string mainFuel;
+    std::string additionalFuel;
     int yearOfConstruction;
     double roofInsulationThickness;
     std::string extendOfDoubleGlazing;
@@ -128,6 +120,7 @@ struct simulationStruct {
     bool heatingSetpoint;
     bool shading;
     bool presencePage;
+    bool social;
     double timeStepsPerHour;
     int timeSteps;
     int startDay;
