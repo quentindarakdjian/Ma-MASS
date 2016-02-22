@@ -31,5 +31,16 @@ void Agent_Action_Shades::step(const Zone& zone, bool inZone, bool previouslyInZ
         else{
                 shadingFraction = m_blindUsage.departure(shadingFraction,Lumint,Evg);
         }
+
+        // Social
+        if (SimulationConfig::info.social){
+            int stepCount = SimulationConfig::getStepCount();
+            if (activities.at(stepCount) == 0) {
+                shadingFraction = 0;
+            }
+            if (activities.at(stepCount) == 6) { // Self washing
+                shadingFraction = 0;
+            }
+        }
         result = shadingFraction;
 }

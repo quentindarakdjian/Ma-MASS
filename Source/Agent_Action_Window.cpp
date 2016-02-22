@@ -27,14 +27,17 @@ void Agent_Action_Window::step(const Zone& zone, bool inZone, bool previouslyInZ
         double timeStepLengthInMinutes = SimulationConfig::lengthOfTimestep();
 
         m_window.setWindowState(zone.getWindowState());
+        // Arrival
         if (inZone && !previouslyInZone){
             double previousDuration = getPreviousDurationOfAbsenceState(activities);
             m_window.arrival(indoorTemperature, outdoorTemperature, previousDuration, rain, timeStepLengthInMinutes);
         }
+        // Intermediate
         else if ((inZone && previouslyInZone )){
             double currentDuration = getCurrentDurationOfPresenceState(activities);
             m_window.intermediate(indoorTemperature, outdoorTemperature, currentDuration, rain, timeStepLengthInMinutes);
         }
+        // Departure
         else if ((!inZone && previouslyInZone )){
             double dailyMeanTemperature = 0;
             for (double temp : outDoorTemperatures){
@@ -44,6 +47,17 @@ void Agent_Action_Window::step(const Zone& zone, bool inZone, bool previouslyInZ
             double groundFloor = zone.getGroundFloor();
             double futureDuration = getFutureDurationOfPresenceState(activities);
             m_window.departure(indoorTemperature, dailyMeanTemperature, futureDuration, groundFloor);
+        }
+        // Social
+        if (SimulationConfig::info.social){
+            int stepCount = SimulationConfig::getStepCount();
+            if (activities.at(stepCount) == 4) { // Cooking
+                if (m_window.getWindowState() == 0) {
+                    m_window.setWindowState(1);
+                }
+                int lengthOfTimeStepSeconds = (60 * (60 / SimulationConfig::info.timeStepsPerHour));
+                m_window.setDurationOpen(lengthOfTimeStepSeconds);
+            }
         }
         result = m_window.getWindowState();
 }

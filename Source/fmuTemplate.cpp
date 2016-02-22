@@ -48,8 +48,7 @@ static fmiValueReference vrStates[NUMBER_OF_STATES] = STATES;
 
 
 // fname is fmiInstantiateModel or fmiInstantiateSlave
-static fmiComponent instantiateModel(const char* fname, fmiString instanceName, fmiString GUID,
-        fmiCallbackFunctions functions, fmiBoolean loggingOn) {
+static fmiComponent instantiateModel(const char* fname, fmiString instanceName, fmiString GUID, fmiCallbackFunctions functions, fmiBoolean loggingOn) {
 
     if(valToRefs.empty()){
         modelInstance->sim.preprocess();
@@ -66,8 +65,7 @@ fmiComponent fmiInstantiateModel(fmiString instanceName, fmiString GUID, fmiCall
 // fname is fmiInitialize or fmiInitializeSlave
 
 
-fmiStatus fmiInitialize(fmiComponent c, fmiBoolean toleranceControlled,
-                                     fmiReal relativeTolerance, fmiEventInfo* eventInfo){
+fmiStatus fmiInitialize(fmiComponent c, fmiBoolean toleranceControlled, fmiReal relativeTolerance, fmiEventInfo* eventInfo){
     return fmiOK;
 }
 
@@ -165,9 +163,7 @@ const char* fmiGetTypesPlatform() {
     return fmiPlatform;
 }
 
-fmiComponent fmiInstantiateSlave(fmiString  instanceName, fmiString  GUID,
-    fmiString  fmuLocation, fmiString  mimeType, fmiReal timeout, fmiBoolean visible,
-    fmiBoolean interactive, fmiCallbackFunctions functions, fmiBoolean loggingOn) {
+fmiComponent fmiInstantiateSlave(fmiString  instanceName, fmiString  GUID, fmiString  fmuLocation, fmiString  mimeType, fmiReal timeout, fmiBoolean visible, fmiBoolean interactive, fmiCallbackFunctions functions, fmiBoolean loggingOn) {
     // ignoring arguments: fmuLocation, mimeType, timeout, visible, interactive
     printf("fmiInstantiateSlave\n");
     return instantiateModel("fmiInstantiateSlave", instanceName, GUID, functions, loggingOn);
@@ -196,14 +192,12 @@ void fmiFreeSlaveInstance(fmiComponent c) {
     printf("fmiFreeSlaveInstance\n");
 }
 
-fmiStatus fmiSetRealInputDerivatives(fmiComponent c, const fmiValueReference vr[], size_t nvr,
-    const fmiInteger order[], const fmiReal value[]) {
+fmiStatus fmiSetRealInputDerivatives(fmiComponent c, const fmiValueReference vr[], size_t nvr, const fmiInteger order[], const fmiReal value[]) {
     printf("fmiSetRealInputDerivatives\n");
     return fmiWarning;
 }
 
-fmiStatus fmiGetRealOutputDerivatives(fmiComponent c, const fmiValueReference vr[], size_t  nvr,
-    const fmiInteger order[], fmiReal value[]) {
+fmiStatus fmiGetRealOutputDerivatives(fmiComponent c, const fmiValueReference vr[], size_t  nvr, const fmiInteger order[], fmiReal value[]) {
   printf("fmiGetRealOutputDerivatives\n");
     return fmiWarning;
 }
@@ -223,12 +217,9 @@ fmiStatus fmiCancelStep(fmiComponent c) {
  * @param newStep
  * @return
  */
-fmiStatus fmiDoStep(fmiComponent c, fmiReal currentCommunicationPoint,
-    fmiReal communicationStepSize, fmiBoolean newStep) {
+fmiStatus fmiDoStep(fmiComponent c, fmiReal currentCommunicationPoint, fmiReal communicationStepSize, fmiBoolean newStep) {
     if(save){
         //ModelInstance* comp = (ModelInstance *)c;
-
-
         modelInstance->sim.timeStep();
 
     }

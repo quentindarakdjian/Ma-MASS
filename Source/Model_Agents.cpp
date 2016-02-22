@@ -292,7 +292,8 @@ void Model_Agents::setAgentLightDecisionForZone(Zone *zone){
 
 void Model_Agents::setAgentHeatingSetpointDecisionForZone(Zone *zone){
     double d = zone->getHeatingSetpointState();
-    double TempPower = 0, totPower = 0;
+    double TempPower = 0;
+    double totPower = 0;
     for(Agent &agent: population){
         if (agent.InteractionOnZone(*zone)){
             d = agent.getDesiredHeatingSetpointState(*zone);
@@ -317,7 +318,6 @@ void Model_Agents::setAgentCountForZone(Zone *zone){
     double fractionsOfOccupants = numberOfAgents / (double)population.size();
     zone->setOccupantFraction(fractionsOfOccupants);
 }
-
 
 void Model_Agents::postprocess(){
     for(Agent &agent: population){

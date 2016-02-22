@@ -109,8 +109,6 @@ void Agent::actionStep(int action, ActionValues *interaction, const Zone &zone, 
       case 4:
             aahs.step(zone, inZone, preZone, activities);
             interaction->heatingSetpointState = aahs.getResult();
-            //interaction is the structure.
-            //heatingSetpointState is a double.
         break;
       }
 }

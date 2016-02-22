@@ -58,13 +58,13 @@ void Agent_Action_Heating_Setpoint::step(const Zone& zone, bool inZone, bool pre
     Model_HeatingSetpoint m_heatingSetpointUsage;
     double heatingSetpointState = m_heatingSetpointUsage.inZone(temperatureSetpointBase, dailyTemperature, coeffOutdoorTemperature, coeffOutdoorTemperature2);
 
+
 // Social info //
     if (SimulationConfig::info.social){
         int stepCount = SimulationConfig::getStepCount();
         if (activities.at(stepCount) == 0 || activities.at(stepCount == 9)){ // If agent sleep or is out then temperature of the zone is decreased
             heatingSetpointState = heatingSetpointState - Utility::randomDouble(-0.5, 0);
         }
-        if
     }
 // Social info //
     result = heatingSetpointState;

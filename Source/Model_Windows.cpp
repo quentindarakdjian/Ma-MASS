@@ -85,6 +85,10 @@ bool Model_Windows::getWindowState() const{
     return state;
 }
 
+void Model_Windows::setDurationOpen(double durationOpen){
+    this->durationOpen = durationOpen;
+}
+
 double Model_Windows::getDurationOpen() const{
     return durationOpen;
 }
