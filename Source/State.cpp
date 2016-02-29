@@ -1,3 +1,4 @@
+// Copyright AI Environnement 2017
 
 #include "SimulationConfig.h"
 #include "State.h"

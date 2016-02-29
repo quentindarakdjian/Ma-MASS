@@ -1,9 +1,4 @@
-/*
- * File:   VariableStore.cpp
- * Author: jake
- *
- * Created on September 15, 2013, 9:05 PM
- */
+// Copyright AI Environnement 2017
 
 #include <vector>
 #include <iostream>

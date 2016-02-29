@@ -1,9 +1,5 @@
-/*
- * File:   EP_IDFObject.cpp
- * Author: jake
- *
- * Created on September 18, 2013, 11:07 AM
- */
+// Copyright AI Environnement 2017
+
 #include <ostream>
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string/replace.hpp>

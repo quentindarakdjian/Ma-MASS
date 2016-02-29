@@ -8,9 +8,7 @@
 #ifndef MODEL_BLINDUSAGE_H
 #define	MODEL_BLINDUSAGE_H
 
-#include "Model_RandomWeibull.h"
-
-class Model_ExternalShading : public Model_RandomWeibull {
+class Model_ExternalShading {
 public:
     Model_ExternalShading();
     //void calculate(double state, double Lumint, double Evg, bool currentlyOccupied, bool previouslyOccupied);

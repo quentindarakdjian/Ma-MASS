@@ -1,9 +1,5 @@
-/*
- * File:   EP_ReadIDF.cpp
- * Author: jake
- *
- * Created on September 18, 2013, 10:31 AM
- */
+// Copyright AI Environnement 2017
+
 #include <iostream>
 #include <fstream>
 #include <sstream>

@@ -27,6 +27,13 @@ struct agentStruct {
     std::string office;
     double power;
     int age;
+    std::string edtry;
+    std::string computer;
+    std::string civstat;
+    std::string unemp;
+    std::string retired;
+    std::string sex;
+    std::string famstat;
     int windowId;
     int shadeId;
     std::map<int, std::string> profile;
@@ -114,7 +121,6 @@ struct buildingStruct {
 };
 
 struct simulationStruct {
-    bool simulateAgents;
     bool windows;
     bool lights;
     bool heatingSetpoint;
@@ -125,9 +131,11 @@ struct simulationStruct {
     int timeSteps;
     int startDay;
     int startMonth;
+    int startDayOfWeek;
     int endDay;
     int endMonth;
     int timePeriod;
+
 };
 
 class SimulationConfig {
@@ -148,6 +156,7 @@ public:
     static double lengthOfTimestep();
     static void step();
     static int getStepCount();
+    static std::string ActivityFile;
 
 private:
     static int stepCount;

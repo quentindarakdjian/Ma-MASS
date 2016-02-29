@@ -80,7 +80,7 @@ private:
 
     double currentRadientGains;
     std::vector<double> activities;
-    std::vector<int> presence;
+    //std::vector<int> presence;
     std::vector<int> presenceForFutureSteps;
     std::vector<int> currentDurationOfPresenceState;
 
@@ -90,6 +90,7 @@ private:
     std::string bedroom; /** Which bedroom the occupant sleeps in */
     std::string office; /** WhichoOffice the occupant works in */
     std::string activity; /** The activities performed in the location */
+    Model_Presence presence;
     State state; /** Occupants current state */
     State previousState; /** Occupants previous state */
 

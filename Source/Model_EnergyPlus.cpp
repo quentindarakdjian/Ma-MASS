@@ -1,9 +1,5 @@
-/*
- * File:   Comp_EnergyPlus.cpp
- * Author: jake
- *
- * Created on September 13, 2013, 11:51 AM
- */
+// Copyright AI Environnement 2017
+
 #include <iostream>
 #include "SimulationConfig.h"
 #include "EP_ReadIDF.h"

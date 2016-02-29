@@ -1,9 +1,5 @@
-/*
- * File:   Utility.cpp
- * Author: jake
- *
- * Created on September 13, 2013, 12:26 PM
- */
+// Copyright AI Environnement 2017
+
 
 #include <ctime>
 #include <list>
@@ -34,8 +30,8 @@ double Utility::randomDouble(double min, double max){
     return d;
 }
 
-bool Utility::tossACoin(){
-    return randomDouble(0.0,1.0) < 0.5;
+double Utility::randomDouble() {
+    return randomDouble(0.0,1.0);
 }
 
 bool Utility::randomBool(double chance){
@@ -66,3 +62,21 @@ double Utility::randomDoubleNormal(double mean, double sd){
     return dist(Utility::generator);
 }
 
+double Utility::randomWeibull(double scale, double shape) {
+    // Draws a random number from a Weibull distribution,
+    // proceeding by inversion of the Weibull cdf, defined as
+    // F(x) = 1 - exp(-(x/scale)^shape)
+    //double x = randomUniform(0.f,1.f);
+    //double y = scale*pow(-log(1.f-random),1.f/shape);
+
+    double random = randomDouble();
+    return scale * pow(-log(1.f-random), 1.f / shape);
+}
+
+double Utility::probability(double m){
+    double result = 0;
+    if(m < log(FLT_MAX)){
+        result = std::exp (m);
+    }
+    return result / (1.f + result);
+}

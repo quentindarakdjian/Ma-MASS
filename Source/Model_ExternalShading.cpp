@@ -1,9 +1,6 @@
-/*
- * File:   Model_BlindUsage.cpp
- * Author: jake
- *
- * Created on September 28, 2013, 1:27 PM
- */
+// Copyright AI Environnement 2017
+
+
 #include <cmath>
 #include <algorithm>
 #include "Utility.h"
@@ -110,18 +107,18 @@ double Model_ExternalShading::arrival(double state, double Lumint, double Evg) {
     double probraise = 0.f;
     if (state != 1.f) {
         double m_raise = a10arr + b10inarr * Lumint + b10sarr * (state);
-        probraise = probability(m_raise);
+        probraise = Utility::probability(m_raise);
     }
     double problower = 0.f;
     if (state != 0.f) {
         double m_lower = a01arr + b01inarr * Lumint + b01sarr * (state);
-        problower = probability(m_lower);
+        problower = Utility::probability(m_lower);
     }
     if (problower >= probraise) {
-        if (randomDouble() < problower) {
+        if (Utility::randomDouble() < problower) {
             currentShadingState = arrivalLowering(state, Lumint, Evg);
         }
-        else if (randomDouble() < probraise) {
+        else if (Utility::randomDouble() < probraise) {
             currentShadingState = arrivalRaising(state, Lumint, Evg);
         }
         else {
@@ -129,10 +126,10 @@ double Model_ExternalShading::arrival(double state, double Lumint, double Evg) {
         }
     }
     else {
-        if (randomDouble() < probraise) {
+        if (Utility::randomDouble() < probraise) {
             currentShadingState = arrivalRaising(state, Lumint, Evg);
         }
-        else if (randomDouble() < problower) {
+        else if (Utility::randomDouble() < problower) {
             currentShadingState = arrivalLowering(state, Lumint, Evg);
         }
         else {
@@ -154,18 +151,18 @@ double Model_ExternalShading::departure(double state, double Lumint, double Evg)
 
     if (state != 1.f) {
         double m_probraise = a10int + b10inint * Lumint + b10sint * (state);
-        probraise = probability(m_probraise);
+        probraise = Utility::probability(m_probraise);
     }
     if (state != 0.f) {
         double m_problower = a01int + b01inint * Lumint + b01sint * (state);
-        problower = probability(m_problower);
+        problower = Utility::probability(m_problower);
     }
 
     if (problower >= probraise) {
-        if (randomDouble() < problower) {
+        if (Utility::randomDouble() < problower) {
             currentShadingState = departureLowering(state, Lumint, Evg);
         }
-        else if (randomDouble() < probraise) {
+        else if (Utility::randomDouble() < probraise) {
             currentShadingState = departureRaising(state, Lumint, Evg);
         }
         else {
@@ -173,10 +170,10 @@ double Model_ExternalShading::departure(double state, double Lumint, double Evg)
         }
     }
     else {
-        if (randomDouble() < probraise) {
+        if (Utility::randomDouble() < probraise) {
             currentShadingState = departureRaising(state, Lumint, Evg);
         }
-        else if (randomDouble() < problower) {
+        else if (Utility::randomDouble() < problower) {
             currentShadingState = departureLowering(state, Lumint, Evg);
         }
         else {
@@ -189,13 +186,13 @@ double Model_ExternalShading::departure(double state, double Lumint, double Evg)
 double Model_ExternalShading::arrivalRaising(double state, double Lumint, double Evg) {
     double currentShadingState;
     double m_totraise = afullraise + boutfullraise * Evg + bsfullraise * (state);
-    float ptotraise = probability(m_totraise);
-    double r = randomDouble();
+    float ptotraise = Utility::probability(m_totraise);
+    double r = Utility::randomDouble();
     if (r < ptotraise) {
         currentShadingState = 1.f;
     }
     else {
-        currentShadingState = 0.01f * round(100.f * randomDouble((state), 1.f));
+        currentShadingState = 0.01f * round(100.f * Utility::randomDouble((state), 1.f));
     }
     return currentShadingState;
 }
@@ -203,12 +200,12 @@ double Model_ExternalShading::arrivalRaising(double state, double Lumint, double
 double Model_ExternalShading::arrivalLowering(double state, double Lumint, double Evg) {
     double currentShadingState;
     double m_totlow = afulllower + boutfulllower * Evg + bsfulllower * (state);
-    float ptotlow = probability(m_totlow);
-    if (randomDouble() < ptotlow) {
+    float ptotlow = Utility::probability(m_totlow);
+    if (Utility::randomDouble() < ptotlow) {
         currentShadingState = 0.f;
     }
     else {
-        float Reduction = randomWeibull(exp(aSFlower + bSFlower * (state)), shapelower);
+        float Reduction = Utility::randomWeibull(exp(aSFlower + bSFlower * (state)), shapelower);
         currentShadingState = (0.01f * round(100.f * std::max((state) - Reduction, 0.01)));
     }
     return currentShadingState;
@@ -217,12 +214,12 @@ double Model_ExternalShading::arrivalLowering(double state, double Lumint, doubl
 double Model_ExternalShading::departureLowering(double state, double Lumint, double Evg) {
     double currentShadingState;
     double m_ptotlow = afulllower + boutfulllower * Evg + bsfulllower * (state);
-    float ptotlow = probability(m_ptotlow);
-    if (randomDouble() < ptotlow) {
+    float ptotlow = Utility::probability(m_ptotlow);
+    if (Utility::randomDouble() < ptotlow) {
         currentShadingState = (0.f);
     }
     else {
-        float Reduction = randomWeibull(exp(aSFlower + bSFlower * (state)), shapelower);
+        float Reduction = Utility::randomWeibull(exp(aSFlower + bSFlower * (state)), shapelower);
         currentShadingState = (0.01f * round(100.f * std::max((state) - Reduction, 0.01)));
     }
     return currentShadingState;
@@ -231,13 +228,13 @@ double Model_ExternalShading::departureLowering(double state, double Lumint, dou
 double Model_ExternalShading::departureRaising(double state, double Lumint, double Evg) {
     double currentShadingState;
     double m_totraise = afullraise + boutfullraise * Evg + bsfullraise * (state);
-    float ptotraise = probability(m_totraise);
+    float ptotraise = Utility::probability(m_totraise);
 
-    if (randomDouble(0.f, 1.f) < ptotraise) {
+    if (Utility::randomDouble(0.f, 1.f) < ptotraise) {
         currentShadingState = (1.f);
     }
     else {
-        currentShadingState = (0.01f * round(100.f * randomDouble((state), 1.f)));
+        currentShadingState = (0.01f * round(100.f * Utility::randomDouble((state), 1.f)));
     }
     return currentShadingState;
 }

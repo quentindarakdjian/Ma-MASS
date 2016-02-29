@@ -1,9 +1,4 @@
-/*
- * File:   Agent.cpp
- * Author: jake
- *
- * Created on September 15, 2013, 4:37 PM
- */
+// Copyright AI Environnement 2017
 
 #include <string>
 #include <vector>
@@ -126,18 +121,18 @@ void Agent::interactWithZone(const Zone &zone){
 }
 
 void Agent::model_activity(){
-    activities = Model_Activity::getAgentActivities(id);
+    Model_Activity ma;
+    activities = ma.preProcessActivities(id);
 }
 
 void Agent::model_presenceFromActivities(){
     model_activity();
-    presence = Model_Presence::calculatePresenceFromActivities(activities);
-    model_pastAndFutureDurations();
+    presence.calculatePresenceFromActivities(activities);
 }
 
 void Agent::model_presenceFromPage(){
-    presence = Model_Presence::calculatePresenceFromPage(id);
-    for (unsigned int i = 0; i < presence.size(); ++i){
+    presence.calculatePresenceFromPage(id);
+    for (unsigned int i = 0; i < presence.size(); ++i){  //size_t est un type spécifique. Un "int" particulier lié à size()
         if (presence.at(i)){
             activities.push_back(3);
         }
@@ -145,7 +140,6 @@ void Agent::model_presenceFromPage(){
             activities.push_back(9);
         }
     }
-    model_pastAndFutureDurations();
 }
 
 void Agent::model_pastAndFutureDurations(){

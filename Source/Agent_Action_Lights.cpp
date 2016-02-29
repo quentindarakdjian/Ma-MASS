@@ -1,3 +1,5 @@
+// Copyright AI Environnement 2017
+
 #include "Model_Lights.h"
 #include "Agent_Action_Lights.h"
 #include "SimulationConfig.h"

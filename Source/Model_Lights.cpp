@@ -1,9 +1,5 @@
-/*
- * File:   Model_lights.cpp
- * Author: jake
- *
- * Created on 26 October 2013, 23:13
- */
+// Copyright AI Environnement 2017
+
 #include <algorithm>
 #include "Utility.h"
 #include "Model_Lights.h"

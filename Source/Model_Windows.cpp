@@ -1,14 +1,11 @@
-/*
- * File:   Comp_WindowsOpening.cpp
- * Author: jake
- *
- * Created on September 18, 2013, 10:19 AM
- */
+// Copyright AI Environnement 2017
+
 #include <cmath>
 #include <deque>
 #include <iostream>
 #include "SimulationConfig.h"
 #include "Model_Windows.h"
+#include "Utility.h"
 
 Model_Windows::Model_Windows() {
     durationOpen = 0;
@@ -94,8 +91,7 @@ double Model_Windows::getDurationOpen() const{
 }
 
 double Model_Windows::calculateDurationOpen(double outdoorTemperature){
-
-    return randomWeibull(exp(aop + bopout * outdoorTemperature), shapeop);
+    return Utility::randomWeibull(exp(aop + bopout * outdoorTemperature), shapeop);
 }
 
 void Model_Windows::arrival(double indoorTemperature, double outdoorTemperature, double previousDuration, bool rain, double timeStepLengthInMinutes) {
@@ -106,7 +102,7 @@ void Model_Windows::arrival(double indoorTemperature, double outdoorTemperature,
     if (!state) {
         float m = a01arr + b01inarr * indoorTemperature + b01outarr * outdoorTemperature + b01rnarr * Rain + b01absprevarr * ((previousDuration > 8.f * 60.f * 60.f) ? 1.f : 0.f);
         float prob01arr = exp(m) / (1.f + exp(m));
-        double drand = randomDouble();
+        double drand = Utility::randomDouble();
         if (drand < prob01arr) {
             durationOpen = calculateDurationOpen(outdoorTemperature);
             state = 1;
@@ -135,7 +131,7 @@ void Model_Windows::intermediate(double indoorTemperature, double outdoorTempera
     if (!state) {
         double m = a01int + b01inint * indoorTemperature + b01outint * outdoorTemperature + b01presint * currentDuration + b01rnint * Rain;
         float prob01int = exp(m) / (1.f + exp(m));
-        double drand = randomDouble();
+        double drand = Utility::randomDouble();
         if (drand < prob01int) {
             durationOpen = calculateDurationOpen(outdoorTemperature);
             state = 1;
@@ -158,7 +154,7 @@ void Model_Windows::intermediate(double indoorTemperature, double outdoorTempera
 void Model_Windows::departure(double indoorTemperature, double dailyMeanTemperature, double futureDuration, double groundFloor ) {
 
     // double durationOpen;
-    double drand = randomDouble();
+    double drand = Utility::randomDouble();
 
 
     double durationLongerThanEightHours = 0.0;

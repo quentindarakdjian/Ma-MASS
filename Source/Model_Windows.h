@@ -7,9 +7,8 @@
 
 #ifndef COMP_WINDOWSOPENING_H
 #define COMP_WINDOWSOPENING_H
-#include "Model_RandomWeibull.h"
 
-class Model_Windows : Model_RandomWeibull{
+class Model_Windows {
 public:
     Model_Windows();
 

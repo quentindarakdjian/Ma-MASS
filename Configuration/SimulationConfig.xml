@@ -1,30 +1,21 @@
 <simulation>
     <projectName>testGUI</projectName>
-    <seed>92</seed>
+    <seed>660</seed>
     <simulateBuilding>1</simulateBuilding>    
     <GUI>0</GUI>
-    <simulateAgents>1</simulateAgents>
-    <numberOfAgents>2</numberOfAgents>
     <presencePage>0</presencePage>
+    <social>1</social> 
   
     <building>
 		<globalBuilding>
-			<localisation>Urban</localisation> 
-			<roomThermostat>1</roomThermostat>  
-			<thermostatSetting>20</thermostatSetting> 
+			<localisation>Unknown</localisation> 
+			<roomThermostat>0</roomThermostat>  
 			<thermostaticRadiatorValve>0</thermostaticRadiatorValve> 
-			<centralHeatingHourReported>20</centralHeatingHourReported> 
-			<regularHeatingPattern>1</regularHeatingPattern> 
-			<automaticTimer>0</automaticTimer> 
 			<houseHoldIncome>100</houseHoldIncome> 
-			<tenureType>CouncilTenant</tenureType> 
-			<typology>Semi-Detached</typology> 
-			<gasCentralHeating>0</gasCentralHeating> 
-			<nonCentralHeating>1</nonCentralHeating> 
-			<electricityIsMainFuel>1</electricityIsMainFuel> 
-			<additionalGasHeatingInLivingRoom>0</additionalGasHeatingInLivingRoom> 
-			<additionalElectricityHeatingInLivingRoom>0</additionalElectricityHeatingInLivingRoom> 
-			<additionalOtherHeatingInLivingRoom>0</additionalOtherHeatingInLivingRoom> 
+			<tenureType>Unknown</tenureType> 
+			<typology>Unknown</typology> 
+			<mainFuel>Gas</mainFuel>		
+			<additionalFuel>None</additionalFuel>			
 			<yearOfConstruction>2015</yearOfConstruction> 
 			<roofInsulationThickness>100</roofInsulationThickness> 
 			<extendOfDoubleGlazing>AllWindows</extendOfDoubleGlazing> 
@@ -54,13 +45,12 @@
     </building>
     
 	<agents>
-		<agent>
+		 <agent>
             <bedroom>142</bedroom>
-			<age>30</age> 
-			<income>15000</income> 
-			<power>0.4</power>
+			<age>2</age> 
+			<power>0.8</power>
 			<shade>1</shade>
-			<window>1</window>
+			<window>2</window>
             <profile>
                 <p0>0.919825741,0.013844725,0.011501807,0.001339251,0.002836063,0.000551457,0.00416508,0.002205826,0.001921411,0.041808638</p0>
                 <p1>0.939100335,0.006994969,0.009801527,0.00138011,0.000649464,0.000378854,0.001493399,0.000852422,0.005975069,0.033373851</p1>
@@ -91,10 +81,9 @@
         <agent>
             <bedroom>142</bedroom>
 			<age>45</age> 
-			<income>1</income> 
 			<power>0.2</power>
 			<shade>1</shade>
-			<window>3</window>
+			<window>2</window>
             <profile>
                 <p0>0.919825741,0.013844725,0.011501807,0.001339251,0.002836063,0.000551457,0.00416508,0.002205826,0.001921411,0.041808638</p0>
                 <p1>0.939100335,0.006994969,0.009801527,0.00138011,0.000649464,0.000378854,0.001493399,0.000852422,0.005975069,0.033373851</p1>

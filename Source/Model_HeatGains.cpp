@@ -1,9 +1,4 @@
-/*
- * File:   HeatGain.cpp
- * Author: jake
- *
- * Created on September 15, 2013, 5:03 PM
- */
+// Copyright AI Environnement 2017
 
 #include <cmath>
 #include "Model_HeatGains.h"

@@ -1,9 +1,4 @@
-/*
- * File:   Simulation.cpp
- * Author: jake
- *
- * Created on September 13, 2013, 10:12 AM
- */
+// Copyright AI Environnement 2017
 
 #include <iostream>
 #include <string>

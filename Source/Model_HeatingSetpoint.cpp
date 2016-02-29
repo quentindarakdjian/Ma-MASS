@@ -1,3 +1,5 @@
+// Copyright AI Environnement 2017
+
 #include <algorithm>
 #include "DataStore.h"
 #include "Utility.h"
@@ -125,7 +127,7 @@ double Model_HeatingSetpoint::coeffTenureType(std::string tenureType){
             tenureType = "PrivatelyRented";
         }
         else{
-            if (Utility::tossACoin()){
+            if (Utility::randomBool(0.5)){
                 tenureType = "CouncilTenant";
             }
             else {
@@ -151,7 +153,7 @@ double Model_HeatingSetpoint::coeffTypology(std::string typology){
     double coeffTypology = 0;
     // Unknown, DetachedHouse, Semi-Detached , TerracedHouse, NotAHouse
     if (typology == "Unknown"){
-        if (Utility::tossACoin()){
+        if (Utility::randomBool(0.5)){
             typology = "DetachedHouse";
         }
         else {

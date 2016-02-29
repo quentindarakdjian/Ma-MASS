@@ -1,9 +1,6 @@
-/*
- * File:   Comp_Agent.cpp
- * Author: jake
- *
- * Created on September 15, 2013, 4:21 PM
- */
+// Copyright AI Environnement 2017
+
+
 #include <string>
 #include <vector>
 #include <list>
@@ -176,7 +173,7 @@ void Model_Agents::setAgentWindowDecisionForZone(Zone *zone){
         }
         else
         {
-            zone->setWindowState(Utility::tossACoin());
+            zone->setWindowState(Utility::randomBool(0.5));
         }
     }
 }
@@ -226,17 +223,17 @@ void Model_Agents::setAgentBlindDecisionForZone(Zone *zone){
         state = totalDecrease;
     }
     else if (samePower == increasePower && samePower > decreasePower){
-        if (Utility::tossACoin()){
+        if (Utility::randomBool(0.5)){
             state = totalIncrease;
         }
     }
     else if (samePower > increasePower && samePower == decreasePower){
-        if (Utility::tossACoin()){
+        if (Utility::randomBool(0.5)){
             state = totalDecrease;
         }
     }
     else if (samePower < increasePower && samePower < decreasePower && increasePower == decreasePower){
-        if (Utility::tossACoin()){
+        if (Utility::randomBool(0.5)){
             state = totalIncrease;
         }
         else{
@@ -285,7 +282,7 @@ void Model_Agents::setAgentLightDecisionForZone(Zone *zone){
             zone->setLightState(true);
         }
         else{
-            zone->setLightState(Utility::tossACoin());
+            zone->setLightState(Utility::randomBool(0.5));
         }
     }
 }

@@ -1,9 +1,4 @@
-/*
- * File:   Zone.cpp
- * Author: jake
- *
- * Created on September 24, 2013, 10:11 AM
- */
+// Copyright AI Environnement 2017
 
 #include <fstream>
 #include <iostream>

@@ -1,3 +1,5 @@
+// Copyright AI Environnement 2017
+
 #include <iostream>
 #include "SimulationConfig.h"
 #include "DataStore.h"

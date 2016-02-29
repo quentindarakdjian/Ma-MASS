@@ -1,3 +1,5 @@
+// Copyright AI Environnement 2017
+
 #include <iostream>
 #include "Model_HeatingSetpoint.h"
 #include "Agent_Action_Heating_Setpoint.h"

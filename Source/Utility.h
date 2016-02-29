@@ -18,6 +18,7 @@
 #include <boost/random/normal_distribution.hpp>
 
 #include <list>
+#include<cfloat>
 
 // typedef permet de créer des alias sur des noms de types pour éviter de devoir en taper l'intitulé à rallonge.
 typedef boost::minstd_rand base_generator_type;
@@ -28,16 +29,18 @@ class Utility
 {
 public:
     static double randomDouble(double min, double max);
+    static double randomDouble();
     static int randomInt(int min, int max);
-    static bool tossACoin();
     static bool randomBool(double chance);
     static void setSeed(int seed);
     static std::list<int> randomIntList(int number, int min, int max);
     static double randomDoubleNormal(double mean, double sd);
+    static double randomWeibull(double scale, double shape);
+    static double probability(double m);
 
 private:
     Utility();
-    static boost::random::mt19937 gen;
+    //static boost::random::mt19937 gen;
     static base_generator_type generator;
 
 };

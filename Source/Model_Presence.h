@@ -13,14 +13,19 @@
 
 class Model_Presence {
 public:
-
-    static std::vector<int> calculatePresenceFromActivities(const std::vector<double> activities) ;
-    static std::vector<int> calculatePresenceFromPage(const int agentID);
-private:
     Model_Presence();
+    void calculatePresenceFromActivities(const std::vector<double> activities);
+    void calculatePresenceFromPage(const int agentID);
+    unsigned int size() const;
+    bool at(const int i) const;
+    int presentForFutureSteps() const;
 
-    static double getT11(double pcurr, double pnext, double shuff) ;
-    static double getT01(double pcurr, double pnext, double shuff) ;
+private:
+    //std::vector<int> presenceForFutureSteps;
+    //std::vector<int> currentDurationOfPresenceState;
+    std::vector<int> presenceState;
+    double getT11(double pcurr, double pnext, double shuff);
+    double getT01(double pcurr, double pnext, double shuff);
 
     static int calculateNumberOfDays(int startDay, int startMonth, int endDay, int endMonth) ;
 

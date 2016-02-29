@@ -1,10 +1,4 @@
-/*
- * File:   SimulationSetup.cpp
- * Author: jake
- *
- * Created on September 13, 2013, 10:17 AM
- */
-
+// Copyright AI Environnement 2017
 
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp>
@@ -22,15 +16,18 @@ std::vector<stateStruct> SimulationConfig::states;
 buildingStruct SimulationConfig::building;
 simulationStruct SimulationConfig::info;
 int SimulationConfig::stepCount = -1;
+std::string SimulationConfig::ActivityFile;
+
+namespace bpt = boost::property_tree;
 
 SimulationConfig::SimulationConfig(){
 }
 
-void SimulationConfig::parseBuilding(boost::property_tree::ptree::value_type & v){
-    for(boost::property_tree::ptree::value_type & child: v.second){
+void SimulationConfig::parseBuilding(bpt::ptree::value_type & v){
+    for(bpt::ptree::value_type & child: v.second){
         if (child.first == "globalBuilding"){
             std::pair<std::string, buildingStruct> building;
-            for(boost::property_tree::ptree::value_type & childschild: child.second){
+            for(bpt::ptree::value_type & childschild: child.second){
                 if (childschild.first == "localisation"){
                     SimulationConfig::building.localisation = childschild.second.data();
                 }
@@ -70,10 +67,10 @@ void SimulationConfig::parseBuilding(boost::property_tree::ptree::value_type & v
             }
         }
     }
-    for(boost::property_tree::ptree::value_type & child: v.second){
+    for(bpt::ptree::value_type & child: v.second){
         if (child.first == "zone"){
             std::pair<std::string, zoneStruct> zone;
-            for(boost::property_tree::ptree::value_type & childschild: child.second){
+            for(bpt::ptree::value_type & childschild: child.second){
                 if (childschild.first == "name"){
                     //std::cout << "name: " << childschild.second.data() << std::endl;
                     zone.first = childschild.second.data();
@@ -99,15 +96,19 @@ void SimulationConfig::parseBuilding(boost::property_tree::ptree::value_type & v
     }
 }
 
-void SimulationConfig::parseAgents(boost::property_tree::ptree::value_type & v){
-    for(boost::property_tree::ptree::value_type & child: v.second){
+void SimulationConfig::parseAgents(bpt::ptree::value_type & v){
+    SimulationConfig::ActivityFile = "";
+    for(bpt::ptree::value_type & child: v.second){
         if (child.first == "agent"){
             agentStruct agent;
-            for(boost::property_tree::ptree::value_type & childschild: child.second){
-                if (childschild.first == "profile"){
-                    for(boost::property_tree::ptree::value_type & childschildchild: childschild.second){
-                        std::string text = childschildchild.first;
-                        if(SimulationConfig::info.presencePage){
+            for(bpt::ptree::value_type & schild: child.second){
+                if (schild.first == "profile"){
+                    for(bpt::ptree::value_type & sschild: schild.second){
+                        std::string text = sschild.first;
+                        if (text == "file"){
+                            SimulationConfig::ActivityFile = sschild.second.get_value<std::string> ();
+                        }
+                        else {
                             std::pair<int, std::string> a;
                             if(text == "monday"){
                                 a.first = 0;
@@ -123,36 +124,53 @@ void SimulationConfig::parseAgents(boost::property_tree::ptree::value_type & v){
                                 a.first = 5;
                             }else  if(text == "sunday"){
                                 a.first = 6;
+                            }else{
+                                text.erase(0,1);
+                                a.first = boost::lexical_cast<int>(text);
                             }
-                            a.second = childschildchild.second.get_value<std::string>();
-                            agent.profile.insert(a);
-                        }
-                        else{
-                            text.erase(0,1);
-                            std::pair<int, std::string> a;
-                            a.first = boost::lexical_cast<int>(text);
-                            a.second = childschildchild.second.get_value<std::string>();
+                            a.second = sschild.second.get_value<std::string>();
                             agent.profile.insert(a);
                         }
                     }
                 }
-                else if(childschild.first == "bedroom"){
-                    agent.bedroom = childschild.second.data();
+                else if(schild.first == "bedroom"){
+                    agent.bedroom = schild.second.data();
                 }
-                else if(childschild.first == "office"){
-                    agent.office = childschild.second.data();
+                else if(schild.first == "office"){
+                    agent.office = schild.second.data();
                 }
-                else if(childschild.first == "power"){
-                    agent.power = childschild.second.get_value<double>();
+                else if(schild.first == "power"){
+                    agent.power = schild.second.get_value<double>();
                 }
-                else if(childschild.first == "age"){
-                    agent.age = childschild.second.get_value<int>();
+                else if(schild.first == "age"){
+                    agent.age = schild.second.get_value<int>();
                 }
-                else if(childschild.first == "window"){
-                    agent.windowId = childschild.second.get_value<int>();
+                else if (schild.first == "edtry") {
+                    agent.edtry = schild.second.data();
                 }
-                else if(childschild.first == "shade"){
-                    agent.shadeId = childschild.second.get_value<int>();
+                else if (schild.first == "computer") {
+                    agent.computer = schild.second.data();
+                }
+                else if (schild.first == "civstat") {
+                    agent.civstat = schild.second.data();
+                }
+                else if (schild.first == "unemp") {
+                    agent.unemp = schild.second.data();
+                }
+                else if (schild.first == "retired") {
+                    agent.retired = schild.second.data();
+                }
+                else if (schild.first == "sex") {
+                    agent.sex = schild.second.data();
+                }
+                else if (schild.first == "famstat") {
+                    agent.famstat = schild.second.data();
+                }
+                else if(schild.first == "window"){
+                    agent.windowId = schild.second.get_value<int>();
+                }
+                else if(schild.first == "shade"){
+                    agent.shadeId = schild.second.get_value<int>();
                 }
             }
             agents.push_back(agent);
@@ -160,12 +178,11 @@ void SimulationConfig::parseAgents(boost::property_tree::ptree::value_type & v){
     }
 }
 
-
-void SimulationConfig::parseStates(boost::property_tree::ptree::value_type & v){
-    for(boost::property_tree::ptree::value_type & child: v.second){
+void SimulationConfig::parseStates(bpt::ptree::value_type & v){
+    for(bpt::ptree::value_type & child: v.second){
         if (child.first == "state"){
             stateStruct state;
-            for(boost::property_tree::ptree::value_type & childschild: child.second){
+            for(bpt::ptree::value_type & childschild: child.second){
                 if (childschild.first == "name"){
                     state.name = childschild.second.data();
                 }
@@ -184,8 +201,8 @@ void SimulationConfig::parseStates(boost::property_tree::ptree::value_type & v){
     }
 }
 
-void SimulationConfig::parseModels(boost::property_tree::ptree::value_type & v){
-    for(boost::property_tree::ptree::value_type & child: v.second){
+void SimulationConfig::parseModels(bpt::ptree::value_type & v){
+    for(bpt::ptree::value_type & child: v.second){
         if (child.first == "windows"){
             parseWindows(child);
         }
@@ -201,14 +218,14 @@ void SimulationConfig::parseModels(boost::property_tree::ptree::value_type & v){
     }
 }
 
-void SimulationConfig::parseWindows(boost::property_tree::ptree::value_type & v){
-    for(boost::property_tree::ptree::value_type & child: v.second){
+void SimulationConfig::parseWindows(bpt::ptree::value_type & v){
+    for(bpt::ptree::value_type & child: v.second){
         if (child.first == "enabled"){
             SimulationConfig::info.windows = child.second.get_value<bool>();
         }
         else if (child.first == "window"){
             std::pair<int, windowStruct> ws;
-            for(boost::property_tree::ptree::value_type & childschild: child.second){
+            for(bpt::ptree::value_type & childschild: child.second){
                 if (childschild.first == "id"){
                     ws.first = childschild.second.get_value<int>();
                 }
@@ -284,15 +301,15 @@ void SimulationConfig::parseWindows(boost::property_tree::ptree::value_type & v)
     }
 }
 
-void SimulationConfig::parseShades(boost::property_tree::ptree::value_type & v){
-    for(boost::property_tree::ptree::value_type & child: v.second){
+void SimulationConfig::parseShades(bpt::ptree::value_type & v){
+    for(bpt::ptree::value_type & child: v.second){
         if (child.first == "enabled"){
             SimulationConfig::info.shading = child.second.get_value<bool>();
         }
         else if (child.first == "shade"){
             std::pair<int, shadeStruct> ws;
 
-            for(boost::property_tree::ptree::value_type & childschild: child.second){
+            for(bpt::ptree::value_type & childschild: child.second){
                 if (childschild.first == "id"){
                     ws.first = childschild.second.get_value<int>();
                 }
@@ -374,11 +391,11 @@ void SimulationConfig::parseShades(boost::property_tree::ptree::value_type & v){
 void SimulationConfig::parseConfiguration(std::string filename){
 
     // Create an empty property tree object
-    boost::property_tree::ptree pt;
+    bpt::ptree pt;
     // Load the XML file into the property tree. If reading fails
     // (cannot open file, parse error), an exception is thrown.
 
-    boost::property_tree::read_xml(filename, pt);
+    bpt::read_xml(filename, pt);
     // Iterate over the debug.modules section and store all found
     // modules in the m_modules set. The get_child() function
     // returns a reference to the child at the specified path; if
@@ -390,12 +407,9 @@ void SimulationConfig::parseConfiguration(std::string filename){
     info.lights = false;
     info.heatingSetpoint = false;
 
-    for(boost::property_tree::ptree::value_type & v: pt.get_child("simulation")){
+    for(bpt::ptree::value_type & v: pt.get_child("simulation")){
         if (v.first == "seed"){
             Utility::setSeed(v.second.get_value<int>());
-        }
-        else if (v.first == "simulateAgents"){
-            SimulationConfig::info.simulateAgents = v.second.get_value<bool>();
         }
         else if (v.first == "agents"){
             parseAgents(v);
