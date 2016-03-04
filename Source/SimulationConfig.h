@@ -156,6 +156,7 @@ public:
     static double lengthOfTimestep();
     static void step();
     static int getStepCount();
+    static std::string FmuLocation;
     static std::string ActivityFile;
 
 private:

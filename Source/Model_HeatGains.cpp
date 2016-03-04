@@ -1,4 +1,3 @@
-// Copyright AI Environnement 2017
 
 #include <cmath>
 #include "Model_HeatGains.h"

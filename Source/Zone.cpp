@@ -1,4 +1,3 @@
-// Copyright AI Environnement 2017
 
 #include <fstream>
 #include <iostream>
@@ -59,25 +58,6 @@ std::string Zone::getName() const {
     return name;
 }
 
-void Zone::setCurrentAgentGains(double currentAgentGains) {
-    this->currentAgentGains = currentAgentGains;
-}
-
-double Zone::getCurrentAgentGains() const {
-    return currentAgentGains;
-}
-
-double Zone::getWindowState() const {
-    return windowState;
-}
-
-double Zone::getBlindState() const {
-    return blindState;
-}
-
-void Zone::setOccupantFraction(double occupantFraction) {
-    this->occupantFraction = occupantFraction;
-}
 
 double Zone::getMeanAirTemperature() const {
     return DataStore::getValue(name + "ZoneMeanAirTemperature");
@@ -97,6 +77,19 @@ double Zone::getDaylightingReferencePoint1Illuminance() const {
 
 double Zone::getAirSystemSensibleHeatingRate() const {
     return DataStore::getValue(name + "ZoneAirSystemSensibleHeatingRate");
+}
+
+
+void Zone::setCurrentAgentGains(double currentAgentGains) {
+    this->currentAgentGains = currentAgentGains;
+}
+
+double Zone::getCurrentAgentGains() const {
+    return currentAgentGains;
+}
+
+void Zone::setOccupantFraction(double occupantFraction) {
+    this->occupantFraction = occupantFraction;
 }
 
 float Zone::getOccupantFraction() const {
@@ -119,27 +112,36 @@ double Zone::getGroundFloor() const {
     return groundFloor;
 }
 
+
+void Zone::setWindowState(bool windowState){
+    this->windowState = windowState;
+}
+
 void Zone::setLightState(bool lightState) {
     this->lightState = lightState;
 }
 
-double Zone::getLightState() const {
-    return lightState;
+void Zone::setBlindState(double blindState){
+    this->blindState = blindState;
 }
 
 void Zone::setHeatingSetpointState(double heatingSetpointState) {
     this->heatingSetpointState = heatingSetpointState;
 }
 
+double Zone::getWindowState() const {
+    return windowState;
+}
+
+double Zone::getLightState() const {
+    return lightState;
+}
+
+double Zone::getBlindState() const {
+    return blindState;
+}
+
 double Zone::getHeatingSetpointState() const {
     return heatingSetpointState;
-}
-
-void Zone::setWindowState(bool windowState){
-    this->windowState = windowState;
-}
-
-void Zone::setBlindState(double blindState){
-    this->blindState = blindState;
 }
 

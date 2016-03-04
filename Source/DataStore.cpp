@@ -1,4 +1,3 @@
-// Copyright AI Environnement 2017
 
 #include <vector>
 #include <iostream>
@@ -33,7 +32,7 @@ double DataStore::getValue(std::string name) {
 }
 
 void DataStore::print(){
-/*    std::ofstream myfile;
+    std::ofstream myfile;
     myfile.open ("agent.csv");
     myfile << "stepCount,";
     for (std::unordered_map<std::string, std::vector<double> >::iterator it=variableMap.begin(); it!=variableMap.end(); ++it){
@@ -51,5 +50,4 @@ void DataStore::print(){
         myfile << std::endl;
     }
     myfile.close();
-    */
 }

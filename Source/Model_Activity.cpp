@@ -1,4 +1,3 @@
-// Copyright AI Environnement 2017
 
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/lexical_cast.hpp>
@@ -6,6 +5,9 @@
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp>
 
+#include <map>
+#include <limits>
+#include <utility>
 #include <vector>
 #include <cctype>
 #include <iostream>     // cout, endl
@@ -13,6 +15,7 @@
 #include <string>
 #include <algorithm>    // copy
 #include <iterator>     // ostream_operator
+#include <cassert>
 
 #include "Model_Activity.h"
 #include "SimulationConfig.h"
@@ -125,9 +128,7 @@ std::vector<double> Model_Activity::multinominal(const int agentID) const{
     int hour = hourCount;
     int month = SimulationConfig::info.startMonth -1;
     int day = SimulationConfig::info.startDay -1;
-    //int dayOfWeek = SimulationConfig::info.startDayOfWeek-1;
-    int dayOfWeek = 0;
-
+    int dayOfWeek = SimulationConfig::info.startDayOfWeek-1;
     int season = getSeasonInt(month);
 
     for (int i = 0; i <= SimulationConfig::info.timeSteps; i++) {
@@ -161,7 +162,7 @@ std::vector<double> Model_Activity::multinominal(const int agentID) const{
 void Model_Activity::multinominalP(double p[4][7][24][10], const int agentID) const {
 
     int ageInt = SimulationConfig::agents.at(agentID).age;
-    std::string age = std::to_string(ageInt);
+    std::string age = "age2";//std::to_string(ageInt);
     std::string computer = SimulationConfig::agents.at(agentID).computer;
     std::string civstat = SimulationConfig::agents.at(agentID).civstat;
     std::string unemp = SimulationConfig::agents.at(agentID).unemp;
@@ -209,22 +210,22 @@ void Model_Activity::multinominalP(double p[4][7][24][10], const int agentID) co
     }
 }
 
-std::string Model_Activity::getSeasonString(const int season) const{
-    std::string stringSeason;
-    switch (season){
+std::string Model_Activity::getSeasonString(const int month) const{
+    std::string season;
+    switch (month){
         case 0:
-            stringSeason = "season1";
+            season = "season1";
             break;
         case 1:
-            stringSeason = "season2";
+            season = "season2";
             break;
         case 2:
-            stringSeason = "season3";
+            season = "season3";
             break;
         default:
-            stringSeason = "season4";
+            season = "season4";
     }
-    return stringSeason;
+    return season;
 }
 
 std::string Model_Activity::getDay(const int day) const{
@@ -254,7 +255,7 @@ int Model_Activity::getSeasonInt(const int month)const{
     }
 }
 
-double Model_Activity::multinominalActivity(const double *p)const{
+int Model_Activity::multinominalActivity(const double *p)const{
     double activity;
     double sum = 0;
     double drand = Utility::randomDouble(0.0, 1.0);

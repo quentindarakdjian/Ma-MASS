@@ -1,4 +1,3 @@
-// Copyright AI Environnement 2017
 
 #include <algorithm>
 #include "Utility.h"

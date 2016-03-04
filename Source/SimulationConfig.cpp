@@ -1,4 +1,3 @@
-// Copyright AI Environnement 2017
 
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp>
@@ -17,6 +16,7 @@ buildingStruct SimulationConfig::building;
 simulationStruct SimulationConfig::info;
 int SimulationConfig::stepCount = -1;
 std::string SimulationConfig::ActivityFile;
+std::string SimulationConfig::FmuLocation;
 
 namespace bpt = boost::property_tree;
 

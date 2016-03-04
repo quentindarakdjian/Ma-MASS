@@ -1,4 +1,3 @@
-// Copyright AI Environnement 2017
 
 #include <iostream>
 #include "DataStore.h"
@@ -72,6 +71,6 @@ void Agent_Action_Heat_Gains::step(const Zone& zone, bool inZone, bool previousl
         DataStore::addValue(name.c_str(), pmv);
 }
 
-int Agent_Action_Heat_Gains::getPMV(){
+double Agent_Action_Heat_Gains::getPMV(){
     return pmv;
 }

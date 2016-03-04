@@ -1,5 +1,3 @@
-// Copyright AI Environnement 2017
-
 
 #include <string>
 #include <vector>
@@ -92,7 +90,6 @@ void Model_Agents::matchStateToZone(State &s){
         }
     }
 }
-
 
 void Model_Agents::step(){
     std::list<int> pop = Utility::randomIntList(population.size(), 0, population.size());
@@ -321,3 +318,4 @@ void Model_Agents::postprocess(){
         agent.postprocess();
     }
 }
+

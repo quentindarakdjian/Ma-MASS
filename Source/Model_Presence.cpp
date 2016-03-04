@@ -1,11 +1,9 @@
-// Copyright AI Environnement 2017
 
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/algorithm/string.hpp>
 #include <ctime>
 #include <vector>
-#include <cassert>
 #include <algorithm>
 #include "Utility.h"
 #include "SimulationConfig.h"

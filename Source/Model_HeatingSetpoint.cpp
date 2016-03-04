@@ -1,4 +1,3 @@
-// Copyright AI Environnement 2017
 
 #include <algorithm>
 #include "DataStore.h"
@@ -25,7 +24,7 @@ double Model_HeatingSetpoint::coeffLocalisation(std::string localisation){
         coeffLocalisation = 0;
     }
     else if (localisation == "Rural"){
-        coeffLocalisation = Utility::randomDoubleNormal(-1.620, -0.309);
+        coeffLocalisation = Utility::randomDoubleNormal(-0.877, 0.093);
     }
     return coeffLocalisation;
 }

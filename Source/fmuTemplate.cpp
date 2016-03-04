@@ -265,22 +265,21 @@ void loadVariables() {
     std::string preferredSlash ="/";
     std::string filename = "tmp-fmus"+preferredSlash+"agentFMU.fmu_FMI"+preferredSlash+"modelDescription.xml";
     std::cout << " Loading XML file: -" << filename << "-" << std::endl;
+    namespace bpt = boost::property_tree;
     // Create an empty property tree object
-    boost::property_tree::ptree pt;
-  //  std::string temp = "~/Dropbox/AgentConfigurationFiles/simpleOfficeNoBlindsNoWindowsNoLightsNoGains/testGUI.xml";
+    bpt::ptree pt;
     // Load the XML file into the property tree. If reading fails
     // (cannot open file, parse error), an exception is thrown.
-    boost::property_tree::read_xml(filename, pt);
-
+    bpt::read_xml(filename, pt);
     // Iterate over the debug.modules section and store all found
     // modules in the m_modules set. The get_child() function
     // returns a reference to the child at the specified path; if
     // there is no such child, it throws. Property tree iterators
     // are models of BidirectionalIterator.
 
-    for(boost::property_tree::ptree::value_type & x: pt.get_child("fmiModelDescription")) {
+    for(bpt::ptree::value_type & x: pt.get_child("fmiModelDescription")) {
         if (x.first == "ModelVariables") {
-            for(boost::property_tree::ptree::value_type & v: x.second) {
+            for(bpt::ptree::value_type & v: x.second) {
                 std::string name = "";
                 std::string causality = "";
                 int valueReference;
@@ -293,7 +292,7 @@ void loadVariables() {
                     DataStore::addVariable(name);
                 }else{
                     double starValue = 0;
-                    for(boost::property_tree::ptree::value_type & y: v.second) {
+                    for(bpt::ptree::value_type & y: v.second) {
                         if(y.first == "Real"){
                             starValue = y.second.get<double>("<xmlattr>.start");
                         }

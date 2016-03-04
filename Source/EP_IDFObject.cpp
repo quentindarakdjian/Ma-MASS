@@ -1,4 +1,3 @@
-// Copyright AI Environnement 2017
 
 #include <ostream>
 #include <boost/algorithm/string.hpp>

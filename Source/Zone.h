@@ -11,6 +11,7 @@
 #include <string>
 #include <vector>
 #include <deque>
+
 class Zone {
 public:
     Zone();
@@ -48,7 +49,6 @@ public:
     void setHeatingSetpointState(double heatingSetpointState);
     void setBlindState(double state);
     void setOccupantFraction(double occupantFraction);
-
 
 private:
     std::string name;

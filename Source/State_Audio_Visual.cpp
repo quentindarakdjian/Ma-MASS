@@ -7,6 +7,5 @@ State_Audio_Visual::State_Audio_Visual()
     clo = 1;
     activity = "AudioVisual";
     location = getLocationFromActivty(&activity);
-
     //ctor
 }

@@ -7,6 +7,6 @@ State_Cooking::State_Cooking()
             metabolicRate = 116;
             clo = 1;
             activity = "Cooking";
-    location = getLocationFromActivty(&activity);
+            location = getLocationFromActivty(&activity);
 
 }

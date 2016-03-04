@@ -7,7 +7,7 @@ class Agent_Action
 {
     public:
         Agent_Action();
-        virtual void step(const Zone& zone, bool inZone, bool previouslyInZone, const std::vector<double> &activities) =0;
+        virtual void step(const Zone& zone, bool inZone, bool previouslyInZone, const std::vector<double> &activities) = 0;
         virtual double getResult();
         virtual std::string getName();
     protected:

@@ -23,6 +23,7 @@ class State{
         virtual bool hasState(const int stateID);
         State getNextState();
         void setZonePtr(Zone* zoneptr);
+
     protected:
         int id;
         double metabolicRate;

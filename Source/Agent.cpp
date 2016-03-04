@@ -34,7 +34,6 @@ Agent::Agent(int newId) : id(newId){
     age = agent.age;
     aahg.setup(id);
     availableActions.push_back(0);
-
     if (SimulationConfig::info.windows){
         aaw.setup(agent.windowId);
         availableActions.push_back(1);
