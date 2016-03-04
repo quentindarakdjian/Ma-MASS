@@ -256,7 +256,7 @@ int Model_Activity::getSeasonInt(const int month)const{
 }
 
 int Model_Activity::multinominalActivity(const double *p)const{
-    double activity;
+    int activity;
     double sum = 0;
     double drand = Utility::randomDouble(0.0, 1.0);
     for (int i = 0; i < 10; i++){
