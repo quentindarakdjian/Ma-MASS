@@ -253,6 +253,7 @@ int Model_Activity::getSeasonInt(const int month)const{
     default:
         season = 2;
     }
+    return season;
 }
 
 int Model_Activity::multinominalActivity(const double *p)const{
