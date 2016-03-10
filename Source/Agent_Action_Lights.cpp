@@ -4,8 +4,7 @@
 #include "Agent_Action_Lights.h"
 #include "SimulationConfig.h"
 
-Agent_Action_Lights::Agent_Action_Lights()
-{
+Agent_Action_Lights::Agent_Action_Lights(){
     name = "Lights";
 }
 

@@ -50,6 +50,7 @@ void Simulation::preprocess() {
 void Simulation::postprocess() {
     agentModel.postprocess();
     DataStore::print();
+    DataStore::clear();
 }
 
 /**
@@ -98,6 +99,5 @@ void Simulation::timeStep() {
 /**
  * @brief processes After timestep
  */
-//postTimeStep() Probably useless
-//void Simulation::postTimeStep() {
-//}
+void Simulation::postTimeStep() {
+}

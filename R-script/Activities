@@ -1,0 +1,20 @@
+agent <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/agent.csv")
+agent["Agent0ActName"] <- agent$Agent_Activity_0
+for (i in 1:length(agent$Agent_Activity_0)){
+  if (agent$Agent_Activity_0[i] == 0) {agent$Agent0ActName[i] <- "Sleeping" }
+  else if (agent$Agent_Activity_0[i] == 1) {agent$Agent0ActName[i] <- "Passive" }
+  else if (agent$Agent_Activity_0[i] == 2) {agent$Agent0ActName[i] <- "Audio/Visual"}
+  else if (agent$Agent_Activity_0[i] == 3) {agent$Agent0ActName[i] <- "IT"}
+  else if (agent$Agent_Activity_0[i] == 4) {agent$Agent0ActName[i] <- "Cooking"}
+  else if (agent$Agent_Activity_0[i] == 5) {agent$Agent0ActName[i] <- "Cleaning"}
+  else if (agent$Agent_Activity_0[i] == 6) {agent$Agent0ActName[i] <- "Washing self"}
+  else if (agent$Agent_Activity_0[i] == 7) {agent$Agent0ActName[i] <- "Washing appliances"}
+  else if (agent$Agent_Activity_0[i] == 8) {agent$Agent0ActName[i] <- "Metabolic"}
+  else if (agent$Agent_Activity_0[i] == 9) {agent$Agent0ActName[i] <- "Out"}
+}
+
+tab <- with(agent, table(agent$hourOfDay, agent$Agent0ActName))
+tab
+tab/rowSums(tab)
+plot(tab, las=1, col=2:11, main="Activities per hour", xlab="Hours") 
+

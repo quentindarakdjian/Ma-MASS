@@ -5,10 +5,8 @@
 
 StateMachine stateMachine;
 
-State::State()
-{}
-State::~State()
-{}
+State::State(){}
+State::~State(){}
 
 int State::getId() const{
     return id;

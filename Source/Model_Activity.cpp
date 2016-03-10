@@ -95,47 +95,53 @@ void Model_Activity::parseConfiguration(const std::string filename){
     // returns a reference to the child at the specified path; if
     // there is no such child, it throws. Property tree iterators
     // are models of BidirectionalIterator.
-    for (bpt::ptree::value_type & child : pt.get_child("Activity")) {
+    for (bpt::ptree::value_type & child : pt.get_child("Activity")) { //For each hour of the activity file (1,7, 8, ..., 24)
         std::string inter = child.first;
         inter.erase(0, 8);
         int hour = boost::lexical_cast<int>(inter);
-        std::map<std::string, std::vector<double>> items;
-        for (bpt::ptree::value_type & childchild : child.second) {
-            std::string name = childchild.first;
-            std::string cofList = childchild.second.get_value<std::string>();
-            std::vector<std::string> tokProbs;
+        std::map<std::string, std::vector<double>> items; // map de (name + tokProbsD)
+        for (bpt::ptree::value_type & childchild : child.second) { // For each line of the treated hour
+            std::string name = childchild.first; //name exemple "civstat1", "sex2", ..
+            std::string cofList = childchild.second.get_value<std::string>(); //cofList exemple "0.234,0.018,-0.051,-0.88,-0.001,0.522,0.176,0.113,0.833"
+            std::vector<std::string> tokProbs; // Empty vector
             std::vector<double> tokProbsD;
-            boost::split(tokProbs, cofList, boost::is_any_of(","));
+            boost::split(tokProbs, cofList, boost::is_any_of(",")); //Split cofList eactheh time there is a coma and fill the vector of string tokProbs with each element
             for (std::string strProb : tokProbs) {
-                tokProbsD.push_back(boost::lexical_cast<double>(strProb));
+                tokProbsD.push_back(boost::lexical_cast<double>(strProb)); //Each string of tokProbs is transform to double in the vector of double tokProbsD
             }
-            std::pair<std::string, std::vector<double>> x(name, tokProbsD);
-            items.insert(x);
+            std::pair<std::string, std::vector<double>> x(name, tokProbsD); //Creation of pairs of name (civstat1) and associated vector of double tokProbsD
+            items.insert(x); //Fill the map items with all pair x
         }
-        std::pair<int, std::map<std::string, std::vector<double>>> y(hour, items);
-        dictionary.insert(y);
+        std::pair<int, std::map<std::string, std::vector<double>>> y(hour, items); //Create a pair y with hours and the map item
+        dictionary.insert(y); // Filling the map dictionnary with all y
     }
 }
 
-std::vector<double> Model_Activity::multinominal(const int agentID) const{
+std::vector<double> Model_Activity::multinominal(const int agentID) const {
     double p[4][7][24][10];
     multinominalP(p, agentID);
+
     std::vector<double> activities;
-    static const int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    static const int daysInMonth[] =
+      {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     int tsph = SimulationConfig::info.timeStepsPerHour;
     int hourCount = 0;
-    int hour = hourCount;
+    int hour = -1;
     int month = SimulationConfig::info.startMonth -1;
     int day = SimulationConfig::info.startDay -1;
-    int dayOfWeek = SimulationConfig::info.startDayOfWeek-1;
+    int dayOfWeek = SimulationConfig::info.startDayOfWeek;
+
     int season = getSeasonInt(month);
 
     for (int i = 0; i <= SimulationConfig::info.timeSteps; i++) {
         if (i % tsph == 0 || hourCount < 1) {
             hourCount++;
+            hour++;
             if (hourCount > 24) {
                 hourCount = 1;
+                hour = 0;
                 day++;
                 dayOfWeek++;
                 if (dayOfWeek > 6) {
@@ -150,19 +156,23 @@ std::vector<double> Model_Activity::multinominal(const int agentID) const{
                   season = getSeasonInt(month);
                 }
             }
-            if (hourCount < 6) {
+            if (hourCount < 7) {
               hour = 0;
             }
         }
-        activities.push_back(multinominalActivity(p[season][dayOfWeek][hour]));
+        activities.push_back(multinominalActivity(p[season-1][dayOfWeek-1][hour-1]));
     }
     return activities;
 }
 
 void Model_Activity::multinominalP(double p[4][7][24][10], const int agentID) const {
 
+    int ageCat = 0;
     int ageInt = SimulationConfig::agents.at(agentID).age;
-    std::string age = "age2";//std::to_string(ageInt);
+    if (ageInt <= 40){ageCat = 3;}
+    else if (ageInt > 40 && ageInt <= 63){ageCat = 2;}
+    else {ageCat = 1;}
+    std::string age = "age"+std::to_string(ageCat);
     std::string computer = SimulationConfig::agents.at(agentID).computer;
     std::string civstat = SimulationConfig::agents.at(agentID).civstat;
     std::string unemp = SimulationConfig::agents.at(agentID).unemp;

@@ -4,6 +4,9 @@
 #include <boost/lexical_cast.hpp>
 #include <iostream>
 #include <map>
+#include <utility>
+#include <string>
+#include <vector>
 #include "SimulationConfig.h"
 #include "Utility.h"
 
@@ -23,7 +26,19 @@ namespace bpt = boost::property_tree;
 SimulationConfig::SimulationConfig(){
 }
 
+/*void SimulationConfig::reset(){
+    agents.clear();
+    zones.clear();
+    windows.clear();
+    shades.clear();
+    info = simulationStruct();
+    stepCount = -1;
+    ActivityFile = "";
+    FmuLocation = "";
+}*/
+
 void SimulationConfig::parseBuilding(bpt::ptree::value_type & v){
+    zones.clear();
     for(bpt::ptree::value_type & child: v.second){
         if (child.first == "globalBuilding"){
             std::pair<std::string, buildingStruct> building;
@@ -97,6 +112,7 @@ void SimulationConfig::parseBuilding(bpt::ptree::value_type & v){
 }
 
 void SimulationConfig::parseAgents(bpt::ptree::value_type & v){
+    agents.clear();
     SimulationConfig::ActivityFile = "";
     for(bpt::ptree::value_type & child: v.second){
         if (child.first == "agent"){
@@ -219,6 +235,7 @@ void SimulationConfig::parseModels(bpt::ptree::value_type & v){
 }
 
 void SimulationConfig::parseWindows(bpt::ptree::value_type & v){
+    windows.clear();
     for(bpt::ptree::value_type & child: v.second){
         if (child.first == "enabled"){
             SimulationConfig::info.windows = child.second.get_value<bool>();
@@ -302,6 +319,7 @@ void SimulationConfig::parseWindows(bpt::ptree::value_type & v){
 }
 
 void SimulationConfig::parseShades(bpt::ptree::value_type & v){
+    shades.clear();
     for(bpt::ptree::value_type & child: v.second){
         if (child.first == "enabled"){
             SimulationConfig::info.shading = child.second.get_value<bool>();

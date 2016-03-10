@@ -33,7 +33,7 @@ private:
     void matchStateToZone(State &s);
     std::vector<Agent> population;
     int stepCount;
-    StateMachine stateMachine; //StateMachine is included in Model_Agent
+    StateMachine stateMachine;
     std::vector<Zone> zones;
 };
 
