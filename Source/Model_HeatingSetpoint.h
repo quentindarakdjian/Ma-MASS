@@ -22,8 +22,9 @@ public:
     static double coeffExtendOfDoubleGlazing(std::string extendOfDoubleGlazing);
     static double coeffWallUValue(double wallUValue);
 
-    double inZone(double temperatureSetpointBase, double dailyTemperature, double coeffOutdoorTemperature, double coeffOutdoorTemperature2);
-    //double absent(double temperatureSetpointBase, double coeffOutdoorTemperature, double coeffOutdoorTemperature2, double futureDuration);
+    double inZone(double temperatureSetpointBase, double dailyTemperature);
+    double pUp(int passivity, double indoorTemperature);
+    double pDown(int passivity, double indoorTemperature);
 
 private:
 

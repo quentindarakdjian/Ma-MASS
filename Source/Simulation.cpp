@@ -57,8 +57,8 @@ void Simulation::postprocess() {
  * @brief processes before timestep
  */
 void Simulation::preTimeStep() {
-        double day = time/86400;
-        double hour = time/3600;
+        int day = time/86400;
+        int hour = time/3600;
 #ifdef DEBUG
         if (static_cast<int>(time) % (86400*10) == 0) {
                 std::cout << "day: " << day << std::endl;
@@ -71,13 +71,15 @@ void Simulation::preTimeStep() {
                 }
                 month = month + 1;
         }
-        int hourOfDay = 0;
+        /*int hourOfDay = 0;
         for (int i = 0; i <= hour; i++){
             hourOfDay += 1;
             if (hourOfDay > 23){
                 hourOfDay = 0;
             }
-        }
+        }*/
+        int hourOfDay = hour % 24;
+
         DataStore::addValue("TimeStep", time);
         DataStore::addValue("day", day);
         DataStore::addValue("hour", hour);

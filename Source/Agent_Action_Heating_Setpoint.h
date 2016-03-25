@@ -10,6 +10,7 @@ class Agent_Action_Heating_Setpoint : public Agent_Action
 
         void setup(int age);
         void step(const Zone& zone, bool inZone, bool previouslyInZone, const std::vector<double> &activities);
+        double dailyTemp();
 
     protected:
 
@@ -17,7 +18,8 @@ class Agent_Action_Heating_Setpoint : public Agent_Action
         double temperatureSetpointBase;
         int age;
         std::deque<double> outDoorTemperatures;
-
+        int passivity;
+        double heatingSetpointState = 15;
 };
 
 #endif // AGENT_ACTION_HEATING_SETPOINT_H_INCLUDED

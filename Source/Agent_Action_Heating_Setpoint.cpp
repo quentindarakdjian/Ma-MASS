@@ -6,6 +6,7 @@
 #include "SimulationConfig.h"
 #include "Utility.h"
 #include "DataStore.h"
+#include "Agent.h"
 
 Agent_Action_Heating_Setpoint::Agent_Action_Heating_Setpoint(){
     name = "Heating_Setpoint";
@@ -38,12 +39,16 @@ void Agent_Action_Heating_Setpoint::setup(int age){
                                 coeffAdditionalFuel + coeffYearOfConstruction + coeffRoofInsulationThickness +
                                 coeffExtendOfDoubleGlazing + coeffWallUValue;
     std::cout<<"The base temperature of the agent is: "<<temperatureSetpointBase<<" *C."<<std::endl;
+    passivity = Utility::randomInt(1,3);
+    std::cout<<"Passivity of the agent is: "<<passivity<<std::endl;
 }
 
 void Agent_Action_Heating_Setpoint::step(const Zone& zone, bool inZone, bool previouslyInZone, const std::vector<double> &activities){
-    result = 0;
-    //double heatingSetpointState = zone.getHeatingSetpointState();
-
+//    result = temperatureSetpointBase;
+    heatingSetpointState = zone.getHeatingSetpointState();
+    double indoorRelativeHumidity = zone.getAirRelativeHumidity();
+    double indoorTemperature = zone.getMeanAirTemperature();
+    // dailyTemp
     double outdoorTemperature = DataStore::getValue("EnvironmentSiteOutdoorAirDrybulbTemperature");
     outDoorTemperatures.push_back(outdoorTemperature);
     if (outDoorTemperatures.size() > SimulationConfig::info.timeStepsPerHour*24){
@@ -55,11 +60,30 @@ void Agent_Action_Heating_Setpoint::step(const Zone& zone, bool inZone, bool pre
     }
     dailyTemperature = dailyTemperature / (double) outDoorTemperatures.size();
 
-    double coeffOutdoorTemperature = Utility::randomDoubleNormal(0.052, 0.023);
-    double coeffOutdoorTemperature2 = Utility::randomDoubleNormal(0.012, 0.002);
     Model_HeatingSetpoint m_heatingSetpointUsage;
-    double heatingSetpointState = m_heatingSetpointUsage.inZone(temperatureSetpointBase, dailyTemperature, coeffOutdoorTemperature, coeffOutdoorTemperature2);
 
+
+    double randUp = Utility::randomDouble(0,1);
+    double randDown = Utility::randomDouble(0,1);
+    double pUp = m_heatingSetpointUsage.pUp(passivity, indoorTemperature);
+    double pDown = m_heatingSetpointUsage.pDown(passivity, indoorTemperature);
+    if (randUp < pUp){
+        double heatingSetpointStateTest = m_heatingSetpointUsage.inZone(temperatureSetpointBase, dailyTemperature);
+        //if (heatingSetpointStateTest > heatingSetpointState){
+            heatingSetpointState = heatingSetpointStateTest;
+        //} else {}
+    }
+    // Down
+    if (randDown < pDown){
+        double heatingSetpointStateTest = m_heatingSetpointUsage.inZone(temperatureSetpointBase, dailyTemperature);
+        //if (heatingSetpointStateTest < heatingSetpointState){
+            heatingSetpointState = heatingSetpointStateTest;
+        //} else {}
+    }
+    // Nothing
+    else{
+        heatingSetpointState = zone.getHeatingSetpointState();
+    }
 
 // Social info //
     if (SimulationConfig::info.social){
@@ -68,7 +92,6 @@ void Agent_Action_Heating_Setpoint::step(const Zone& zone, bool inZone, bool pre
             heatingSetpointState = heatingSetpointState - Utility::randomDouble(-0.5, 0);
         }
     }
-// Social info //
     result = heatingSetpointState;
 }
 

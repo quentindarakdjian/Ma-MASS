@@ -128,20 +128,17 @@ std::vector<double> Model_Activity::multinominal(const int agentID) const {
 
     int tsph = SimulationConfig::info.timeStepsPerHour;
     int hourCount = 0;
-    int hour = -1;
     int month = SimulationConfig::info.startMonth -1;
     int day = SimulationConfig::info.startDay -1;
-    int dayOfWeek = SimulationConfig::info.startDayOfWeek;
+    int dayOfWeek = SimulationConfig::info.startDayOfWeek-1;
 
     int season = getSeasonInt(month);
 
     for (int i = 0; i <= SimulationConfig::info.timeSteps; i++) {
         if (i % tsph == 0 || hourCount < 1) {
             hourCount++;
-            hour++;
             if (hourCount > 24) {
                 hourCount = 1;
-                hour = 0;
                 day++;
                 dayOfWeek++;
                 if (dayOfWeek > 6) {
@@ -156,11 +153,8 @@ std::vector<double> Model_Activity::multinominal(const int agentID) const {
                   season = getSeasonInt(month);
                 }
             }
-            if (hourCount < 7) {
-              hour = 0;
-            }
         }
-        activities.push_back(multinominalActivity(p[season-1][dayOfWeek-1][hour-1]));
+        activities.push_back(multinominalActivity(p[season][dayOfWeek][hourCount]));
     }
     return activities;
 }

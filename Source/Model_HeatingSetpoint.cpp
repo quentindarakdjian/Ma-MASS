@@ -4,6 +4,7 @@
 #include "Utility.h"
 #include "Model_HeatingSetpoint.h"
 
+
 Model_HeatingSetpoint::Model_HeatingSetpoint() {
 }
 
@@ -332,8 +333,114 @@ double Model_HeatingSetpoint::coeffWallUValue(double wallUValue){
 
 //-------Dynamic-------//
 
-double Model_HeatingSetpoint::inZone(double temperatureSetpointBase, double dailyTemperature, double coeffOutdoorTemperature, double coeffOutdoorTemperature2){
+double Model_HeatingSetpoint::inZone(double temperatureSetpointBase, double dailyTemperature){
+    double coeffOutdoorTemperature = Utility::randomDoubleNormal(0.052, 0.023);
+    double coeffOutdoorTemperature2 = Utility::randomDoubleNormal(0.012, 0.002);
     double heatingSetpointState = temperatureSetpointBase + coeffOutdoorTemperature*dailyTemperature + coeffOutdoorTemperature2*pow(dailyTemperature,2);
     return heatingSetpointState;
 }
+
+double Model_HeatingSetpoint::pUp(int passivity, double indoorTemperature){
+    int hourOfDay = DataStore::getValue("hourOfDay");
+    double intercept = 0;
+    double pUp;
+    switch (passivity){
+        case 1:
+            if (hourOfDay < 7 || hourOfDay > 22){intercept = -7.5;}
+            else if (hourOfDay >= 19 && hourOfDay <= 22){intercept = -4.5;}
+            else {intercept = -6.5;}
+            pUp = 1/(1+std::exp(-(intercept)));
+            break;
+        case 2:
+            intercept = -7.5;
+            pUp = 1/(1+std::exp(-(intercept)));
+            break;
+        case 3:
+            intercept = -9;
+            pUp = 1/(1+std::exp(-(intercept)));
+            break;
+    }
+    return pUp;
+}
+
+double Model_HeatingSetpoint::pDown(int passivity, double indoorTemperature){
+    int hourOfDay = DataStore::getValue("hourOfDay");
+    //double pmv =  Agent_Action_Heat_Gains::getPMV();
+    double intercept = 0;
+    double pDown;
+    switch (passivity){
+        case 1:
+            if (hourOfDay < 7 || hourOfDay > 22){intercept = -7.5;}
+            else if (hourOfDay >= 19 && hourOfDay <= 22){intercept = -4.5;}
+            else {intercept = -6.5;}
+            pDown = 1/(1+std::exp(-(intercept)));
+            break;
+        case 2:
+            intercept = -7.5;
+            pDown = 1/(1+std::exp(-(intercept)));
+            break;
+        case 3:
+            intercept = -9;
+            pDown = 1/(1+std::exp(-(intercept)));
+            break;
+    }
+    return pDown;
+}
+
+//Fabi's frequence interaction model
+/*double Model_HeatingSetpoint::pUp(int passivity, double indoorRelativeHumidity){
+    int hourOfDay = DataStore::getValue("hourOfDay");
+    double outDoorTemperature = DataStore::getValue("EnvironmentSiteOutdoorAirDrybulbTemperature");
+    double windSpeed = 0; // To be changed
+    double intercept = 0;
+    double pUp;
+    switch (passivity){
+        case 1:
+            if (hourOfDay < 7 || hourOfDay > 22){intercept = -4.286;}
+            else if (hourOfDay >= 7 && hourOfDay < 9){intercept = -0.6264;}
+            else if (hourOfDay >= 9 && hourOfDay < 14){intercept = -0.839;}
+            else if (hourOfDay >= 14 && hourOfDay < 19){intercept = -0.8663;}
+            else {intercept = -2,1435;}
+            pUp = 1/(1+std::exp(-(intercept-0.085*indoorRelativeHumidity-0.1441*outDoorTemperature)));
+            break;
+        case 2:
+            intercept = -7.6356;
+            pUp = 1/(1+std::exp(-(intercept-0.2284*outDoorTemperature+0.3699*windSpeed)));
+            break;
+        case 3:
+            intercept = -9.716;
+            pUp = 1/(1+std::exp(-(intercept)));
+            break;
+    }
+    return pUp;
+}
+*/
+
+/*double Model_HeatingSetpoint::pDown(int passivity){
+    int hourOfDay = DataStore::getValue("hourOfDay");
+    double solarRadiation = 50; // To be changed
+    double windSpeed = 0; // To be changed
+    double intercept = 0;
+    double pDown;
+    switch (passivity){
+        case 1:
+            intercept = -3.514;
+            pDown = 1/(1+std::exp(-(intercept-0.0194*solarRadiation)));
+            break;
+        case 2:
+            if (hourOfDay<7 || hourOfDay>22){intercept = -22.8446;}
+            else if (hourOfDay>=7 && hourOfDay<9){intercept = -5.1599;}
+            else if (hourOfDay>=9 && hourOfDay<14){intercept = -6.0973;}
+            else if (hourOfDay>=14 && hourOfDay<19){intercept = -6.5805;}
+            else {intercept = -6.6572;}
+            pDown = 1/(1+std::exp(-(intercept)));
+            break;
+        case 3:
+            intercept = -14.2779;
+            pDown = 1/(1+std::exp(-(intercept+1.0077*windSpeed)));
+            break;
+    }
+    return pDown;
+}
+*/
 
