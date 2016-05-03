@@ -113,7 +113,7 @@ void Model_Presence::calculatePresenceFromPage(const int agentID) {
                 pNextHour = ((hour == 24) ? pMon[0] : pSun[hour]);
             }
             for (unsigned int fracHour = 0; fracHour < timeStepsPerHour; ++fracHour) {
-                // probabilities of the current fracHour and the next fracHour
+                // intrapolation
                 double pcurr = ((static_cast<double>(timeStepsPerHour - fracHour)) * pHour + (static_cast<double>(fracHour)) * pNextHour) / timeStepsPerHour;
                 double pnext = ((static_cast<double>(timeStepsPerHour - (fracHour + 1))) * pHour + (static_cast<double>(fracHour + 1)) * pNextHour) / timeStepsPerHour;
                 double ProbLongAbsence = 0.000; // To be adjusted later, lack of calibration data.
@@ -174,9 +174,11 @@ double Model_Presence::getT01(const double pcurr, const double pnext, const doub
     double beta = shuff; // default: no adjustment needed
     if (pnext == 0.) {
         T01 = 0.;
-    } else if (pnext == 1.) {
+    }
+    else if (pnext == 1.) {
         T01 = 1.;
-    } else {
+    }
+    else {
         if (pcurr == 1.) {
             T01 = 0.;
         } else if (pcurr == 0.) {
@@ -185,41 +187,52 @@ double Model_Presence::getT01(const double pcurr, const double pnext, const doub
             if (pcurr + pnext > 1.) {
                 if (shuff > 1. / (2.*pcurr - 1.)) {
                     beta = 1. / (2.*pcurr - 1.);
-                } else {
+                }
+                else {
                     beta = shuff;
                 }
-            } else if (pcurr + pnext < 1.) {
+            }
+            else if (pcurr + pnext < 1.) {
                 if (shuff > 1. / (1. - 2.*pcurr)) {
                     beta = 1. / (1. - 2.*pcurr);
                 } else {
                     beta = shuff;
                 }
-            } else {
+            }
+            else {
                 beta = shuff;
             }
             T01 = 2.*beta * pcurr / (beta + 1.);
-        } else if (pcurr < pnext) {
+        }
+        else if (pcurr < pnext) {
             if (shuff < (pnext - pcurr) / (2. - (pnext + pcurr))) {
                 beta = (pnext - pcurr) / (2. - (pnext + pcurr));
-            } else {
+            }
+            else {
                 if ((pcurr + pnext > 1.) && (shuff > (pcurr - pnext + 1.) / (pnext + pcurr - 1.))) {
                     beta = (pcurr - pnext + 1.) / (pnext + pcurr - 1.);
-                } else if ((pcurr + pnext < 1.) && (shuff > (1. - pcurr + pnext) / (1. - pcurr - pnext))) {
+                }
+                else if ((pcurr + pnext < 1.) && (shuff > (1. - pcurr + pnext) / (1. - pcurr - pnext))) {
                     beta = (1. - pcurr + pnext) / (1. - pcurr - pnext);
-                } else {
+                }
+                else {
                     beta = shuff;
                 }
             }
             T01 = pnext + pcurr * (beta - 1.) / (beta + 1.);
-        } else { // Case of (pcurr>pnext)
+        }
+        else { // Case of (pcurr>pnext)
             if (shuff < (pcurr - pnext) / (pnext + pcurr)) {
                 beta = (pcurr - pnext) / (pnext + pcurr);
-            } else {
+            }
+            else {
                 if ((pcurr + pnext > 1.) && (shuff > (pcurr - pnext + 1.) / (pnext + pcurr - 1.))) {
                     beta = (pcurr - pnext + 1.) / (pnext + pcurr - 1.);
-                } else if ((pcurr + pnext < 1.) && (shuff > (1. - pcurr + pnext) / (1. - pcurr - pnext))) {
+                }
+                else if ((pcurr + pnext < 1.) && (shuff > (1. - pcurr + pnext) / (1. - pcurr - pnext))) {
                     beta = (1. - pcurr + pnext) / (1. - pcurr - pnext);
-                } else {
+                }
+                else {
                     beta = shuff;
                 }
             }
@@ -238,16 +251,21 @@ double Model_Presence::getT11(const double pcurr, const double pnext, const doub
     double T11; // Probability to stay in the space
     if (pnext == 0.) {
         T11 = 0.;
-    } else if (pnext == 1.) {
+    }
+    else if (pnext == 1.) {
         T11 = 1.;
-    } else {
+    }
+    else {
         if (pcurr == 1.) {
             T11 = pnext;
-        } else if (pcurr == 0.) {
+        }
+        else if (pcurr == 0.) {
             T11 = 0.;
-        } else if (pcurr == pnext) {
+        }
+        else if (pcurr == pnext) {
             T11 = 1. - (1. - pcurr) * getT01(pcurr, pnext, shuff) / pcurr;
-        } else { // Case of (pcurr>pnext)
+        }
+        else { // Case of (pcurr>pnext)
             T11 = 1. / pcurr * (pnext - (1. - pcurr) * getT01(pcurr, pnext, shuff));
         }
     }

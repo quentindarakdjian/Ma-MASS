@@ -26,6 +26,7 @@ private:
     std::string getDay(const int day) const;
     int getSeasonInt(const int month)const;
     std::map<int, std::map<std::string, std::vector<double>>> dictionary;
+    std::map<int, std::map<std::string, std::vector<double>>> dictLenght;
 };
 
 #endif	/* MODEL_ACTIVITY_H */
