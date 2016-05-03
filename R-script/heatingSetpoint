@@ -1,0 +1,31 @@
+Alltimestep0 <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/Alltimestep.csv")
+Alldaily1 <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/Alldaily1.csv")
+
+plot(Alldaily1$X156.Zone.Mean.Air.Temperature..C..Daily.ON., type="l")
+
+par(mfrow=c(1,1))
+plot(Alltimestep0$X163HEATINGSETPOINTSTATE.Schedule.Value....TimeStep.[5000:7000], ylim=c(16,22), type = "l", main="Fluctuation Heating Temperature Setpoint X156")
+lines(Alltimestep0$X156.Zone.Mean.Air.Temperature..C..TimeStep., col = "red")
+lines(Alltimestep0$X156.Zone.Air.System.Sensible.Heating.Rate..W..TimeStep./360, col="orange")
+plot(Alltimestep0$X163HEATINGSETPOINTSTATE.Schedule.Value....TimeStep., ylim=c(0,40), type = "l", main="Fluctuation Heating Temperature Setpoint X163")
+lines(Alltimestep0$X163.Zone.Mean.Air.Temperature..C..TimeStep., col = "red")
+lines(Alltimestep0$X163.Zone.Air.System.Sensible.Heating.Rate..W..TimeStep./360, col="orange")
+boxplot(Alltimestep0$X156HEATINGSETPOINTSTATE.Schedule.Value....TimeStep., main="Boxplot Heating Temperature Setpoint X156")
+boxplot(Alltimestep0$X163HEATINGSETPOINTSTATE.Schedule.Value....TimeStep., main="Boxplot Heating Temperature Setpoint X163")
+hist(Alltimestep0$X156HEATINGSETPOINTSTATE.Schedule.Value....TimeStep., breaks=60, main="Histogram X156")
+hist(Alltimestep0$X163HEATINGSETPOINTSTATE.Schedule.Value....TimeStep., breaks=60, main="Histogram X163")
+
+mean(Alltimestep0$X163HEATINGSETPOINTSTATE.Schedule.Value....TimeStep., na.rm=TRUE)
+
+plot(Alltimestep0$X156AVERAGEGAINS.Schedule.Value....TimeStep., pch=46)
+
+
+plot(Alltimestep0$X142HEATINGSETPOINTSTATE.Schedule.Value....TimeStep., type = "l")
+lines(Alltimestep0$X149HEATINGSETPOINTSTATE.Schedule.Value....TimeStep[40000:42000], col = "red")
+lines(Alltimestep0$X156HEATINGSETPOINTSTATE.Schedule.Value....TimeStep[40000:42000], col = "blue")
+lines(Alltimestep0$X163HEATINGSETPOINTSTATE.Schedule.Value....TimeStep[40000:42000], col = "orange")
+
+
+agent["Agent0ActName"] <- agent$Agent_Activity_1
+plot(jitter(agent$hourOfDay), jitter(agent$Agent_Activity_1), main = "Activities according to hours of day", ylab = "Activities", xlab = "Hours of Day" )
+

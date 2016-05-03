@@ -1,0 +1,8 @@
+--------- Check daily fluctuation temperature -> No need to add daily coefficient in temperature setpoint model --------
+  
+  
+agent <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/agent.csv")
+library(plyr)
+temp<-aggregate(agent$X163ZoneMeanAirTemperature ~ agent$hourOfDay, data=agent, mean)
+temp<-rename(temp, c("agent$hourOfDay"="hourOfDay", "agent$X163ZoneMeanAirTemperature"="X163ZoneMeanAirTemperature"))
+plot(temp$hourOfDay, temp$X163ZoneMeanAirTemperature, type="l")

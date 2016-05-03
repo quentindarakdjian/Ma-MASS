@@ -1,0 +1,5 @@
+Alltimestep0 <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/Alltimestep0.csv")
+
+install.packages('ggplot2')
+library(ggplot2)
+ggplot(Alltimestep0, aes(Environment.Site.Outdoor.Air.Drybulb.Temperature..C..TimeStep., X149.Zone.Mean.Air.Temperature..C..TimeStep.)) + geom_point(alpha = 1)

@@ -1,0 +1,39 @@
+Alltimestep0 <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/Alltimestep0.csv")
+Alltimestep1 <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/Alltimestep1.csv")
+Alltimestep2 <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/Alltimestep2.csv")
+Alltimestep3 <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/Alltimestep3.csv")
+Alltimestep4 <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/Alltimestep4.csv")
+Alltimestep5 <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/Alltimestep5.csv")
+Alltimestep6 <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/Alltimestep6.csv")
+Alltimestep7 <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/Alltimestep7.csv")
+Alltimestep8 <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/Alltimestep8.csv")
+Alltimestep9 <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/Alltimestep9.csv")
+
+Alldaily0 <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/Alldaily0.csv")
+Alldaily1 <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/Alldaily1.csv")
+
+
+Sim0 <- Alltimestep0$X156HEATINGSETPOINTSTATE.Schedule.Value....TimeStep.
+Sim1 <- Alltimestep1$X156HEATINGSETPOINTSTATE.Schedule.Value....TimeStep.
+Sim2 <- Alltimestep2$X156HEATINGSETPOINTSTATE.Schedule.Value....TimeStep.
+Sim3 <- Alltimestep3$X156HEATINGSETPOINTSTATE.Schedule.Value....TimeStep.
+Sim4 <- Alltimestep4$X156HEATINGSETPOINTSTATE.Schedule.Value....TimeStep.
+Sim5 <- Alltimestep5$X156HEATINGSETPOINTSTATE.Schedule.Value....TimeStep.
+Sim6 <- Alltimestep6$X156HEATINGSETPOINTSTATE.Schedule.Value....TimeStep.
+Sim7 <- Alltimestep7$X156HEATINGSETPOINTSTATE.Schedule.Value....TimeStep.
+Sim8 <- Alltimestep8$X156HEATINGSETPOINTSTATE.Schedule.Value....TimeStep.
+Sim9 <- Alltimestep9$X156HEATINGSETPOINTSTATE.Schedule.Value....TimeStep.
+Sim90 <- Alltimestep9$X156.Zone.Mean.Air.Temperature..C..TimeStep.
+
+
+boxplot(list(Sim0, Sim2, Sim4, Sim5, Sim6, Sim7, Sim9, Sim90), ylim=c(0,50), ylab="Temperature", xlab="Number of simulations", main="Temperature setpoint repartition")
+
+plot(Sim0, ylim=c(-5,40), ylab="Temperature", xlab="Simulation time", main="Deterministic heating temperature setpoint")
+lines(Alltimestep0$X156.Zone.Mean.Air.Temperature..C..TimeStep.,  col = "red")
+lines(Alltimestep0$Environment.Site.Outdoor.Air.Drybulb.Temperature..C..TimeStep., col="blue")
+
+
+plot(Alltimestep0$Environment.Site.Outdoor.Air.Drybulb.Temperature..C..TimeStep., ylim=c(-4,22), col="blue", type='l')
+lines(Alltimestep0$X163HEATINGSETPOINTSTATE.Schedule.Value....TimeStep.)
+lines (Alltimestep0$X149.Zone.Mean.Air.Temperature..C..TimeStep., col="green")
+

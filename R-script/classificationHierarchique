@@ -1,0 +1,25 @@
+# Classification hierarchique
+
+Alltimestep0 <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/Alltimestep0.csv")
+
+###
+### Classification ascendante hierarchique
+###
+### Détermination de groupes de variables corrélés les uns avec les autres.
+
+
+
+var <- c("X149.Zone.Mean.Air.Temperature..C..TimeStep.", 
+         "X149WINDOWSTATE.Schedule.Value....TimeStep.", 
+         "Environment.Site.Outdoor.Air.Drybulb.Temperature..C..TimeStep.", 
+         "X149NUMBEROFOCCUPANTS.Schedule.Value....TimeStep.", 
+         "X149.Daylighting.Reference.Point.1.Illuminance..lux..TimeStep.",
+         "X149AVERAGEGAINS.Schedule.Value....TimeStep.",
+         "X149HEATINGSETPOINTSTATE.Schedule.Value....TimeStep.",
+         "X149LIGHTSTATE.Schedule.Value....TimeStep." )
+cha <- hclust(dist(t(scale(Alltimestep0[,var]))),method="ward.D")
+plot(cha, main="Classification hiérarchique")
+obj <- cor(Alltimestep0[,var], use="pairwise.complete.obs")
+col<- colorRampPalette(c("red", "white", "blue"))(20)
+heatmap(obj, col=col, labRow = c("IndoorT", "WindowS", "OutdoorT", "NbOcc", "DayLight", "MetGains", "SP Temp", "LightS"), labCol = c("WindowS", "IndoorT", "OutdoorT", "NbOcc", "DayLight", "MetGains", "SP Temp", "LightS"), main="Classification ascendante hiérarchique")
+

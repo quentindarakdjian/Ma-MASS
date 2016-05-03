@@ -1,0 +1,20 @@
+setwd("\\AIEDISK\AI Environnement\AI Environnement\Pôle R&D\Thèse_Cifre\Admin_Quentin\MASS\EnergyPlusV8-2-4")
+#set working directory
+
+results = read.csv("eplusout.csv")
+#reqd in the results
+
+par(mfrow=c(1,1))
+plot(results$X189.Zone.Mean.Air.Temperature..C..TimeStep., type="l", col="red")
+lines(results$X189.Zone.Mean.Radiant.Temperature..C..TimeStep., type="l", col="blue")
+
+
+par(mfrow=c(1,2))
+plot(results$X189.Zone.Mean.Air.Temperature..C..TimeStep., type="l", col="red")
+plot(results$X189.Zone.Mean.Radiant.Temperature..C..TimeStep., type="l", col="blue")
+
+newdata1 <- na.omit(Alltimestep0$X142.Zone.Mean.Air.Temperature..C..TimeStep.)
+mean(newdata1)
+
+
+

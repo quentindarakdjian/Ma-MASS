@@ -1,0 +1,10 @@
+# Out
+ActWeibullOut <- read.csv2("C:/Users/Manu/Desktop/Weibull-Out.csv", header = TRUE)
+plot(ActWeibullOut$X~ActWeibullOut$X7am, col = "blue", type ="line")
+lines(ActWeibullOut$X~ActWeibullOut$X9pm)
+
+# Cook
+ActWeibullCook <- read.csv2("C:/Users/Manu/Desktop/Weibull-Cook.csv", header = TRUE)
+plot(ActWeibullCook$X~ActWeibullCook$X8am, col = "blue", type ="line", xlab="Durée [min]")
+lines(ActWeibullCook$X~ActWeibullCook$X7pm, col = "red")
+lines(ActWeibullCook$X~ActWeibullCook$X11pm)

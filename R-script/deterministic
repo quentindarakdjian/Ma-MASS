@@ -1,0 +1,7 @@
+detb <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/results/determinist/det.csv")
+det <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/eplusout.csv")
+
+averagegains156 <- Alltimestep0$X156AVERAGEGAINS.Schedule.Value....TimeStep.
+nbocc156 <- Alltimestep0$X156NUMBEROFOCCUPANTS.Schedule.Value....TimeStep.
+indoortemp156 <- Alltimestep0$X156.Zone.Mean.Air.Temperature..C..TimeStep. 
+outdoortemp <- Alltimestep0$Environment.Site.Outdoor.Air.Drybulb.Temperature..C..TimeStep.
