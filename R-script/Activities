@@ -1,20 +1,108 @@
-agent <- read.csv("C:/Users/Manu/MASS/EnergyPlusV8-2-4/agent.csv")
-agent["Agent0ActName"] <- agent$Agent_Activity_0
-for (i in 1:length(agent$Agent_Activity_0)){
-  if (agent$Agent_Activity_0[i] == 0) {agent$Agent0ActName[i] <- "Sleeping" }
-  else if (agent$Agent_Activity_0[i] == 1) {agent$Agent0ActName[i] <- "Passive" }
-  else if (agent$Agent_Activity_0[i] == 2) {agent$Agent0ActName[i] <- "Audio/Visual"}
-  else if (agent$Agent_Activity_0[i] == 3) {agent$Agent0ActName[i] <- "IT"}
-  else if (agent$Agent_Activity_0[i] == 4) {agent$Agent0ActName[i] <- "Cooking"}
-  else if (agent$Agent_Activity_0[i] == 5) {agent$Agent0ActName[i] <- "Cleaning"}
-  else if (agent$Agent_Activity_0[i] == 6) {agent$Agent0ActName[i] <- "Washing self"}
-  else if (agent$Agent_Activity_0[i] == 7) {agent$Agent0ActName[i] <- "Washing appliances"}
-  else if (agent$Agent_Activity_0[i] == 8) {agent$Agent0ActName[i] <- "Metabolic"}
-  else if (agent$Agent_Activity_0[i] == 9) {agent$Agent0ActName[i] <- "Out"}
+agentB <- read.csv("C:/Users/Manu/Desktop/agentB.csv")
+agentBW <- read.csv("C:/Users/Manu/Desktop/agentBW.csv")
+
+######## Young agent B ###########
+agentBW["Agent0ActName"] <- agentB$Agent_Activity_0
+for (i in 1:length(agentB$Agent_Activity_0)){
+  if (agentB$Agent_Activity_0[i] == 0) {agentB$Agent0ActName[i] <- "Sleeping" }
+  else if (agentB$Agent_Activity_0[i] == 1) {agentB$Agent0ActName[i] <- "Passive" }
+  else if (agentB$Agent_Activity_0[i] == 2) {agentB$Agent0ActName[i] <- "Audio/Visual"}
+  else if (agentB$Agent_Activity_0[i] == 3) {agentB$Agent0ActName[i] <- "IT"}
+  else if (agentB$Agent_Activity_0[i] == 4) {agentB$Agent0ActName[i] <- "Cooking"}
+  else if (agentB$Agent_Activity_0[i] == 5) {agentB$Agent0ActName[i] <- "Cleaning"}
+  else if (agentB$Agent_Activity_0[i] == 6) {agentB$Agent0ActName[i] <- "Washing self"}
+  else if (agentB$Agent_Activity_0[i] == 7) {agentB$Agent0ActName[i] <- "Washing appliances"}
+  else if (agentB$Agent_Activity_0[i] == 8) {agentB$Agent0ActName[i] <- "Metabolic"}
+  else if (agentB$Agent_Activity_0[i] == 9) {agentB$Agent0ActName[i] <- "Out"}
 }
+tab <- with(agentB, table(agentB$hourOfDay, agentB$Agent0ActName))
+plot(tab, las=1, ylab="",col=2:11,  main="Jeune Actif - Bernoulli", xlab="Heures")
 
-tab <- with(agent, table(agent$hourOfDay, agent$Agent0ActName))
-tab
-tab/rowSums(tab)
-plot(tab, las=1, col=2:11, main="Activities per hour", xlab="Hours") 
+########## Old agent B ###############
+agentB["Agent1ActName"] <- agentB$Agent_Activity_1
+for (i in 1:length(agentB$Agent_Activity_1)){
+  if (agentB$Agent_Activity_1[i] == 0) {agentB$Agent1ActName[i] <- "Sleeping" }
+  else if (agentB$Agent_Activity_1[i] == 1) {agentB$Agent1ActName[i] <- "Passive" }
+  else if (agentB$Agent_Activity_1[i] == 2) {agentB$Agent1ActName[i] <- "Audio/Visual"}
+  else if (agentB$Agent_Activity_1[i] == 3) {agentB$Agent1ActName[i] <- "IT"}
+  else if (agentB$Agent_Activity_1[i] == 4) {agentB$Agent1ActName[i] <- "Cooking"}
+  else if (agentB$Agent_Activity_1[i] == 5) {agentB$Agent1ActName[i] <- "Cleaning"}
+  else if (agentB$Agent_Activity_1[i] == 6) {agentB$Agent1ActName[i] <- "Washing self"}
+  else if (agentB$Agent_Activity_1[i] == 7) {agentB$Agent1ActName[i] <- "Washing appliances"}
+  else if (agentB$Agent_Activity_1[i] == 8) {agentB$Agent1ActName[i] <- "Metabolic"}
+  else if (agentB$Agent_Activity_1[i] == 9) {agentB$Agent1ActName[i] <- "Out"}
+}
+tab <- with(agentB, table(agentB$hourOfDay, agentB$Agent1ActName))
+plot(tab, las=1, ylab="",col=2:11,  main="Retraité - Bernoulli", xlab="Heures") 
 
+######## Young agent BW ###########
+agentBW["Agent0ActName"] <- agentBW$Agent_Activity_0
+for (i in 1:length(agentBW$Agent_Activity_0)){
+  if (agentBW$Agent_Activity_0[i] == 0) {agentBW$Agent0ActName[i] <- "Sleeping" }
+  else if (agentBW$Agent_Activity_0[i] == 1) {agentBW$Agent0ActName[i] <- "Passive" }
+  else if (agentBW$Agent_Activity_0[i] == 2) {agentBW$Agent0ActName[i] <- "Audio/Visual"}
+  else if (agentBW$Agent_Activity_0[i] == 3) {agentBW$Agent0ActName[i] <- "IT"}
+  else if (agentBW$Agent_Activity_0[i] == 4) {agentBW$Agent0ActName[i] <- "Cooking"}
+  else if (agentBW$Agent_Activity_0[i] == 5) {agentBW$Agent0ActName[i] <- "Cleaning"}
+  else if (agentBW$Agent_Activity_0[i] == 6) {agentBW$Agent0ActName[i] <- "Washing self"}
+  else if (agentBW$Agent_Activity_0[i] == 7) {agentBW$Agent0ActName[i] <- "Washing appliances"}
+  else if (agentBW$Agent_Activity_0[i] == 8) {agentBW$Agent0ActName[i] <- "Metabolic"}
+  else if (agentBW$Agent_Activity_0[i] == 9) {agentBW$Agent0ActName[i] <- "Out"}
+}
+tab <- with(agentBW, table(agentBW$hourOfDay, agentBW$Agent0ActName))
+plot(tab, las=1, ylab="",col=2:11,  main="Jeune Actif - Hybride", xlab="Heures")
+
+
+########## Old agent BW ###############
+agentBW["Agent1ActName"] <- agentBW$Agent_Activity_1
+for (i in 1:length(agentBW$Agent_Activity_1)){
+  if (agentBW$Agent_Activity_1[i] == 0) {agentBW$Agent1ActName[i] <- "Sleeping" }
+  else if (agentBW$Agent_Activity_1[i] == 1) {agentBW$Agent1ActName[i] <- "Passive" }
+  else if (agentBW$Agent_Activity_1[i] == 2) {agentBW$Agent1ActName[i] <- "Audio/Visual"}
+  else if (agentBW$Agent_Activity_1[i] == 3) {agentBW$Agent1ActName[i] <- "IT"}
+  else if (agentBW$Agent_Activity_1[i] == 4) {agentBW$Agent1ActName[i] <- "Cooking"}
+  else if (agentBW$Agent_Activity_1[i] == 5) {agentBW$Agent1ActName[i] <- "Cleaning"}
+  else if (agentBW$Agent_Activity_1[i] == 6) {agentBW$Agent1ActName[i] <- "Washing self"}
+  else if (agentBW$Agent_Activity_1[i] == 7) {agentBW$Agent1ActName[i] <- "Washing appliances"}
+  else if (agentBW$Agent_Activity_1[i] == 8) {agentBW$Agent1ActName[i] <- "Metabolic"}
+  else if (agentBW$Agent_Activity_1[i] == 9) {agentBW$Agent1ActName[i] <- "Out"}
+}
+tab <- with(agentBW, table(agentBW$hourOfDay, agentBW$Agent1ActName))
+plot(tab, las=1, ylab="",col=2:11,  main="Retraité - Hybride", xlab="Heures") 
+
+##### Exemple of one day#####
+COLYB <- agentB$Agent_Activity_0
+COLOB <- agentB$Agent_Activity_1
+COLYBW <- agentBW$Agent_Activity_0
+COLOBW <- agentBW$Agent_Activity_1
+
+COLYB <- factor(COLYB)
+COLOB <- factor(COLOB)
+COLYBW <- factor(COLYBW)
+COLOBW <- factor(COLOBW)
+
+levels(COLYB) <- c("black", "grey", "red", "cyan", "blue", "darkgreen", "green", "red3", "purple", "yellow")
+levels(COLOB) <- c("black", "grey", "red", "cyan", "blue", "darkgreen", "green", "red3", "purple", "yellow")
+levels(COLYBW) <- c("black", "grey", "red", "cyan", "blue", "darkgreen", "green", "red3", "purple", "yellow")
+levels(COLOBW) <- c("black", "grey", "red", "cyan", "blue", "darkgreen", "green", "red3", "purple", "yellow")
+
+COLYB <- as.character(COLYB)
+COLOB <- as.character(COLOB)
+COLYBW <- as.character(COLYBW)
+COLOBW <- as.character(COLOBW)
+
+plot(1, main="Activités sur une journée", type ="n", xlim = c(0,288), ylim = c(0,7), axes = F)
+rect(0:287,6,1:288,7,col = COLYB, border = NA)
+rect(0:287,4,1:288,5,col = COLOB, border = NA)
+rect(0:287,2,1:288,3,col = COLYBW, border = NA)
+rect(0:287,0,1:288,1,col = COLOBW, border = NA)
+
+
+########## To have the good axis:
+plot(1, type ="n", xlim = c(0,24), axes = F)
+axis(1,at = 0:24, labels = paste0(0:24,"h"))
+
+text(1, 1, labels = "1")
+text(2, 1, labels = "2")
+text(3, -1, labels = "3")
+text(4, -1, labels = "4")
