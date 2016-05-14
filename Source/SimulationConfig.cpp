@@ -106,7 +106,7 @@ void SimulationConfig::parseBuilding(bpt::ptree::value_type & v){
                 std::cout << "Did not define activities for zone: " << zone.second.name << std::endl;
                 exit(-1);
             }
-            zones.insert(zone);
+            zones.insert(zone); // zones is a map
         }
     }
 }
@@ -488,6 +488,8 @@ std::vector<std::string> SimulationConfig::splitZoneActivities(std::string typeS
     return types;
 }
 
+
+/* Deleted because not used
 std::vector<std::string> SimulationConfig::getActivities(std::string* name){
     std::vector<std::string> activities;
     if (activeZone(name)){
@@ -496,6 +498,7 @@ std::vector<std::string> SimulationConfig::getActivities(std::string* name){
     }
     return activities;
 }
+*/
 
 bool SimulationConfig::activeZone(std::string* zoneName){
     return (SimulationConfig::zones.find(*zoneName) != SimulationConfig::zones.end());

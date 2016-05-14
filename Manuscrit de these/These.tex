@@ -1,0 +1,55 @@
+\documentclass[11pt,twoside]{report}
+
+\usepackage[utf8]{inputenc} % En premier 
+
+\usepackage[T1]{fontenc} % Pour taper les lettre accentuées
+\usepackage{graphicx}
+\usepackage{lscape}
+\usepackage{array, multirow, makecell}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{eurosym}
+\usepackage{colortbl}
+\pagestyle{headings}
+\renewcommand{\baselinestretch}{1.2}
+
+\usepackage[french]{babel} % En avant dernier
+\usepackage{hyperref} % En dernier
+\hypersetup{         % parametrage des hyperliens
+    colorlinks=true, % colorise les liens
+    breaklinks=true, % permet les retours à la ligne pour les liens trop longs
+    urlcolor= blue,  % couleur des hyperliens
+    linkcolor= black, % couleur des liens internes aux documents (index, figures, tableaux, equations,...)
+    citecolor= black % couleur des liens vers les references bibliographiques
+    }
+
+\title{Prédiction des consommations totales et réelles des bâtiments incluant le comportement des usagers}
+\author{Quentin Darakdjian}
+
+\parskip=5pt % Espace entre 2 paragraphes
+\geometry{hmargin=2.5cm,vmargin=1.5cm} % Reglage grossier des marges
+
+\begin{document}
+\setcounter{tocdepth}{2} % Supprime les subsections de la table des matières
+\tableofcontents
+%\listoffigures
+%\listoftables
+%\include{Nomenclature}
+\include{Introduction}
+\include{Conception_et_construction_des_batiments}
+\include{Performance_energetique_theorique_et_reelle}
+\include{Modelisation_du_comportement_des_usagers}
+\include{MASS}
+\include{Developpement_de_modeles}
+\include{Analyses_de_sensibilite_sur_batiment_residentiel}
+\include{Discussion}
+
+\bibliographystyle{ieeetr}
+\bibliography{mabiblio}
+
+\end{document}
+
+

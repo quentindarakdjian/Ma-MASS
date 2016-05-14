@@ -154,6 +154,7 @@ void Model_Presence::calculatePresenceFromPage(const int agentID) {
 
     // remove the first element of the vector (which was just for starting the process)
     occ.erase(occ.begin());
+    presenceState = occ;
 }
 
 bool Model_Presence::at(const int i) const{

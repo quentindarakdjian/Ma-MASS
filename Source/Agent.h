@@ -71,21 +71,19 @@ public:
 
 private:
     int id;
+    int action;
     int pmv;
     int previous_pmv;
-    int action;
-
     double power;
     int age;
-
     double currentRadientGains;
+    double metabolicRate; /** Metabolic Rate of the occupant */
+    double clo; /** clothing value of the occupant */
+
     std::vector<double> activities;
     //std::vector<int> presence;
     std::vector<int> presenceForFutureSteps;
     std::vector<int> currentDurationOfPresenceState;
-
-    double metabolicRate; /** Metabolic Rate of the occupant */
-    double clo; /** clothing value of the occupant */
 
     std::string bedroom; /** Which bedroom the occupant sleeps in */
     std::string office; /** WhichoOffice the occupant works in */

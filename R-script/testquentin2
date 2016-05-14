@@ -1,0 +1,26 @@
+setwd("\\AIEDISK\AI Environnement\AI Environnement\Pôle R&D\Thèse_Cifre\Admin_Quentin\MASS\EnergyPlusV8-2-4")
+#set working directory
+
+results = read.csv("eplusout.csv")
+#read in the results
+
+plot(results$X196.Zone.Mean.Air.Temperature..C..TimeStep., type="l", col="red", ylim = c(-10,40), ylab = "", xlab = "")
+
+
+par(mfrow=c(1,1))
+plot(results$X189.Zone.Air.System.Sensible.Heating.Energy..J..TimeStep., type="l", xlab = "time (h/2)", ylab = "heating power (J)", main = "Temperature and power needed for the zone 189")
+par(new = TRUE)
+plot(results$X189.Zone.Mean.Air.Temperature..C..TimeStep., type="l", col="red", ylim = c(-10,40), ylab = "", xlab = "", axes = F)
+axis(side = 4)
+lines(results$Environment.Site.Outdoor.Air.Drybulb.Temperature..C..TimeStep., type="l", col="blue")
+mtext(side = 4, line = 3, "Température (°C)")
+
+
+m = mean(results$X189.Zone.Mean.Air.Temperature..C..TimeStep.)
+
+
+plot(results$X189_WALL_3_0_0_0_0_0_WIN.AFN.Surface.Venting.Window.or.Door.Opening.Factor....TimeStep., type="l", col="blue")
+
+par(mfrow=c(1,1))
+plot(results$X189.Daylighting.Reference.Point.1.Illuminance..lux..TimeStep., type="l", col="red", xlim = c(1000,2000), ylim = c(0,1000), xlab="time (h/2)", ylab="Day lighting illuminance (lux)", main = "Zone 189: Light electric power consumption")
+lines(results$X189.Zone.Lights.Electric.Power..W..TimeStep., type="l", col="blue", ylab="Light electric power (W)")  #xlim=c(xmin,xmax) to limit the x

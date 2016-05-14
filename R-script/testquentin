@@ -1,0 +1,24 @@
+#set working directory
+setwd("C:\\Users\\AIE\\Desktop\\MASS\plateform\\EnergyPlusV8-2-4")
+
+results = read.csv("eplusout.csv")
+#read in the results
+
+par(mfrow=c(1,1))
+plot(results$X189.Zone.Mean.Air.Temperature..C..TimeStep., type="l", col="red")
+lines(results$X189.Zone.Mean.Radiant.Temperature..C..TimeStep., type="l", col="blue")
+
+
+par(mfrow=c(1,2))
+plot(results$X189.Zone.Mean.Air.Temperature..C..TimeStep., type="l", col="red")
+plot(results$Environment.Site.Outdoor.Air.Drybulb.Temperature..C..TimeStep., type="l", col="blue")
+
+
+m = mean(results$X189.Zone.Mean.Air.Temperature..C..TimeStep.)
+
+
+plot(results$X189_WALL_3_0_0_0_0_0_WIN.AFN.Surface.Venting.Window.or.Door.Opening.Factor....TimeStep., type="l", col="blue")
+
+par(mfrow=c(1,2))
+plot(results$X189.Zone.Lights.Electric.Power..W..TimeStep., type="l", col="purple", xlim = c(1000,1500), ylim = c(0,1000))  #xlim=c(xmin,xmax) to limit the x
+plot(results$X189.Daylighting.Reference.Point.1.Illuminance..lux..TimeStep., type="l", col="blue", xlim = c(1000,1500), ylim = c(0,1000))

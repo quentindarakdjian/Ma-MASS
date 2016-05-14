@@ -140,7 +140,7 @@ struct simulationStruct {
 
 class SimulationConfig {
 public:
-    static std::vector<std::string> getActivities(std::string* name);
+    //static std::vector<std::string> getActivities(std::string* name);
     static void parseConfiguration(std::string);
     //static void reset();
     static bool activeZone(std::string* zoneName);

@@ -17,6 +17,7 @@ void DataStore::addValue(std::string name, double value) {
     variableMap[name].push_back(value);
 }
 
+// Unused
 double DataStore::getValueForZone(std::string name, std::string zoneName){
     return getValue(zoneName + name);
 }

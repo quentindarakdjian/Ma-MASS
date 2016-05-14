@@ -244,7 +244,7 @@ std::string Agent::getLocationName(int step, StateMachine *sm){
 
 std::string Agent::updateLocation(const State& s) const{
     std::string tempLocation = s.getLocation();
-    if (s.getActivity() == "Sleeping"){
+    if (s.getActivity() == "Sleeping" || s.getActivity() == "Sleep" ){
         tempLocation = bedroom;
     }
     else if(s.getActivity() == "IT" && SimulationConfig::info.presencePage){

@@ -1,0 +1,125 @@
+####Page base
+Agent <- read.csv("C:/Users/Manu/Desktop/Page/AgentBase.csv")
+Agent$Agent_Presence_0 <- ifelse(Agent$Agent_Activity_0==3,1,0)
+Agent$NumberOfStepCountDaily <- Agent$stepCount%%288
+Agent$NumberOfStepCountWeekly <- Agent$stepCount%%2016
+Agent$dayOfWeek <- 1+Agent$day%%7
+AgentWorkedWeek <- subset(Agent, subset = dayOfWeek==1|dayOfWeek==2|dayOfWeek==3|dayOfWeek==4|dayOfWeek==5)
+dailyWorkedHour <- 24*mean(AgentWorkedWeek$Agent_Presence_0, na.rm=T)
+
+# Profil quotidien sans le WE
+tab <- table(AgentWorkedWeek$NumberOfStepCountDaily, AgentWorkedWeek$Agent_Presence_0)
+dailyFrequency <- as.data.frame(tab)
+dailyFrequency <- subset(dailyFrequency, subset = Var2==1)
+dailyFrequency$percentagePresence <- dailyFrequency$Freq/(length(AgentWorkedWeek$day)/(24*12))
+plot(dailyFrequency$percentagePresence, type = "l", main="Profile de probabilité de présence", ylab="Probabilité", xlab="Douzième d'heure") 
+
+#Profil hebdomadaire
+tab <- table(Agent$NumberOfStepCountWeekly,Agent$Agent_Presence_0)
+weeklyFrequency <- as.data.frame(tab)
+weeklyFrequency <- subset(weeklyFrequency, subset = Var2==1)
+weeklyFrequency$percentagePresence <- weeklyFrequency$Freq/52
+plot(weeklyFrequency$percentagePresence, type = "l", main="Profile de probabilité de présence", ylab="Probabilité", xlab="Douzième d'heure")
+
+#Number of state change per day
+NumberOfChangePerDay <- sum(diff(sign(Agent$Agent_Presence_0)) != 0, na.rm=T)/length(Agent$Agent_Presence_0)*288
+NumberOfChangePerDayWorkedWeek <- sum(diff(sign(AgentWorkedWeek$Agent_Presence_0)) != 0)/length(AgentWorkedWeek$Agent_Presence_0)*288
+
+
+#Daily Presence duration
+tab <- table(AgentWorkedWeek$day, AgentWorkedWeek$Agent_Presence_0)
+dailyPresenceDuration <- as.data.frame(tab)
+dailyPresenceDuration <- subset(dailyPresenceDuration, subset = Var2==1)
+dailyPresenceDuration$Var1 <- NULL
+dailyPresenceDuration$Var2 <- NULL
+plot(dailyPresenceDuration[order(dailyPresenceDuration$Freq),]/12, type ="l", 
+     main="Présence cumulée quotidienne", xlab="Journées travaillées", ylab="Nombre d'heures travaillées quotidiennes")
+summary(dailyPresenceDuration$Freq/12)
+sd(dailyPresenceDuration$Freq/12)
+
+#Arrival-Departure
+Presence <- subset(Agent, subset=Agent_Presence_0==1)
+Presence$hour12 <- (Presence$stepCount%%288)/12
+# Hour of first Arrival
+firstPresence<-aggregate(hour12 ~ day, Presence, function(x) min(x))
+firstPresence$hour12O<-sort(firstPresence$hour12)
+plot(firstPresence$hour12O, type="l", main="Heure de première arrivée", xlab="Journées travaillées", ylab="Heure de première arrivée")
+summary(firstPresence$hour12)
+sd(firstPresence$hour12)
+#Hour of last departure
+lastPresence<-aggregate(hour12 ~ day, Presence, function(x) max(x))
+lastPresence$hour12O<-sort(lastPresence$hour12)
+plot(lastPresence$hour12O, type="l", main="Heure de dernier départ", xlab="Journées travaillées", ylab="Heures de dernier départ")
+summary(lastPresence$hour12)
+sd(lastPresence$hour12)
+
+
+
+
+
+
+#### Page Deterministe
+Agent <- read.csv("C:/Users/Manu/Desktop/Page/AgentDeterministe.csv")
+Agent$Agent_Presence_0 <- ifelse(Agent$Agent_Activity_0==3,1,0)
+Agent$NumberOfStepCountDaily <- Agent$stepCount%%288
+Agent$NumberOfStepCountWeekly <- Agent$stepCount%%2016
+Agent$dayOfWeek <- Agent$day%%7
+AgentWorkedWeek <- subset(Agent, subset = dayOfWeek==0|dayOfWeek==1|dayOfWeek==2|dayOfWeek==3|dayOfWeek==4)
+dailyWorkedHour <- 24*mean(AgentWorkedWeek$Agent_Presence_0, na.rm=T)
+
+# Profil quotidien sans le WE
+tab <- table(AgentWorkedWeek$NumberOfStepCountDaily, AgentWorkedWeek$Agent_Presence_0)
+dailyFrequency <- as.data.frame(tab)
+dailyFrequency <- subset(dailyFrequency, subset = Var2==1)
+dailyFrequency$percentagePresence <- dailyFrequency$Freq/(length(AgentWorkedWeek$day)/(24*12))
+plot(dailyFrequency$percentagePresence, type = "l", main="Det-Profile de probabilité de présence", ylab="Probabilité", xlab="Douzième d'heure") 
+
+#Profil hebdomadaire
+tab <- table(Agent$NumberOfStepCountWeekly,Agent$Agent_Presence_0)
+weeklyFrequency <- as.data.frame(tab)
+weeklyFrequency <- subset(weeklyFrequency, subset = Var2==1)
+weeklyFrequency$percentagePresence <- weeklyFrequency$Freq/52
+plot(weeklyFrequency$percentagePresence, type = "l", main="Det-Profile de probabilité de présence", ylab="Probabilité", xlab="Douzième d'heure")
+
+#Number of state change per day
+NumberOfChangePerDay <- sum(diff(sign(Agent$Agent_Presence_0)) != 0, na.rm=T)/length(Agent$Agent_Presence_0)*288
+NumberOfChangePerDayWorkedWeek <- sum(diff(sign(AgentWorkedWeek$Agent_Presence_0)) != 0)/length(AgentWorkedWeek$Agent_Presence_0)*288
+
+
+#Daily Presence duration
+tab <- table(AgentWorkedWeek$day, AgentWorkedWeek$Agent_Presence_0)
+dailyPresenceDuration <- as.data.frame(tab)
+dailyPresenceDuration <- subset(dailyPresenceDuration, subset = Var2==1)
+dailyPresenceDuration$Var1 <- NULL
+dailyPresenceDuration$Var2 <- NULL
+plot(dailyPresenceDuration[order(dailyPresenceDuration$Freq),]/12, type ="l", 
+     main="Det-Présence cumulée quotidienne", xlab="Journées travaillées", ylab="Nombre d'heures travaillées quotidiennes")
+summary(dailyPresenceDuration$Freq/12)
+sd(dailyPresenceDuration$Freq/12)
+
+#Arrival-Departure
+Presence <- subset(Agent, subset=Agent_Presence_0==1)
+Presence$hour12 <- (Presence$stepCount%%288)/12
+# Hour of first Arrival
+firstPresence<-aggregate(hour12 ~ day, Presence, function(x) min(x))
+firstPresence$hour12O<-sort(firstPresence$hour12)
+plot(firstPresence$hour12O, type="l", main="Det-Heure de première arrivée", xlab="Journées travaillées", ylab="Heure de première arrivée")
+summary(firstPresence$hour12)
+sd(firstPresence$hour12)
+#Hour of last departure
+lastPresence<-aggregate(hour12 ~ day, Presence, function(x) max(x))
+lastPresence$hour12O<-sort(lastPresence$hour12)
+plot(lastPresence$hour12O, type="l", main="Det-Heure de dernier départ", xlab="Journées travaillées", ylab="Heures de dernier départ")
+summary(lastPresence$hour12)
+sd(lastPresence$hour12)
+
+
+
+
+
+Agent$jour <- rep(1:(nrow(Agent)/288), each = 288)
+g <- ggplot(Agent, aes(NumberOfStepCountDaily, jour, fill = factor(Agent_Presence_0)))
+g <- g + geom_rect(aes(xmin = NumberOfStepCountDaily -1, ymin=jour-1, xmax = NumberOfStepCountDaily, ymax = jour))
+g <- g + scale_fill_manual(values = c("grey75", "black"))
+g <- g + labs(title="Chronogramme du modèle de base", x="Douzième d'heure", y="Journées simulées")
+g + theme(legend.position='none')
