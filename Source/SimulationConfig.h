@@ -23,6 +23,7 @@ struct zoneStruct {
 
 struct agentStruct {
     std::string name;
+    std::string jobType;
     std::string bedroom;
     std::string office;
     double power;

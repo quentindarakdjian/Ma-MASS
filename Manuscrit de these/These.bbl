@@ -1,8 +1,9 @@
 \begin{thebibliography}{10}
 
 \bibitem{GIEC-14}
-GIEC, ``Cinquième rapport du {GIEC} sur les changements climatiques et leurs
-  évolutions futures,'' tech. rep., 2014.
+GIEC, ``Cinquième rapport du {G}roupe d'experts {I}ntergouvernemental sur
+  l'{E}volution du {C}limat sur les changements climatiques et leurs
+  évolutions futures,'' tech. rep., {GIEC}, 2014.
 
 \bibitem{Rifkin-12}
 J.~Rifkin, {\em La troisième révolution industrielle: Comment le pouvoir
@@ -32,8 +33,8 @@ E.~Vorger, P.~Schalbart, and B.~Peuportier, ``Etude de l'influence des
 
 \bibitem{Michaelsen-09}
 B.~Michaelsen and J.~Eiden, ``{HumanComfort} {Modelica}-{Library} {Thermal}
-  {Comfort} in {Buildings} and {Mobile} {Applications},'' pp.~403--412, Oct.
-  2009.
+  {Comfort} in {Buildings} and {Mobile} {Applications},'' {\em Modelica
+  Conference}, pp.~403--412, Oct. 2009.
 
 \bibitem{Charles-03}
 K.~Charles, ``Fanger's thermal comfort and draught models,'' tech. rep.,
@@ -51,6 +52,7 @@ J.~Sousa, ``Energy simulation software for buildings: Review and comparison.''
 \bibitem{Chapman-14}
 J.~Chapman, P.-O. Siebers, and D.~Robinson, ``{COUPLING} {MULTI}-{AGENT}
   {STOCHASTIC} {SIMULATION} {OF} {OCCUPANTS} {WITH} {BUILDING} {SIMULATION},''
+  {\em {B}uilding {S}imulation and {O}ptimization}, 2014.
 
 \bibitem{Bourgeois-05}
 D.~J. Bourgeois, {\em Detailed occupancy prediction, occupancy-sensing control
@@ -137,7 +139,8 @@ C.~M. Jacquot, L.~Schellen, B.~R. Kingma, M.~A. van Baak, and W.~D. van
 
 \bibitem{Alfakara-14}
 A.~Alfakara and B.~Croxford, ``{UNDERSTANDING} {OCCUPANTS}’{BEHAVIOURS}
-  {USING} {DETAILED} {AGENT}-{BASED} {MODELLING},''
+  {USING} {DETAILED} {AGENT}-{BASED} {MODELLING},'' {\em {B}uilding
+  {S}imulation and {O}ptimization}, 2014.
 
 \bibitem{Sutter-06}
 Y.~Sutter, D.~Dumortier, and M.~Fontoynont, ``The use of shading systems in
@@ -184,8 +187,8 @@ Fondation Batiment-Energie, {\em Methodes et outils de la garantie de
   résultats énergétiques: B\^atiments tertiaires et collectifs}, 2016.
 
 \bibitem{IFPEB-2014}
-IFPEB, ``Consommations énergétiques réelles: Comment les prévoir et
-  s'engager?,'' tech. rep., 2014.
+C.~Borel, ``Consommations énergétiques réelles: Comment les prévoir et
+  s'engager?,'' tech. rep., IFPEB, 2014.
 
 \bibitem{Lenormand-15}
 P.~Lenormand, M.~Bourget, and F.~More, ``Vers le kamasutra de
@@ -223,7 +226,7 @@ L.~Glicksman and S.~Taub, ``Thermal and behavioral modeling of
 \bibitem{Tijani-14}
 K.~Tijani, A.~Kashif, S.~Ploix, B.~Haas, J.~Dugdale, and Q.~D. Ngo,
   ``Comparison between purely statistical and multi-agent based approaches for
-  occupant behaviour modeling in buildings,'' 2014.
+  occupant behaviour modeling in buildings,'' {\em {IBPSA} Conference}, 2014.
 
 \bibitem{Ferber-95}
 G.~Paquette, ``L’ingénierie des interactions dans les systèmes
@@ -238,8 +241,9 @@ P.~Davidsson and M.~Boman, ``Distributed monitoring and control of office
 \bibitem{Kashif-11}
 A.~Kashif, X.~H.~B. Le, J.~Dugdale, and S.~Ploix, ``{AGENT} {BASED} {FRAMEWORK}
   {TO} {SIMULATE} {INHABITANTS}’ {BEHAVIOUR} {IN} {DOMESTIC} {SETTINGS} {FOR}
-  {ENERGY} {MANAGEMENT}:,'' pp.~190--199, SciTePress - Science and and
-  Technology Publications, 2011.
+  {ENERGY} {MANAGEMENT}:,'' in {\em Conference on Agents and Artificial
+  Intelligence}, pp.~190--199, SciTePress - Science and Technology
+  Publications, 2011.
 
 \bibitem{Schwartz-77}
 S.~Schwartz, ``Normative influences on altruism,'' {\em Advances in
@@ -277,7 +281,7 @@ E.~Bonabeau, ``Agent-based modeling: {Methods} and techniques for simulating
 
 \bibitem{Huberman-95}
 B.~Huberman and S.~Clearwater, ``A multi-agent system for controlling building
-  environments,'' 1995.
+  environments,'' in {\em Conference on MultiAgent Systems}, 1995.
 
 \bibitem{Andrews-11}
 C.~J. Andrews, D.~Yi, U.~Krogmann, J.~A. Senick, and R.~E. Wener, ``Designing
@@ -287,7 +291,8 @@ C.~J. Andrews, D.~Yi, U.~Krogmann, J.~A. Senick, and R.~E. Wener, ``Designing
 
 \bibitem{Nouidui-13}
 T.~S. Nouidui, ``Functional {Mock}-{Up} {Unit} {Import} in {EnergyPlus} {For}
-  {Co}-{Simulation},'' 2014.
+  {Co}-{Simulation},'' {\em {International Building Performance Simulation
+  Association}}, 2014.
 
 \bibitem{Steyerberg-03}
 E.~W. Steyerberg, S.~E. Bleeker, H.~A. Moll, D.~E. Grobbee, and K.~G. Moons,
@@ -295,24 +300,20 @@ E.~W. Steyerberg, S.~E. Bleeker, H.~A. Moll, D.~E. Grobbee, and K.~G. Moons,
   of bias and precision in small samples,'' {\em Journal of Clinical
   Epidemiology}, vol.~56, pp.~441--447, May 2003.
 
-\bibitem{Pitt-02}
-M.~Pitt and J.~Myong, ``When a good fit can be bad,'' {\em Trends in Cognitive
-  Sciences}, vol.~6, no.~10, pp.~421--425, 2002.
-
 \bibitem{Gaetani-16}
 I.~Gaetani, P.-J. Hoes, and J.~Hensen, ``Occupant behavior in building energy
   simulation: towards a fit-for-purpose modeling strategy,'' {\em TBD},
   vol.~TBD, p.~TBD, 2016.
 
-\bibitem{Plessis-14}
-G.~Plessis, E.~Amouroux, and Y.~Haradji, ``Coupling occupant behaviour with a
-  building energy model - a fmi application,'' {\em 10th Modelica International
-  Conference}, 2014.
+\bibitem{Pitt-02}
+M.~Pitt and J.~Myong, ``When a good fit can be bad,'' {\em Trends in Cognitive
+  Sciences}, vol.~6, no.~10, pp.~421--425, 2002.
 
-\bibitem{Schweiker-16}
-M.~Schweiker and A.~Wagner, ``The effect of occupancy on perceived control,
-  neutral temperature, and behavioral patterns,'' {\em Energy and Buildings},
-  vol.~117, pp.~246--259, Apr. 2016.
+\bibitem{Yan-15}
+D.~Yan, W.~O’Brien, T.~Hong, X.~Feng, H.~Burak~Gunay, F.~Tahmasebi, and
+  A.~Mahdavi, ``Occupant behavior modeling for building performance simulation:
+  {Current} state and future challenges,'' {\em Energy and Buildings},
+  vol.~107, pp.~264--278, Nov. 2015.
 
 \bibitem{Page-08}
 J.~Page, D.~Robinson, N.~Morel, and J.-L. Scartezzini, ``A generalised
@@ -352,6 +353,22 @@ D.~Robinson, N.~Campbell, W.~Gaiser, K.~Kabel, A.~Le-Mouel, N.~Morel, J.~Page,
   simulating and optimising urban sustainability,'' {\em Solar Energy},
   vol.~81, pp.~1196--1211, Sept. 2007.
 
+\bibitem{OECD-14}
+{OECD.Stat}, ``Durée moyenne hebdomadaire habituelle du travail dans l'emploi
+  principal.''
+
+\bibitem{Pak-13}
+M.~Pak, ``La durée du travail des salariés à temps complet,'' {\em DARES
+  Analyses}, 2013.
+
+\bibitem{Chenu-02}
+A.~Chenu, ``Les horaires et l'organisation du temps de travail,'' {\em
+  Économie et statistique}, vol.~352, pp.~151--167, 2002.
+
+\bibitem{Lesnard-06}
+L.~Lesnard, ``Flexibilité des horaires de travail et inégalités sociales,''
+  {\em Données sociales}, pp.~371--378, 2006.
+
 \bibitem{Jaboob-16}
 J.~Said, {\em Stochastic Modelling of Occupants’ Activities and Related
   Behaviours}.
@@ -385,11 +402,21 @@ U.~Wilke, F.~Haldi, J.-L. Scartezzini, and D.~Robinson, ``A bottom-up
 J.~Chapman, {\em TBD}.
 \newblock PhD thesis, University of Nottingham, 2016.
 
+\bibitem{Mahdavi-14}
+A.~Mahdavi and F.~Tahmasebi, ``Predicting people's presence in buildings: {An}
+  empirically based model performance analysis,'' {\em Energy and Buildings},
+  vol.~86, pp.~349--355, Jan. 2015.
+
 \bibitem{Schweiker-12}
 M.~Schweiker, F.~Haldi, M.~Shukuya, and D.~Robinson, ``Verification of
   stochastic models of window opening behaviour for residential buildings,''
   {\em Journal of Building Performance Simulation}, vol.~5, pp.~55--74, Jan.
   2012.
+
+\bibitem{d'Oca-14}
+S.~D’Oca, V.~Fabi, S.~P. Corgnati, and R.~K. Andersen, ``Effect of thermostat
+  and window opening occupant behavior models on energy use in homes,'' {\em
+  Building Simulation}, vol.~7, pp.~683--694, Dec. 2014.
 
 \bibitem{Maresca-09}
 B.~Maresca, A.~Dujin, and R.~Picard, {\em La consommation d'énergie dans
@@ -399,7 +426,8 @@ B.~Maresca, A.~Dujin, and R.~Picard, {\em La consommation d'énergie dans
 
 \bibitem{Devaliere-11}
 I.~Devalière, P.~Briant, and S.~Arnault, ``La précarité énergétique: avoir
-  froid ou dépenser trop pour se chauffer,'' tech. rep., 2011.
+  froid ou dépenser trop pour se chauffer,'' tech. rep., {Centre Scientifique
+  et Technique du Bâtiment}, 2011.
 
 \bibitem{Cavailhes-11}
 J.~Cavailhès, D.~Joly, T.~Brossard, H.~Cardot, M.~Hilal, and P.~Wavresky, ``La

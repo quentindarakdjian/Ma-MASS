@@ -85,6 +85,7 @@ private:
     std::vector<int> presenceForFutureSteps;
     std::vector<int> currentDurationOfPresenceState;
 
+    std::string jobType; /** What type of schedule has the agent - For office building simulations */
     std::string bedroom; /** Which bedroom the occupant sleeps in */
     std::string office; /** WhichoOffice the occupant works in */
     std::string activity; /** The activities performed in the location */

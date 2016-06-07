@@ -28,6 +28,7 @@ Agent::Agent(int newId) : id(newId){
     std::string idAsString = std::to_string(newId);
     DataStore::addVariable("Agent_Activity_" + idAsString);
     agentStruct agent = SimulationConfig::agents.at(id);
+    jobType = agent.jobType; //For office building simulations
     bedroom = agent.bedroom;
     office = agent.office;
     power = agent.power;

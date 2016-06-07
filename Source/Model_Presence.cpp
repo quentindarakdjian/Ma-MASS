@@ -4,6 +4,8 @@
 #include <boost/algorithm/string.hpp>
 #include <ctime>
 #include <vector>
+#include <deque>
+#include <string>
 #include <algorithm>
 #include "Utility.h"
 #include "SimulationConfig.h"
@@ -40,34 +42,40 @@ void Model_Presence::calculatePresenceFromPage(const int agentID) {
     float pFri[24];
     float pSat[24];
     float pSun[24];
+    bool adjustmentPageChoice = 1; // == 0  if base model is used, 1 if adjusted model is used
+    double adjustmentCoeff = 1.7; // OECD et DARES
 
     std::map<int, std::string> probMap = SimulationConfig::agents.at(agentID).profile;
     for(int day = 0; day < 7; day++) {
-        std::vector<std::string> tokProbs;
+        std::deque<std::string> tokProbs;
         boost::split(tokProbs, probMap.at(day), boost::is_any_of(","));
+
+        std::string jobType = SimulationConfig::agents.at(agentID).jobType;
+        tokProbs = contextualJob(jobType, tokProbs);
+
         int hour = 0;
         for(std::string strProb: tokProbs) {
             switch (day){
               case 0:
-                pMon[hour] = boost::lexical_cast<double>(strProb);
+                pMon[hour] = adjustmentPage(adjustmentPageChoice, hour, strProb, adjustmentCoeff);
                 break;
               case 1:
-                pTue[hour] = boost::lexical_cast<double>(strProb);
+                pTue[hour] = adjustmentPage(adjustmentPageChoice, hour, strProb, adjustmentCoeff);
                 break;
               case 2:
-                pWed[hour] = boost::lexical_cast<double>(strProb);
+                pWed[hour] = adjustmentPage(adjustmentPageChoice, hour, strProb, adjustmentCoeff);
                 break;
               case 3:
-                pThu[hour] = boost::lexical_cast<double>(strProb);
+                pThu[hour] = adjustmentPage(adjustmentPageChoice, hour, strProb, adjustmentCoeff);
                 break;
               case 4:
-                pFri[hour] = boost::lexical_cast<double>(strProb);
+                pFri[hour] = adjustmentPage(adjustmentPageChoice, hour, strProb, adjustmentCoeff);
                 break;
               case 5:
-                pSat[hour] = boost::lexical_cast<double>(strProb);
+                pSat[hour] = adjustmentPage(adjustmentPageChoice, hour, strProb, 0.5);
                 break;
               case 6:
-                pSun[hour] = boost::lexical_cast<double>(strProb);
+                pSun[hour] = adjustmentPage(adjustmentPageChoice, hour, strProb, 0.5);
                 break;
             }
             hour++;
@@ -85,7 +93,6 @@ void Model_Presence::calculatePresenceFromPage(const int agentID) {
     double LongAbsCurrentDuration = 0.;
 
     for (unsigned int day = 1; day <= days+1; ++day) {
-        // determination of the day of the week
         unsigned int dayOfTheWeek = (day - 1) % 7;
         for (unsigned int hour = 1; hour <= 24; ++hour) {
             double pHour = 0.0;
@@ -271,4 +278,94 @@ double Model_Presence::getT11(const double pcurr, const double pnext, const doub
         }
     }
     return T11;
+}
+
+float Model_Presence::adjustmentPage(const bool adjustmentChoice, const int hour, const std::string strProb, const double adjustmentCoeff) {
+    float adjustedProb = boost::lexical_cast<double>(strProb);
+    if (adjustmentChoice){
+        if (hour < 6 || hour > 21){
+            adjustedProb = 0;
+        }
+        else {
+            adjustedProb = adjustedProb * adjustmentCoeff;
+        }
+    }
+    return adjustedProb;
+}
+
+std::deque<std::string> Model_Presence::contextualJob(std::string jobType, std::deque<std::string> tokProbs){
+    double randJob = Utility::randomDouble();
+    if (jobType == "Unkwown"){
+        double rand = Utility::randomDouble();
+        if (rand < 0.15){jobType = "AdministrativeWorker";}
+        if (rand >= 0.15 && rand < 0.29){jobType = "Technician";}
+        if (rand >= 0.29 && rand < 0.43){jobType = "ExecutiveWorker";}
+        if (rand >= 0.43 && rand < 0.58){jobType = "Ingineer";}
+        if (rand >= 0.58 && rand < 0.72){jobType = "LiberalWorker";}
+        if (rand >= 0.72 && rand < 0.86){jobType = "IndependantWorker";}
+        else {jobType = "CompanyHead";}
+    }
+    if (jobType == "AdministrativeWorker" || jobType == "Technician"){
+        if (randJob>0.09){
+            std::string lastProb = tokProbs.back(); // Recover the last value of the vector
+            tokProbs.pop_back(); // Delete the last value of the vector
+            tokProbs.push_front(lastProb); // Add the copied value in the front of the vector
+        }
+    }
+    if (jobType == "ExecutiveWorker"){
+        if (randJob<0.87){
+            std::string lastProb = tokProbs.back();
+            tokProbs.pop_back();
+            tokProbs.push_front(lastProb);
+            lastProb = tokProbs.back();
+            tokProbs.pop_back();
+            tokProbs.push_front(lastProb);
+        }
+        else{
+            std::string Prob17 = tokProbs[17];
+            tokProbs[18] = Prob17;
+            tokProbs[19] = Prob17;
+        }
+    }
+    if (jobType == "Ingineer"){
+        std::string lastProb = tokProbs.back();
+        tokProbs.pop_back();
+        tokProbs.push_front(lastProb);
+        lastProb = tokProbs.back();
+        tokProbs.pop_back();
+        tokProbs.push_front(lastProb);
+    }
+    if (jobType == "LiberalWorker"){
+        if (randJob<0.70){
+            std::string lastProb = tokProbs.back();
+            tokProbs.pop_back();
+            tokProbs.push_front(lastProb);
+            lastProb = tokProbs.back();
+            tokProbs.pop_back();
+            tokProbs.push_front(lastProb);
+        }
+        if (randJob>=0.70&&randJob<0.80){
+            std::string Prob8 = tokProbs[8];
+            tokProbs[7] = Prob8;
+            tokProbs[6] = Prob8;
+        }
+        else{
+            std::string Prob17 = tokProbs[17];
+            tokProbs[18] = Prob17;
+            tokProbs[19] = Prob17;
+        }
+    }
+    if (jobType == "IndependantWorker" || jobType == "CompanyHead"){ // Empirical - To be adjusted
+        if (randJob<0.35){
+            std::string Prob8 = tokProbs[8];
+            tokProbs[7] = Prob8;
+            tokProbs[6] = Prob8;
+        }
+        else{
+            std::string Prob17 = tokProbs[17];
+            tokProbs[18] = Prob17;
+            tokProbs[19] = Prob17;
+        }
+    }
+    return tokProbs;
 }

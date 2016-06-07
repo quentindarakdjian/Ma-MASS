@@ -8,6 +8,7 @@
 #ifndef MODEL_PRESENCE_H
 #define	MODEL_PRESENCE_H
 #include <vector>
+#include <deque>
 
 #include "Model_Activity.h"
 
@@ -26,6 +27,8 @@ private:
     std::vector<int> presenceState;
     double getT11(double pcurr, double pnext, double shuff);
     double getT01(double pcurr, double pnext, double shuff);
+    float adjustmentPage(bool adjustmentChoice, int hour, std::string strProb, double adjustmentCoeff);
+    std::deque<std::string> contextualJob(std::string jobType, std::deque<std::string> tokProbs);
 
     static int calculateNumberOfDays(int startDay, int startMonth, int endDay, int endMonth) ;
 

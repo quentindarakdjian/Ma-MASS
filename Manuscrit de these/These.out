@@ -22,7 +22,7 @@
 \BOOKMARK [2][-]{subsection.2.6.4}{M\351thodes}{section.2.6}% 22
 \BOOKMARK [1][-]{section.2.7}{Synth\350se}{chapter.2}% 23
 \BOOKMARK [0][-]{chapter.3}{Mod\351lisation du comportement des usagers}{part.1}% 24
-\BOOKMARK [1][-]{section.3.1}{Types de mod\350les}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.1}{Familles de mod\350les}{chapter.3}% 25
 \BOOKMARK [2][-]{subsection.3.1.1}{Mod\350les psychologiques}{section.3.1}% 26
 \BOOKMARK [2][-]{subsection.3.1.2}{Valeurs moyennes}{section.3.1}% 27
 \BOOKMARK [2][-]{subsection.3.1.3}{Mod\350les d\351terministes}{section.3.1}% 28
@@ -54,36 +54,44 @@
 \BOOKMARK [1][-]{section.4.5}{Fonctionnement du FMI}{chapter.4}% 54
 \BOOKMARK [1][-]{section.4.6}{Strat\351gie g\351n\351rale de d\351veloppement}{chapter.4}% 55
 \BOOKMARK [1][-]{section.4.7}{Validation des mod\350les du comportement des occupants}{chapter.4}% 56
-\BOOKMARK [0][-]{chapter.5}{D\351veloppement de mod\350les}{part.2}% 57
+\BOOKMARK [0][-]{chapter.5}{Mod\351lisation du comportement des occupants}{part.2}% 57
 \BOOKMARK [1][-]{section.5.1}{Collection de donn\351es}{chapter.5}% 58
 \BOOKMARK [2][-]{subsection.5.1.1}{Suivi sur site}{section.5.1}% 59
 \BOOKMARK [2][-]{subsection.5.1.2}{Enqu\352tes}{section.5.1}% 60
 \BOOKMARK [2][-]{subsection.5.1.3}{\311tudes de laboratoire}{section.5.1}% 61
-\BOOKMARK [1][-]{section.5.2}{D\351veloppement de mod\350les}{chapter.5}% 62
-\BOOKMARK [2][-]{subsection.5.2.1}{Niveau de mod\351lisation}{section.5.2}% 63
-\BOOKMARK [2][-]{subsection.5.2.2}{Famille de mod\350les}{section.5.2}% 64
-\BOOKMARK [2][-]{subsection.5.2.3}{\311valuation et validation}{section.5.2}% 65
-\BOOKMARK [1][-]{section.5.3}{Interaction sociales}{chapter.5}% 66
-\BOOKMARK [2][-]{subsection.5.3.1}{Quantification des activit\351s}{section.5.3}% 67
-\BOOKMARK [1][-]{section.5.4}{Activit\351s et pr\351sence}{chapter.5}% 68
-\BOOKMARK [2][-]{subsection.5.4.1}{Bureaux}{section.5.4}% 69
-\BOOKMARK [2][-]{subsection.5.4.2}{Logements}{section.5.4}% 70
-\BOOKMARK [1][-]{section.5.5}{Gestion des ouvrants}{chapter.5}% 71
-\BOOKMARK [1][-]{section.5.6}{Gestion des stores}{chapter.5}% 72
-\BOOKMARK [1][-]{section.5.7}{Gestion de l'\351clairage}{chapter.5}% 73
-\BOOKMARK [1][-]{section.5.8}{Utilisation des appareils \351lectriques}{chapter.5}% 74
-\BOOKMARK [2][-]{subsection.5.8.1}{Types d'appareils \351lectriques}{section.5.8}% 75
-\BOOKMARK [2][-]{subsection.5.8.2}{Mod\351lisation de la possession et de l'utilisation des appareils \351lectriques}{section.5.8}% 76
-\BOOKMARK [1][-]{section.5.9}{Gestion des consignes de temp\351rature}{chapter.5}% 77
-\BOOKMARK [1][-]{section.5.10}{Consommations d'eau chaude sanitaire}{chapter.5}% 78
-\BOOKMARK [2][-]{subsection.5.10.1}{Syst\350mes}{section.5.10}% 79
-\BOOKMARK [2][-]{subsection.5.10.2}{Volumes de consommation}{section.5.10}% 80
-\BOOKMARK [-1][-]{part.3}{III Application et perspectives}{}% 81
-\BOOKMARK [0][-]{chapter.6}{Analyse de sensibilit\351 sur b\342timent r\351sidentiel}{part.3}% 82
-\BOOKMARK [1][-]{section.6.1}{Pr\351sentation de l'op\351ration}{chapter.6}% 83
-\BOOKMARK [1][-]{section.6.2}{\200}{chapter.6}% 84
-\BOOKMARK [0][-]{chapter.7}{Discussion}{part.3}% 85
-\BOOKMARK [1][-]{section.7.1}{La probl\351matisation avant la mod\351lisation}{chapter.7}% 86
-\BOOKMARK [1][-]{section.7.2}{Appropriation de la technologie}{chapter.7}% 87
-\BOOKMARK [1][-]{section.7.3}{L'accompagnement des usagers}{chapter.7}% 88
-\BOOKMARK [1][-]{section.7.4}{Conclusion}{chapter.7}% 89
+\BOOKMARK [1][-]{section.5.2}{Outils de mod\351lisation}{chapter.5}% 62
+\BOOKMARK [2][-]{subsection.5.2.1}{Famille de mod\350les}{section.5.2}% 63
+\BOOKMARK [2][-]{subsection.5.2.2}{\311valuation et validation}{section.5.2}% 64
+\BOOKMARK [2][-]{subsection.5.2.3}{Fit-for-purpose et facteurs contextuels}{section.5.2}% 65
+\BOOKMARK [1][-]{section.5.3}{Pr\351sentation des cas d'\351tudes}{chapter.5}% 66
+\BOOKMARK [2][-]{subsection.5.3.1}{Bureau}{section.5.3}% 67
+\BOOKMARK [2][-]{subsection.5.3.2}{R\351sidentiel}{section.5.3}% 68
+\BOOKMARK [1][-]{section.5.4}{Pr\351sence dans les b\342timents de bureaux}{chapter.5}% 69
+\BOOKMARK [2][-]{subsection.5.4.1}{\311tat de l'art}{section.5.4}% 70
+\BOOKMARK [2][-]{subsection.5.4.2}{Mod\350le de Page}{section.5.4}% 71
+\BOOKMARK [2][-]{subsection.5.4.3}{Ajustement du mod\350le de Page et al.}{section.5.4}% 72
+\BOOKMARK [2][-]{subsection.5.4.4}{Facteurs contextuels}{section.5.4}% 73
+\BOOKMARK [1][-]{section.5.5}{Activit\351s dans les logements}{chapter.5}% 74
+\BOOKMARK [2][-]{subsection.5.5.1}{\311tat de l'art}{section.5.5}% 75
+\BOOKMARK [2][-]{subsection.5.5.2}{Processus de Bernoulli}{section.5.5}% 76
+\BOOKMARK [2][-]{subsection.5.5.3}{Mod\350le hybride}{section.5.5}% 77
+\BOOKMARK [2][-]{subsection.5.5.4}{Pr\351sentation des r\351sultats}{section.5.5}% 78
+\BOOKMARK [1][-]{section.5.6}{Gestion des ouvrants}{chapter.5}% 79
+\BOOKMARK [1][-]{section.5.7}{Gestion des stores}{chapter.5}% 80
+\BOOKMARK [1][-]{section.5.8}{Gestion de l'\351clairage}{chapter.5}% 81
+\BOOKMARK [1][-]{section.5.9}{Utilisation des appareils \351lectriques}{chapter.5}% 82
+\BOOKMARK [2][-]{subsection.5.9.1}{Types d'appareils \351lectriques}{section.5.9}% 83
+\BOOKMARK [2][-]{subsection.5.9.2}{Mod\351lisation de la possession et de l'utilisation des appareils \351lectriques}{section.5.9}% 84
+\BOOKMARK [1][-]{section.5.10}{Gestion des consignes de temp\351rature}{chapter.5}% 85
+\BOOKMARK [1][-]{section.5.11}{Consommations d'eau chaude sanitaire}{chapter.5}% 86
+\BOOKMARK [2][-]{subsection.5.11.1}{Syst\350mes}{section.5.11}% 87
+\BOOKMARK [2][-]{subsection.5.11.2}{Volumes de consommation}{section.5.11}% 88
+\BOOKMARK [-1][-]{part.3}{III Application et perspectives}{}% 89
+\BOOKMARK [0][-]{chapter.6}{Analyse de sensibilit\351 sur b\342timent r\351sidentiel}{part.3}% 90
+\BOOKMARK [1][-]{section.6.1}{Pr\351sentation de l'op\351ration}{chapter.6}% 91
+\BOOKMARK [1][-]{section.6.2}{\200}{chapter.6}% 92
+\BOOKMARK [0][-]{chapter.7}{Discussion}{part.3}% 93
+\BOOKMARK [1][-]{section.7.1}{La probl\351matisation avant la mod\351lisation}{chapter.7}% 94
+\BOOKMARK [1][-]{section.7.2}{Appropriation de la technologie}{chapter.7}% 95
+\BOOKMARK [1][-]{section.7.3}{L'accompagnement des usagers}{chapter.7}% 96
+\BOOKMARK [1][-]{section.7.4}{Conclusion}{chapter.7}% 97

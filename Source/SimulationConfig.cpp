@@ -149,6 +149,9 @@ void SimulationConfig::parseAgents(bpt::ptree::value_type & v){
                         }
                     }
                 }
+                else if(schild.first == "jobType"){
+                    agent.jobType = schild.second.data();
+                }
                 else if(schild.first == "bedroom"){
                     agent.bedroom = schild.second.data();
                 }
