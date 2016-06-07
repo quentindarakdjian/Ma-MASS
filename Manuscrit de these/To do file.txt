@@ -1,0 +1,1 @@
+Référencer les logiciels utilisés dans la bibliographie (R, CodeBlocks, Python, ...)

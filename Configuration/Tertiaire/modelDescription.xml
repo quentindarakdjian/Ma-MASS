@@ -1,0 +1,82 @@
+<fmiModelDescription description="Model with interfaces for media with moist air that will be linked to the BCVTB which models the response of the room" fmiVersion="1.0" generationDateAndTime="2012-04-17T19:12:58Z" generationTool="Dymola Version 2012 FD01 (32-bit), 2011-11-22" guid="{fd719ef5-c46e-48c7-ae95-96089a69ee64}" modelIdentifier="FMI" modelName="FMI" numberOfContinuousStates="0" numberOfEventIndicators="0" variableNamingConvention="structured" version="1.2">
+  <TypeDefinitions>
+    <Type name="Modelica.Blocks.Interfaces.RealInput">
+      <RealType />
+    </Type>
+    <Type name="Modelica.Blocks.Interfaces.RealOutput">
+      <RealType />
+    </Type>
+  </TypeDefinitions>
+  <DefaultExperiment startTime="0.0" stopTime="1.0" tolerance="1E-005" />
+  <ModelVariables>
+    <ScalarVariable causality="input" name="EnvironmentSiteExteriorHorizontalSkyIlluminance" valueReference="1">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealInput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="input" name="EnvironmentSiteRainStatus" valueReference="2">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealInput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="input" name="EnvironmentSiteOutdoorAirDrybulbTemperature" valueReference="3">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealInput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="input" name="EMSwarmUpComplete" valueReference="4">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealInput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="input" name="EMSepTimeStep" valueReference="5">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealInput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="input" name="49ZoneMeanAirTemperature" valueReference="6">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealInput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="input" name="56ZoneMeanAirTemperature" valueReference="7">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealInput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="input" name="49ZoneAirRelativeHumidity" valueReference="8">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealInput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="input" name="56ZoneAirRelativeHumidity" valueReference="9">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealInput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="input" name="49ZoneMeanRadiantTemperature" valueReference="10">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealInput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="input" name="56ZoneMeanRadiantTemperature" valueReference="11">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealInput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="input" name="49DaylightingReferencePoint1Illuminance" valueReference="12">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealInput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="input" name="56DaylightingReferencePoint1Illuminance" valueReference="13">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealInput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="output" name="49NumberOfOccupants" valueReference="14">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealOutput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="output" name="56NumberOfOccupants" valueReference="15">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealOutput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="output" name="49WindowState" valueReference="16">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealOutput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="output" name="56WindowState" valueReference="17">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealOutput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="output" name="49BlindState" valueReference="18">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealOutput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="output" name="56BlindState" valueReference="19">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealOutput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="output" name="49LightState" valueReference="20">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealOutput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="output" name="56LightState" valueReference="21">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealOutput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="output" name="49AverageGains" valueReference="22">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealOutput" start="0.0" />
+    </ScalarVariable>
+    <ScalarVariable causality="output" name="56AverageGains" valueReference="23">
+      <Real declaredType="Modelica.Blocks.Interfaces.RealOutput" start="0.0" />
+    </ScalarVariable>
+  </ModelVariables>
+</fmiModelDescription>
