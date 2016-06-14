@@ -17,7 +17,6 @@ void Agent_Action_Heat_Gains::setup(int agentid){
         DataStore::addVariable("Agent_clo_" + idAsString);
         DataStore::addVariable("Agent_ppd_" + idAsString);
         DataStore::addVariable("Agent_pmv_" + idAsString);
-        DataStore::addVariable("Agent_Fanger_Neutral_Temperature_" + idAsString);
 }
 
 void Agent_Action_Heat_Gains::prestep(double clo, double metabolicRate){

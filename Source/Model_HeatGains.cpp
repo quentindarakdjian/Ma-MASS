@@ -101,7 +101,7 @@ void Model_HeatGains::calculate(double metabolicRate, double reativeHumidity, do
         surfaceAreaOfClothing = 1 + 1.29 * icl;
     }
     aHCTCLcalc(ta, icl, airVelocityAndBodyMovement, surfaceAreaOfClothing, metabolicRate, externalWork, actualMeanRadiantTemperature);
-    double TS = 0.303 * exp(-0.036 * metabolicRate) + 0.028;
+    double TS = 0.303 * exp(-0.036 * metabolicRate) + 0.028; // coef transmission de la sensation thermique
     // vapourDiffusion + sweatEvaporation + latentRespirationHeatGains  = Vapour diffusion + sweat evaporation + latent respiration heat gains (all the latent stuff)
     vapourDiffusion = (3.05 * pow(10, -3)) * (5733 - 6.99 * (metabolicRate - externalWork) - partialWaterPressure);
     sweatEvaporation = 0;

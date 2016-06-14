@@ -23,7 +23,7 @@ Model_Agents::Model_Agents(){
     stepCount = 0;
 }
 
-void Model_Agents::setup(){// create agents
+void Model_Agents::setup(){
     int populationSize = SimulationConfig::numberOfAgents();
 
     std::list<int> pop = Utility::randomIntList(populationSize, 0, populationSize);
@@ -46,7 +46,6 @@ void Model_Agents::initialiseStates(){
     if (SimulationConfig::info.presencePage){
         State_IT it;
         matchStateToZone(it);
-        it.getZonePtr()->getName();
         present.addState(it);
     }
     else{
@@ -82,11 +81,13 @@ void Model_Agents::initialiseStates(){
 }
 
 void Model_Agents::matchStateToZone(State &s){
-    std::string zoneName = SimulationConfig::getZoneNameFromActivity(s.getActivity());
+    std::vector<std::string> zoneNames = SimulationConfig::getZoneNameFromActivity(s.getActivity());
     for(unsigned int i =0; i < zones.size(); i++){
-        if(zoneName == zones[i].getName()){
-            s.setZonePtr(&(zones[i]));
-            break;
+        for(std::string & zoneName : zoneNames){
+          if(zoneName == zones[i].getName()){
+              s.addZonePtr(&(zones[i]));
+
+          }
         }
     }
 }
@@ -318,4 +319,3 @@ void Model_Agents::postprocess(){
         agent.postprocess();
     }
 }
-

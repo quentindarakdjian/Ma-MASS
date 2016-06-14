@@ -454,24 +454,23 @@ void SimulationConfig::parseConfiguration(std::string filename){
     std::cout << "Loaded XML file: -" << filename << "-" << std::endl;
 }
 
-std::string SimulationConfig::getZoneNameFromActivity(std::string activity){
-    std::string zoneName = "Out"; //Default out of zone
-    bool found = false;
+std::vector<std::string> SimulationConfig::getZoneNameFromActivity(std::string activity){
+    std::vector<std::string> zoneNames; //Default out of zone
+
     for (std::pair<std::string, zoneStruct> it : zones){
         std::vector<std::string> activities = splitZoneActivities(it.second.activity);
         for(std::string eachActivity: activities){
             if (eachActivity == activity)
             {
-                zoneName = it.first;
-                found = true;
+                zoneNames.push_back(it.first);
                 break;
             }
         }
-        if(found){
-            break;
-        }
     }
-    return zoneName;
+    if(zoneNames.size() == 0){
+      zoneNames.push_back("Out");
+    }
+    return zoneNames;
 }
 
 std::vector<std::string> SimulationConfig::splitZoneActivities(std::string typeString){
@@ -526,4 +525,3 @@ void SimulationConfig::step(){
 int SimulationConfig::getStepCount(){
     return stepCount;
 }
-

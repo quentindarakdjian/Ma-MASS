@@ -20,7 +20,7 @@ double State::getClo()const{
     return clo;
 }
 
-std::string State::getLocation() const{
+std::vector<std::string> State::getLocation() const{
     return location;
 }
 
@@ -28,7 +28,7 @@ std::string State::getActivity() const{
     return activity;
 }
 
-std::string State::getLocationFromActivty(const std::string *activty){
+std::vector<std::string> State::getLocationFromActivty(const std::string *activty){
     return SimulationConfig::getZoneNameFromActivity(*activty);
 }
 
@@ -44,10 +44,10 @@ State State::getNextState(){
     return stateMachine.getPendingState();
 }
 
-Zone* State::getZonePtr() const{
-    return zone;
+std::vector<Zone*> State::getZonesPtr() const{
+    return zones;
 }
 
-void State::setZonePtr(Zone* zoneptr){
-    zone = zoneptr;
+void State::addZonePtr(Zone* zoneptr){
+    zones.push_back(zoneptr);
 }

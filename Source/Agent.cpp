@@ -64,7 +64,7 @@ void Agent::step(StateMachine *stateMachine){
     int newStateID = activities.at(stepCount);
     previousState = state;
     state = stateMachine->transistionTo(newStateID);
-    Zone* zonePtr = state.getZonePtr();
+    Zone* zonePtr = updateLocation(state);
     metabolicRate = state.getMetabolicRate();
     clo = state.getClo();
     activity = state.getActivity();
@@ -73,7 +73,7 @@ void Agent::step(StateMachine *stateMachine){
         interactWithZone(*zonePtr);
     }
     if( stepCount > 0 && previousState.getId() != state.getId() && presentAt(stepCount - 1)){
-        zonePtr = previousState.getZonePtr();
+        zonePtr = updateLocation(previousState);
         interactWithZone(*zonePtr);
     }
     std::string name = "Agent_Activity_" + std::to_string(id);
@@ -132,7 +132,7 @@ void Agent::model_presenceFromActivities(){
 
 void Agent::model_presenceFromPage(){
     presence.calculatePresenceFromPage(id);
-    for (unsigned int i = 0; i < presence.size(); ++i){  //size_t est un type spécifique. Un "int" particulier lié à size()
+    for (unsigned int i = 0; i < presence.size(); ++i){
         if (presence.at(i)){
             activities.push_back(3);
         }
@@ -207,13 +207,13 @@ double Agent::getDesiredHeatingSetpointState(const Zone &zone) const{
 }
 
 bool Agent::currentlyInZone(const Zone &zone) const{
-    return zone.getName() == state.getZonePtr()->getName();
+    return zone.getName() == updateLocation(state)->getName();
 }
 
 bool Agent::previouslyInZone(const Zone &zone) const{
     bool inZone = false;
     if (SimulationConfig::getStepCount() > 0){
-        inZone = zone.getName() == previousState.getZonePtr()->getName();
+        inZone = zone.getName() == updateLocation(previousState)->getName();
     }
     return inZone;
 }
@@ -227,7 +227,7 @@ int Agent::presentForFutureSteps() const{
 }
 
 bool Agent::isInZone(std::string zoneName) const{
-    return (state.getZonePtr()->getName() == zoneName);
+    return (updateLocation(state)->getName() == zoneName);
 }
 
 std::string Agent::getLocationType(int step, StateMachine *sm){
@@ -237,25 +237,31 @@ std::string Agent::getLocationType(int step, StateMachine *sm){
     return s.getActivity();
 }
 
-std::string Agent::getLocationName(int step, StateMachine *sm){
-    int newStateID = activities.at(step);
-    State s = sm->transistionTo(newStateID);
-    return updateLocation(s);
-}
 
-std::string Agent::updateLocation(const State& s) const{
-    std::string tempLocation = s.getLocation();
+
+
+Zone* Agent::updateLocation(const State& s) const{
+
+    std::vector<Zone*> zonePtrs = s.getZonesPtr();
+    Zone* zone = zonePtrs.at(0);
     if (s.getActivity() == "Sleeping" || s.getActivity() == "Sleep" ){
-        tempLocation = bedroom;
+      for(Zone* &z : zonePtrs){
+        if(z->getName() == bedroom){
+          zone = z;
+        }
+      }
     }
     else if(s.getActivity() == "IT" && SimulationConfig::info.presencePage){
         if(office != ""){
-            tempLocation = office;
+          for(Zone* &z : zonePtrs){
+            if(z->getName() == office){
+              zone = z;
+            }
+          }
         }
     }
-    return tempLocation;
+    return zone;
 }
 
 void Agent::postprocess(){
 }
-

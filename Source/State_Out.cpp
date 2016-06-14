@@ -7,7 +7,7 @@ State_Out::State_Out()
             metabolicRate = 0;
             clo = 1;
             activity = "Out";
-            location = "Out";
+            location = getLocationFromActivty(&activity);
 
 }
 

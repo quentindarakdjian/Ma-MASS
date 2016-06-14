@@ -15,22 +15,22 @@ class State{
         int getId() const;
         double getMetabolicRate() const;
         double getClo() const;
-        std::string getLocationFromActivty(const std::string *activity);
-        std::string getLocation() const;
+        std::vector<std::string> getLocationFromActivty(const std::string *activity);
+        std::vector<std::string> getLocation() const;
         std::string getActivity() const;
-        Zone* getZonePtr() const;
-		void addState(State s);
+        std::vector<Zone*> getZonesPtr() const;
+		    void addState(State s);
         virtual bool hasState(const int stateID);
         State getNextState();
-        void setZonePtr(Zone* zoneptr);
+        void addZonePtr(Zone* zoneptr);
 
     protected:
         int id;
         double metabolicRate;
         double clo;
-        std::string location;
+        std::vector<std::string> location;
         std::string activity;
-        Zone* zone;
+        std::vector<Zone*> zones;
     private:
 
 };

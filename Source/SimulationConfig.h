@@ -146,7 +146,7 @@ public:
     //static void reset();
     static bool activeZone(std::string* zoneName);
     static bool isZoneGroundFloor(std::string* zoneName);
-    static std::string getZoneNameFromActivity(std::string activityName);
+    static std::vector<std::string> getZoneNameFromActivity(std::string activityName);
     static std::map<std::string, zoneStruct> zones;
     static std::vector<agentStruct> agents;
     static std::map<int, windowStruct> windows;

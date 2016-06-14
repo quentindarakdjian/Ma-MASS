@@ -17,7 +17,6 @@ public:
     static void addVariable(std::string name);
     static void addValue(std::string name, double val);
     static double getValue(std::string name);
-    static double getValueForZone(std::string name, std::string zoneName);
     static void clear();
     static void print();
 private:

@@ -4,5 +4,5 @@ State_Present::State_Present()
 {
     //ctor]
     id = -100;
-    location = "present";
+    location.push_back("present");
 }
