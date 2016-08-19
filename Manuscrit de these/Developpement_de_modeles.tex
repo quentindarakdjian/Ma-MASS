@@ -1,48 +1,101 @@
 \chapter{Modélisation du comportement des occupants}
+\label{Modélisation du comportement des occupants}
 
-Ce chapitre présente dans un premier temps l'approche de modélisation, puis traite un à un les modèles de la plateforme MASS.
-Nous somme intéressé par mieux modéliser les consommations, et non pas par mieux modéliser le comportement des occupants
+Ce chapitre présente dans un premier temps deux étapes nécessaires à l'intégration de modèles de comportements dans MASS et dans l'environnement de simulation. Il s'agit de la collecte de données et de sa modélisation mathématique. La présentation de deux études de cas, un bâtiment de bureau et un bâtiment résidentiel, font suite avant de présenter les modèles que nous considérons comme les plus appropriés d'une part pour améliorer la fiabilité des simulations et d'autre part d'être exploitable industriellement. 
 
-DIVERSITE DES OCCUPANTS: Les occupants se comportent différemment sous des conditions environnementales identiques. Les variables propres aux différents occupants comme l'âge ou le contexte familial peut impacter les comportement.
+\section{Collecte de données}
 
-Dans la littérature les comportements sont étudiés comme un ensemble sans discrimination individuelle lors des suivis sur site. La distinction entre les occupants est alors perdue et seulement un occupant moyen est modélisé. Cela représente alors davantage un concept statistique que la modélisation de la diversité des comportements humains. Ainsi, le seul moyen de proposer des modèles qui rendent compte de la diversité des occupants est d'étudier les occupants individuellement au sein d'un échantillon d'individus suffisamment significatif.
+Plutôt que de poser des hypothèses non-fondées sur la manière dont les occupants se comportent, nous sommes convaincu que le meilleur moyen de proposer des modèles de comportement des occupants réalistes consiste dans un premier temps à l'observer.
 
-\section{Collection de données}
+Yan et al. \cite{Yan-15} ont recensé plusieurs approches de collecte de données telles que les observations non-intrusives, les études de laboratoire, les observations des comportements sous l'exécution de perturbation et les enquêtes sociologiques. Nous proposons dans cette section de présenter et expliquer l'intérêt des études sur sites, des études de laboratoires et des enquêtes.
 
 \subsection{Suivi sur site}
 
-\subsection{Enquêtes}
+% Principe
+Les suivis sur site consistent à monitorer passivement les comportements des occupants ainsi que les facteurs prédisposés à expliquer ces comportements. Il s'agit généralement des variables physiques environnementales internes et externes au bâtiment étudié, ainsi que des informations relatives au temps comme l'heure de la journée, le jour de la semaine ou la saison. L'explication des comportements est parfois complétée par des études en laboratoire (Section \ref{Études de laboratoire} ou des questionnaires (Section\ref{Enquêtes}).
+
+% Exemple d'utilisation - Presence
+Ces études d'observation sont très exploitées pour comprendre les comportements humains dans un environnement quotidien. La présence et le nombre d'occupants dans une zone est un pré-requis fondamental dans l'exercice de modélisation des comportements mais la détection de présence n'est pas si simple qu'il n'y parait. Les approches fréquentes sont en outre, les détecteurs de mouvements \cite{Benezeth-11}, les capteurs de dioxyde de carbone \cite{Gruber-14} et les systèmes vidéos \cite{Fleuret-08}. Toutes ont leurs défaut: les détecteurs de mouvements ne considèrent pas l'intensité d'usage, les capteurs de CO2 sont décalés temporairement et ne fonctionnent pas si les ouvrants sont ouverts et enfin les systèmes vidéos nécessitent souvent un post-traitement lourd. 
+
+% Exemple d'utilisation - Actions adaptatives 
+Le monitoring des actions adaptatives (gestion des fenêtres, des stores, de l'éclairage, du thermostat, ...) peut également prendre différentes formes. Les observations manuelles, comme l'analyse photographique ou vidéos, peuvent théoriquement être réalisées pour l'ensemble des systèmes adaptatifs mais sont limitées par l'investissement qu'elles impliquent \cite{Rea-84}. Une méthode plus commode consiste à collecter les états des systèmes adaptatifs par voie électronique. Cette approche est particulièrement appropriée au monitoring des stores \cite{Sutter-06} et à la gestion des températures de consignes \cite{Gunay-14}. Enfin, une autre méthode précise pour déterminer l'état(ouvert ou fermé) des stores, des fenêtres ou des portes consiste à disposer des contacts de feuillure. 
+
+% Exploitation
+A la suite des campagnes de mesures, l'exploitation possible est large. Dans un premier temps, le monitoring permet d'identifier les motivations et comportements principaux. Ensuite, il permet le développement de modèles mathématiques à proprement parlé comme nous le verrons en section \ref{Formulations mathématiques}.
 
 \subsection{Études de laboratoire}
+\label{Études de laboratoire}
 
-\section{Outils de modélisation}
+% Principe
+L'utilisation de laboratoires pour étudier le comportement des occupants sert à approfondir les études sur site, à comprendre les comportements physiologiques et biologiques ou encore à mieux appréhender certains phénomènes dont le confort.
 
-Un bon modèle isole les meilleurs variables pour prédire un évènement ou un état
+% Exemple d'utilisation - Actions adaptatives
+Contrairement au monitoring sur site, la présence et la localisation des occupants ne peut être traité en laboratoire, car les occupants ne vivent pas dans leur environnement quotidien. Néanmoins, leurs actions adaptatives peuvent être appréhendées et les conforts thermiques et visuels étudiés plus en détail \cite{Schweiker-16}.
 
+% Exploitation
+Les bâtiments laboratoires sont donc utilisés en complément pour comprendre un phénomène bien particulier. Ce type d'étude peut donc déboucher sur la proposition de modèles mathématiques de confort. Les limitations de ces travaux, sont principalement liées à la difficulté de reproduire un environnement réaliste comme les contraintes sociales ou la non connaissance du bâtiment et de ses spécificités.
 
+\subsection{Enquêtes}
+\label{Enquêtes}
 
-Afin de considérer au mieux les comportements des occupants du parc immobilier, nous proposons une approche qui permet de considérer la variété de contextes. Depuis quelques années le nombre de publications traitant du comportement des occupants n'a cessé de croître. La Figure \ref{fig:NbPerYear} montre l'évolution du nombre de publications en lien avec le comportement des occupants recensé par l'Annex66.  et la répartition des comportements 
+% Principe
+Dans notre contexte, les questionnaires et enquêtes, comme les études en laboratoire, ont pour objectif de compléter les travaux de monitoring. Ils permettent de comprendre les motivations de certains comportements.
 
-\begin{figure}[h]
+% Exemple d'utilisation - Actions adaptatives
+L'étude des activités et donc de la localisation des individus étudiés peut-être réalisé à l'aide d'enquêtes emploi du temps. Les individus doivent par exemple noter l'enchainement de leurs activités sur une journée avec une haute sensibilité \cite{Ricroch-12}.
+
+Les questionnaires et enquêtes peuvent également être utilisés pour comprendre les actions adaptatives. Dans ce cas, les répondants doivent généralement indiquer leur niveau actuel de confort vis à vis de l'environnement ou doivent indiquer leurs comportement dans certaines situations. Les questionnaires peuvent également être utilisés pour comparer des phénomènes biologiques, psychologiques ou sociaux.
+
+% Exploitation
+Bien que très intéressant d'un point de vu sociologique, les enquêtes peuvent se révéler biaisées si les répondants ne se rappellent pas de leurs comportements et niveau de confort ou s'ils modifient leurs réponses pour le questionnaires. En effet, des travaux montrent parfois de grandes disparités entre ce que les gens pensent faire et ce qu'ils font vraiment \cite{Gauthier-15}. 
+
+\section{Développement de modèles}
+\label{Développement de modèles}
+
+Depuis le début des années 2000, la diffusion des modèles stochastiques puis celle des modèles à base d'agents n'a cessé de faire croître le nombre de publications traitant du comportement des occupants. La Figure \ref{fig:NbPerYear} illustre cette évolution par le recensement du nombre du nombre de publications réalisé par l'Annexe 66 de l'Agence Internationale de l'Energie. 
+
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{Images/NbPerYear/NbPerYear}
 \caption{Évolution du nombre d'articles publiés sur la modélisation du comportement des occupants}
 \label{fig:NbPerYear}
 \end{figure}
 
-\subsection{Famille de modèles}
+Le développement de modèles consiste à analyser les informations issues de la collecte et de formuler mathématiquement des lois qui en découlent. Pour rappel, un modèle permet de décrire un système en utilisant des concepts mathématiques. Il sert à prédire un état (\textit{output}) en fonction de variables explicatives (\textit{inputs}). La formulation d'un bon modèle répond à plusieurs principes: Elle est parcimonieuse, c'est à dire que les paramètres explicatifs sont statistiquement significatifs. Le modèle est basé sur des données de qualité (suffisantes, calibrées et complètes). Les outputs sont rigoureusement validés par validations croisées. Et enfin, le champ d'applicabilité est honnêtement déclaré.
 
-\subsubsection{Modèles linéaires généralisés}
+Nous proposons dans cette section une revue succincte de trois formulations mathématiques fréquemment utilisées dans la modélisation du comportement des occupants, puis une présentation des méthodes d'évaluation de ces modèles.
 
-\subsubsection{Modèle de Bernoulli}
+\subsection{Formulations mathématiques}
+\label{Formulations mathématiques}
+
+Les trois formes majeures de modèles stochastiques pour représenter le comportement sont le processus de Bernoulli, les chaines de Markov et l'analyse de la survie. Le principe commun de ces formulations est de comparer une probabilité à un nombre aléatoire.
+
+\subsubsection{Processus de Bernoulli}
+
+Le processus de Bernoulli est un processus stochastique statique où la probabilité de l'état à prédire ne dépend pas de l'état précédent. Ce processus est une séquence de variables aléatoires indépendantes $\lbrace X_{t}:t=0,1,2,...n\rbrace$.  
+
+$X_{t}$ est égal à 0 (l'évènement ne se produit pas) ou 1 (l'évènement se produit) pour toutes valeurs de $t$ dans le cas d'une prédiction binaire. Dans ce cas, une régression logistique binomiale est utilisée et la probabilité d'action est définit par:
+
+\begin{equation}
+P(x_{1}...x_{n}, t)=\frac{exp\left( \alpha + \sum\limits_{k=1}^n \beta_{k}x_{k}\right)}{1+exp\left( \alpha + \sum\limits_{k=1}^n \beta_{k}x_{k}\right)}
+\end{equation}
+
+avec $\alpha$ et $\beta_{k}$ l'intersection et la pente pour l'ensemble des n variables à expliquer.
+
+Dans le cas où plus de deux résultats possibles sont à prédire, une régression logistique multinominale est utilisée, la probabilité d'action est alors définit par:
+
+\begin{equation}
+P_{j}(x, t)=\frac{exp (A_{j}(x))}{\sum\limits_{j=1}^n exp (A_{j}(x))}, j= 1, ..., N
+\end{equation}
+avec $A_{j}(x) = \alpha_{j} + \sum\limits_{j=1}^n \beta_{jk}x_{jk}$ et $N$ le nombre d'états.
 
 \subsubsection{Chaine de Markov}
 \label{Chaine de Markov}
 
-Une chaîne de Markov $\lbrace X_{t}:t=0,1,2,...n\rbrace$ est un processus stochastique capable d'estimer un état futur $X_{t+1}$ en fonction de l'état présent $X_{t}$ mais indépendamment des états passés $X_{0}, X_{1}, ...X_{t-1}$. Les chaînes de Markov ont alors l'avantage en comparaison avec le processus de Bernoulli de rendre la simulation davantage fiable sur les transitions d'états. La probabilité de transition d'un état $i$ au pas de temps $t$ à un état $j$ au pas de temps $t+1$ $(P_{ij})$ peut être formulé comme:
+Une chaîne de Markov $\lbrace X_{t}:t=0,1,2,...n\rbrace$ est un processus stochastique capable d'estimer l'état futur $X_{t+1}$ en fonction de l'état présent $X_{t}$ mais indépendamment des états passés $X_{0}, X_{1}, ..., X_{t-1}$. Elle ont l'avantage en comparaison avec le processus de Bernoulli de rendre la simulation plus fiable sur les transitions d'états. La probabilité de transition d'un état $i$ au pas de temps $t$ à un état $j$ au pas de temps $t+1$ $(T_{ij})$ peut être formulé comme:
 
 \begin{equation}
-P(X_{t+1}=j|X_{t}=i)=:T_{ij}(t)
+T_{ij}(t)=P(X_{t+1}=j|X_{t}=i)
 \end{equation}
 
 On obtient alors la matrice de transition d'état $ T_{ij}(t)= \begin{bmatrix}
@@ -57,21 +110,40 @@ Dans le cas d'un système binaire la matrice de transition $ T_{ij}(t)$ est réd
         1-T_{11}(t) & T_{11}(t)       
      \end{bmatrix}$
 
-\subsubsection{Loi de Weibull}
+\subsubsection{Analyse de survie}
 
-\subsubsection{Approche hybride}
+L'analyse de survie est un processus stochastique utilisé pour prédire la probabilité de durée d'un évènement. Plusieurs distributions paramétriques permettent de prédire ces durées de survie, dont la distribution de Weibull qui est la forme la plus générale. Sa densité de probabilité, ou taux de défaillance instantanée, est définit par la fonction: 
+\begin{equation}
+f(t) = \lambda p(\lambda t)^{p-1}e^{-(\lambda t)^{p}}
+\end{equation}
+avec le paramètre d'échelle $\lambda = 1/exp\left( \alpha + \sum\limits_{i=1}^k \beta_{i}x_{i} \right)$ et le paramètre de forme $log(1/p) $. Et sa fonction de survie par:
+\begin{equation}
+S(t) = P(T>t)=exp(-(\lambda t)^{p})
+\end{equation}
+A partir de la fonction de survie, lorsque l'état j commence, la durée correspondante peut être estimée en isolant $t$:
+\begin{equation}
+t_{j}=\frac{(-log(U))^{1/p}}{\lambda}
+\end{equation}
+avec $U$ un nombre aléatoire compris entre 0 et 1.
 
-\subsubsection{Partitionnement de données}
+Nous pouvons noter que la distribution exponentielle peut aussi servir à l'analyse de la survie, et qu'elle est un cas particulier de la distribution de Weibull lorsque le paramètre de forme $p$ est égal à 1.
 
 \subsection{Évaluation et validation}
 
+Le développement de modèles résulte de campagne de mesures et d'analyses. Or, une étape fondamentale est parfois négligée, il s'agit de celle de validation des modèles. La majorité des processus de validations passés sont limités à la comparaison des sorties de la simulation aux données dans le même contexte que le modèle a été développé. Cela mène à une surestimation des performances du modèle. Cette section présente les approches de validation de modèles pour le comportement des occupants.
+
+On recense deux types de validation; les procédures de validation internes et les procédures de validation externe. Steyerberg \cite{Steyerberg-03} définit les données externes comme des données venant de mesures différentes mais venant tout de même d'une population plausiblement liée.
+
+Dans le contexte du comportement des occupants dans les bâtiments il y a au moins trois dimensions externes à considérer: le temps, l'environnement et les occupants. La question est alors de connaître quelles dimensions doivent varier pour obtenir des données externes. Si l'objectif du modèle est de modéliser un comportement dans un bâtiment particulier alors une variation dans le temps peut être suffisante pour l'obtention de données externes. Or si l'objectif du modèle est d'être généralisé à des occupants et à des bâtiments divers alors davantage de données issus d'autres occupants et d'autres bâtiments est nécessaire.
+[Revisiting validation methods of OB models - Wolf - 2015]
+
 \subsection{\textit{Fit-for-purpose} et facteurs contextuels}
 
-Gaetani et al. \cite{Gaetani-16} proposent une méthodologie, appelée \textit{fit-for-purpose} permettant de sélectionner le modèle de comportement des occupants le plus approprié à l'objectif de l'utilisateur. Ce terme initialement proposé par Pitt and Myung \cite{Pitt-02} dans un contexte plus large d'analyse statistique met en garde sur la nécessité de développer des modèles qui sont ajustés aux objectifs de la modélisation. Un modèle sous-ajusté ne permet de reproduire le phénomène étudié, alors qu'un modèle sur-ajusté prendra en compte les variations non-significatives et ne sera pas reproductible. 
+Gaetani et al. \cite{Gaetani-16} proposent une méthodologie, appelée \textit{fit-for-purpose} permettant de sélectionner le modèle de comportement des occupants le plus approprié à l'objectif de l'utilisateur. Ce terme initialement proposé par Pitt and Myung \cite{Pitt-02} dans un contexte plus large d'analyse statistique met en garde sur la nécessité de développer des modèles qui sont ajustés aux objectifs de la modélisation. Un modèle sous-ajusté, et donc sous-paramétré, ne permet pas de reproduire le phénomène étudié, il sera alors trop rigide et ne permet pas de suivre les données. Alors qu'un modèle sur-ajusté, et donc sur-paramétré, prendra en compte des variations non-significatives et ne sera pas reproductible sur de nouvelles données. 
 
-Yan et al. \cite{Yan-15} ont signalé dans leur article sur l'état de l'art et sur les futurs défis de la modélisation du comportement des occupants que l'intégration des facteurs contextuels est un travail indispensable pour améliorer la reproductibilité des modèles. Dans la suite, nous proposons alors d'intégrer, lorsque le \textit{fit-for-purpose} n'est pas envisageable, un certain nombre de facteurs contextuels aux modèles les plus solides que nous avons préalablement identifiés.
+Yan et al. \cite{Yan-15} ont signalé dans leur article sur les futurs défis de la modélisation du comportement des occupants, que l'intégration des facteurs contextuels est un travail indispensable pour améliorer la reproductibilité des modèles. Dans la suite, nous proposons alors d'intégrer, lorsque le \textit{fit-for-purpose} n'est pas envisageable, un certain nombre de facteurs contextuels aux modèles les plus solides que nous avons préalablement identifiés.
 
-Afin de mettre en évidence ces deux termes forts de cette thèse, la Figure de principe \ref{fig:Fit-to-purpose} met en avant la nécessité, d'une part de développer des modèles avec un niveau de complexité ni trop faible (a) ni trop élevé (c) pour obtenir des modèles parcimonieux mais néanmoins de proposer une mise en contexte des modèles afin qu'ils puissent être réutilisés dans pour un bâtiment autre que celui ayant servi à son développement. Ainsi, le modèle de principe utilisé dans le cadre (f) et issu du modèle (c), ne produit pas mieux les données que le modèle issu de (b) et réutilisé dans (e) malgré une qualité d'ajustement meilleure lors du développement du modèle.
+Afin de mettre en évidence ces deux termes forts de cette thèse, la Figure de principe \ref{fig:Fit-to-purpose} met en avant la nécessité, d'une part de développer des modèles avec un niveau de complexité ni trop faible (a) ni trop élevé (c) pour obtenir des modèles parcimonieux mais néanmoins de proposer une mise en contexte des modèles afin qu'ils puissent être réutilisés pour un bâtiment autre que celui ayant servi à son développement. Ainsi, le modèle de principe utilisé dans le cadre (f) et issu du modèle (c), ne produit pas mieux les données que le modèle issu de (b) et réutilisé dans (e) malgré une qualité d'ajustement meilleure lors du développement du modèle.
 
 \begin{figure}[H]
 \centering
@@ -82,7 +154,7 @@ Afin de mettre en évidence ces deux termes forts de cette thèse, la Figure de 
 
 \section{Présentation des cas d'études}
 
-Nous proposons dans cette section de présenter un bâtiment tertiaire virtuel et une maison individuelle conçue par l'Agence PY Architectes et notre bureau d'étude AI Environnement. Ces deux cas d'étude servant à illustrer l'ensemble des modèles présentés plus loin dans ce chapitre. Le style architectural de ces cas d'étude est limité, en revanche les matériaux de constructions sont très performants et la conception est proche d'une démarche passive.
+Nous proposons dans cette section de présenter un bâtiment tertiaire virtuel et une maison individuelle conçue par l'Agence PY Architectes et notre bureau d'étude AI Environnement. Ces deux cas d'étude serviront à illustrer l'ensemble des modèles présentés plus loin dans ce chapitre. Le style architectural de ces cas d'étude est limité, en revanche les matériaux de construction sont très performants et la conception est proche d'une démarche passive.
 
 Notre volonté initiale était de récupérer des données issues de projets réels suivi en phase d'exploitation afin de pouvoir comparer les résultats issus de nos simulations aux mesures in-situ et donc de travailler sur le \textit{performance gap}. Néanmoins, la confidentialité des documents espérés et les lenteurs administratives nous ont amené à revoir nos ambitions à la baisse. Ce changement de programme ne remet néanmoins pas en cause la co-simulation ou les modèles présentés ci-après.
 
@@ -90,7 +162,7 @@ Notre volonté initiale était de récupérer des données issues de projets ré
 
 La Figure \ref{fig:CasEtudeBureau} représente le bâtiment de bureau, localisé en Gironde, utilisé lors des études portants sur le tertiaire. 
 
-Par soucis de simplicité, nous avons opté pour des formes simples, nous n'avons pas intégré de masques proches ou lointains et nous avons orienté le bâtiment vers le sud. Le modèle comporte autant de zones que de pièces; 2 bureaux et un couloir. Le matériel de construction est synthétisé dans la Table \ref{tab:materialBureau}. Les ouvertures sont du triple vitrage argon 3/13/3/13/3 mm de coefficient de transmission thermique 0.786 W/(m2.K). L'ensemble des ouvertures est équipé de système d'ombrage intérieur. Le renouvellement d'air est assuré par une ventilation mécanique double flux de rendement 70 \% et l'étanchéité à l'air est fixé à taux constant (pas de prise en compte météorologique) à 0.150 Vol/h. Le bâtiment est chauffé électriquement et n'a pas de système de refroidissement actif.
+Par soucis de simplicité, nous avons opté pour des formes simples, nous n'avons pas intégré de masques proches ou lointains et nous avons orienté le bâtiment vers le sud. Le modèle comporte autant de zones que de pièces; 2 bureaux et un couloir. Le matériel de construction est synthétisé dans le Tableau \ref{tab:materialBureau}. Les ouvertures sont du triple vitrage argon 3/13/3/13/3 mm de coefficient de transmission thermique $U_{w}$ = 0.786 W/(m2.K). L'ensemble des ouvertures est équipé de système d'ombrage intérieur. Le renouvellement d'air est assuré par une ventilation mécanique double flux de rendement 70 \% et l'étanchéité à l'air est fixée à taux constant (pas de prise en compte météorologique) à $n_{50}$ = 0.150 Vol/h. Le bâtiment est chauffé électriquement et n'a pas de système de refroidissement actif.
 
 \begin{figure}[H]
 \centering
@@ -128,7 +200,7 @@ Construction & Couches & Épaisseur (cm) & Matériaux & U [W/(m2.K)] \\
 
 La Figure \ref{fig:CasEtudeBureau} représente la modélisation d'une maison individuelle suivant une démarche passive dans le bassin d'Arcachon à Andernos-les-Bains. Cette maison compacte est choisie comme cas d'étude pour cette thèse, car elle offre une architecture simple et performante, répondant à nos besoins de recherche. Cette compacité ne remet pas en cause les possibilités de l'outil à modéliser des cas plus complexes, mais elle a l'avantage de réduire les temps de développement et de calcul. Le découpage en zones thermiques mène à 6 zones distinctes, la buanderie ayant été intégrée au séjour et le point d'eau de la chambre ayant été transféré à la salle de bain principale (Figure \ref{fig:PlanMaison}).
 
-Le fichier météo, issu de la base de données EnergyPlus, ayant servi à la simulation est le fichier FRA\_Bordeaux.075100\_IWEC.epw obtenu sur des mesures, sur le site de Bordeaux-Mérignac, comprises entre 1983 et 1999, suivant la procédure de création de fichiers détaillée à la section \ref{Météo}. Les caractéristiques de l'enveloppe sont présentées dans la Table \ref{tab:materialMaison}. Comme pour le cas de bureaux, les ouvertures sont du triple vitrage argon 3/13/3/13/3 mm de coefficient de transmission thermique 0.786 W/(m2.K). L'ensemble des ouvertures est équipé de système d'ombrage intérieur. Le renouvellement d'air est assuré par une ventilation mécanique double flux de rendement 70 \% et l'étanchéité à l'air est fixé à taux constant (pas de prise en compte météorologique) à 0.200 Vol/h. Le bâtiment est chauffé au gaz naturel et n'a pas de système de refroidissement actif.
+Le fichier météo, issu de la base de données EnergyPlus, ayant servi à la simulation est le fichier FRA\_Bordeaux.075100\_IWEC.epw obtenu sur des mesures, sur le site de Bordeaux-Mérignac, comprises entre 1983 et 1999, suivant la procédure de création de fichiers détaillée à la section \ref{Météo}. Les caractéristiques de l'enveloppe sont présentées dans le Tableau \ref{tab:materialMaison}. Comme pour le cas de bureaux, les ouvertures sont du triple vitrage argon 3/13/3/13/3 mm de coefficient de transmission thermique $U_{w}$ = 0.786 W/(m2.K). L'ensemble des ouvertures est équipé de système d'ombrage intérieur. Le renouvellement d'air est assuré par une ventilation mécanique double flux de rendement 70 \% et l'étanchéité à l'air est fixé à taux constant (pas de prise en compte météorologique) à $n_{50}$ = 0.200 Vol/h. Le bâtiment est chauffé au gaz naturel et n'a pas de système de refroidissement actif.
 
 \begin{figure}[H]
 \centering
@@ -170,23 +242,117 @@ Construction & Couches & Épaisseur (cm) & Matériaux & U [W/(m2.K)] \\
 
 \section{Présence dans les bâtiments de bureaux}
 
+A RÉDIGER------------->: Les bâtiments accueillant des activités autres que de bureau et résidentiel, tels que les centres commerciaux, les établissement scolaires ou les musées ne sont pas modélisé car suivant des horaires de travail réguliers et spécifiques
+
+\label{PresenceBureau}
+
 Les scénarios de présence dans les bureaux et d'activités dans les logements constituent une entrée indispensable pour les modèles adaptatifs (gestion de température de consigne, fenêtres, stores et volets, éclairage) et non adaptatifs (utilisation d'appareils électriques, consommation d'eau chaude). Nous proposons donc dans ce chapitre et le suivant de considérer deux familles de modèles de prédiction des activités, d'une part les présences et absences dans les bâtiments de bureaux et d'autre part les activités dans les logements. Cette distinction fondamentale également partagée par plusieurs chercheurs \cite{Vorger-14}, \cite{Page-08}, \cite{Chapman-14} peut être vue comme un \textit{fit-for-purpose} dans le sens ou les modèles sont radicalement différents et n'ont pas de racines communes.
 
-Bien que les horaires de travail et les horaire d'occupation des logements soient très corrélés pour l'ensemble de la population, les deux modèles présentés dans ce chapitre et dans le chapitre \ref{Logements} sont totalement indépendant. Nous justifions ce choix par une modélisation dans cette thèse à l'échelle du bâtiment. Une modélisation plus large à l'échelle du quartier ou de la ville impliquerait alors une approche ou les activités professionnelles et privées seraient dépendantes.
+Bien que les horaires de travail et les horaires d'occupation des logements soient très corrélés pour l'ensemble de la population, les deux modèles présentés dans ce chapitre et dans le chapitre \ref{ActivitésLogements} sont totalement indépendant. Nous justifions ce choix par une modélisation dans cette thèse à l'échelle du bâtiment. Une modélisation plus large à l'échelle du quartier ou de la ville impliquerait alors une approche ou les activités professionnelles et privées seraient dépendantes.
 
-L'objectif de ce chapitre est de proposer un modèle qui reproduit plus fidèlement la présence de travailleurs de bureaux que les scénarios conventionnels couramment utilisés. Le modèle proposé dans ce chapitre est définit en pré-processus de la simulation, c'est à dire qu'il est connu pour l'ensemble de la simulation avant que celle-ci n'ai débutée. Ce choix se justifie par la non-nécessité, à priori, de connaître les variables environnementales pour définir les horaires de travail. La première partie de cette section présente un état de l'art des modèles stochastiques de présence dans les bureaux et plus particulièrement le modèle de Page et al. \cite{Page-08} qui est utilisé comme base dans la suite. La seconde partie présente comment ce modèle développé sur des bureaux universitaires de chercheurs peut être également appliqué sur des bureaux de catégories professionnelles plus large. Enfin, une présentation des résultats de ce modèle et de ces sous-modèles est proposé.
+L'objectif de ce chapitre est de proposer un modèle qui reproduit plus fidèlement la présence de travailleurs de bureaux que les scénarios conventionnels couramment utilisés. Le modèle proposé dans ce chapitre est définit en pré-processus de la simulation, c'est à dire qu'il est connu pour l'ensemble de la simulation avant que celle-ci n'ai débutée. Ce choix se justifie par la non-nécessité, à priori, de connaître les variables environnementales pour définir les horaires de travail. La première partie de cette section présente un état de l'art des modèles stochastiques de présence dans les bureaux et plus particulièrement le modèle de Page et al. \cite{Page-08} qui est utilisé comme base dans la suite. La seconde partie présente comment ce modèle développé sur des bureaux universitaires de chercheurs peut être également appliqué sur des bureaux privés. Enfin, une présentation des résultats de ce modèle et de ces sous-modèles est proposée.
 
 \subsection{État de l'art}
 
-Afin d'établir des modèles stochastiques réalistes de présence dans les bureaux pour associer une présence à des apports métaboliques et à des actions possibles plusieurs travaux ont été réalisés.
+Afin d'établir des modèles stochastiques réalistes de présence dans les bureaux pour associer une présence à des apports métaboliques et à des actions possibles plusieurs travaux ont été réalisés. Le Tableau \ref{tab:PresencePresentation} et \ref{tab:PresenceOffice} présentent respectivement le contexte du développement des modèles et leurs variables d'entrée et de sortie. Nous présentons avant cela les modèles les plus pertinents. 
 
-Le premier modèle probabiliste recensé dans notre bibliographie date de 1995 et a été développé dans le cadre du programme Lightswitch par Newsham et al. \cite{Newsham-95}. L'objectif du programme était de modéliser les actions des occupants sur l'utilisation des appareils électriques. Or comme nous le verrons dans la section \ref {Gestion de l'éclairage} cette utilisation est fortement dépendante de la présence des occupants, notamment s'ils viennent d'arriver dans la pièce, s'ils en sortent ou s'ils sont en période intermédiaire. Les auteurs ont alors dans ce contexte développé un modèle stochastique qui intégre une variabilité temporelle de présence. D'autres auteurs, tels que Yamagushi et al. \cite{Yamaguchi-03} et Wang et al. \cite{Wang-05} ont également développés des modèles de présence dans des bâtiments de bureaux. Ces deux auteurs ont utilisé des chaînes de Markov homogènes pour le développement de modèle. En comparaison au processus de Bernoulli, les chaînes de Markov ont l'avantage de rendre la dynamique de simulation plus riche par la prise en compte de l'état précédent pour prédire le nouvel état. Cela impact donc fortement le nombre de transitions qui est alors plus réaliste et donc plus fiable pour la modélisation de l'utilisation de l'éclairage, de la gestion des ouvertures ou encore de l'utilisation d'électricité spécifique. Pour leur part, Erickson et al. \cite{Erickson-09} ont utilisé les données collectées d'occupation de bureaux pour développer un modèle basé sur des lois Gaussienne multidimensionnelles aux périodes de transitions. Ce modèle a par la suite été intégré dans un modèle à base d'agents dans le but de prédire la mobilité dans le bâtiment. Cependant, les résultats montrent une faible reproduction des mesures, de l'ordre de 20 \%.
+En 1995, Newsham et al. \cite{Newsham-95} ont proposé un premier modèle probabiliste de présence simple afin de créer des scénarios d'occupation dans le cadre du travail de modélisation de la gestion de l'éclairage artificielle, lightswich. En 2003, Yamagushi et al. \cite{Yamaguchi-03} ont également développé un modèle de présence simple grave à des chaines de Markov, servant d'entrée à la prédiction de la demande d'énergie à l'échelle d'un quartier. Ces deux modèles étant très simplifiés ils ne seront pas présentés plus en détails dans les tableaux suivant.
 
-Comme évoqué en introduction le modèle de Page et al. \cite{Page-08} nous semble le plus approprié. En effet, ce modèle repose sur des donnés issues d'instrumentations sur 5 bureaux entre décembre 2001 et janvier 2006, a été validé en outre par Feng et al. \cite{Feng-15} et a été réutilisé par de nombreux auteurs tels que Robinson et al. \cite{Robinson-07} dans l'outil SUNtool permettant d'optimiser la conception des quartier urbains ou Vorger \cite{Vorger-14} dans sa plateforme permettant un couplage entre les comportements des occupants avec le logiciel de simulation dynamique Comfie+Pleides.
+Wang et al. \cite{Wang-05} ont examiné les propriétés statistiques d'occupation dans des bureaux individuellement occupés. Ils ont réalisé l'hypothèse que les durées des périodes de présences et d'absences intermédiaires sont distribuées exponentiellement et que le coefficient de la distribution peut être traité comme une constante sur la journée. Aussi, ils proposent de générer les premières arrivées, les premiers départs et les pauses déjeuners en assumant que ces périodes suivent une loi normale. Bien qu'élégant, ce modèle ne permet de reproduire la complexité de de présence réelle et sur-estiment la présence, tout comme les scénarios conventionnels.
 
-Le modèle initial ayant été développé dans un contexte universitaire, il n'est à priori pas nécessairement valide pour des bâtiment de bureaux abritant d'autres activités, les horaires de travail dépendant des catégorie socio-professionnelles. Une solution consiste à répliquer le travail de Page et al. \cite{Page-08} pour plusieurs typologies de bâtiments afin de calibrer le modèle de base. Un ajustement contextuel plus fin serait ensuite possible afin de considérer davantage de facteurs influents. Dans la suite, nous utiliserons uniquement le modèle de Page comme base ajustable, car ce modèle est le plus robuste de notre base bibliographique et en développer davantage reste un travail coûteux et chronophage. Néanmoins, afin de rendre ce modèle applicable à une gamme de bâtiments et un type d'occupants plus large, nous proposons d'y ajouter des facteurs contextuels rendant l'ensemble plus flexible et plus approprié.
+Page et al. \cite{Page-08} proposent un modèle basé sur des chaines de Markov à deux états à partir d'une campagne de mesure longue sur 5 bureaux universitaire à Lausanne. Ce modèle est capable de reproduire les caractéristiques d'occupations, comme les arrivées, les départs, les absences intermédiaires et les absences longues, mais il n'est pas capable de simuler les mouvements entre les zones. Néanmoins, ce modèle est très probablement celui qui a été le plus repris dans des travaux postérieurs, notamment par Liao et al. \cite{Liao-11}, Vorger \cite{Vorger-14} et Feng et al. \cite{Feng-15}, avec de bonnes capacités de prédiction.
+
+Erickson et al. \cite{Erickson-09} ont utilisé les données collectées d'occupation de bureaux pour développer un modèle basé sur des lois Gaussienne multidimensionnelles aux périodes de transitions. Ce modèle a par la suite été intégré dans un modèle à base d'agents dans le but de prédire la mobilité sur plusieurs zones des agents. Cependant, les résultats montrent une faible reproduction des mesures, de l'ordre de 20 \%.
+
+Tabak et de Vries \cite{Tabak-10} ont généré des profils d'occupation basés sur l'enchainement chronologique des activités des occupants. Cette approche détaillée reproduit bien la complexité du comportement des occupants mais nécessite un gros travail de questionnaires et de mesures. Cette méthode indirecte est plus complexe à intégrer dans un outil de simulation que les autres approches mentionnées précédemment.
+
+Davis et Nutter \cite{Davis-10} ont instrumenté 6 type de bâtiments universitaire aux activités différentes afin de proposer des profils de présence hebdomadaire selon ces familles d'activités. Les résultats synthétisent les probabilités de présence par type de bâtiment et il a été conclu que les jours de la semaines sont parfois significativement différents.
+
+Liao et al. \cite{Liao-11} proposent un modèle permettant de suivre la location des occupants dans l'espace et dans le temps. Ce modèle puissant permet une bonne prédiction de l'occupation dans le cas de faible nombre de zone mais une prédiction approximative dans le cas de multi-zones. Les auteurs indiquent que la configuration du modèle est très chronophage et difficilement extensible.
+
+Wang et al. \cite{Wang-11} utilisent une modélisation de la présence dans les bâtiments de bureaux basée sur les chaines de Markov à niveaux multiples. Le nombre de niveaux correspond au nombre de zones où l'agent est susceptible de se trouver. Ces travaux sont bien documentés mais relèvent plus d'une méthodologie qu'une proposition de modèle calibré, car les résultats ne sont pas issus de campagne de mesures ou d'enquêtes.
+
+Duarte et al. \cite{Duarte-13} ont collecté réalisé une campagne longitudinale pour montrer les variations des facteurs d'occupation dans des bâtiments de bureaux selon l'heure de la journée, le jour de la semaine et le mois de l'année. Les comparaisons ont montré une variabilité élevée entre ces paramètres et un écart de la moyenne de 46 \% inférieur au standard américain ASHRAE 90.1. Ce travail met également en avant la variabilité des profils de présence en fonction des vacances et du type d'espace, notamment entre les bureaux privés et les bureaux partagés.
+
+Chang et Hong \cite{Chang-14} ont analysé 200 bureaux cubiques de 3 étages aux activités différentes d'un bâtiment commercial. Un modèle mathématique est proposé afin de décrire le nombre et la durée des périodes d'absences. Une première fonction de densité cumulée (\textit{CDF}) définit le nombre d'absence, une seconde fonction de densité cumulée définit la durée et une distribution de probabilité (\textit{PDF}) définit le début d'une période d'absence. Les auteurs ont identifié des profils d'occupation groupés en 5 catégories prouvant la variabilité de présence.
+
+Feng et al. \cite{Feng-15} ont développé un modèle d'occupation inspiré du modèle de Wang et al. \cite{Wang-11} qu'ils ont couplé à un logiciel de simulation thermique. Ce modèle est une chaine de Markov à 12 niveaux correspondant aux 12 zones du cas d'étude. Quelques hypothèses sont présentées dans l'article concernant les activités des différents membres du bâtiment. Il est ainsi avancé que les managers sont moins présent dans les bureaux que les chercheurs pour assister à des conférences ou participer à des réunions, cela menant à une présence dans leurs propres bureaux moins importante.
+
+Mahdavi et Tahmasebi \cite{Mahdavi-15} ont testé 3 modèles d'occupation sur des données issues de mesures sur une Université de Vienne. Les deux premiers modèles d'occupation sont stochastiques, il s'agit du modèle proposé par Reinhart \cite{Reinhart-01} (non-détaillé ici) et celui de Page et al. \cite{Page-08}. Le troisième modèle est un modèle non-probabiliste d'apprentissage qui génère des profils d'occupation binaire journalière basés sur les données de présence passées. Une fois la phase d'apprentissage suffisamment robuste, la phase d'évaluation montre que le modèle non-stochastique prédit mieux la présence que les modèles stochastiques.
+
+\begin{landscape}
+\begin{table} [H]
+\begin{tabular}{|p{2.5cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{4cm}|p{4cm}|}
+\hline 
+Auteurs & Location & Bâtiment & Durée campagne & Intervalle de mesure & Modèle & Points forts & Points faibles \\ 
+\hline 
+\hline
+Wang et al. \cite{Wang-05}, 2005 & USA & 35 bureaux & 1 année & 15 minutes & Processus de Poisson & Présence intermédiaire modélisé; Simplicité du modèle & Bureau unique \\ 
+\hline 
+Page et al. \cite{Page-08}, 2008 & Suisse & 20 zones universitaires (10 bureaux) & 2 années & 15 minutes & Chaine de Markov & Détaillé pour implémentation; comparé postérieurement & Données d'entrée complexes; Sous-estimation du nombre de jour d'absence total \\ 
+\hline 
+Ericksen et al. \cite{Erickson-09}, 2009 & USA & 4 zones universitaires & 2 fois 1 jour & Vidéo & Multivarié Gaussien & Comparaison de modèles sur différentes zones & Durée de la campagne; Erreur des modèles importante  \\ 
+\hline 
+Tabak et de Vries \cite{Tabak-10}, 2010 & Pays-bas & 1 bureau (8 occupants enquêtés) & - & - & S-curve; Méthode probabiliste & Prédiction d'activités intermédiaires  & Modèle basé sur des questionnaires uniquement \\ 
+\hline 
+Davis et Nutter \cite{Davis-10}, 2010 & USA & 11 bâtiments universitaires & 5 mois & Vidéo & - & Identification de facteurs par type de bâtiment & Pas de modèle proposé \\ 
+\hline 
+Liao et al. \cite{Liao-11}, 2011 & USA & Bâtiment commercial & - & 15 minutes & Chaine de Markov & Comparaison de modèle & Campagne de mesure très peu présenté \\ 
+\hline 
+Wang et al. \cite{Wang-11}, 2011 & - & 5 bureaux & - & 5 minutes & Chaine de Markov à 7 niveaux & Suivi zone par zone des occupants & Modèle non-basé sur des mesures \\ 
+\hline 
+Duarte et al. \cite{Duarte-13}, 2013 & USA & Bâtiment commercial & 2 années & 1 minute & Modèle déterministe & Large campagne de mesures reflétant l'influence de facteurs contextuels & Pas de modèle clairement proposé \\ 
+\hline 
+Chang et Hong \cite{Chang-14}, 2014 & Taiwan (?) & 200 bureaux & 6 mois & 5 minutes & Fonction de distribution cumulative et de probabilité & Groupement suivant 5 familles de profils & Modèle applicable à des bureaux non-partagés \\ 
+\hline 
+Feng et al. \cite{Feng-15}, 2015 & - & 12 zones universitaires & - & - & Chaine de Markov à 12 niveaux  & Suivi zone par zone des occupants & Modèle non-basé sur des mesures \\ 
+\hline 
+Mahdavi et Tahmasebi \cite{Mahdavi-15}, 2015 & Autriche & 8 zones universitaires & 9 mois & 15 minutes & Modèle d'apprentissage & Comparaison de modèles & Profil d'occupation unique \\ 
+\hline 
+\end{tabular}
+\caption{Synthèse des modèles les plus pertinents de présence et d'activités dans les bureaux}
+\label{tab:PresencePresentation}
+\end{table}
+\end{landscape}
+
+\begin{table} [H]
+\centering
+\begin{tabular}{|l||c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Variables\textbackslash Auteurs} & \cite{Wang-05} & \cite{Page-08} & \cite{Erickson-09} & \cite{Tabak-10} & \cite{Davis-10} & \cite{Liao-11} & \cite{Wang-11} & \cite{Duarte-13} & \cite{Chang-14} & \cite{Feng-15} & \cite{Mahdavi-15} \\
+\hline
+\hline \rowcolor{gray}\textbf{Environnementales} & \multicolumn{11}{c}{} \\
+\hline Mois/Saison &  &  &  &  &  &  &  & X &  &  &   \\
+\hline Météo & / &  &  &  &  &  &  & / & / &  &   \\
+\hline \rowcolor{gray}\textbf{Contextuelles} & \multicolumn{11}{c}{} \\
+\hline Heure de la journée & X & X & X & X & X & X & X & X & X & X & X \\
+\hline Type d'activité &  &  &  & X & X & X & X &  & X & X &  \\
+\hline Jour de la semaine &  & X &  & X & X & X &  & X &  &  &   \\
+\hline Activités intermédiaires &  &  &  & X &  & / & X &  &  &  &   \\
+\hline \rowcolor{gray}\textbf{Bâtiment} & \multicolumn{11}{c}{} \\
+\hline Type de zones &  &  & X &  & X &  & X & X &  & X &   \\
+\hline \rowcolor{gray}\textbf{A expliquer} & \multicolumn{11}{c}{} \\
+\hline Statut d'occupation & X &  &  &  &  &  &  &  & X &  &   \\
+\hline Nombre d'occupant par zone &  & X &  &  & X &  &  & X &  &  & X  \\
+\hline Location des occupants &  &  & X & X &  & X & X &  &  & X &   \\
+\hline
+\end{tabular}
+\caption{Synthèse des données d'entrée et de sortie des modèles de présence et activités dans les bureaux}
+\label{tab:PresenceOffice} 
+\end{table}
+
+Conclusions/Discussion/Choix du modèle:
+\begin{itemize}
+\item
+\item Certains modèles permettent de prendre en compte les déplacements entre plusieurs zones du bâtiment. Toujours constitués de chaines de Markov le modèle gagne en réalisme mais s'en trouve alourdi. De plus, il est alors nécessaire de donner en entrée du modèle la probabilité de présence de chaque occupant, dans chaque zone et à chaque pas de temps
+\end{itemize}
 
 \subsection{Modèle de Page}
+
+----
+Le modèle initial ayant été développé dans un contexte universitaire, il n'est à priori pas nécessairement valide pour des bâtiment de bureaux abritant d'autres activités, les horaires de travail dépendant des catégorie socio-professionnelles. Une solution consiste à répliquer le travail de Page et al. \cite{Page-08} pour plusieurs typologies de bâtiments afin de calibrer le modèle de base. Un ajustement contextuel plus fin serait ensuite possible afin de considérer davantage de facteurs influents. Dans la suite, nous utiliserons uniquement le modèle de Page comme base ajustable, car ce modèle est le plus robuste de notre base bibliographique et en développer davantage reste un travail coûteux et chronophage. Néanmoins, afin de rendre ce modèle applicable à une gamme de bâtiments et un type d'occupants plus large, nous proposons d'y ajouter des facteurs contextuels rendant l'ensemble plus flexible et plus approprié.
+----
+
 
 Comme nous venons de le voir, les chaînes de Markov permettent de reproduire des transitions d'états et donc de rendre la dynamique de simulation plus cohérente avec les présences et absences des occupants. La section \ref{Chaine de Markov} a présenté le fonctionnement de base des chaînes de Markov. Page et al. \cite{Page-08} ont proposé un modèle de transition d'état pour les bâtiments de type bureau utilisant des chaînes de Markov. Sur la base de mesures de présence dans 5 bureaux de l'Ecole Polytechnique Fédérale de Lausanne pendant 4 ans, Page et al. ont proposé des probabilités de présence heure par heure pour une semaine type, soit 168 (24*7) probabilités. 
 
@@ -204,7 +370,7 @@ Néanmoins, une information est manquante pour déterminer les valeurs $T_{01}$ 
 \label{mu}
 \end{equation}
 
-Pour simplifier les entrées du modèle et le calibrer les auteurs ont fixé ce paramètre de mobilité ($\mu$) à 0.11. Cette valeur correspond à la valeur moyenne observée du paramètre de mobilité. Nous pouvons noter que plus $\mu$ est grand plus la transition d'état est fréquente.
+Pour simplifier les entrées du modèle et le calibrer, les auteurs ont fixé ce paramètre de mobilité ($\mu$) à 0.11. Cette valeur correspond à la valeur moyenne observée du paramètre de mobilité. Nous pouvons noter que plus $\mu$ est grand plus la transition d'état est fréquente.
 A partir des équations \eqref{T110} et \eqref{mu} on peut alors déterminer les quatre probabilités de transition pour chaque pas de temps:
 
 \begin{itemize}
@@ -216,11 +382,12 @@ A partir des équations \eqref{T110} et \eqref{mu} on peut alors déterminer les
 
 Il est à noter que pour certaines conditions, lorsque les probabilités de présence entre deux pas de temps $P(t)$ et $P(t+1)$ sont très différentes, la probabilité de transition $T_{ij}$ puisse ne pas être comprise entre 0 et 1. Dans ce cas, le paramètre de mobilité est modifié de tel façon à ce qu'il permettent à la probabilité de transition de prendre une valeur cohérente.
 
-Lors du pré-processus de la simulation, la présence est calculés à partir des équations ci-dessus, afin d'être utilisée lors de la simulation. Pour ce faire, à chaque pas de temps un nombre aléatoire $rand$ compris entre 0 et 1 est généré puis comparé à la probabilité de transition $T_{01}(t)$ si l'occupant est absent et à $T_{11}(t)$ si l'occupant est présent. Si $rand < T_{01}(t)$ alors l'occupant rentre dans la pièce, sinon non, et si $rand < 1-T_{11}(t)$ alors l'occupant sort dans la pièce, sinon il y reste.
+Lors du pré-processus de la simulation, la présence est calculés à partir des équations ci-dessus, afin d'être utilisée lors de la simulation. Pour ce faire, à chaque pas de temps un nombre aléatoire $rand$ compris entre 0 et 1 est généré par une loi uniforme, puis comparé à la probabilité de transition $T_{01}(t)$ si l'occupant est absent et à $T_{11}(t)$ si l'occupant est présent. Si $rand < T_{01}(t)$ alors l'occupant rentre dans la pièce, sinon non, et si $rand < 1-T_{11}(t)$ alors l'occupant sort dans la pièce, sinon il y reste.
 
-La table \ref{PPage} présente les probabilités de présence $P$, pour les lundis et pour les dimanches, issues des mesures sur les 5 bureaux du modèle de Page et al. \cite{Page-08}. Les probabilités de présence du lundi sont représentatives de celles des jours de travail (lundi à vendredi), alors que les probabilités du samedi sont semblables à celles du dimanche. Les sorties du modèle de base sont présentés dans la section \ref{Facteurs contextuels} avec les variantes.
+Le Tableau \ref{tab:PPage} présente les probabilités de présence $P$, pour les lundis et pour les samedis, issues des mesures sur les 5 bureaux du modèle de Page et al. \cite{Page-08}. Les probabilités de présence du lundi sont représentatives de celles des jours de travail (lundi à vendredi), alors que les probabilités du samedi sont semblables à celles du dimanche. Les sorties du modèle de base sont présentés dans la section \ref{Facteurs contextuels} avec les variantes.
 
 \begin{table}[H]
+\centering
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline 
 Heure & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10  \\ 
@@ -229,21 +396,23 @@ $P_{Lundi}$ & 0.021 & 0.021 & 0.021 & 0.021 & 0.021 & 0.021 & 0.021 & 0.025 & 0.
 \hline 
 $P_{Samedi}$ & 0.028 & 0.030 & 0.029 & 0.029 & 0.030 & 0.029 & 0.029 & 0.030 & 0.030 & 0.030  \\ 
 \hline
+\hline
 Heure & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 \\ 
 \hline 
 $P_{Lundi}$ & 0.309 & 0.377 & 0.187 & 0.375 & 0.426 & 0.396 & 0.375 & 0.432 & 0.084 & 0.070 \\ 
 \hline 
 $P_{Samedi}$ & 0.035 & 0.037 & 0.030 & 0.032 & 0.041 & 0.045 & 0.042 & 0.034 & 0.035 & 0.032 \\ 
 \hline 
+\hline
 Heure & 21 & 22 & 23 & 24 & \cellcolor{lightgray}& \cellcolor{lightgray}& \cellcolor{lightgray}& \cellcolor{lightgray}& \cellcolor{lightgray}& \cellcolor{lightgray}\\ 
 \hline 
 $P_{Lundi}$ & 0.047 & 0.039 & 0.038 & 0.038 & \cellcolor{lightgray} &\cellcolor{lightgray} &\cellcolor{lightgray} &\cellcolor{lightgray} &\cellcolor{lightgray} & \cellcolor{lightgray}\\ 
 \hline 
 $P_{Samedi}$ & 0.027 & 0.024 & 0.021 & 0.021 &\cellcolor{lightgray} &\cellcolor{lightgray} &\cellcolor{lightgray} & \cellcolor{lightgray}&\cellcolor{lightgray} &\cellcolor{lightgray} \\
 \hline 
-\label{PPage}
 \end{tabular}
 \caption{Probabilités de présence dans les bureaux pour les lundis et les samedis}
+\label{tab:PPage}
 \end{table}
 
 \subsection{Ajustement du modèle de Page et al.}
@@ -256,7 +425,7 @@ La comparaison des profils de probabilités de présence est un premier bon indi
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{Images/PageActivities/ProfilPresence}
-\caption{Profils de présence issus de l'article de Page et al \cite{Page-08} (en haut) et généré dans la plateforme MASS (en bas)}
+\caption{Profils de présence mesuré (bleu) et simulé (rouge) issus de l'article de Page et al \cite{Page-08} (en haut) et généré dans la plateforme MASS (en bas)}
 \label{fig:ProfilPresence}
 \end{figure}
 
@@ -267,7 +436,7 @@ La comparaison des profils de probabilités de présence est un premier bon indi
 \label{fig:ChronogrammeBase}
 \end{figure}
 
-Le second indicateur exploitable est la durée de présence dans les locaux. Dans l'article de Page et al. \cite{Page-08} une incohérence semble apparaitre, en effet la durée de présence hebdomadaire moyenne est donnée à 24 heures soit 4h48 par jour, alors que la durée de présence quotidienne est quant à elle aux alentours de 9h par jour si l'on se fie aux graphiques. Sur une base de 5 jours de travail nous aboutissons dons à un décalage d'un facteur proche de 2. De notre côté, notre simulation nous amène à une durée moyenne de 3h49 et un écart-type de 1h24 sur les 5 jours travaillés, soit 1h de moins que la durée hebdomadaire du modèle de base.
+Le second indicateur exploitable est la durée de présence dans les locaux. Dans l'article de Page et al. \cite{Page-08} une incohérence semble apparaitre. En effet, la durée de présence hebdomadaire moyenne est donnée à 24 heures soit 4h48 par jour, alors que la durée de présence quotidienne est quant à elle aux alentours de 9h par jour si l'on se fie aux graphiques. Sur une base de 5 jours de travail nous aboutissons dons à un décalage d'un facteur proche de 2. De notre côté, notre simulation nous amène à une durée moyenne de 3h49 et un écart-type de 1h24 sur les 5 jours travaillés, soit 1h de moins que la durée hebdomadaire du modèle de base.
 
 Trois indicateurs complémentaires sont utilisés pour évaluer le modèle: l'heure de première arrivée, l'heure de dernier départ et le nombre de transitions d'états. Sur la base d'une simulation d'une année la moyenne d'heure de première arrivée est à 6h51, la médiane à 7h25 et l'écart type de 4h16, contre une médiane à 7h30 dans \cite{Page-08}. Ces résultats se justifient par la haute fréquence de présence de nuit déjà discuté en début de paragraphe. La moyenne d'heure de dernier départ est quant à elle à 17h58, la médiane à 17h50 et l'écart type de 3h56, contre une moyenne de 17h30 dans \cite{Page-08}. Le nombre moyen de transitions quotidien par jour à priori travaillé est de 12.60 et en semaine, week-end compris de 9.97, contre 8 dans \cite{Page-08}.
 
@@ -373,7 +542,7 @@ Les Figures \ref{fig:PremiereArrivee} et \ref{fig:DernierDepart} représentent r
 
 \newpage
 \section{Activités dans les logements}
-\label{Logements}
+\label{ActivitésLogements}
 
 Le fonctionnement général du modèle d'activités des logements est forcément très différent de celui des bureaux. Un point commun est qu'il est défini entièrement lors du pre-processus de la simulation. A la différence des bureaux, les activités dans les logements sont variées et ne sont donc pas limitées à la présence. Ces activités impliquent des comportements différents, des apports métaboliques différents dans les différentes zones du logement. La première partie de cette section présente l'état de l'art et plus particulièrement deux modèles qui nous ont interpellé et que nous avons opposé. La seconde partie porte sur la présentation détaillée du modèle de Jaboob \cite{Jaboob-16} répondant à nos exigences avec parcimonie. Le modèle idéal comporte un nombre de paramètres d'entrée limité, il rend compte de la diversité des activités en fonction du type d'habitants et produit des profils d'activités différents pour des individus semblables. Un modèle d'activités stochastique dans les logements convient alors parfaitement à la nature stochastiques des comportements humains.
 
@@ -381,7 +550,7 @@ Le fonctionnement général du modèle d'activités des logements est forcément
 
 L'état de l'art a permis de déterminer que l'ensemble des modèles d'activités proposés se base sur des enquêtes emploi du temps. Ces enquêtes se basent sur des échantillons de population larges (de l'ordre de 10000 participants) qui assurent une bonne représentativité des comportements de la vie quotidienne. Chaque répondant d'une enquête est associé à un descriptif socio-démographique et un carnet d'activités renseigné précisément sur une ou plusieurs journées. Le traitement de ces résultats permet de confronter les activités en cours avec les caractéristiques des individus. Ce traitement de données a mené à plusieurs modèles élaborés par Tanimoto et al. \cite{Tanimoto-08}, Widèn et al. \cite{Widen-12} ou encore Aerts et al. \cite{Aerts-14}, sans être exhaustif. Nous proposons dans la suite de détailler deux modèles qui ont particulièrement attirés notre attention, celui de Wilke et al. \cite{Wilke-13} et celui de Jaboob \cite{Jaboob-16}.
 
-Vorger \cite{Vorger-14} reprend la stratégie de modélisation des activités dans les logements de Wilke et al. \cite{Wilke-13}. La base de données utilisée est issue de l'étude de 1998-1999\footnote{L'Enquête Emploi du Temps (EET) n'est plus disponible en ligne et a été remplacée par l'enquête plus récente de 2009-2010} de l'INSEE sur 7949 ménages et 15441 individus français qui ont noté leurs activités sur une journée toutes les 10 minutes. Le modèle proposé issu de cet EET permet dans une première étape de générer pour chaque occupant des périodes de présence et d'absence. Lorsqu'une période de présence débute, une des 20 activités débute également, suivant un modèle de Markov, et une durée lui est attribuée, suivant une loi de Weibull. Si l'activité prend fin avant la période d'absence alors une autre activité débute. En revanche, si une période d'absence commence avant la fin de l'activité alors cette dernière est abrogée. Les modèles de Markov et Weibull sont influencés par l'heure de la journée, par des caractéristiques du ménage et par des caractéristiques individuelles des occupants, rendant les profiles d'activités très spécifique à chaque occupant. On peut néanmoins noter que ce modèle hybride présente quelques légers point d'amélioration à apporter. En effet, en raison de la non-continuité de l'enquête emploi du temps à minuit, les activités sont interrompus chaque jour à minuit conduisant à un début de période de sommeil quasi général à minuit et très rarement avant minuit. L'enquête datant de 1999, on peut également se demander si l'évolution des pratiques n'est pas suffisamment significative pour considérer une mise à jour. Aussi, le nombre de vingt activités renseignées nous semble excessif pour un exercice de modélisation de la performance énergétique.
+Vorger \cite{Vorger-14} reprend la stratégie de modélisation des activités dans les logements de Wilke et al. \cite{Wilke-13}. La base de données utilisée est issue de l'étude de 1998-1999\footnote{L'Enquête Emploi du Temps (EET) n'est plus disponible en ligne et a été remplacée par l'enquête plus récente de 2009-2010} de l'INSEE sur 7949 ménages et 15441 individus français qui ont noté leurs activités sur une journée toutes les 10 minutes. Le modèle proposé issu de cet EET permet dans une première étape de générer pour chaque occupant des périodes de présence et d'absence. Lorsqu'une période de présence débute, une des 20 activités débute également, suivant un modèle de Markov, et une durée lui est attribuée, suivant une loi de Weibull. Si l'activité prend fin avant la période d'absence alors une autre activité débute. En revanche, si une période d'absence commence avant la fin de l'activité alors cette dernière est abrogée. Les modèles de Markov et Weibull sont influencés par l'heure de la journée, par des caractéristiques du ménage et par des caractéristiques individuelles des occupants, rendant les profils d'activités très spécifique à chaque occupant. On peut néanmoins noter que ce modèle hybride présente quelques légers point d'amélioration à apporter. En effet, en raison de la non-continuité de l'enquête emploi du temps à minuit, les activités sont interrompus chaque jour à minuit conduisant à un début de période de sommeil quasi général à minuit et très rarement avant minuit. L'enquête datant de 1999, on peut également se demander si l'évolution des pratiques n'est pas suffisamment significative pour considérer une mise à jour. Aussi, le nombre de vingt activités renseignées nous semble excessif pour un exercice de modélisation de la performance énergétique.
 
 Jaboob \cite{Jaboob-16} a plus récemment proposé un nouveau modèle d'activités basé sur une enquête emploi du temps anglaise datant de 2000-2001. La base de données est issue de questionnaires également renseignés toutes les 10 minutes sur une journée par 6500 ménages et 11700 individus. A partir de ces données, 10 modèles ont été développés et comparés. Il est conclu que le modèle de hybride Markov + Weibull fonctionne le mieux mais que le modèle de Bernoulli seul est recommandé pour sa simplicité et son faible nombre de paramètre d'entrées (240 contre 2880) tout en étant que très légèrement moins performant que le modèle hybride. Sur la base de ces conclusions, Chapman \cite{Chapman-16} utilise pour la prédiction des activités résidentiels ce modèle parcimonieux de Bernoulli, celui-ci ayant été recommandé. La qualité des modèles a été jugé en se basant sur 5 critères de validation et d'évaluation: 
 \begin{itemize}
@@ -392,13 +561,13 @@ Jaboob \cite{Jaboob-16} a plus récemment proposé un nouveau modèle d'activit�
 \item l'indice de Brier, qui évalue la précision des probabilités du modèle
 \end{itemize}
 
-Or, nous notons qu'aucun de ces paramètres n'évalue le nombre de transitions d'état, qui nous semble pourtant fondamental pour reproduire des emplois du temps probables. Pour cette raison, il nous semble plus approprié d'utiliser un modèle d'activités hybride qui associe à chaque activité commencée une durée. Mahdavi et Tahmasebi \cite{Mahdavi-14} proposent un indicateur, sans unité, qu'ils appellent erreur du nombre de transitions et qui est défini par le nombre de transitions prédit moins le nombre de transitions mesurées. Ne possédant pas la base de donnée utilisée par Jaboob pour le développement du modèle, nous proposons dans la suite de simplement calculer le nombre de transitions d'état par jour issu des modèles et de les comparer.
+Or, nous notons qu'aucun de ces paramètres n'évalue le nombre de transitions d'état, qui nous semble pourtant fondamental pour reproduire des emplois du temps probables. Pour cette raison, il nous semble plus approprié d'utiliser un modèle d'activités hybride qui associe à chaque activité commencée une durée. Mahdavi et Tahmasebi \cite{Mahdavi-15} proposent un indicateur, sans unité, qu'ils appellent erreur du nombre de transitions et qui est défini par le nombre de transitions prédit moins le nombre de transitions mesurées. Ne possédant pas la base de donnée utilisée par Jaboob pour le développement du modèle, nous proposons dans la suite de simplement calculer le nombre de transitions d'état par jour issu des modèles et de les comparer.
 
 \subsection{Processus de Bernoulli}
 
-A partir de l'EET Anglaise, Jaboob \cite{Jaboob-16} propose un modèle permettant de générer 10 activités. En pré-processus, le modèle calcule pour chaque pas de temps l'activité réalisée pour les occupants. La Table \ref{tab:Activités} les synthétise et associe à chaque activité le lieu où elles se produisent et l'état de l'occupant associé.
+A partir de l'EET Anglaise, Jaboob \cite{Jaboob-16} propose un modèle permettant de générer 10 activités. En pré-processus, le modèle calcule pour chaque pas de temps l'activité réalisée pour les occupants. Le Tableau \ref{tab:Activités} les synthétise et associe à chaque activité le lieu où elles se produisent et l'état de l'occupant associé.
 
-La diversité entre agents impacte leurs activités. Les variables explicatives des activités dans les logements sont relatives aux occupants (age, statut civique, genre, retraité/actif, chômeur/actif, niveau éducatif), au ménage (situation familiale, possession d'un ordinateur) et à l'environnement (heure de la journée, jour, saison). La Table \ref{VariablesActivité} détaille ces variables et leurs différents niveaux.
+La diversité entre agents impacte leurs activités. Les variables explicatives des activités dans les logements sont relatives aux occupants (age, statut civique, genre, retraité/actif, chômeur/actif, niveau éducatif), au ménage (situation familiale, possession d'un ordinateur) et à l'environnement (heure de la journée, jour, saison). Le Tableau \ref{VariablesActivité} détaille ces variables et leurs différents niveaux.
 
 \begin{table} [H]
 \centering
@@ -451,7 +620,7 @@ L'équation ci-dessous, issue de la régression logistique multinomial de l'EET,
 P_{j}(x,t)=\frac{exp(A_{j}(x))}{\sum\limits_{j=1}^{N}exp(A_{j}(x))}, j = 1, .., N et A_{j}(x)= \alpha_{j}+\sum\limits_{k=1}^{n}\beta_{jk}x_{jk}
 \end{equation}
 
-N correspond au nombre d'activités total, soit 10, n correspond au nombre de prédicteurs, soit 10 (nombre de variables dans la Table \ref{VariablesActivité} excepté l'heure), $\alpha$ et $\beta$ sont respectivement l'interception et la pente. Les probabilités de commencer une activité dépendent ainsi des caractéristiques des occupants mais également du temps, en émane donc pour chaque occupant une matrice à 4 dimensions [10][24][7][4] (activités, heures, jour de la semaine et saison, respectivement).
+N correspond au nombre d'activités total, soit 10, n correspond au nombre de prédicteurs, soit 10 (nombre de variables dans le Tableau \ref{VariablesActivité} excepté l'heure), $\alpha$ et $\beta$ sont respectivement l'interception et la pente. Les probabilités de commencer une activité dépendent ainsi des caractéristiques des occupants mais également du temps, en émane donc pour chaque occupant une matrice à 4 dimensions [10][24][7][4] (activités, heures, jour de la semaine et saison, respectivement).
 
 \subsection{Modèle hybride}
 
@@ -496,212 +665,6 @@ Comme nous l'avons indiqué en introduction, nous ne proposons pas pour le modè
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.7]{Images/Activites/ActivitesSurUneJournee}
-\caption{Exemple de scénarios d'activités pour une journée d'hiver pour; 1- l'ctif avec le modèle de Bernoulli, 2- le retraité avec le modèle de Bernoulli, 3- l'actif avec le modèle hybride, 4- le retraité avec le modèle hybride. Le code couleur est le même que pour la Figure \ref{fig:Activités}}
+\caption{Exemple de scénarios d'activités pour une journée d'hiver pour; 1- l'actif avec le modèle de Bernoulli, 2- le retraité avec le modèle de Bernoulli, 3- l'actif avec le modèle hybride, 4- le retraité avec le modèle hybride. Le code couleur est le même que pour la Figure \ref{fig:Activités}}
 \label{fig:ExempleScenario}
 \end{figure}
-
-\section{Gestion des ouvrants}
-
-1- Etat de l'art des modèles de gestion des fenêtres. Etudes sociologiques sur l'ouverture des fenêtres. Vérification du modèle utilisé par Schweiker et al. \cite{Schweiker-12}
-
-2- Présentation du modèle courant 
-
-3- Incorporation de phénomènes sociologiques qualitatifs au modèle:
-    - Lorsque l'activité cuisine a lieu on ouvre la fenêtre
-    - Lorsque l'occupant se réveille alors il ouvre la fenêtre
-    
-\section{Gestion des stores}
-
-1- Etat de l'art sur les drivers de la gestion des stores
-L'éblouissement est un driver important pour la gestion des stores. Néanmoins, l'éblouissement est difficilement exprimable numériquement il est donc peu évident de l'intégrer dans les outils de simulation.
-
-2- Présentation du modèle courant
-
-3- Incorporation de facteur contextuels qualitatifs au modèle:
-	- Lorsque l'activité audio-visuelle a lieu on ferme les stores
-	- Lorsque l'activité dormir a lieu on ferme les stores
-	
-\section{Gestion de l'éclairage}
-\label{Gestion de l'éclairage}
-
-1- Présentation du modèle courant
-
-2- Incorporation de phénomènes sociologiques qualitatifs au modèle:
-	- Lorsque l'activité audio-visuelle a lieu on ferme la lumière
-	- Lorsque l'activité dormir a lieu on éteins forcément la lumière
-
-\section{Utilisation des appareils électriques}
-
-\subsection{Types d'appareils électriques}
-
-Widén (2009) a catégorisé les appareils électriques en fonction de l'utilisation de la puissance:
-\begin{table} [H]
-\centering
-\begin{tabular}{|l||l|}
-Type de puissance & Exemple \\
-\hline
-\hline Puissance non définie par l'activité & Appareils de froid, radio réveil \\
-\hline Puissance constante pendant l'activité & Télévision, Appareils de cuisson \\
-\hline Puissance constante après l'activité & Machine à laver, lave vaisselle \\
-\hline Puissance constante après avec contrainte de temps & Bains, douches \\
-\hline Activité avec puissance dépendante du temps & Éclairage (variations journalières et de saison) \\
-\hline 
-\end{tabular}
-\end{table}
-Une catégorisation de la sorte permet une étude temporelle de la variation d'énergie.
-
-\subsection{Modélisation de la possession et de l'utilisation des appareils électriques}
-
-Jaboob (2015) propose une modélisation du taux de pénétration \footnote{Le taux de pénétration aussi appelé taux d'équipement est le pourcentage de la population équipée d'un appareil électrique}de la possession, de l'utilisation et de la fraction de puissance des appareils électriques. Cette modélisation est de type bottom-up pour chaque famille d'appareil, cela permet de considérer la diversité des ménages, des comportements individuels des occupants et bien sûr les caractéristiques intrinsèques des appareils. La modélisation de la possession des appareils est réalisée par régression logistique. La modélisation de l'utilisation des appareils considère d'une part l'allumage et d'autre part sa durée d'utilisation. L'allumage est modélisé par Bernoulli et la durée par un processus aléatoire à temps continu. La modélisation de la fraction de la puissance est réalisée par processus de Bernoulli ou de Markov.
-
-\section{Gestion des consignes de température}
-
-Intégrer quelque part \cite{d'Oca-14} - Voir le réutiliser.
-
-1- Que cherche t-on? Prédire la température de consigne pour l'envoyer au cœur de calcul.
-
-2- Introduction sur le choix de la température de chauffage (Brisepierre, p273 - sociologie de l'energie]
-
-3- Comment la température de consigne est utilisée par EnergyPlus? En étudiant la température intérieure on s'aperçoit qu'elle est strictement égale à la température de consigne. Hypothèse également faite par le CEREMA dans ces travaux sur le suivi de bâtiments démonstrateurs à basse consommation. (p127  Bat démonstrateurs à basse consommation d'énergie - Enseignements opérationnels tirés de 60 constructions et rénovations du programme PREBAT 2012-2015). "L'analyse statistique des températures en période de chauffe permet d'estimer la température en hiver en se basant sur la mesure de la température intérieur pendant les heures de fonctionnement du chauffage et pendant les heures d'occupation identifiées par enquête."
-
-4- Quels sont les facteurs influençant l'utilisation des systèmes de chauffage.
-
-Plusieurs études ont recensé les facteurs influençant l'utilisation des systèmes de chauffage. L'Annex53 \cite{Annex-53-1} a synthétisé l'ensemble de ces facteurs d'un point de vu qualitatif. Maresca et al. \cite{Maresca-09} ont pour leur part réalisé une étude pour le compte du CREDOC sur la maîtrise des consommations d'énergie des ménages. L'approche sociologique par plan d'expérience est pleine d'enseignements, cette approche permet notamment de déterminer avec un minimum d'essai l'influence individuel des différents paramètres. Dealière et al \cite{Devaliere-11} dans l'article de l'INSEE - La précarité énergétique: avoir froid ou dépenser trop pour se chauffer - justifient les différences de satisfaction thermique selon des variables propres au ménage, comme le revenu et sa structure, mais également par la vétusté du logement et le système de chauffage. Cavailhes et al.\cite{Cavailhes-11} de l'INRA  ont utilisé des méthodes d'économétrie de données de panel issues des enquêtes logement de l'INSEE. Cette étude considère l'ensemble des variables explicatives généralement avancé mais présente ses résultats sous forme d'évolution entre les années de référence de l'étude, 1984 et 1988, ce qui les rend difficilement exploitable dans notre contexte. Penot-Antoniou et al. \cite{Penot-Antoniou-13} dans le rapport sur les déterminants de la température de chauffage, analysent la variance entre la température adoptée par les ménages et les variables explicatives qualitatives. L'approche est celle qui correspond au besoin, car elle laisse la possibilité d'être codé et intégré à notre plateforme comportementale, en revanche un certain nombre de paramètres issus de l'étude économétrique ont des coefficients difficilement explicables. Par exemple un ménage ayant des ressources comprises entre 535 et 1100 \euro se chauffe de 2.5 \degre C de plus que la moyenne alors qu'un ménage gagnant de 1100 à 1500 \euro se chauffe moins de 1.7 \degre C en moyenne. Ce résultat non linaire n'est pas une exception et soulève un doute sur la fiabilité de l'étude, qui se repose pourtant sur un échantillon de 373 ménages.
-
-\cite{Kelly-13} : Complexe mais parcimonisation envisageable
-
-\cite{Andersen-09} : Petite étude sur 13 logements
-
-\cite{Fabi-13}: Même données qu'Andersen mais développement d'un modèle logistique plutôt que linéaire.
-
-
-\begin{table} [H]
-\centering
-\begin{tabular}{|l||c|c|c|c|c|c|c|}
-\hline
-\textbf{Littérature} & \cite{Annex-53-1} & \cite{Maresca-09} & \cite{Devaliere-11} & \cite{Cavailhes-11} & \cite{Penot-Antoniou-13} & \cite{Kelly-13} & \cite{Andersen-09} \\
-\hline
-\hline \rowcolor{gray}\textbf{Variables in-transmutables} & & & & & & & \\
-\hline Zone climatique & & & & X & X & & \\
-\hline Température extérieure & X & & & & & X & X \\
-\hline Humidité relative / Pluie & X & & & X & & & X \\
-\hline Altitude & & & & X & & & \\
-\hline Vitesse du vent & X & & & & & & X \\
-\hline Radiation solaire & & & & & & & X \\
-\hline Localisation / Type de commune & & X & & X & & X & \\
-\hline Heure de la journée & X & & & & & & X \\
-\hline \rowcolor{gray} \textbf{Variables comportementales et \newline socio-démographiques} & & & & & & & \\
-\hline Statut d'occupation & X & & X & X & X & X &  \\
-\hline Revenu & & X & X & & X & X & \\
-\hline Age & & X & & X & X & X & \\
-\hline Nationalité & & & & X & & & \\
-\hline Diplôme & & & & X & & & \\
-\hline Genre & X & & & X & & & \\
-\hline Coût du chauffage & & & X & X & & & \\
-\hline Structure du ménage / CO2 & & & X & & X & X & X \\
-\hline Vêture & X & & & & & & \\
-\hline Stratégie de régulation & X & & & & & X & \\
-\hline \rowcolor{gray}\textbf{Variables bâti et systèmes} & & & & & & & \\
-\hline Année de construction & & X & X & X & X & X & \\
-\hline Travaux de réhabilitation & & & & & X & & \\
-\hline Type de chauffage & & & X & X & X & X & \\
-\hline Type de combustible & & & & & X & X & \\
-\hline Qualité enveloppe & X & & X & X & X & X & \\
-\hline Structure du bâti (individuel/collectif) & & X & X & & & X & \\
-\hline Exposition principale & & & & X & & & \\
-\hline Superficie & & X & & X & & & \\
-\hline Étage & & & & X & & & \\
-\hline Pièces du logement & & X & & & & & \\
-\hline Type de ventilation & X & & & & & & \\
-\hline 
-\end{tabular}
-\end{table}
-
-D'autres modèles ont été développé comme l'analyse statistique de Karjalainen -----CITE----- sur l'utilisation des thermostats en Finlande ou la régression linéaire multivariée de Schweiker et al. sur la modélisation de l'air conditionné au Japon... <- T. Hong, An Ontology to represent energy ....
-
-Notre choix se porte sur le modèle de Kelly et al. car il est basé sur une étude significative, car ...
-
-5- Choix pour le modèle de Kelly. Avec adaptation pour un modèle plus parcimonieux.
-
-Pour développer un modèle, de type régression linéaire multiple, un logiciel de programmation statistique - comme R - a été utilisé. Ce type de logiciel permet de déterminer les coefficients Alpha et $a_{i}$ de l'équation de régression:
-
-\begin{equation}
-T_{int} = Alpha + \sum\limits_{i=1}^n a_{i} * V_{i} 
-\end{equation}
-
-Avec $T_{int}$ la température intérieure journalière, $Alpha$ et $a_{i}$ les coefficients à déterminer pour la régression et $V_{i}$ les valeurs des variables explicatives.
-
-Pour obtenir les différents coefficients sous R il suffit de rentrer la fonction lm() en y spécifiant la variable à expliquer, les variables explicatives et la localisation du fichier:
-\begin{verbatim}
-   lm(Tint ~ Text + Text2 + Localisation + ... + Dbl_Glz + Wall_U, data = mydata)
-\end{verbatim}
-
-Le logiciel R génère alors les coefficients de la régression et 
-
-Au risque de 1\%, il n'existe pas d'association statistiquement significative entre la température intérieure et les variables explicatives: déclaration de température de consigne, présence d'un programmateur automatique, tranche d'age de 60-64 ans, présence d'un système de chauffage central et d'un système de chauffage au gaz d'appoint. Ces variables explicatives sont donc supprimées du modèle développé.
-
-Nous proposons aussi dans le fichier de configuration de laisser la possibilité aux utilisateurs de ne pas définir certains paramètres lorsqu'ils ne sont pas connus!
-
-6- Changement de la température intérieure
-
-\cite{Fabi-13}
-Le modèle résulte en de petits ajustements de la température de consigne. Cela est en adéquation avec les résultats de l'étude d'Andersen \cite{Andersen-09} qui indique que les actions adaptatives des habitants lorsqu'ils ont froid sont de 66 à 78 \% du temps de petits ajustement contre moins de 5\% du temps des grosses augmentations sur le thermostat.
-
-7- Interactions sociales ...
-
-Le modèle de base de Kelly peut être complété par l'incorporation d'informations qualitatives supplémentaires
-
-La température de consigne fixée à 19 \degre C depuis le choc pétrolier de 1974 fait figure de norme mais ne reflète pas les faits réels. Son influence sur les consommations énergétiques y est très fortement corrélé et un ajustement plus fidèle à la réalité est nécessaire.
-Pour cela le modèle proposé consiste à tirer sur une loi normale la température de base issue du bureau d'études d'Enertech. Puis, en fonction des paramètres d'influences V (age, genre, charge financière, zone, longue absence...) la base est modifiée:
-
-\[T_{consprinc}=T_{base}+\sum_{V}X_{V}\]
-
-Cette approche proposée par Vorger \cite{Vorger-14} est très souple et permet notamment de gérer les réduits. Son calibrage est néanmoins discutable car basé sur le bon sens. En ce basant sur le \textit{British Home Heating Study} qui a réalisé une enquête sur les systèmes de chauffage et de contrôle, un modèle sur le choix de la température de consigne, notamment en fonction du systèmes, peut être créé plus finement. Cette enquête est composée d'un questionnaire et de mesures dynamiques (températures, humidité relative, ...) sur un échantillon de 32 familles anglaises.
-
-Manque de données nous oblige à adopter une approche empirique, plutôt que de ré-exploiter des modèles qui ne nous semble pas robustes. Le modèle proposé a donc vocation à être amélioré, lorsque des données sur la fréquence des interactions des occupants avec le système de chauffage seront disponibles.
-
-
-
-\section{Consommations d'eau chaude sanitaire}
-
-\subsection{Systèmes}
-
-Le modèle d'ETI ainsi que des données nationales (A trouver INSEE) peut permettre de modéliser les systèmes de chauffage de l'eau et le taux de pénétration des systèmes. Cette modélisation préalable est souvent omise dans les modèles de puisages d'ECS alors que son impacte sur les consommations finales en dépend relativement significativement.
-
-On recense trois principales énergies pour la production d'eau chaude sanitaire: le gaz, l'électricité et les énergies renouvelables. Les chauffes-eau au gaz et électriques sont soit instantanés soit à accumulation. Concernant les énergies renouvelables, on retrouve de manière croissante le ballon thermodynamique ou pompe à chaleur et le chauffe eau solaire d'appoint.
-
-\subsection{Volumes de consommation}
-
-Selon Evarts et Swan \cite{Evarts-13} les puisages d'ECS sont très diverses selon les ménages et donc dépendent de leurs caractéristiques socio-démographiques. La fréquence et l'intensité des puisages sont encore plus fortement corrélés aux activités des occupants.
-
-Selon les activités en cours, des puisages d'ECS y sont associés. A titre d'exemple, l'activité nettoyage corporelle implique un puisage en lien avec celui de la douche ou du bain.
-
-L'ADEME a lancé un programme de recherche, baptisé PACTE, pour améliorer l'efficacité énergétique de l'ECS dans l'habitat. Ces travaux visent à améliorer la prise en compte de la dimension socio-comportementale de l'usage de l'ECS et à modéliser, simuler et évaluer le fonctionnement des équipements. La figure \ref{fig:PACTEECS} présente les partenaires du PACTE ECS, dont l'investissement est de plus 8 millions d'euros sur 5 ans.
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.8]{Images/PACTEECS}
-\caption{Les différents partenaires du PACTE ECS}
-\label{fig:PACTEECS}
-\end{figure}
-
-La figure \ref{fig:Foisonnement_ECS} révèle la diversité de consommation à l'échelle du logement plutôt qu'à celle d'un immeuble.
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.9]{Images/Foisonnement_ECS}
-\caption{Importance de l'information à l'échelle du logement pour prendre en compte la diversité des consommations}
-\label{fig:Foisonnement_ECS}
-\end{figure}
-
-La publication ADEME-COSTIC des résultats valorisés est prévue courant 2016 alors que l'étude se tient depuis 2011.
-
-Contacter le directeur technique de COSTIC: Cedric Beaumont (prestations@costic.com) pour récupérer les résultats non agrégés 
-
-
-
-
-%%%%%%%%%%% A intégrer quelque part!
-% Plessis et al. \cite{Plessis-14} introduisent la notion de confort du groupe qui est utilisée pour déterminer quel action le groupe choisi (ex: augmenter la température, ouvrir la fenêtre). En opposition aux actions individuels (adaptation de l'habillement, changement d'activité).
-
-%Schweiker \cite{Schweiker-16} a étudié les interactions entre les occupants et le bâtiments. Il a constaté que les occupants de bureaux partagés ont tendance à moins modifier leur environnement que les occupants de bureaux individuels. 

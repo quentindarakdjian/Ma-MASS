@@ -2,9 +2,9 @@
 
 \usepackage[utf8]{inputenc} % En premier 
 
-\usepackage[T1]{fontenc} % Pour taper les lettre accentuées
+\usepackage[T1]{fontenc} % Pour taper les lettres accentuées
 \usepackage{graphicx}
-\usepackage{lscape}
+\usepackage{pdflscape}
 \usepackage{array, multirow, makecell}
 \usepackage{geometry}
 \usepackage{amsmath}
@@ -13,12 +13,23 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage{eurosym}
 \usepackage{colortbl}
+\usepackage[nottoc]{tocbibind}
 \pagestyle{headings}
+
 \renewcommand{\baselinestretch}{1.2}
+
+\let\oldtabular=\tabular         % Réduit la taille des tableaux d'un point
+\def\tabular{\footnotesize\oldtabular}  % Réduit la taille des tableaux d'un point
 
 \usepackage[french]{babel} % En avant dernier
 \usepackage{hyperref} % En dernier
+% Méta-données du PDF
 \hypersetup{         % parametrage des hyperliens
+	pdfauthor={Quentin Darakdjian},
+    pdfsubject={Manuscrit de thèse de doctorat},
+    pdftitle={Prédiction des consommations totales et réelles des bâtiments incluant le comportement des usagers},
+    pdfkeywords={Comportement des occupants, Simulation Thermique Dynamique, Modèles
+stochastiques},
     colorlinks=true, % colorise les liens
     breaklinks=true, % permet les retours à la ligne pour les liens trop longs
     urlcolor= blue,  % couleur des hyperliens
@@ -28,11 +39,15 @@
 
 \title{Prédiction des consommations totales et réelles des bâtiments incluant le comportement des usagers}
 \author{Quentin Darakdjian}
+\date{\today}
+
 
 \parskip=5pt % Espace entre 2 paragraphes
 \geometry{hmargin=2.5cm,vmargin=1.5cm} % Reglage grossier des marges
 
 \begin{document}
+\maketitle
+\renewcommand{\tablename}{Tableau} % Remplace Table par tableau
 \setcounter{tocdepth}{2} % Supprime les subsections de la table des matières
 \tableofcontents
 %\listoffigures
@@ -41,11 +56,13 @@
 \include{Introduction}
 \include{Conception_et_construction_des_batiments}
 \include{Performance_energetique_theorique_et_reelle}
-\include{Modelisation_du_comportement_des_usagers}
+\include{Approches_de_modelisation}
 \include{MASS}
 \include{Developpement_de_modeles}
+\include{Developpement_de_modeles_Suite}
 \include{Analyses_de_sensibilite_sur_batiment_residentiel}
 \include{Discussion}
+
 
 \bibliographystyle{ieeetr}
 \bibliography{mabiblio}

@@ -1,110 +1,101 @@
 \select@language {french}
-\contentsline {chapter}{Introduction g\IeC {\'e}n\IeC {\'e}rale}{5}{chapter*.2}
-\contentsline {part}{I\hspace {1em}Etat de l'art}{9}{part.1}
-\contentsline {chapter}{\numberline {1}Conception et construction des b\IeC {\^a}timents}{10}{chapter.1}
+\contentsline {chapter}{Introduction g\IeC {\'e}n\IeC {\'e}rale}{6}{chapter*.2}
+\contentsline {part}{I\hspace {1em}Etat de l'art}{10}{part.1}
+\contentsline {chapter}{\numberline {1}Conception et construction des b\IeC {\^a}timents}{11}{chapter.1}
 \contentsline {section}{\numberline {1.1}Mod\IeC {\'e}lisation num\IeC {\'e}rique des b\IeC {\^a}timents}{11}{section.1.1}
-\contentsline {section}{\numberline {1.2}Calculs conventionnels}{11}{section.1.2}
-\contentsline {section}{\numberline {1.3}Labels et certifications}{12}{section.1.3}
-\contentsline {section}{\numberline {1.4}Logiciels de Simulations Thermiques Dynamiques}{13}{section.1.4}
-\contentsline {section}{\numberline {1.5}Optimisation du management de projet}{17}{section.1.5}
-\contentsline {section}{\numberline {1.6}Synth\IeC {\`e}se}{19}{section.1.6}
+\contentsline {section}{\numberline {1.2}Calculs conventionnels}{12}{section.1.2}
+\contentsline {section}{\numberline {1.3}Certifications et labels}{12}{section.1.3}
+\contentsline {section}{\numberline {1.4}Simulations Thermiques Dynamiques}{14}{section.1.4}
+\contentsline {section}{\numberline {1.5}Gestion de projet}{19}{section.1.5}
+\contentsline {section}{\numberline {1.6}Synth\IeC {\`e}se}{20}{section.1.6}
 \contentsline {chapter}{\numberline {2}Performance \IeC {\'e}nerg\IeC {\'e}tique th\IeC {\'e}orique et r\IeC {\'e}elle}{21}{chapter.2}
-\contentsline {section}{\numberline {2.1}Le \textit {performance gap}}{22}{section.2.1}
-\contentsline {section}{\numberline {2.2}Conception}{23}{section.2.2}
-\contentsline {section}{\numberline {2.3}Construction}{23}{section.2.3}
-\contentsline {section}{\numberline {2.4}Exploitation}{24}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Usages et usagers}{24}{subsection.2.4.1}
-\contentsline {subsubsection}{Rationalit\IeC {\'e}}{25}{section*.16}
-\contentsline {paragraph}{Genre}{26}{section*.17}
-\contentsline {paragraph}{Interactions de groupe}{26}{section*.18}
-\contentsline {paragraph}{Accessibilit\IeC {\'e} aux syst\IeC {\`e}mes}{26}{section*.19}
-\contentsline {subsubsection}{Al\IeC {\'e}as}{27}{section*.20}
-\contentsline {subsubsection}{De la sociologie \IeC {\`a} l'ing\IeC {\'e}nierie}{27}{section*.21}
-\contentsline {subsection}{\numberline {2.4.2}M\IeC {\'e}t\IeC {\'e}o}{29}{subsection.2.4.2}
-\contentsline {section}{\numberline {2.5}Maintenance}{29}{section.2.5}
-\contentsline {section}{\numberline {2.6}Engagement performantiel}{30}{section.2.6}
-\contentsline {subsection}{\numberline {2.6.1}Juridique}{30}{subsection.2.6.1}
-\contentsline {subsection}{\numberline {2.6.2}Financier}{31}{subsection.2.6.2}
-\contentsline {subsection}{\numberline {2.6.3}Technique}{32}{subsection.2.6.3}
-\contentsline {subsection}{\numberline {2.6.4}M\IeC {\'e}thodes}{33}{subsection.2.6.4}
-\contentsline {section}{\numberline {2.7}Synth\IeC {\`e}se}{34}{section.2.7}
-\contentsline {chapter}{\numberline {3}Mod\IeC {\'e}lisation du comportement des usagers}{36}{chapter.3}
-\contentsline {section}{\numberline {3.1}Familles de mod\IeC {\`e}les}{36}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Mod\IeC {\`e}les psychologiques}{37}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Valeurs moyennes}{38}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Mod\IeC {\`e}les d\IeC {\'e}terministes}{38}{subsection.3.1.3}
-\contentsline {subsection}{\numberline {3.1.4}Mod\IeC {\`e}les probabilistes}{39}{subsection.3.1.4}
-\contentsline {subsection}{\numberline {3.1.5}"Action-based" mod\IeC {\`e}les}{40}{subsection.3.1.5}
-\contentsline {subsection}{\numberline {3.1.6}Syst\IeC {\`e}mes Multi-Agents (SMA)}{40}{subsection.3.1.6}
-\contentsline {subsection}{\numberline {3.1.7}L'approche hybride socio-stochastique}{42}{subsection.3.1.7}
-\contentsline {subsection}{\numberline {3.1.8}Synth\IeC {\`e}se}{42}{subsection.3.1.8}
-\contentsline {section}{\numberline {3.2}Int\IeC {\'e}gration des mod\IeC {\`e}les aux outils de simulations thermiques}{44}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Le simulateur d\IeC {\'e}finit les comportements}{44}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Le simulateur personnalise le code}{44}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Le simulateur personnalise l'outil}{44}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Le simulateur utilise un outil externe}{44}{subsection.3.2.4}
-\contentsline {subsection}{\numberline {3.2.5}Synth\IeC {\`e}se}{44}{subsection.3.2.5}
-\contentsline {section}{\numberline {3.3}Choix de la plateforme SMA}{44}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}BRAHMS}{45}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Repast}{46}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}NetLogo}{48}{subsection.3.3.3}
-\contentsline {subsection}{\numberline {3.3.4}OASys}{50}{subsection.3.3.4}
-\contentsline {subsection}{\numberline {3.3.5}MASS}{50}{subsection.3.3.5}
-\contentsline {subsection}{\numberline {3.3.6}Composant W de TRNSYS}{52}{subsection.3.3.6}
-\contentsline {section}{\numberline {3.4}Synth\IeC {\`e}se}{53}{section.3.4}
-\contentsline {part}{II\hspace {1em}Plateforme du comportement des occupants}{55}{part.2}
-\contentsline {chapter}{\numberline {4}Simulation Stochastique \IeC {\`a} base d'agents (MASS)}{56}{chapter.4}
-\contentsline {section}{\numberline {4.1}Int\IeC {\'e}gration de mod\IeC {\`e}les comportementaux aux logiciels de simulations thermiques dynamiques}{56}{section.4.1}
-\contentsline {section}{\numberline {4.2}MASS: Un Syst\IeC {\`e}me Multi-Agents simplifi\IeC {\'e}}{56}{section.4.2}
-\contentsline {section}{\numberline {4.3}Architecture du mod\IeC {\`e}le}{57}{section.4.3}
-\contentsline {section}{\numberline {4.4}Interop\IeC {\'e}rabilit\IeC {\'e} des outils de MASS}{59}{section.4.4}
-\contentsline {section}{\numberline {4.5}Fonctionnement du FMI}{59}{section.4.5}
-\contentsline {section}{\numberline {4.6}Strat\IeC {\'e}gie g\IeC {\'e}n\IeC {\'e}rale de d\IeC {\'e}veloppement}{60}{section.4.6}
-\contentsline {section}{\numberline {4.7}Validation des mod\IeC {\`e}les du comportement des occupants}{60}{section.4.7}
-\contentsline {chapter}{\numberline {5}Mod\IeC {\'e}lisation du comportement des occupants}{61}{chapter.5}
-\contentsline {section}{\numberline {5.1}Collection de donn\IeC {\'e}es}{61}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Suivi sur site}{61}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Enqu\IeC {\^e}tes}{61}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}\IeC {\'E}tudes de laboratoire}{61}{subsection.5.1.3}
-\contentsline {section}{\numberline {5.2}Outils de mod\IeC {\'e}lisation}{61}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Famille de mod\IeC {\`e}les}{62}{subsection.5.2.1}
-\contentsline {subsubsection}{Mod\IeC {\`e}les lin\IeC {\'e}aires g\IeC {\'e}n\IeC {\'e}ralis\IeC {\'e}s}{62}{section*.22}
-\contentsline {subsubsection}{Mod\IeC {\`e}le de Bernoulli}{62}{section*.23}
-\contentsline {subsubsection}{Chaine de Markov}{62}{section*.24}
-\contentsline {subsubsection}{Loi de Weibull}{63}{section*.25}
-\contentsline {subsubsection}{Approche hybride}{63}{section*.26}
-\contentsline {subsubsection}{Partitionnement de donn\IeC {\'e}es}{63}{section*.27}
-\contentsline {subsection}{\numberline {5.2.2}\IeC {\'E}valuation et validation}{63}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}\textit {Fit-for-purpose} et facteurs contextuels}{63}{subsection.5.2.3}
-\contentsline {section}{\numberline {5.3}Pr\IeC {\'e}sentation des cas d'\IeC {\'e}tudes}{64}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Bureau}{64}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}R\IeC {\'e}sidentiel}{65}{subsection.5.3.2}
-\contentsline {section}{\numberline {5.4}Pr\IeC {\'e}sence dans les b\IeC {\^a}timents de bureaux}{69}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}\IeC {\'E}tat de l'art}{69}{subsection.5.4.1}
+\contentsline {section}{\numberline {2.1}\IeC {\'E}cart de performance}{22}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Conception}{23}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Construction}{24}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}Exploitation}{24}{subsection.2.1.3}
+\contentsline {subsubsection}{Usages et usagers}{24}{section*.16}
+\contentsline {paragraph}{Part rationnelle}{25}{section*.17}
+\contentsline {paragraph}{Part al\IeC {\'e}atoire}{26}{section*.18}
+\contentsline {paragraph}{Ensemble stochastique}{26}{section*.19}
+\contentsline {subsubsection}{M\IeC {\'e}t\IeC {\'e}o}{27}{section*.20}
+\contentsline {subsubsection}{Maintenance}{29}{section*.21}
+\contentsline {section}{\numberline {2.2}Engagement performantiel}{29}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Juridique}{30}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Financier}{31}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Technique}{32}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}M\IeC {\'e}thodes}{33}{subsection.2.2.4}
+\contentsline {section}{\numberline {2.3}Synth\IeC {\`e}se}{34}{section.2.3}
+\contentsline {chapter}{\numberline {3}Approches de mod\IeC {\'e}lisation}{35}{chapter.3}
+\contentsline {section}{\numberline {3.1}Familles de mod\IeC {\`e}les}{35}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Mod\IeC {\`e}les d\IeC {\'e}terministes}{36}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Mod\IeC {\`e}les stochastiques}{36}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Syst\IeC {\`e}mes Multi-Agents (SMA)}{37}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Int\IeC {\'e}gration des mod\IeC {\`e}les aux outils de simulations thermiques}{39}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Le simulateur d\IeC {\'e}finit les comportements}{39}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Le simulateur personnalise le code}{40}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Le simulateur personnalise l'outil}{40}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Le simulateur utilise un outil externe}{40}{subsection.3.2.4}
+\contentsline {section}{\numberline {3.3}Choix de la plateforme SMA}{40}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}BRAHMS}{41}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Repast}{42}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}NetLogo}{43}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}OASys}{45}{subsection.3.3.4}
+\contentsline {subsection}{\numberline {3.3.5}MASS}{45}{subsection.3.3.5}
+\contentsline {subsection}{\numberline {3.3.6}Composant W de TRNSYS}{46}{subsection.3.3.6}
+\contentsline {section}{\numberline {3.4}Synth\IeC {\`e}se}{47}{section.3.4}
+\contentsline {part}{II\hspace {1em}Plateforme du comportement des occupants}{49}{part.2}
+\contentsline {chapter}{\numberline {4}Simulation Stochastique \IeC {\`a} base d'agents (MASS)}{50}{chapter.4}
+\contentsline {section}{\numberline {4.1}Concepts g\IeC {\'e}n\IeC {\'e}riques}{50}{section.4.1}
+\contentsline {section}{\numberline {4.2}Utilisation pratique}{51}{section.4.2}
+\contentsline {section}{\numberline {4.3}Synth\IeC {\`e}se}{53}{section.4.3}
+\contentsline {chapter}{\numberline {5}Mod\IeC {\'e}lisation du comportement des occupants}{55}{chapter.5}
+\contentsline {section}{\numberline {5.1}Collecte de donn\IeC {\'e}es}{55}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Suivi sur site}{55}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}\IeC {\'E}tudes de laboratoire}{56}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Enqu\IeC {\^e}tes}{56}{subsection.5.1.3}
+\contentsline {section}{\numberline {5.2}D\IeC {\'e}veloppement de mod\IeC {\`e}les}{57}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Formulations math\IeC {\'e}matiques}{58}{subsection.5.2.1}
+\contentsline {subsubsection}{Processus de Bernoulli}{58}{section*.22}
+\contentsline {subsubsection}{Chaine de Markov}{58}{section*.23}
+\contentsline {subsubsection}{Analyse de survie}{59}{section*.24}
+\contentsline {subsection}{\numberline {5.2.2}\IeC {\'E}valuation et validation}{59}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}\textit {Fit-for-purpose} et facteurs contextuels}{60}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.3}Pr\IeC {\'e}sentation des cas d'\IeC {\'e}tudes}{61}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Bureau}{61}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}R\IeC {\'e}sidentiel}{62}{subsection.5.3.2}
+\contentsline {section}{\numberline {5.4}Pr\IeC {\'e}sence dans les b\IeC {\^a}timents de bureaux}{65}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}\IeC {\'E}tat de l'art}{66}{subsection.5.4.1}
 \contentsline {subsection}{\numberline {5.4.2}Mod\IeC {\`e}le de Page}{70}{subsection.5.4.2}
-\contentsline {subsection}{\numberline {5.4.3}Ajustement du mod\IeC {\`e}le de Page et al.}{71}{subsection.5.4.3}
+\contentsline {subsection}{\numberline {5.4.3}Ajustement du mod\IeC {\`e}le de Page et al.}{72}{subsection.5.4.3}
 \contentsline {subsection}{\numberline {5.4.4}Facteurs contextuels}{74}{subsection.5.4.4}
 \contentsline {section}{\numberline {5.5}Activit\IeC {\'e}s dans les logements}{79}{section.5.5}
 \contentsline {subsection}{\numberline {5.5.1}\IeC {\'E}tat de l'art}{79}{subsection.5.5.1}
-\contentsline {subsection}{\numberline {5.5.2}Processus de Bernoulli}{80}{subsection.5.5.2}
-\contentsline {subsection}{\numberline {5.5.3}Mod\IeC {\`e}le hybride}{83}{subsection.5.5.3}
+\contentsline {subsection}{\numberline {5.5.2}Processus de Bernoulli}{81}{subsection.5.5.2}
+\contentsline {subsection}{\numberline {5.5.3}Mod\IeC {\`e}le hybride}{82}{subsection.5.5.3}
 \contentsline {subsection}{\numberline {5.5.4}Pr\IeC {\'e}sentation des r\IeC {\'e}sultats}{83}{subsection.5.5.4}
-\contentsline {section}{\numberline {5.6}Gestion des ouvrants}{86}{section.5.6}
-\contentsline {section}{\numberline {5.7}Gestion des stores}{86}{section.5.7}
-\contentsline {section}{\numberline {5.8}Gestion de l'\IeC {\'e}clairage}{86}{section.5.8}
-\contentsline {section}{\numberline {5.9}Utilisation des appareils \IeC {\'e}lectriques}{87}{section.5.9}
-\contentsline {subsection}{\numberline {5.9.1}Types d'appareils \IeC {\'e}lectriques}{87}{subsection.5.9.1}
-\contentsline {subsection}{\numberline {5.9.2}Mod\IeC {\'e}lisation de la possession et de l'utilisation des appareils \IeC {\'e}lectriques}{87}{subsection.5.9.2}
-\contentsline {section}{\numberline {5.10}Gestion des consignes de temp\IeC {\'e}rature}{87}{section.5.10}
-\contentsline {section}{\numberline {5.11}Consommations d'eau chaude sanitaire}{91}{section.5.11}
-\contentsline {subsection}{\numberline {5.11.1}Syst\IeC {\`e}mes}{91}{subsection.5.11.1}
-\contentsline {subsection}{\numberline {5.11.2}Volumes de consommation}{91}{subsection.5.11.2}
-\contentsline {part}{III\hspace {1em}Application et perspectives}{93}{part.3}
-\contentsline {chapter}{\numberline {6}Analyse de sensibilit\IeC {\'e} sur b\IeC {\^a}timent r\IeC {\'e}sidentiel}{94}{chapter.6}
-\contentsline {section}{\numberline {6.1}Pr\IeC {\'e}sentation de l'op\IeC {\'e}ration}{94}{section.6.1}
-\contentsline {section}{\numberline {6.2}\IeC {\textbullet }}{94}{section.6.2}
-\contentsline {chapter}{\numberline {7}Discussion}{95}{chapter.7}
-\contentsline {section}{\numberline {7.1}La probl\IeC {\'e}matisation avant la mod\IeC {\'e}lisation}{95}{section.7.1}
-\contentsline {section}{\numberline {7.2}Appropriation de la technologie}{95}{section.7.2}
-\contentsline {section}{\numberline {7.3}L'accompagnement des usagers}{95}{section.7.3}
-\contentsline {section}{\numberline {7.4}Conclusion}{96}{section.7.4}
+\contentsline {section}{\numberline {5.6}Gains et confort thermique}{87}{section.5.6}
+\contentsline {section}{\numberline {5.7}Gestion des ouvrants}{89}{section.5.7}
+\contentsline {subsection}{\numberline {5.7.1}\IeC {\'E}tat de l'art}{89}{subsection.5.7.1}
+\contentsline {subsection}{\numberline {5.7.2}Mod\IeC {\`e}le d'Haldi et Robinson}{94}{subsection.5.7.2}
+\contentsline {subsection}{\numberline {5.7.3}Ajustement du mod\IeC {\`e}le}{95}{subsection.5.7.3}
+\contentsline {section}{\numberline {5.8}Gestion des stores}{95}{section.5.8}
+\contentsline {section}{\numberline {5.9}Gestion de l'\IeC {\'e}clairage}{96}{section.5.9}
+\contentsline {section}{\numberline {5.10}Utilisation des appareils \IeC {\'e}lectriques}{96}{section.5.10}
+\contentsline {subsection}{\numberline {5.10.1}Types d'appareils \IeC {\'e}lectriques}{96}{subsection.5.10.1}
+\contentsline {subsection}{\numberline {5.10.2}Mod\IeC {\'e}lisation de la possession et de l'utilisation des appareils \IeC {\'e}lectriques}{96}{subsection.5.10.2}
+\contentsline {section}{\numberline {5.11}Gestion des consignes de temp\IeC {\'e}rature}{96}{section.5.11}
+\contentsline {section}{\numberline {5.12}Consommations d'eau chaude sanitaire}{100}{section.5.12}
+\contentsline {subsection}{\numberline {5.12.1}Syst\IeC {\`e}mes}{100}{subsection.5.12.1}
+\contentsline {subsection}{\numberline {5.12.2}Volumes de consommation}{100}{subsection.5.12.2}
+\contentsline {part}{III\hspace {1em}Application et perspectives}{103}{part.3}
+\contentsline {chapter}{\numberline {6}Recommandation aux architectes et designers}{105}{chapter.6}
+\contentsline {section}{\numberline {6.1}Conception de l'espace}{105}{section.6.1}
+\contentsline {section}{\numberline {6.2}Conception des ouvrants}{105}{section.6.2}
+\contentsline {section}{\numberline {6.3}Conception de l'\IeC {\'e}clairage}{105}{section.6.3}
+\contentsline {section}{\numberline {6.4}Conception des stores et volets}{105}{section.6.4}
+\contentsline {chapter}{\numberline {7}Discussion}{106}{chapter.7}
+\contentsline {section}{\numberline {7.1}La probl\IeC {\'e}matisation avant la mod\IeC {\'e}lisation}{106}{section.7.1}
+\contentsline {section}{\numberline {7.2}Appropriation de la technologie}{106}{section.7.2}
+\contentsline {section}{\numberline {7.3}L'accompagnement des usagers}{106}{section.7.3}
+\contentsline {section}{\numberline {7.4}Conclusion}{107}{section.7.4}
+\contentsline {chapter}{Bibliographie}{108}{chapter*.25}

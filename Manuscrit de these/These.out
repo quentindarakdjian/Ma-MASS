@@ -3,95 +3,89 @@
 \BOOKMARK [0][-]{chapter.1}{Conception et construction des b\342timents}{part.1}% 3
 \BOOKMARK [1][-]{section.1.1}{Mod\351lisation num\351rique des b\342timents}{chapter.1}% 4
 \BOOKMARK [1][-]{section.1.2}{Calculs conventionnels}{chapter.1}% 5
-\BOOKMARK [1][-]{section.1.3}{Labels et certifications}{chapter.1}% 6
-\BOOKMARK [1][-]{section.1.4}{Logiciels de Simulations Thermiques Dynamiques}{chapter.1}% 7
-\BOOKMARK [1][-]{section.1.5}{Optimisation du management de projet}{chapter.1}% 8
+\BOOKMARK [1][-]{section.1.3}{Certifications et labels}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.4}{Simulations Thermiques Dynamiques}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.5}{Gestion de projet}{chapter.1}% 8
 \BOOKMARK [1][-]{section.1.6}{Synth\350se}{chapter.1}% 9
 \BOOKMARK [0][-]{chapter.2}{Performance \351nerg\351tique th\351orique et r\351elle}{part.1}% 10
-\BOOKMARK [1][-]{section.2.1}{Le performance gap}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.2}{Conception}{chapter.2}% 12
-\BOOKMARK [1][-]{section.2.3}{Construction}{chapter.2}% 13
-\BOOKMARK [1][-]{section.2.4}{Exploitation}{chapter.2}% 14
-\BOOKMARK [2][-]{subsection.2.4.1}{Usages et usagers}{section.2.4}% 15
-\BOOKMARK [2][-]{subsection.2.4.2}{M\351t\351o}{section.2.4}% 16
-\BOOKMARK [1][-]{section.2.5}{Maintenance}{chapter.2}% 17
-\BOOKMARK [1][-]{section.2.6}{Engagement performantiel}{chapter.2}% 18
-\BOOKMARK [2][-]{subsection.2.6.1}{Juridique}{section.2.6}% 19
-\BOOKMARK [2][-]{subsection.2.6.2}{Financier}{section.2.6}% 20
-\BOOKMARK [2][-]{subsection.2.6.3}{Technique}{section.2.6}% 21
-\BOOKMARK [2][-]{subsection.2.6.4}{M\351thodes}{section.2.6}% 22
-\BOOKMARK [1][-]{section.2.7}{Synth\350se}{chapter.2}% 23
-\BOOKMARK [0][-]{chapter.3}{Mod\351lisation du comportement des usagers}{part.1}% 24
-\BOOKMARK [1][-]{section.3.1}{Familles de mod\350les}{chapter.3}% 25
-\BOOKMARK [2][-]{subsection.3.1.1}{Mod\350les psychologiques}{section.3.1}% 26
-\BOOKMARK [2][-]{subsection.3.1.2}{Valeurs moyennes}{section.3.1}% 27
-\BOOKMARK [2][-]{subsection.3.1.3}{Mod\350les d\351terministes}{section.3.1}% 28
-\BOOKMARK [2][-]{subsection.3.1.4}{Mod\350les probabilistes}{section.3.1}% 29
-\BOOKMARK [2][-]{subsection.3.1.5}{"Action-based" mod\350les}{section.3.1}% 30
-\BOOKMARK [2][-]{subsection.3.1.6}{Syst\350mes Multi-Agents \(SMA\)}{section.3.1}% 31
-\BOOKMARK [2][-]{subsection.3.1.7}{L'approche hybride socio-stochastique}{section.3.1}% 32
-\BOOKMARK [2][-]{subsection.3.1.8}{Synth\350se}{section.3.1}% 33
-\BOOKMARK [1][-]{section.3.2}{Int\351gration des mod\350les aux outils de simulations thermiques}{chapter.3}% 34
-\BOOKMARK [2][-]{subsection.3.2.1}{Le simulateur d\351finit les comportements}{section.3.2}% 35
-\BOOKMARK [2][-]{subsection.3.2.2}{Le simulateur personnalise le code}{section.3.2}% 36
-\BOOKMARK [2][-]{subsection.3.2.3}{Le simulateur personnalise l'outil}{section.3.2}% 37
-\BOOKMARK [2][-]{subsection.3.2.4}{Le simulateur utilise un outil externe}{section.3.2}% 38
-\BOOKMARK [2][-]{subsection.3.2.5}{Synth\350se}{section.3.2}% 39
-\BOOKMARK [1][-]{section.3.3}{Choix de la plateforme SMA}{chapter.3}% 40
-\BOOKMARK [2][-]{subsection.3.3.1}{BRAHMS}{section.3.3}% 41
-\BOOKMARK [2][-]{subsection.3.3.2}{Repast}{section.3.3}% 42
-\BOOKMARK [2][-]{subsection.3.3.3}{NetLogo}{section.3.3}% 43
-\BOOKMARK [2][-]{subsection.3.3.4}{OASys}{section.3.3}% 44
-\BOOKMARK [2][-]{subsection.3.3.5}{MASS}{section.3.3}% 45
-\BOOKMARK [2][-]{subsection.3.3.6}{Composant W de TRNSYS}{section.3.3}% 46
-\BOOKMARK [1][-]{section.3.4}{Synth\350se}{chapter.3}% 47
-\BOOKMARK [-1][-]{part.2}{II Plateforme du comportement des occupants}{}% 48
-\BOOKMARK [0][-]{chapter.4}{Simulation Stochastique \340 base d'agents \(MASS\)}{part.2}% 49
-\BOOKMARK [1][-]{section.4.1}{Int\351gration de mod\350les comportementaux aux logiciels de simulations thermiques dynamiques}{chapter.4}% 50
-\BOOKMARK [1][-]{section.4.2}{MASS: Un Syst\350me Multi-Agents simplifi\351}{chapter.4}% 51
-\BOOKMARK [1][-]{section.4.3}{Architecture du mod\350le}{chapter.4}% 52
-\BOOKMARK [1][-]{section.4.4}{Interop\351rabilit\351 des outils de MASS}{chapter.4}% 53
-\BOOKMARK [1][-]{section.4.5}{Fonctionnement du FMI}{chapter.4}% 54
-\BOOKMARK [1][-]{section.4.6}{Strat\351gie g\351n\351rale de d\351veloppement}{chapter.4}% 55
-\BOOKMARK [1][-]{section.4.7}{Validation des mod\350les du comportement des occupants}{chapter.4}% 56
-\BOOKMARK [0][-]{chapter.5}{Mod\351lisation du comportement des occupants}{part.2}% 57
-\BOOKMARK [1][-]{section.5.1}{Collection de donn\351es}{chapter.5}% 58
-\BOOKMARK [2][-]{subsection.5.1.1}{Suivi sur site}{section.5.1}% 59
-\BOOKMARK [2][-]{subsection.5.1.2}{Enqu\352tes}{section.5.1}% 60
-\BOOKMARK [2][-]{subsection.5.1.3}{\311tudes de laboratoire}{section.5.1}% 61
-\BOOKMARK [1][-]{section.5.2}{Outils de mod\351lisation}{chapter.5}% 62
-\BOOKMARK [2][-]{subsection.5.2.1}{Famille de mod\350les}{section.5.2}% 63
-\BOOKMARK [2][-]{subsection.5.2.2}{\311valuation et validation}{section.5.2}% 64
-\BOOKMARK [2][-]{subsection.5.2.3}{Fit-for-purpose et facteurs contextuels}{section.5.2}% 65
-\BOOKMARK [1][-]{section.5.3}{Pr\351sentation des cas d'\351tudes}{chapter.5}% 66
-\BOOKMARK [2][-]{subsection.5.3.1}{Bureau}{section.5.3}% 67
-\BOOKMARK [2][-]{subsection.5.3.2}{R\351sidentiel}{section.5.3}% 68
-\BOOKMARK [1][-]{section.5.4}{Pr\351sence dans les b\342timents de bureaux}{chapter.5}% 69
-\BOOKMARK [2][-]{subsection.5.4.1}{\311tat de l'art}{section.5.4}% 70
-\BOOKMARK [2][-]{subsection.5.4.2}{Mod\350le de Page}{section.5.4}% 71
-\BOOKMARK [2][-]{subsection.5.4.3}{Ajustement du mod\350le de Page et al.}{section.5.4}% 72
-\BOOKMARK [2][-]{subsection.5.4.4}{Facteurs contextuels}{section.5.4}% 73
-\BOOKMARK [1][-]{section.5.5}{Activit\351s dans les logements}{chapter.5}% 74
-\BOOKMARK [2][-]{subsection.5.5.1}{\311tat de l'art}{section.5.5}% 75
-\BOOKMARK [2][-]{subsection.5.5.2}{Processus de Bernoulli}{section.5.5}% 76
-\BOOKMARK [2][-]{subsection.5.5.3}{Mod\350le hybride}{section.5.5}% 77
-\BOOKMARK [2][-]{subsection.5.5.4}{Pr\351sentation des r\351sultats}{section.5.5}% 78
-\BOOKMARK [1][-]{section.5.6}{Gestion des ouvrants}{chapter.5}% 79
-\BOOKMARK [1][-]{section.5.7}{Gestion des stores}{chapter.5}% 80
-\BOOKMARK [1][-]{section.5.8}{Gestion de l'\351clairage}{chapter.5}% 81
-\BOOKMARK [1][-]{section.5.9}{Utilisation des appareils \351lectriques}{chapter.5}% 82
-\BOOKMARK [2][-]{subsection.5.9.1}{Types d'appareils \351lectriques}{section.5.9}% 83
-\BOOKMARK [2][-]{subsection.5.9.2}{Mod\351lisation de la possession et de l'utilisation des appareils \351lectriques}{section.5.9}% 84
-\BOOKMARK [1][-]{section.5.10}{Gestion des consignes de temp\351rature}{chapter.5}% 85
-\BOOKMARK [1][-]{section.5.11}{Consommations d'eau chaude sanitaire}{chapter.5}% 86
-\BOOKMARK [2][-]{subsection.5.11.1}{Syst\350mes}{section.5.11}% 87
-\BOOKMARK [2][-]{subsection.5.11.2}{Volumes de consommation}{section.5.11}% 88
-\BOOKMARK [-1][-]{part.3}{III Application et perspectives}{}% 89
-\BOOKMARK [0][-]{chapter.6}{Analyse de sensibilit\351 sur b\342timent r\351sidentiel}{part.3}% 90
-\BOOKMARK [1][-]{section.6.1}{Pr\351sentation de l'op\351ration}{chapter.6}% 91
-\BOOKMARK [1][-]{section.6.2}{\200}{chapter.6}% 92
-\BOOKMARK [0][-]{chapter.7}{Discussion}{part.3}% 93
-\BOOKMARK [1][-]{section.7.1}{La probl\351matisation avant la mod\351lisation}{chapter.7}% 94
-\BOOKMARK [1][-]{section.7.2}{Appropriation de la technologie}{chapter.7}% 95
-\BOOKMARK [1][-]{section.7.3}{L'accompagnement des usagers}{chapter.7}% 96
-\BOOKMARK [1][-]{section.7.4}{Conclusion}{chapter.7}% 97
+\BOOKMARK [1][-]{section.2.1}{\311cart de performance}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.1.1}{Conception}{section.2.1}% 12
+\BOOKMARK [2][-]{subsection.2.1.2}{Construction}{section.2.1}% 13
+\BOOKMARK [2][-]{subsection.2.1.3}{Exploitation}{section.2.1}% 14
+\BOOKMARK [1][-]{section.2.2}{Engagement performantiel}{chapter.2}% 15
+\BOOKMARK [2][-]{subsection.2.2.1}{Juridique}{section.2.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.2}{Financier}{section.2.2}% 17
+\BOOKMARK [2][-]{subsection.2.2.3}{Technique}{section.2.2}% 18
+\BOOKMARK [2][-]{subsection.2.2.4}{M\351thodes}{section.2.2}% 19
+\BOOKMARK [1][-]{section.2.3}{Synth\350se}{chapter.2}% 20
+\BOOKMARK [0][-]{chapter.3}{Approches de mod\351lisation}{part.1}% 21
+\BOOKMARK [1][-]{section.3.1}{Familles de mod\350les}{chapter.3}% 22
+\BOOKMARK [2][-]{subsection.3.1.1}{Mod\350les d\351terministes}{section.3.1}% 23
+\BOOKMARK [2][-]{subsection.3.1.2}{Mod\350les stochastiques}{section.3.1}% 24
+\BOOKMARK [2][-]{subsection.3.1.3}{Syst\350mes Multi-Agents \(SMA\)}{section.3.1}% 25
+\BOOKMARK [1][-]{section.3.2}{Int\351gration des mod\350les aux outils de simulations thermiques}{chapter.3}% 26
+\BOOKMARK [2][-]{subsection.3.2.1}{Le simulateur d\351finit les comportements}{section.3.2}% 27
+\BOOKMARK [2][-]{subsection.3.2.2}{Le simulateur personnalise le code}{section.3.2}% 28
+\BOOKMARK [2][-]{subsection.3.2.3}{Le simulateur personnalise l'outil}{section.3.2}% 29
+\BOOKMARK [2][-]{subsection.3.2.4}{Le simulateur utilise un outil externe}{section.3.2}% 30
+\BOOKMARK [1][-]{section.3.3}{Choix de la plateforme SMA}{chapter.3}% 31
+\BOOKMARK [2][-]{subsection.3.3.1}{BRAHMS}{section.3.3}% 32
+\BOOKMARK [2][-]{subsection.3.3.2}{Repast}{section.3.3}% 33
+\BOOKMARK [2][-]{subsection.3.3.3}{NetLogo}{section.3.3}% 34
+\BOOKMARK [2][-]{subsection.3.3.4}{OASys}{section.3.3}% 35
+\BOOKMARK [2][-]{subsection.3.3.5}{MASS}{section.3.3}% 36
+\BOOKMARK [2][-]{subsection.3.3.6}{Composant W de TRNSYS}{section.3.3}% 37
+\BOOKMARK [1][-]{section.3.4}{Synth\350se}{chapter.3}% 38
+\BOOKMARK [-1][-]{part.2}{II Plateforme du comportement des occupants}{}% 39
+\BOOKMARK [0][-]{chapter.4}{Simulation Stochastique \340 base d'agents \(MASS\)}{part.2}% 40
+\BOOKMARK [1][-]{section.4.1}{Concepts g\351n\351riques}{chapter.4}% 41
+\BOOKMARK [1][-]{section.4.2}{Utilisation pratique}{chapter.4}% 42
+\BOOKMARK [1][-]{section.4.3}{Synth\350se}{chapter.4}% 43
+\BOOKMARK [0][-]{chapter.5}{Mod\351lisation du comportement des occupants}{part.2}% 44
+\BOOKMARK [1][-]{section.5.1}{Collecte de donn\351es}{chapter.5}% 45
+\BOOKMARK [2][-]{subsection.5.1.1}{Suivi sur site}{section.5.1}% 46
+\BOOKMARK [2][-]{subsection.5.1.2}{\311tudes de laboratoire}{section.5.1}% 47
+\BOOKMARK [2][-]{subsection.5.1.3}{Enqu\352tes}{section.5.1}% 48
+\BOOKMARK [1][-]{section.5.2}{D\351veloppement de mod\350les}{chapter.5}% 49
+\BOOKMARK [2][-]{subsection.5.2.1}{Formulations math\351matiques}{section.5.2}% 50
+\BOOKMARK [2][-]{subsection.5.2.2}{\311valuation et validation}{section.5.2}% 51
+\BOOKMARK [2][-]{subsection.5.2.3}{Fit-for-purpose et facteurs contextuels}{section.5.2}% 52
+\BOOKMARK [1][-]{section.5.3}{Pr\351sentation des cas d'\351tudes}{chapter.5}% 53
+\BOOKMARK [2][-]{subsection.5.3.1}{Bureau}{section.5.3}% 54
+\BOOKMARK [2][-]{subsection.5.3.2}{R\351sidentiel}{section.5.3}% 55
+\BOOKMARK [1][-]{section.5.4}{Pr\351sence dans les b\342timents de bureaux}{chapter.5}% 56
+\BOOKMARK [2][-]{subsection.5.4.1}{\311tat de l'art}{section.5.4}% 57
+\BOOKMARK [2][-]{subsection.5.4.2}{Mod\350le de Page}{section.5.4}% 58
+\BOOKMARK [2][-]{subsection.5.4.3}{Ajustement du mod\350le de Page et al.}{section.5.4}% 59
+\BOOKMARK [2][-]{subsection.5.4.4}{Facteurs contextuels}{section.5.4}% 60
+\BOOKMARK [1][-]{section.5.5}{Activit\351s dans les logements}{chapter.5}% 61
+\BOOKMARK [2][-]{subsection.5.5.1}{\311tat de l'art}{section.5.5}% 62
+\BOOKMARK [2][-]{subsection.5.5.2}{Processus de Bernoulli}{section.5.5}% 63
+\BOOKMARK [2][-]{subsection.5.5.3}{Mod\350le hybride}{section.5.5}% 64
+\BOOKMARK [2][-]{subsection.5.5.4}{Pr\351sentation des r\351sultats}{section.5.5}% 65
+\BOOKMARK [1][-]{section.5.6}{Gains et confort thermique}{chapter.5}% 66
+\BOOKMARK [1][-]{section.5.7}{Gestion des ouvrants}{chapter.5}% 67
+\BOOKMARK [2][-]{subsection.5.7.1}{\311tat de l'art}{section.5.7}% 68
+\BOOKMARK [2][-]{subsection.5.7.2}{Mod\350le d'Haldi et Robinson}{section.5.7}% 69
+\BOOKMARK [2][-]{subsection.5.7.3}{Ajustement du mod\350le}{section.5.7}% 70
+\BOOKMARK [1][-]{section.5.8}{Gestion des stores}{chapter.5}% 71
+\BOOKMARK [1][-]{section.5.9}{Gestion de l'\351clairage}{chapter.5}% 72
+\BOOKMARK [1][-]{section.5.10}{Utilisation des appareils \351lectriques}{chapter.5}% 73
+\BOOKMARK [2][-]{subsection.5.10.1}{Types d'appareils \351lectriques}{section.5.10}% 74
+\BOOKMARK [2][-]{subsection.5.10.2}{Mod\351lisation de la possession et de l'utilisation des appareils \351lectriques}{section.5.10}% 75
+\BOOKMARK [1][-]{section.5.11}{Gestion des consignes de temp\351rature}{chapter.5}% 76
+\BOOKMARK [1][-]{section.5.12}{Consommations d'eau chaude sanitaire}{chapter.5}% 77
+\BOOKMARK [2][-]{subsection.5.12.1}{Syst\350mes}{section.5.12}% 78
+\BOOKMARK [2][-]{subsection.5.12.2}{Volumes de consommation}{section.5.12}% 79
+\BOOKMARK [-1][-]{part.3}{III Application et perspectives}{}% 80
+\BOOKMARK [0][-]{chapter.6}{Recommandation aux architectes et designers}{part.3}% 81
+\BOOKMARK [1][-]{section.6.1}{Conception de l'espace}{chapter.6}% 82
+\BOOKMARK [1][-]{section.6.2}{Conception des ouvrants}{chapter.6}% 83
+\BOOKMARK [1][-]{section.6.3}{Conception de l'\351clairage}{chapter.6}% 84
+\BOOKMARK [1][-]{section.6.4}{Conception des stores et volets}{chapter.6}% 85
+\BOOKMARK [0][-]{chapter.7}{Discussion}{part.3}% 86
+\BOOKMARK [1][-]{section.7.1}{La probl\351matisation avant la mod\351lisation}{chapter.7}% 87
+\BOOKMARK [1][-]{section.7.2}{Appropriation de la technologie}{chapter.7}% 88
+\BOOKMARK [1][-]{section.7.3}{L'accompagnement des usagers}{chapter.7}% 89
+\BOOKMARK [1][-]{section.7.4}{Conclusion}{chapter.7}% 90
+\BOOKMARK [0][-]{chapter*.25}{Bibliographie}{part.3}% 91

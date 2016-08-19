@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{100}
 
 \bibitem{GIEC-14}
 GIEC, ``Cinquième rapport du {G}roupe d'experts {I}ntergouvernemental sur
@@ -11,8 +11,10 @@ J.~Rifkin, {\em La troisième révolution industrielle: Comment le pouvoir
 \newblock Les liens qui liberent, 2012.
 
 \bibitem{Annex-53-1}
-Annex53, {\em Volume II: Occupant behavior and modeling - Total energy use in
-  buildings}.
+H.~Polinder, M.~Schweiker, A.~Van Der~Aa, K.~Schakib-Ekbatan, V.~Fabi,
+  R.~Andersen, N.~Morishita, C.~Wang, S.~Corgnati, P.~Heiselberg, D.~Yan,
+  B.~Olesen, T.~Bednar, and A.~Wagner, {\em Annex53: Volume II: Occupant
+  behavior and modeling - Total energy use in buildings}.
 \newblock IEA/ECBCS, 2013.
 
 \bibitem{Kampf-07}
@@ -32,7 +34,7 @@ E.~Vorger, P.~Schalbart, and B.~Peuportier, ``Etude de l'influence des
   2014.
 
 \bibitem{Michaelsen-09}
-B.~Michaelsen and J.~Eiden, ``{HumanComfort} {Modelica}-{Library} {Thermal}
+B.~Michaelsen and J.~Eiden, ``{Human Comfort} {Modelica} - {Library} {Thermal}
   {Comfort} in {Buildings} and {Mobile} {Applications},'' {\em Modelica
   Conference}, pp.~403--412, Oct. 2009.
 
@@ -50,9 +52,9 @@ J.~Sousa, ``Energy simulation software for buildings: Review and comparison.''
   Faculdade de Engenharia da Universidade do Porto, Porto, Portugal, 2013.
 
 \bibitem{Chapman-14}
-J.~Chapman, P.-O. Siebers, and D.~Robinson, ``{COUPLING} {MULTI}-{AGENT}
-  {STOCHASTIC} {SIMULATION} {OF} {OCCUPANTS} {WITH} {BUILDING} {SIMULATION},''
-  {\em {B}uilding {S}imulation and {O}ptimization}, 2014.
+J.~Chapman, P.-O. Siebers, and D.~Robinson, ``Coupling multi-agent stochastic
+  simulation of occupants with building simulation,'' {\em {B}uilding
+  {S}imulation and {O}ptimization}, 2014.
 
 \bibitem{Bourgeois-05}
 D.~J. Bourgeois, {\em Detailed occupancy prediction, occupancy-sensing control
@@ -63,10 +65,6 @@ D.~J. Bourgeois, {\em Detailed occupancy prediction, occupancy-sensing control
 P.~Hoes, J.~Hensen, M.~Loomans, B.~de~Vries, and D.~Bourgeois, ``User behavior
   in whole building simulation,'' {\em Energy and Buildings}, vol.~41,
   pp.~295--302, Mar. 2009.
-
-\bibitem{TRIBUTE-15}
-TRIBUTE, ``Take the energy bill back to the promised building performance.''
-  Premier rapport periodique, 2015.
 
 \bibitem{Bonte-14}
 M.~Bonte, F.~Thellier, and B.~Lartigue, ``Impact of occupant's actions on
@@ -86,21 +84,30 @@ L.~Norford, R.~Socolow, E.~Hsieh, and G.~Spadaro, ``Two-to-one discrepancy
   insights from reconciliation based on the doe-2 model,'' {\em Energy and
   Buildings}, vol.~21, pp.~121--131, 1994.
 
+\bibitem{Clarke-01}
+J.~A. Clarke, {\em Energy {Simulation} in {Building} {Design}}.
+\newblock Routledge, 2001.
+\newblock Google-Books-ID: WH0VCiF8jkoC.
+
+\bibitem{Peuportier-16}
+B.~Peuportier, {\em Energétique des Bâtiments et Simulation Thermique}.
+\newblock Eyrolles, 2016.
+
 \bibitem{AlKoussa-14}
 J.~Al~Koussa, ``Virtual computational testbed for building-integrated renewable
   energy solutions,'' Master's thesis, Eindhoven University of Technology,
   2014.
-
-\bibitem{Kashif-13}
-A.~Kashif, S.~Ploix, J.~Dugdale, and X.~H.~B. Le, ``Simulating the dynamics of
-  occupant behaviour for power management in residential buildings,'' {\em
-  Energy and Buildings}, vol.~56, pp.~85--93, Jan. 2013.
 
 \bibitem{Chen-12}
 H.-M. Chen, C.-W. Lin, S.-H. Hsieh, H.-F. Chao, C.-S. Chen, R.-S. Shiu, S.-R.
   Ye, and Y.-C. Deng, ``Persuasive feedback model for inducing energy
   conservation behaviors of building users based on interaction with a virtual
   object,'' {\em Energy and Buildings}, vol.~45, pp.~106--115, Feb. 2012.
+
+\bibitem{Kashif-13}
+A.~Kashif, S.~Ploix, J.~Dugdale, and X.~H.~B. Le, ``Simulating the dynamics of
+  occupant behaviour for power management in residential buildings,'' {\em
+  Energy and Buildings}, vol.~56, pp.~85--93, Jan. 2013.
 
 \bibitem{deMeester-13}
 T.~de~Meester, A.-F. Marique, A.~De~Herde, and S.~Reiter, ``Impacts of occupant
@@ -136,11 +143,6 @@ C.~M. Jacquot, L.~Schellen, B.~R. Kingma, M.~A. van Baak, and W.~D. van
   Marken~Lichtenbelt, ``Influence of thermophysiology on thermal behavior: the
   essentials of categorization,'' {\em Physiology \& Behavior}, vol.~128,
   pp.~180--187, Apr. 2014.
-
-\bibitem{Alfakara-14}
-A.~Alfakara and B.~Croxford, ``{UNDERSTANDING} {OCCUPANTS}’{BEHAVIOURS}
-  {USING} {DETAILED} {AGENT}-{BASED} {MODELLING},'' {\em {B}uilding
-  {S}imulation and {O}ptimization}, 2014.
 
 \bibitem{Sutter-06}
 Y.~Sutter, D.~Dumortier, and M.~Fontoynont, ``The use of shading systems in
@@ -195,39 +197,6 @@ P.~Lenormand, M.~Bourget, and F.~More, ``Vers le kamasutra de
   l'énergéticien,'' {\em Journées Internationales de Sociologie de
   l'Energie}, vol.~2, 2015.
 
-\bibitem{Kelly-13}
-S.~Kelly, M.~Shipworth, D.~Shipworth, M.~Gentry, A.~Wright, M.~Pollitt,
-  D.~Crawford-Brown, and K.~Lomas, ``Predicting the diversity of internal
-  temperatures from the {English} residential sector using panel methods,''
-  {\em Applied Energy}, vol.~102, pp.~601--621, 2013.
-
-\bibitem{Maslow-56}
-A.~Maslow, {\em Devenir le meilleur de soi-même: Besoins fondamentaux,
-  motivation et personnalité}.
-\newblock Eyrolles, 1956.
-
-\bibitem{Ajzen-91}
-I.~Ajzen, ``The theory of planned behavior,'' {\em Organizational behavior and
-  human decision processes}, vol.~50, no.~2, pp.~179--211, 1991.
-
-\bibitem{VanRaaij-83}
-W.~F. Van~Raaij and T.~Verhallen, ``A behavioral model of residential energy
-  use,'' {\em Journal of Economic Psychology}, vol.~3, pp.~39--63, 1983.
-
-\bibitem{Morel-09}
-C.-A. Roulet and A.~Dauriat, {\em Energétique du bâtiment}.
-\newblock Presses polytechniques romandes, 1987.
-
-\bibitem{Glicksman-97}
-L.~Glicksman and S.~Taub, ``Thermal and behavioral modeling of
-  occupant-controlled heating, ventilating and air conditioning systems,'' {\em
-  Energy and Buildings}, vol.~25, pp.~243--249, 1997.
-
-\bibitem{Tijani-14}
-K.~Tijani, A.~Kashif, S.~Ploix, B.~Haas, J.~Dugdale, and Q.~D. Ngo,
-  ``Comparison between purely statistical and multi-agent based approaches for
-  occupant behaviour modeling in buildings,'' {\em {IBPSA} Conference}, 2014.
-
 \bibitem{Ferber-95}
 G.~Paquette, ``L’ingénierie des interactions dans les systèmes
   d’apprentissage,'' {\em Revue des sciences de l'éducation}, vol.~25,
@@ -239,15 +208,23 @@ P.~Davidsson and M.~Boman, ``Distributed monitoring and control of office
   pp.~293--307, May 2005.
 
 \bibitem{Kashif-11}
-A.~Kashif, X.~H.~B. Le, J.~Dugdale, and S.~Ploix, ``{AGENT} {BASED} {FRAMEWORK}
-  {TO} {SIMULATE} {INHABITANTS}’ {BEHAVIOUR} {IN} {DOMESTIC} {SETTINGS} {FOR}
-  {ENERGY} {MANAGEMENT}:,'' in {\em Conference on Agents and Artificial
-  Intelligence}, pp.~190--199, SciTePress - Science and Technology
-  Publications, 2011.
+A.~Kashif, X.~H.~B. Le, J.~Dugdale, and S.~Ploix, ``Agent based framework to
+  simulatate inhabitants' behaviour in domestic settings for energy
+  management,'' in {\em Conference on Agents and Artificial Intelligence},
+  pp.~190--199, SciTePress - Science and Technology Publications, 2011.
+
+\bibitem{Tijani-14}
+K.~Tijani, A.~Kashif, S.~Ploix, B.~Haas, J.~Dugdale, and Q.~D. Ngo,
+  ``Comparison between purely statistical and multi-agent based approaches for
+  occupant behaviour modeling in buildings,'' {\em {IBPSA} Conference}, 2014.
 
 \bibitem{Schwartz-77}
 S.~Schwartz, ``Normative influences on altruism,'' {\em Advances in
   Experimental Social Psychology}, vol.~10, pp.~221--279, 1977.
+
+\bibitem{Ajzen-91}
+I.~Ajzen, ``The theory of planned behavior,'' {\em Organizational behavior and
+  human decision processes}, vol.~50, no.~2, pp.~179--211, 1991.
 
 \bibitem{Savall-03}
 M.~Savall, {\em Une architecture d'agents pour la simulation - Le modèle YAMAM
@@ -264,10 +241,11 @@ P.~Maes, ``Intelligent software: Programs that can act independently will ease
   the burdens that computers put on people,'' {\em Scientific American},
   pp.~84--86, 1995.
 
-\bibitem{Le-10}
-X.~H.~B. Le, A.~Kashif, S.~Ploix, J.~Dugdale, M.~Di~Mascolo, and S.~Abras,
-  ``Simulating inhabitant behaviour to manage energy at home,'' {\em
-  Conférence IBPSA}, 2010.
+\bibitem{Yan-15}
+D.~Yan, W.~O’Brien, T.~Hong, X.~Feng, H.~Burak~Gunay, F.~Tahmasebi, and
+  A.~Mahdavi, ``Occupant behavior modeling for building performance simulation:
+  {Current} state and future challenges,'' {\em Energy and Buildings},
+  vol.~107, pp.~264--278, Nov. 2015.
 
 \bibitem{Alonso-14}
 E.~Alonso, ``From {Artificial} {Intelligence} to {Multi}-{Agent} {Systems}:
@@ -283,16 +261,116 @@ E.~Bonabeau, ``Agent-based modeling: {Methods} and techniques for simulating
 B.~Huberman and S.~Clearwater, ``A multi-agent system for controlling building
   environments,'' in {\em Conference on MultiAgent Systems}, 1995.
 
+\bibitem{Alfakara-14}
+A.~Alfakara and B.~Croxford, ``Understanding occupants' behaviours using
+  detailed agent-based modelling,'' {\em {B}uilding {S}imulation and
+  {O}ptimization}, 2014.
+
 \bibitem{Andrews-11}
 C.~J. Andrews, D.~Yi, U.~Krogmann, J.~A. Senick, and R.~E. Wener, ``Designing
   {Buildings} for {Real} {Occupants}: {An} {Agent}-{Based} {Approach},'' {\em
   IEEE Transactions on Systems, Man, and Cybernetics - Part A: Systems and
   Humans}, vol.~41, pp.~1077--1091, Nov. 2011.
 
+\bibitem{Robinson-11}
+D.~Robinson, U.~Wilke, and F.~Haldi, ``Multi agent simulation of occupants’
+  presence and behaviour,'' in {\em Proceedings of building simulation},
+  pp.~2110--2117, 2011.
+
+\bibitem{Page-08}
+J.~Page, D.~Robinson, N.~Morel, and J.-L. Scartezzini, ``A generalised
+  stochastic model for the simulation of occupant presence,'' {\em Energy and
+  Buildings}, vol.~40, pp.~83--98, Jan. 2008.
+
+\bibitem{Haldi-09}
+F.~Haldi and D.~Robinson, ``Interactions with window openings by office
+  occupants,'' {\em Building and Environment}, vol.~44, pp.~2378--2395, Dec.
+  2009.
+
+\bibitem{Haldi-10}
+F.~Haldi, {\em Towards a {Unified} {Model} of {Occupants}" {Behaviour} and
+  {Comfort} for {Building} {Energy} {Simulation}}.
+\newblock PhD thesis, Ecole Polytechnique Fédérale de Lausanne, 2010.
+
+\bibitem{Huang-99}
+J.~Huang, F.~C. Winkelmann, F.~Buhl, C.~O. Pedersen, D.~Fisher, R.~Liesen,
+  R.~Taylor, R.~Strand, D.~B. Crawley, and L.~K. Lawrie, ``Linking the {COMIS}
+  multi-zone airflow model with the {EnergyPlus} building energy simulation
+  program,'' in {\em Proc. of the 6-th {IBPSA} {Conference}}, vol.~2,
+  pp.~1065--1070, 1999.
+
+\bibitem{Wetter-11}
+M.~Wetter, ``Co-simulation of building energy and control systems with the
+  {Building} {Controls} {Virtual} {Test} {Bed},'' {\em Journal of Building
+  Performance Simulation}, vol.~4, pp.~185--203, Sept. 2011.
+
+\bibitem{Langevin-14}
+J.~Langevin, J.~Wen, and P.~L. Gurian, ``Simulating the human-building
+  interaction: {Development} and validation of an agent-based model of office
+  occupant behaviors,'' {\em Building and Environment}, Dec. 2014.
+
 \bibitem{Nouidui-13}
 T.~S. Nouidui, ``Functional {Mock}-{Up} {Unit} {Import} in {EnergyPlus} {For}
   {Co}-{Simulation},'' {\em {International Building Performance Simulation
   Association}}, 2014.
+
+\bibitem{Plessis-14}
+G.~Plessis, E.~Amouroux, and Y.~Haradji, ``Coupling occupant behaviour with a
+  building energy model - a fmi application,'' {\em 10th Modelica International
+  Conference}, 2014.
+
+\bibitem{Hong-16}
+T.~Hong, H.~Sun, Y.~Chen, S.~C. Taylor-Lange, and D.~Yan, ``An occupant
+  behavior modeling tool for co-simulation,'' {\em Energy and Buildings},
+  vol.~117, pp.~272--281, Apr. 2016.
+
+\bibitem{Perlis-82}
+A.~Perlis, ``Epigrams in programming,'' {\em {ACM's SIGPLAN}}, 1982.
+
+\bibitem{EP-ExternalInterface-16}
+EnergyPlus, ``{EnergyPlus} {External} {Interface}(s) {Application} {Guide},''
+  2016.
+
+\bibitem{Benezeth-11}
+Y.~Benezeth, H.~Laurent, B.~Emile, and C.~Rosenberger, ``Towards a sensor for
+  detecting human presence and characterizing activity,'' {\em Energy and
+  Buildings}, vol.~43, pp.~305--314, Feb. 2011.
+
+\bibitem{Gruber-14}
+M.~Gruber, A.~Trüschel, and J.-O. Dalenbäck, ``{CO}2 sensors for occupancy
+  estimations: {Potential} in building automation applications,'' {\em Energy
+  and Buildings}, vol.~84, pp.~548--556, Dec. 2014.
+
+\bibitem{Fleuret-08}
+F.~Fleuret, J.~Berclaz, R.~Lengagne, and P.~Fua, ``Multicamera people tracking
+  with a probabilistic occupancy map,'' {\em IEEE Transactions on Pattern
+  Analysis and Machine Intelligence}, vol.~30, no.~2, pp.~267--282, 2008.
+
+\bibitem{Rea-84}
+M.~S. Rea, ``Window blind occlusion: a pilot study,'' {\em Building and
+  Environment}, vol.~19, no.~2, pp.~133--37, 1984.
+
+\bibitem{Gunay-14}
+B.~Gunay, W.~O'Brien, I.~Beausoleil-Morrison, and A.~Perna, ``On the behavioral
+  effects of residential electricity submetering in a heating season,'' {\em
+  Building and Environment}, vol.~81, pp.~396--403, Nov. 2014.
+
+\bibitem{Schweiker-16}
+M.~Schweiker and A.~Wagner, ``The effect of occupancy on perceived control,
+  neutral temperature, and behavioral patterns,'' {\em Energy and Buildings},
+  vol.~117, pp.~246--259, Apr. 2016.
+
+\bibitem{Ricroch-12}
+L.~Ricroch, ``En 25 ans, moins de tâches domestiques pour les femmes,
+  l’écart de situation avec les hommes se réduit,'' {\em Regards sur la
+  parité, INSEE http://www. insee.
+  fr/fr/ffc/docs\_ffc/ref/FHPARIT12g\_D3tachesd. pdf. Consulté le}, vol.~22,
+  no.~05, p.~2103, 2012.
+
+\bibitem{Gauthier-15}
+S.~Gauthier and D.~Shipworth, ``Behavioural responses to cold thermal
+  discomfort,'' {\em Building Research \& Information}, vol.~43, pp.~355--370,
+  May 2015.
 
 \bibitem{Steyerberg-03}
 E.~W. Steyerberg, S.~E. Bleeker, H.~A. Moll, D.~E. Grobbee, and K.~G. Moons,
@@ -308,17 +386,6 @@ I.~Gaetani, P.-J. Hoes, and J.~Hensen, ``Occupant behavior in building energy
 \bibitem{Pitt-02}
 M.~Pitt and J.~Myong, ``When a good fit can be bad,'' {\em Trends in Cognitive
   Sciences}, vol.~6, no.~10, pp.~421--425, 2002.
-
-\bibitem{Yan-15}
-D.~Yan, W.~O’Brien, T.~Hong, X.~Feng, H.~Burak~Gunay, F.~Tahmasebi, and
-  A.~Mahdavi, ``Occupant behavior modeling for building performance simulation:
-  {Current} state and future challenges,'' {\em Energy and Buildings},
-  vol.~107, pp.~264--278, Nov. 2015.
-
-\bibitem{Page-08}
-J.~Page, D.~Robinson, N.~Morel, and J.-L. Scartezzini, ``A generalised
-  stochastic model for the simulation of occupant presence,'' {\em Energy and
-  Buildings}, vol.~40, pp.~83--98, Jan. 2008.
 
 \bibitem{Newsham-95}
 G.~Newsham, A.~Mahdavi, and I.~Beausoleil-Morrison, ``Lightswitch: a stochastic
@@ -336,6 +403,15 @@ D.~Wang, C.~C. Federspiel, and F.~Rubinstein, ``Modeling occupancy in single
   person offices,'' {\em Energy and Buildings}, vol.~37, pp.~121--126, Feb.
   2005.
 
+\bibitem{Liao-11}
+C.~Liao, Y.~Lin, and P.~Barooah, ``Agent-based and graphical modelling of
+  building occupancy,'' {\em Journal of Building Performance Simulation},
+  vol.~5, pp.~5--25, Jan. 2011.
+
+\bibitem{Feng-15}
+X.~Feng, D.~Yan, and T.~Hong, ``Simulation of occupancy in buildings,'' {\em
+  Energy and Buildings}, vol.~87, pp.~348--359, Jan. 2015.
+
 \bibitem{Erickson-09}
 V.~L. Erickson, Y.~Lin, A.~Kamthe, R.~Brahme, A.~Surana, A.~E. Cerpa, M.~D.
   Sohn, and S.~Narayanan, ``Energy efficient building environment control
@@ -343,15 +419,39 @@ V.~L. Erickson, Y.~Lin, A.~Kamthe, R.~Brahme, A.~Surana, A.~E. Cerpa, M.~D.
   the {First} {ACM} {Workshop} on {Embedded} {Sensing} {Systems} for
   {Energy}-{Efficiency} in {Buildings}}, pp.~19--24, ACM, 2009.
 
-\bibitem{Feng-15}
-X.~Feng, D.~Yan, and T.~Hong, ``Simulation of occupancy in buildings,'' {\em
-  Energy and Buildings}, vol.~87, pp.~348--359, Jan. 2015.
+\bibitem{Tabak-10}
+V.~Tabak and B.~de~Vries, ``Methods for the prediction of intermediate
+  activities by office occupants,'' {\em Building and Environment}, vol.~45,
+  pp.~1366--1372, June 2010.
 
-\bibitem{Robinson-07}
-D.~Robinson, N.~Campbell, W.~Gaiser, K.~Kabel, A.~Le-Mouel, N.~Morel, J.~Page,
-  S.~Stankovic, and A.~Stone, ``{SUNtool} – {A} new modelling paradigm for
-  simulating and optimising urban sustainability,'' {\em Solar Energy},
-  vol.~81, pp.~1196--1211, Sept. 2007.
+\bibitem{Davis-10}
+J.~A. Davis and D.~W. Nutter, ``Occupancy diversity factors for common
+  university building types,'' {\em Energy and Buildings}, vol.~42,
+  pp.~1543--1551, Sept. 2010.
+
+\bibitem{Wang-11}
+C.~Wang, D.~Yan, and Y.~Jiang, ``A novel approach for building occupancy
+  simulation,'' {\em Building Simulation}, vol.~4, pp.~149--167, June 2011.
+
+\bibitem{Duarte-13}
+C.~Duarte, K.~Van Den~Wymelenberg, and C.~Rieger, ``Revealing occupancy
+  patterns in an office building through the use of occupancy sensor data,''
+  {\em Energy and Buildings}, vol.~67, pp.~587--595, Dec. 2013.
+
+\bibitem{Chang-14}
+W.-K. Chang and T.~Hong, ``Statistical {Analysis} and {Modeling} of {Occupancy}
+  {Patterns} in {Open}-{Plan} {Offices} using {Measured} {Lighting}-{Switch}
+  {Data},'' {\em Building Simulation}, vol.~6, pp.~23--32, 2014.
+
+\bibitem{Mahdavi-15}
+A.~Mahdavi and F.~Tahmasebi, ``Predicting people's presence in buildings: {An}
+  empirically based model performance analysis,'' {\em Energy and Buildings},
+  vol.~86, pp.~349--355, Jan. 2015.
+
+\bibitem{Reinhart-01}
+C.~Reinhart, {\em Daylight availability and manual lighting control in office
+  buildings simulation studies and analysis of measurements}.
+\newblock PhD thesis, Technical University of Karlsruhe, Germany, 2001.
 
 \bibitem{OECD-14}
 {OECD.Stat}, ``Durée moyenne hebdomadaire habituelle du travail dans l'emploi
@@ -402,10 +502,46 @@ U.~Wilke, F.~Haldi, J.-L. Scartezzini, and D.~Robinson, ``A bottom-up
 J.~Chapman, {\em TBD}.
 \newblock PhD thesis, University of Nottingham, 2016.
 
-\bibitem{Mahdavi-14}
-A.~Mahdavi and F.~Tahmasebi, ``Predicting people's presence in buildings: {An}
-  empirically based model performance analysis,'' {\em Energy and Buildings},
-  vol.~86, pp.~349--355, Jan. 2015.
+\bibitem{ISO7730}
+{AFNOR}, ``{NF} {EN} {ISO} 7730 : {Ergonomie} des ambiances thermiques -
+  {Détermination} analytique et interprétation du confort thermique par le
+  calcul des indices {PMV} et {PPD} et par des critères de confort thermique
+  local,'' tech. rep., Norme Européenne, 2006.
+
+\bibitem{Fanger-70}
+P.~O. Fanger, ``Thermal {Comfort}-{Analysis} and {Applications} in
+  {Environmental} {Engineering},'' {\em C.D.T Press}, p.~244, 1970.
+
+\bibitem{Warren-84}
+P.~Warren and L.~Parkins, ``Window-{Opening} {Behaviour} in {Office}
+  {Buildings},'' Tech. Rep.~90, ASHRAE Transactions, 1984.
+
+\bibitem{Fritsch-90}
+R.~Fritsch, A.~Kohler, M.~Nygård-Ferguson, and J.-L. Scartezzini, ``A
+  stochastic model of user behaviour regarding ventilation,'' {\em Building and
+  Environment}, vol.~25, pp.~173--181, Jan. 1990.
+
+\bibitem{Nicol-01}
+F.~Nicol, ``Characterising occupant behaviour in buildings: Towards a
+  stochastic model of occupant use of windows, lights, heaters and fans,'' in
+  {\em Building Simulation}, Seventh {International} {IBPSA} {Conference}, (Rio
+  de Janeiro, Brazil), 2001.
+
+\bibitem{Yun-08}
+G.~Y. Yun and K.~Steemers, ``Time-dependent occupant behaviour models of window
+  control in summer,'' {\em Building and Environment}, vol.~43, pp.~1471--1482,
+  Sept. 2008.
+
+\bibitem{Rijal-08}
+H.~B. Rijal, P.~Tuohy, F.~Nicol, M.~A. Humphreys, A.~Samuel, and J.~Clarke,
+  ``Development of an adaptive window-opening algorithm to predict the thermal
+  comfort, energy use and overheating in buildings,'' {\em Journal of Building
+  Performance Simulation}, vol.~1, pp.~17--30, Mar. 2008.
+
+\bibitem{Herkel-08}
+S.~Herkel, U.~Knapp, and J.~Pfafferott, ``Towards a model of user behaviour
+  regarding the manual control of windows in office buildings,'' {\em Building
+  and Environment}, vol.~43, pp.~588--600, 2008.
 
 \bibitem{Schweiker-12}
 M.~Schweiker, F.~Haldi, M.~Shukuya, and D.~Robinson, ``Verification of
@@ -413,10 +549,32 @@ M.~Schweiker, F.~Haldi, M.~Shukuya, and D.~Robinson, ``Verification of
   {\em Journal of Building Performance Simulation}, vol.~5, pp.~55--74, Jan.
   2012.
 
+\bibitem{Zhang-12}
+Y.~Zhang and P.~Barrett, ``Factors influencing the occupants’ window opening
+  behaviour in a naturally ventilated office building,'' {\em Building and
+  Environment}, vol.~50, pp.~125--134, Apr. 2012.
+
+\bibitem{Andersen-13}
+R.~Andersen, V.~Fabi, J.~Toftum, S.~P. Corgnati, and B.~W. Olesen, ``Window
+  opening behaviour modelled from measurements in {Danish} dwellings,'' {\em
+  Building and Environment}, vol.~69, pp.~101--113, Nov. 2013.
+
+\bibitem{Fabi-14}
+V.~Fabi, V.~Maggiora, S.~Corgnati, and R.~Andersen, ``Occupants' behaviour in
+  office building: stochastic models for windows opening,'' in {\em Counting
+  the {Cost} of {Comfort} in a changing world}, (London), Counting the Cost of
+  Comfort in a changing world, Apr. 2014.
+
 \bibitem{d'Oca-14}
 S.~D’Oca, V.~Fabi, S.~P. Corgnati, and R.~K. Andersen, ``Effect of thermostat
   and window opening occupant behavior models on energy use in homes,'' {\em
   Building Simulation}, vol.~7, pp.~683--694, Dec. 2014.
+
+\bibitem{Fabi-12}
+V.~Fabi, R.~V. Andersen, S.~Corgnati, and B.~W. Olesen, ``Occupants' window
+  opening behaviour: {A} literature review of factors influencing occupant
+  behaviour and models,'' {\em Building and Environment}, vol.~58,
+  pp.~188--198, Dec. 2012.
 
 \bibitem{Maresca-09}
 B.~Maresca, A.~Dujin, and R.~Picard, {\em La consommation d'énergie dans
@@ -438,6 +596,12 @@ J.~Cavailhès, D.~Joly, T.~Brossard, H.~Cardot, M.~Hilal, and P.~Wavresky, ``La
 L.~Penot-Antoniou and R.~Zobiri, ``Les déterminants de la température de
   chauffage adoptée par les ménages,'' tech. rep., CGDD, 2013.
 
+\bibitem{Kelly-13}
+S.~Kelly, M.~Shipworth, D.~Shipworth, M.~Gentry, A.~Wright, M.~Pollitt,
+  D.~Crawford-Brown, and K.~Lomas, ``Predicting the diversity of internal
+  temperatures from the {English} residential sector using panel methods,''
+  {\em Applied Energy}, vol.~102, pp.~601--621, 2013.
+
 \bibitem{Fabi-13}
 V.~Fabi, R.~V. Andersen, and S.~P. Corgnati, ``Influence of occupant's heating
   set-point preferences on indoor environmental quality and heating demand in
@@ -453,6 +617,10 @@ J.~C. Evarts and L.~G. Swan, ``Domestic hot water consumption estimates for
 C.~Beslay, ``Individualisation des frais de chauffage et maîtrise de la
   demande en énergie,'' {\em Énergie et société : Sciences, gouvernances et
   usages}, vol.~22, pp.~183--191, 2008.
+
+\bibitem{Norman-88}
+D.~Norman and P.~Berkrot, {\em The {Design} of {Everyday} {Things}}.
+\newblock Basic Books, 1988.
 
 \bibitem{Brisepierre-15}
 G.~Brisepierre, A.~Gaspard, and T.~Micheli-Balian, ``L'accompagnement des
